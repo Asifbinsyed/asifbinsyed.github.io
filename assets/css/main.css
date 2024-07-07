@@ -12,6 +12,22 @@
 
 a {
 	text-decoration-thickness: 1px;
+	color: #0066cc; 
+}
+
+/* Hover state */
+a:hover {
+    color: #004080; /* A darker blue for hover */
+}
+
+/* Visited state */
+a:visited {
+    color: #551A8B; /* A purple color for visited links */
+}
+
+/* Active state */
+a:active {
+    color: #ff0000; /* Red color when the link is being clicked */
 }
 
 #hobbiesH4 {
