@@ -13,7 +13,15 @@ Welcome to my page. I'm Md Asif Bin Syed, a supply chain data analyst at The Hom
 
 My research interests span a wide range of areas in data science and artificial intelligence. I'm passionate about machine learning, deep learning, natural language processing (NLP), and large language model (LLM) applications in supply chain management. Additionally, I have a deep interest in causal inference and graph neural network (GNN) applications in digital health and chemical composition analysis. My recent work focuses on deep learning applications in marine surveillance. I'm also keen on exploring missing value imputation techniques and assessing their credibility in various data analysis contexts.
 
+## 🧑‍💻 Technical Skills
 
+- 🐍 **Programming Languages**: Python , R, SQL,
+- 🛠️ **ML DL Framework**: Scikit-learn, Keras, TensorFlow,  PyTorch 
+- 📈**Data Analysis**: MS Excel, SAS, Tableau, Power BI 📈
+
+- 🛠️ **MLOps & DevOps**: Docker, Kubernetes, Jenkins, Git, GitHub Actions, AWS, Azure ML, MLflow, DVC, Weights & Biases 
+- 🚀 **Model Deployment**: FastAPI, Flask, TensorFlow Serving, Model Monitoring, A/B Testing, CI/CD Pipelines 
+- 📦 **Others**: Containerization, Infrastructure as Code (IaC), Model Versioning, Experiment Tracking, Model Registry 
 
 ## Highlighted Publications
 
@@ -44,3 +52,5 @@ Here is a blockquote
 
 * Foo Bar: Head of Department, Placeholder Names, Lorem
 * John Doe: Associate Professor, Department of Computer Science, Ipsum
+
+
