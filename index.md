@@ -3,13 +3,13 @@ layout: default
 ---
 
 
-## About Me
+## 👨‍💻About Me
 
 <img class="profile-picture" src="asif_headshot.webp" >
 
 Welcome to my page. I'm Md Asif Bin Syed, a supply chain data analyst at The Home Depot, the world's leading home improvement retailer. Beyond my professional role, I'm an active researcher exploring AI applications in marine surveillance, disease prediction, and drug discovery. My expertise spans Machine Learning, Graph Neural Networks, and Natural Language Processing. Currently, I'm working on innovative projects involving missing value pattern detection and predicting chemical energy. Through my work and research, I strive to advance AI applications in both industry and scientific domains. I'm also a part of the research group Advanced Systems Analytics Lab , where I'm working on solving the track association.[GitHub](https://github.com/bk2dcradle/researcher)
 
-## Research Interest
+## 🔬Research Interest
 
 My research interests span a wide range of areas in data science and artificial intelligence. I'm passionate about machine learning, deep learning, natural language processing (NLP), and large language model (LLM) applications in supply chain management. Additionally, I have a deep interest in causal inference and graph neural network (GNN) applications in digital health and chemical composition analysis. My recent work focuses on deep learning applications in marine surveillance. I'm also keen on exploring missing value imputation techniques and assessing their credibility in various data analysis contexts.
 
@@ -17,8 +17,7 @@ My research interests span a wide range of areas in data science and artificial 
 
 - 🐍 **Programming Languages**: Python , R, SQL,
 - 🛠️ **ML DL Framework**: Scikit-learn, Keras, TensorFlow,  PyTorch 
-- 📈**Data Analysis**: MS Excel, SAS, Tableau, Power BI 📈
-
+- 📈**Data Analysis**: MS Excel,  Tableau, Power BI 📈
 - 🛠️ **MLOps & DevOps**: Docker, Kubernetes, Jenkins, Git, GitHub Actions, AWS, Azure ML, MLflow, DVC, Weights & Biases 
 - 🚀 **Model Deployment**: FastAPI, Flask, TensorFlow Serving, Model Monitoring, A/B Testing, CI/CD Pipelines 
 - 📦 **Others**: Containerization, Infrastructure as Code (IaC), Model Versioning, Experiment Tracking, Model Registry 
