@@ -12,6 +12,7 @@ html {
 body {
     margin: 0;
     font-family: 'Times New Roman', Times, serif;
+    font-size: 18px;
     height: 100%;
 }
 a {
@@ -134,9 +135,33 @@ hr {
 @import "tables";
 
 .profile-picture {
-    width: 200px;
+    width: 300px;
 }
 
 h1, h2, h3, h4, h5, h6, p, a {
     font-family: 'Times New Roman', Times, serif;
+}
+
+h1 {
+    font-size: 2.5em;
+}
+
+h2 {
+    font-size: 2em;
+}
+
+h3 {
+    font-size: 1.75em;
+}
+
+h4 {
+    font-size: 1.5em;
+}
+
+h5 {
+    font-size: 1.25em;
+}
+
+h6 {
+    font-size: 1em;
 }
