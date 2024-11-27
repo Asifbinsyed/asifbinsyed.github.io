@@ -17,8 +17,8 @@ My research interests span a wide range of areas in data science and artificial 
 
 ## Highlighted Publications
 
-1. Haque, T., Syed, M. A. B., Das, S., & Ahmed, I. (2024). Advancing Marine Surveillance: A Hybrid Approach of Physics Infused Neural Network for Enhanced Vessel Tracking Using Automatic Identification System Data. Journal of Marine Science and Engineering, 12(11), 1913. https://doi.org/10.3390/jmse12111913
-2. Syed, M. A. B., & Ahmed, I. (2023). A CNN-LSTM Architecture for Marine Vessel Track Association Using Automatic Identification System (AIS) Data. Sensors, 23(14), 6400. https://doi.org/10.3390/s23146400
+1. Haque, T., Syed, M. A. B., Das, S., & Ahmed, I. (2024). **Advancing Marine Surveillance: A Hybrid Approach of Physics Infused Neural Network for Enhanced Vessel Tracking Using Automatic Identification System Data.** Journal of Marine Science and Engineering, 12(11), 1913. https://doi.org/10.3390/jmse12111913
+2. Syed, M. A. B., & Ahmed, I. (2023). **A CNN-LSTM Architecture for Marine Vessel Track Association Using Automatic Identification System (AIS) Data**. Sensors, 23(14), 6400. https://doi.org/10.3390/s23146400
 
 ## Typography
 
