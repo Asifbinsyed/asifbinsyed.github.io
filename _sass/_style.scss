@@ -169,3 +169,20 @@ h6 {
 p {
     text-align: left;
 }
+
+.whats-new {
+    max-height: 200px; /* Adjust height as needed */
+    overflow-y: auto;  /* Enable vertical scrolling */
+    border: 1px solid #ccc; /* Optional: Add a border for visual separation */
+    padding: 10px; /* Optional: Add padding for better spacing */
+}
+
+.news-list {
+    list-style-type: none; /* Remove default list styling */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+}
+
+.news-list li {
+    padding: 5px 0; /* Add padding between list items */
+}
