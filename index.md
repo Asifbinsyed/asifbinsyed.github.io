@@ -57,3 +57,27 @@ Here is a blockquote
         <li>Item 6</li> <!-- Add more items as needed -->
     </ul>
 </div>
+
+<div class="timeline">
+    <div class="timeline-item">
+        <div class="timeline-date">2024 -</div>
+        <div class="timeline-content">
+            <img src="eureka_logo.png" alt="Eureka Labs Logo" class="timeline-image">
+            <p>I started <a href="#">Eureka Labs</a>, a new AI+Education company.</p>
+        </div>
+    </div>
+    <div class="timeline-item">
+        <div class="timeline-date">2023 - 2024</div>
+        <div class="timeline-content">
+            <img src="openai_logo.png" alt="OpenAI Logo" class="timeline-image">
+            <p>Back to <a href="#">OpenAI</a>. Built a small team, improved GPT-4 on ChatGPT.</p>
+        </div>
+    </div>
+    <div class="timeline-item">
+        <div class="timeline-date">2017 - 2022</div>
+        <div class="timeline-content">
+            <img src="tesla_logo.png" alt="Tesla Logo" class="timeline-image">
+            <p>I was the Sr. Director of AI at <a href="#">Tesla</a>, where I led the computer vision team of <a href="#">Tesla Autopilot</a>.</p>
+        </div>
+    </div>
+</div>
