@@ -5,7 +5,7 @@ layout: default
 
 ## About Me
 
-<img class="profile-picture" src="asif_headshot.webp" width="200">
+<img class="profile-picture" src="asif_headshot.webp" >
 
 Welcome to my page. I'm Md Asif Bin Syed, a supply chain data analyst at The Home Depot, the world's leading home improvement retailer. Beyond my professional role, I'm an active researcher exploring AI applications in marine surveillance, disease prediction, and drug discovery. My expertise spans Machine Learning, Graph Neural Networks, and Natural Language Processing. Currently, I'm working on innovative projects involving missing value pattern detection and predicting chemical energy. Through my work and research, I strive to advance AI applications in both industry and scientific domains. I'm also a part of the research group Advanced Systems Analytics Lab , where I'm working on solving the track association.[GitHub](https://github.com/bk2dcradle/researcher)
 
