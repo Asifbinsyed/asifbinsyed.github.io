@@ -2,9 +2,21 @@
 layout: default
 ---
 
+.wrapper {
+    max-width: 1000px;
+    margin: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: auto;
+}
+
 ## About Me
 
-<img class="profile-picture" src="asif_headshot.webp">
+<img class="profile-picture" src="asif_headshot.webp" width="200">
 
 Hi! I am a junior year student of B.E. Computer Science at Birla Institute of Technology and Science, Pilani.
 
