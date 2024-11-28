@@ -2,8 +2,6 @@
 layout: default
 ---
 
-## 🧑‍💻 About Me
-
 <img class="profile-picture" src="asif_headshot.webp" >
 
 👋 Hi there! I'm **Md Asif Bin Syed**, a *Sr. Supply Chain Data Analyst* at **The Home Depot**, the world's leading home improvement retailer. 
