@@ -21,12 +21,11 @@ As an active researcher, I explore marine surveillance with AI, disease predicti
 - 📦 **Others**: Containerization, Infrastructure as Code (IaC), Model Versioning, Experiment Tracking, Model Registry 
 
 
-# Achievement In Industry 
+## Achievement In Industry 
 
-<img src="homedepot.png" alt="The Home Depot Logo" style="width: 200px; margin: 20px 0;">
+<img src="homedepot.png" alt="The Home Depot Logo" style="width: 50px; margin: 20px 0;">
 
-### Key Achievements:
-
+**<u>The Home Depot</u>**
 ✔ **Cost Savings Through Analytics**: Developed pallet compliance dashboard and BQA workbook with API validation, generating potential annual savings of $2 million.
 
 ✔ **Carrier Optimization**: Collaborated on optimization model to identify optimal vendor-carrier matches, yielding potential savings of $30+ million through maximized primary carrier discounts.
