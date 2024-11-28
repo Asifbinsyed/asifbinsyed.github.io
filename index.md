@@ -23,13 +23,17 @@ As an active researcher, I explore marine surveillance with AI, disease predicti
 
 # Achievement In Industry 
 
-✔ Developed a BQA workbook to calculate recommended pallet counts, validated results through an API endpoint, and constructed a pallet compliance dashboard for stakeholders, potentially generating annual savings of $2 million.
-✔ Architected a "Control Tower" in python to capture vehicle rule changes to improve the accuracy of Truck Type Model.
-✔ Led the data cleansing of 25M orders and developing inventory-aware sourcing logic to improve OTC performance. 
-✔ Spearheaded the implementation of 120+ vehicle rule changes, maintaining Truck Type model effectiveness.
-✔ Collaborated with Online Delivery Analytics team to devise an optimization model to pinpoint the optimal carrier for each vendor, maximizing discounts from the primary carriers and potentially yielding over $30 million in savings.
-✔ Optimized the truck type compliance dashboard, reducing load time from 226 to 2.56 seconds (100-fold improvement). 
-✔ Consistently delivered on multiple ad-hoc requests, including effectiveness analysis of new sprinter vans, rural area box additions, and extraction of pallet data for MDS.
+<img src="homedepot.png" alt="The Home Depot Logo" style="width: 200px; margin: 20px 0;">
+
+### Key Achievements:
+
+✔ **Cost Savings Through Analytics**: Developed pallet compliance dashboard and BQA workbook with API validation, generating potential annual savings of $2 million.
+
+✔ **Carrier Optimization**: Collaborated on optimization model to identify optimal vendor-carrier matches, yielding potential savings of $30+ million through maximized primary carrier discounts.
+
+✔ **Performance Optimization**: Enhanced truck type compliance dashboard performance by reducing load time from 226 to 2.56 seconds, achieving 100x improvement.
+
+✔ **Large-Scale Data Processing**: Successfully cleansed 25M+ orders and implemented inventory-aware sourcing logic to improve Order-to-Cash (OTC) performance.
 
 
 ## 🔬Research Interest
