@@ -29,9 +29,7 @@ As an active researcher, I explore marine surveillance with AI, disease predicti
 - 🐍 **Programming Languages**: Python , R, SQL,
 - 🛠️ **ML DL Framework**: Scikit-learn, Keras, TensorFlow,  PyTorch 
 - 📈**Data Analysis**: MS Excel,  Tableau, Power BI 📈
-- 🛠️ **MLOps & DevOps**: Docker, Kubernetes, Jenkins, Git, GitHub Actions, AWS, Azure ML, MLflow, DVC, Weights & Biases 
-- 🚀 **Model Deployment**: FastAPI, Flask, TensorFlow Serving, Model Monitoring, A/B Testing, CI/CD Pipelines 
-- 📦 **Others**: Containerization, Infrastructure as Code (IaC), Model Versioning, Experiment Tracking, Model Registry 
+- 🛠️ **MLOps & DevOps**: Docker, Kubernetes, Jenkins, Git, GitHub Actions, AWS, Azure ML, MLflow, FastAPI, Flask, TensorFlow Serving, Model Monitoring, A/B Testing, CI/CD Pipelines, Containerization, Infrastructure as Code (IaC), Model Versioning, Experiment Tracking, Model Registry 
 
 
 ## 🔬Research Interest
