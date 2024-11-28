@@ -11,13 +11,13 @@ layout: default
 As an active researcher, I explore marine surveillance with AI, disease prediction, and drug discovery. My core expertise includes machine learning, graph neural networks, and natural language processing. Currently, I'm innovating with missing value pattern detection and chemical energy prediction. I'm passionate about advancing AI applications across both industry and scientific domains. As a member of the **Advanced Systems Analytics Lab**, I'm tackling complex track association challenges.
 
 
-<blockquote style="margin-left: 6em;">
-    <div style="display: flex; align-items: left; margin-left: -6em;">2025</div>
+<blockquote style="margin-left: 3em;">
+    <div style="display: flex; align-items: left; margin-left: -3em;">2025 - </div>
     <img src="the-home-depot.png" alt="Employer 1" style="width: 24px; height: 24px; margin-right: 10px;">
     leverage machine learning and reinforcement learning to optimize our delivery network - using predictive models to forecast delivery times, route optimization algorithms to determine the most efficient delivery paths, and reinforcement learning to dynamically adjust delivery schedules based on real-time conditions.
 </div>
 
- <div style="display: flex; align-items: left; margin-left: -6em;">2024</div>
+ <div style="display: flex; align-items: left; margin-left: -3em;">2024 - </div>
 </blockquote>
 
 ## 🧑‍💻 Technical Skills
