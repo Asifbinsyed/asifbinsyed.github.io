@@ -10,7 +10,7 @@ layout: default
 
 As an active researcher, I explore marine surveillance with AI, disease prediction, and drug discovery. My core expertise includes machine learning, graph neural networks, and natural language processing. Currently, I'm innovating with missing value pattern detection and chemical energy prediction. I'm passionate about advancing AI applications across both industry and scientific domains. As a member of the **Advanced Systems Analytics Lab**, I'm tackling complex track association challenges.
 
-<div style="display: flex; align-items: center;">
+<div style="display: flex; align-items: center; margin-left: 2em;">
     <img src="the-home-depot.png" alt="Employer 1" style="width: 24px; height: 24px; margin-right: 10px;">
     <h3 style="font-size: 24px; margin: 0;"><u>The Home Depot</u></h3>
 </div>
