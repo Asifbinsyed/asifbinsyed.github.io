@@ -6,7 +6,7 @@ layout: default
 
 <img class="profile-picture" src="asif_headshot.webp" >
 
-👋 Hi there! I'm **Md Asif Bin Syed**, a *Sr. Supply Chain Data Analyst* at **The Home Depot**, the world's leading home improvement retailer. At Home Depot, I leverage machine learning and reinforcement learning to optimize our delivery network - using predictive models to forecast delivery times, route optimization algorithms to determine the most efficient delivery paths, and reinforcement learning to dynamically adjust delivery schedules based on real-time conditions.
+👋 Hi there! I'm **Md Asif Bin Syed**, a *Sr. Supply Chain Data Analyst* at **The Home Depot**, the world's leading home improvement retailer. 
 
 As an active researcher, I explore marine surveillance with AI, disease prediction, and drug discovery. My core expertise includes machine learning, graph neural networks, and natural language processing. Currently, I'm innovating with missing value pattern detection and chemical energy prediction. I'm passionate about advancing AI applications across both industry and scientific domains. As a member of the **Advanced Systems Analytics Lab**, I'm tackling complex track association challenges.
 
@@ -15,10 +15,7 @@ As an active researcher, I explore marine surveillance with AI, disease predicti
     <h2 style="font-size: 24px; margin: 0;"><u>The Home Depot</u></h2>
 </div>
 <blockquote>
-    - Cost Savings Through Analytics: Developed pallet compliance dashboard and BQA workbook with API validation, generating potential annual savings of $2 million.
-    - Carrier Optimization: Collaborated on optimization model to identify optimal vendor-carrier matches, yielding potential savings of $30+ million through maximized primary carrier discounts.
-    - Performance Optimization: Enhanced truck type compliance dashboard performance by reducing load time from 226 to 2.56 seconds, achieving 100x improvement.
-    - Large-Scale Data Processing: Successfully cleansed 25M+ orders and implemented inventory-aware sourcing logic to improve Order-to-Cash (OTC) performance.
+    leverage machine learning and reinforcement learning to optimize our delivery network - using predictive models to forecast delivery times, route optimization algorithms to determine the most efficient delivery paths, and reinforcement learning to dynamically adjust delivery schedules based on real-time conditions.
 </blockquote>
 
 ## 🧑‍💻 Technical Skills
