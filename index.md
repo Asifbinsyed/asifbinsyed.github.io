@@ -25,7 +25,7 @@ As an active researcher, I explore marine surveillance with AI, disease predicti
 
 ## What's new 
 
-	<h4 id="What's New" class="mt-2" data-es="Qué hay de nuevo" data-en="What's New"></h4>
+	<h4 id="What's New" class="mt-2">What's New</h4>
 							
 							<!-- New "What's New" section with scrolling, comic font, and transparent background -->
 							<div style="height: 300px; overflow-y: auto; background-color: transparent; padding: 10px; font-family: 'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', sans-serif; color: inherit;">
@@ -44,7 +44,7 @@ As an active researcher, I explore marine surveillance with AI, disease predicti
 									</tr>
 									<tr style="border: none;">
 										<td valign="top" style="border: none; width:12%; padding-bottom: 10px;"><b>April 2023</b></td>
-										<td valign="top" style="border: none; padding-bottom: 10px;">Submitted a paper in <a href="https://www.iise.org/Annual/details.aspx?id=13480" class="link-dark">IISE conference</a>, Titled: Multi model LSTM architecture for <a href="https://arxiv.org/abs/2304.01491" class="link-dark">Track Association based on Automatic Identification System Data</a></td>
+										<td valign="top" style="border: none; padding-bottom: 10px;">Submitted a paper in <a href="https://www.iise.org/Annual/details.aspx?id=13480" class="link-dark">IISE conference</a>, titled: Multi model LSTM architecture for <a href="https://arxiv.org/abs/2304.01491" class="link-dark">Track Association based on Automatic Identification System Data</a>.</td>
 									</tr>
 									<tr style="border: none;">
 										<td valign="top" style="border: none; width:12%; padding-bottom: 10px;"><b>October 2022</b></td>
