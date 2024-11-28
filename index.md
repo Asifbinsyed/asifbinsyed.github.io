@@ -22,7 +22,7 @@ As an active researcher, I explore marine surveillance with AI, disease predicti
  <div style="display: flex; align-items: left; margin-left: -3.5em;">2023 - </div>
 </blockquote>
 
-<h4>What's New</h4>
+<h2>What's New</h2>
 <div style="max-height: 250px; overflow-y: auto; padding: 10px; font-family: Arial, sans-serif; line-height: 1.5;">
     <ul style="padding-left: 20px; margin: 0;">
         <li><strong>July 2023:</strong> Awarded "Idea of the Month" at Volvo Truck for implementing Power Automate and AI to extract invoice data, saving $200k.</li>
