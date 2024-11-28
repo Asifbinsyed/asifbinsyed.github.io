@@ -7,23 +7,9 @@ layout: default
 
 <img class="profile-picture" src="asif_headshot.webp" >
 
-👋 Hi there! I'm **Md Asif Bin Syed**, a *Supply Chain Data Analyst* at **The Home Depot** 🏠, the world's leading home improvement retailer.
+👋 Hi there! I'm **Md Asif Bin Syed**, a *Sr. Supply Chain Data Analyst* at **The Home Depot** 🏠, the world's leading home improvement retailer.
 
-🔬 As an active researcher, I explore:
-- *Marine surveillance with AI* 🚢
-- *Disease prediction* 🏥 
-- *Drug discovery* 💊
-
-🧠 My core expertise includes:
-- **Machine Learning**
-- **Graph Neural Networks** 
-- **Natural Language Processing**
-
-🚀 Currently innovating with:
-- *Missing value pattern detection*
-- *Chemical energy prediction*
-
-I'm passionate about advancing AI applications across both industry and scientific domains. As a member of the **Advanced Systems Analytics Lab**, I'm tackling complex track association challenges. 
+🔬 As an active researcher, I explore marine surveillance with AI 🚢, disease prediction 🏥, and drug discovery 💊. My core expertise includes machine learning, graph neural networks, and natural language processing. Currently, I'm innovating with missing value pattern detection and chemical energy prediction. I'm passionate about advancing AI applications across both industry and scientific domains. As a member of the **Advanced Systems Analytics Lab**, I'm tackling complex track association challenges.
 
 ## 🔬Research Interest
 
