@@ -21,7 +21,7 @@ As an active researcher, I explore marine surveillance with AI, disease predicti
 <blockquote style="margin-left: 3.5em;">
     <img src="volvo.svg" alt="Employer 1" style="width: 24px; height: 24px; margin-right: 10px;">
   <font size="3">leverage machine learning and reinforcement learning to optimize our delivery network - using predictive models to forecast delivery times, route optimization algorithms to determine the most efficient delivery paths, and reinforcement learning to dynamically adjust delivery schedules based on real-time conditions.</font>
- <div style="display: flex; align-items: left; margin-left: -3.5em;">2024 - </div>
+ <div style="display: flex; align-items: left; margin-left: -3.5em;">2023 - </div>
 </blockquote>
 
 ## 🧑‍💻 Technical Skills
@@ -29,7 +29,9 @@ As an active researcher, I explore marine surveillance with AI, disease predicti
 - 🐍 **Programming Languages**: Python , R, SQL,
 - 🛠️ **ML DL Framework**: Scikit-learn, Keras, TensorFlow,  PyTorch 
 - 📈**Data Analysis**: MS Excel,  Tableau, Power BI 📈
-- 🛠️ **MLOps & DevOps**: Docker, Kubernetes, Jenkins, Git, GitHub Actions, AWS, Azure ML, MLflow, FastAPI, Flask, TensorFlow Serving, Model Monitoring, A/B Testing, CI/CD Pipelines, Containerization, Infrastructure as Code (IaC), Model Versioning, Experiment Tracking, Model Registry 
+- 🛠️ **MLOps & DevOps**: Docker, Kubernetes, Jenkins, Git, GitHub Actions, AWS, Azure ML, MLflow, DVC, Weights & Biases
+- 🚀 **Model Deployment**: FastAPI, Flask, TensorFlow Serving, Model Monitoring, A/B Testing, CI/CD Pipelines
+- 📦 **Others**: Containerization, Infrastructure as Code (IaC), Model Versioning, Experiment Tracking, Model Registry
 
 
 ## 🔬Research Interest
