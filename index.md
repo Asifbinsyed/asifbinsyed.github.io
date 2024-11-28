@@ -2,11 +2,7 @@
 layout: default
 ---
 
-<div style="display: flex; align-items: center;">
-    <img src="the-home-depot.png" alt="Employer 1" style="width: 24px; height: 24px; margin-right: 10px;">
-    <img src="volvo.svg" alt="Employer 2" style="width: 24px; height: 24px; margin-right: 10px;">
-    <h2 style="font-size: 24px; margin: 0;">About Me</h1>
-</div>
+## 🧑‍💻 About Me
 
 <img class="profile-picture" src="asif_headshot.webp" >
 
