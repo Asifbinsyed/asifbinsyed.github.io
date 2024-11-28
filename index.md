@@ -3,7 +3,13 @@ layout: default
 ---
 
 
-## 👨‍💻About Me
+## 👨‍🔬 About Me
+
+<div style="display: flex; align-items: center;">
+    <img src="the-home-depot.png" alt="Employer 1" style="width: 24px; height: 24px; margin-right: 10px;">
+    <img src="the-home-depot.png" alt="Employer 2" style="width: 24px; height: 24px; margin-right: 10px;">
+    <h2 style="font-size: 24px; margin: 0;">About Me</h2>
+</div>
 
 <img class="profile-picture" src="asif_headshot.webp" >
 
@@ -23,7 +29,7 @@ As an active researcher, I explore marine surveillance with AI, disease predicti
 
 ## Achievement In Industry 
 
-🏠 <u>**The Home Depot**</u>
+🛒🏠 **<u>The Home Depot</u>**
 
 - **Cost Savings Through Analytics**: Developed pallet compliance dashboard and BQA workbook with API validation, generating potential annual savings of $2 million.
 - **Carrier Optimization**: Collaborated on optimization model to identify optimal vendor-carrier matches, yielding potential savings of $30+ million through maximized primary carrier discounts.
