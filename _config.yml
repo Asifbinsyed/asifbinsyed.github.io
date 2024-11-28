@@ -1,4 +1,5 @@
-title: Asif Bin Syed | ML Scientist
+title: "Asif Bin Syed"
+subtitle: "ML Scientist"
 url: "https://asifsyed.com"
 baseurl: "/AsifSyed"
 
@@ -18,7 +19,7 @@ remote_theme: ankitsultana/researcher@gem
 
 nav:
  - name: "About"
-   link: "/researcher/"
+   link: "/AsifSyed/"
  - name: "Resume"
    link: "resume.pdf"
  - name: "Contact"
