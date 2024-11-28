@@ -18,6 +18,13 @@ As an active researcher, I explore marine surveillance with AI, disease predicti
  <div style="display: flex; align-items: left; margin-left: -3.5em;">2024 - </div>
 </blockquote>
 
+<blockquote style="margin-left: 3.5em;">
+    <div style="display: flex; align-items: left; margin-left: -3.5em;">2025 - </div>
+    <img src="volvo.svg" alt="Employer 1" style="width: 24px; height: 24px; margin-right: 10px;">
+  <font size="3">leverage machine learning and reinforcement learning to optimize our delivery network - using predictive models to forecast delivery times, route optimization algorithms to determine the most efficient delivery paths, and reinforcement learning to dynamically adjust delivery schedules based on real-time conditions.</font>
+ <div style="display: flex; align-items: left; margin-left: -3.5em;">2024 - </div>
+</blockquote>
+
 ## 🧑‍💻 Technical Skills
 
 - 🐍 **Programming Languages**: Python , R, SQL,
