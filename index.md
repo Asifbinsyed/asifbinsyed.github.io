@@ -14,11 +14,12 @@ As an active researcher, I explore marine surveillance with AI, disease predicti
     <img src="the-home-depot.png" alt="Employer 1" style="width: 24px; height: 24px; margin-right: 10px;">
     <h2 style="font-size: 24px; margin: 0;"><u>The Home Depot</u></h2>
 </div>
-
-- **Cost Savings Through Analytics**: Developed pallet compliance dashboard and BQA workbook with API validation, generating potential annual savings of $2 million.
-- **Carrier Optimization**: Collaborated on optimization model to identify optimal vendor-carrier matches, yielding potential savings of $30+ million through maximized primary carrier discounts.
-- **Performance Optimization**: Enhanced truck type compliance dashboard performance by reducing load time from 226 to 2.56 seconds, achieving 100x improvement.
-- **Large-Scale Data Processing**: Successfully cleansed 25M+ orders and implemented inventory-aware sourcing logic to improve Order-to-Cash (OTC) performance.
+<blockquote>
+    - Cost Savings Through Analytics: Developed pallet compliance dashboard and BQA workbook with API validation, generating potential annual savings of $2 million.
+    - Carrier Optimization: Collaborated on optimization model to identify optimal vendor-carrier matches, yielding potential savings of $30+ million through maximized primary carrier discounts.
+    - Performance Optimization: Enhanced truck type compliance dashboard performance by reducing load time from 226 to 2.56 seconds, achieving 100x improvement.
+    - Large-Scale Data Processing: Successfully cleansed 25M+ orders and implemented inventory-aware sourcing logic to improve Order-to-Cash (OTC) performance.
+</blockquote>
 
 ## 🧑‍💻 Technical Skills
 
@@ -28,19 +29,6 @@ As an active researcher, I explore marine surveillance with AI, disease predicti
 - 🛠️ **MLOps & DevOps**: Docker, Kubernetes, Jenkins, Git, GitHub Actions, AWS, Azure ML, MLflow, DVC, Weights & Biases 
 - 🚀 **Model Deployment**: FastAPI, Flask, TensorFlow Serving, Model Monitoring, A/B Testing, CI/CD Pipelines 
 - 📦 **Others**: Containerization, Infrastructure as Code (IaC), Model Versioning, Experiment Tracking, Model Registry 
-
-
-## Achievement In Industry 
-
-<div style="display: flex; align-items: center;">
-    <img src="the-home-depot.png" alt="Employer 1" style="width: 24px; height: 24px; margin-right: 10px;">
-    <h2 style="font-size: 24px; margin: 0;"><u>The Home Depot</u></h2>
-</div>
-
-    - **Cost Savings Through Analytics**: Developed pallet compliance dashboard and BQA workbook with API validation, generating potential annual savings of $2 million.
-    - **Carrier Optimization**: Collaborated on optimization model to identify optimal vendor-carrier matches, yielding potential savings of $30+ million through maximized primary carrier discounts.
-    - **Performance Optimization**: Enhanced truck type compliance dashboard performance by reducing load time from 226 to 2.56 seconds, achieving 100x improvement.
-    - **Large-Scale Data Processing**: Successfully cleansed 25M+ orders and implemented inventory-aware sourcing logic to improve Order-to-Cash (OTC) performance.
 
 
 ## 🔬Research Interest
