@@ -12,9 +12,9 @@ As an active researcher, I explore marine surveillance with AI, disease predicti
 
 <div style="display: flex; align-items: center;">
     <img src="the-home-depot.png" alt="Employer 1" style="width: 24px; height: 24px; margin-right: 10px;">
-    <h2 style="font-size: 24px; margin: 0;"><u>The Home Depot</u></h2>
+    <h3 style="font-size: 24px; margin: 0;"><u>The Home Depot</u></h3>
 </div>
-<blockquote style="text-indent: 2em;">
+<blockquote style="margin-left: 2em;">
     leverage machine learning and reinforcement learning to optimize our delivery network - using predictive models to forecast delivery times, route optimization algorithms to determine the most efficient delivery paths, and reinforcement learning to dynamically adjust delivery schedules based on real-time conditions.
 </blockquote>
 
