@@ -23,15 +23,11 @@ As an active researcher, I explore marine surveillance with AI, disease predicti
 
 ## Achievement In Industry 
 
-<img src="The-home-depot.png" alt="Home Depot Icon" width="20" height="20" style="vertical-align: middle;"> **The Home Depot**
-
-    ✔ **Cost Savings Through Analytics**: Developed pallet compliance dashboard and BQA workbook with API validation, generating potential annual savings of $2 million.
-
-    ✔ **Carrier Optimization**: Collaborated on optimization model to identify optimal vendor-carrier matches, yielding potential savings of $30+ million through maximized primary carrier discounts.
-
-    ✔ **Performance Optimization**: Enhanced truck type compliance dashboard performance by reducing load time from 226 to 2.56 seconds, achieving 100x improvement.
-
-    ✔ **Large-Scale Data Processing**: Successfully cleansed 25M+ orders and implemented inventory-aware sourcing logic to improve Order-to-Cash (OTC) performance.
+🏠 <u>**The Home Depot**</u>
+**Cost Savings Through Analytics**: Developed pallet compliance dashboard and BQA workbook with API validation, generating potential annual savings of $2 million.
+ **Carrier Optimization**: Collaborated on optimization model to identify optimal vendor-carrier matches, yielding potential savings of $30+ million through maximized primary carrier discounts.
+**Performance Optimization**: Enhanced truck type compliance dashboard performance by reducing load time from 226 to 2.56 seconds, achieving 100x improvement.
+**Large-Scale Data Processing**: Successfully cleansed 25M+ orders and implemented inventory-aware sourcing logic to improve Order-to-Cash (OTC) performance.
 
 
 ## 🔬Research Interest
