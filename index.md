@@ -25,9 +25,7 @@ As an active researcher, I explore marine surveillance with AI, disease predicti
 
 ## What's new 
 
-<h4 id="What's-New" class="mt-2">What's New</h4>
-
-<div style="height: 300px; overflow-y: auto; background-color: transparent; padding: 10px; font-family: 'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', sans-serif; color: inherit;">
+<div style="height: 300px; overflow-y: scroll; background-color: transparent; padding: 10px; font-family: 'Times New Roman', serif; color: inherit;">
     <ul style="list-style-type: none; padding: 0; margin: 0;">
         <li><b>July 2023:</b> Won the Award for Idea of the Month at Volvo Truck for "Using Power Automate and AI to extract information from Invoices and saved $200k through analysis."</li>
         <li><b>July 2023:</b> Published my journal in MDPI Sensors titled <a href="https://www.mdpi.com/1424-8220/23/14/6400" class="link-dark">"A CNN-LSTM Architecture for Marine Vessel Track Association Using Automatic Identification System (AIS) Data."</a></li>
