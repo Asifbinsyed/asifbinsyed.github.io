@@ -1,7 +1,7 @@
 title: "Asif Syed | ML Scientist"
 subtitle: "ML Scientist"
 url: "https://asifbinsyed.github.io"
-baseurl: "/asifbinsyed.github.io"
+repository: "Asifbinsyed/asifbinsyed.github.io"
 
 markdown: kramdown
 #ins_logo: "./bits-logo.png"
