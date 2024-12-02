@@ -1,7 +1,7 @@
 title: "Asif Syed | ML Scientist"
 subtitle: "ML Scientist"
 url: "https://asifbinsyed.github.io"
-baseurl: "/AsifSyed"
+baseurl: "/asifbinsyed.github.io"
 
 markdown: kramdown
 #ins_logo: "./bits-logo.png"
@@ -19,7 +19,7 @@ remote_theme: ankitsultana/researcher@gem
 
 nav:
  - name: "About"
-   link: "/AsifSyed/"
+   link: "/asifbinsyed.github.io/"
  - name: "Resume"
    link: "resume.pdf"
  - name: "Contact"
