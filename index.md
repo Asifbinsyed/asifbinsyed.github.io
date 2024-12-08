@@ -22,7 +22,7 @@ As an active researcher, I explore marine surveillance with AI, disease predicti
  <div style="display: flex; align-items: left; margin-left: -3.5em;">2023 - </div>
 </blockquote>
 
-<h2 style="font-family: 'Comic Sans MS', sans-serif;">🆕 What's New</h2>
+<h2>🆕 What's New</h2>
 <hr>
 <div style="max-height: 250px; overflow-y: auto; padding: 10px; font-family: Arial, sans-serif; line-height: 1.5;">
     <ul style="padding-left: 20px; margin: 0;">
