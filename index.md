@@ -80,6 +80,103 @@ As an active researcher, I explore marine surveillance with AI, disease predicti
     </ul>
 </div>
 
+<h2>What's New</h2>
+<div style="max-height: 250px; overflow-y: auto; padding: 10px; font-family: Arial, sans-serif; line-height: 1.5;">
+    <ul style="padding: 0; margin: 0; list-style: none;">
+        <li style="display: flex; margin-bottom: 10px;">
+            <div style="flex: 0 0 100px; font-weight: bold; margin-right: 10px;">Nov 2024:</div>
+            <div style="flex: 1; text-indent: -100px; padding-left: 100px;">
+                Promoted to Sr. data analyst in supply chain at The Home Depot
+            </div>
+        </li>
+        <li style="display: flex; margin-bottom: 10px;">
+            <div style="flex: 0 0 100px; font-weight: bold; margin-right: 10px;">Oct 2024:</div>
+            <div style="flex: 1; text-indent: -100px; padding-left: 100px;">
+                Published a journal in Journal of Marine Science and Engineering: 
+                <a href="https://www.mdpi.com/2077-1312/12/11/1913" style="color: blue;">"Advancing Marine Surveillance: A Hybrid Approach of Physics Infused Neural Network for Enhanced Vessel Tracking Using Automatic Identification System Data."</a>
+            </div>
+        </li>
+        <li style="display: flex; margin-bottom: 10px;">
+            <div style="flex: 0 0 100px; font-weight: bold; margin-right: 10px;">Oct 2024:</div>
+            <div style="flex: 1; text-indent: -100px; padding-left: 100px;">
+                Awarded my first associate of the month by The Home Depot for discovering an opportunity to save around 2M dollars by reducing extra pallet required
+            </div>
+        </li>
+        <li style="display: flex; margin-bottom: 10px;">
+            <div style="flex: 0 0 100px; font-weight: bold; margin-right: 10px;">Aug 2024:</div>
+            <div style="flex: 1; text-indent: -100px; padding-left: 100px;">
+                Published a journal in Journal of Computers in Human Behavior: Artificial Humans 
+                <a href="https://www.sciencedirect.com/science/article/pii/S2949882124000586" style="color: blue;">"Understanding AI Chatbot adoption in education: PLS-SEM analysis of user behavior factors."</a>
+            </div>
+        </li>
+        <li style="display: flex; margin-bottom: 10px;">
+            <div style="flex: 0 0 100px; font-weight: bold; margin-right: 10px;">Jan 2024:</div>
+            <div style="flex: 1; text-indent: -100px; padding-left: 100px;">
+                Started my full time position as a data Analyst in supply chain at The Home Depot
+            </div>
+        </li>
+        <li style="display: flex; margin-bottom: 10px;">
+            <div style="flex: 0 0 100px; font-weight: bold; margin-right: 10px;">Dec 2023:</div>
+            <div style="flex: 1; text-indent: -100px; padding-left: 100px;">
+                Presented a paper on 
+                <a href="https://ieeexplore.ieee.org/abstract/document/10465079" style="color: blue;">"Investigation of Polycystic Ovary Syndrome (PCOS) Diagnosis Using Machine Learning Approaches"</a> 
+                and <a href="https://ieeexplore.ieee.org/abstract/document/10441152" style="color: blue;">"A Deep Learning Approach for Satellite and Debris Detection: YOLO in Action"</a> 
+                at the 2023 5th International Conference on Sustainable Technologies for Industry 5.0 (STI).
+            </div>
+        </li>
+        <li style="display: flex; margin-bottom: 10px;">
+            <div style="flex: 0 0 100px; font-weight: bold; margin-right: 10px;">Dec 2023:</div>
+            <div style="flex: 1; text-indent: -100px; padding-left: 100px;">
+                Presented a paper on 
+                <a href="https://ieeexplore.ieee.org/abstract/document/10441258" style="color: blue;">"Pediatric Bone Age Prediction Using Deep Learning"</a> 
+                and <a href="https://ieeexplore.ieee.org/abstract/document/10464397" style="color: blue;">"Federated Learning in Manufacturing: A Systematic Review and Pathway to Industry 5.0"</a> 
+                at the 2023 26th International Conference on Computer and Information Technology (ICCIT).
+            </div>
+        </li>
+        <li style="display: flex; margin-bottom: 10px;">
+            <div style="flex: 0 0 100px; font-weight: bold; margin-right: 10px;">Dec 2023:</div>
+            <div style="flex: 1; text-indent: -100px; padding-left: 100px;">
+                Completed my Masters in Industrial Engineering and submitted my thesis on  
+                <a href="https://researchrepository.wvu.edu/cgi/viewcontent.cgi?article=12915&context=etd" style="color: blue;">"Spatio-Temporal Deep Learning Approaches for Addressing Track Association Problem using Automatic Identification System (AIS) Data"</a>
+            </div>
+        </li>
+        <li style="display: flex; margin-bottom: 10px;">
+            <div style="flex: 0 0 100px; font-weight: bold; margin-right: 10px;">July 2023:</div>
+            <div style="flex: 1; text-indent: -100px; padding-left: 100px;">
+                Awarded "Idea of the Month" at Volvo Truck for implementing Power Automate and AI to extract invoice data, saving $200k.
+            </div>
+        </li>
+        <li style="display: flex; margin-bottom: 10px;">
+            <div style="flex: 0 0 100px; font-weight: bold; margin-right: 10px;">July 2023:</div>
+            <div style="flex: 1; text-indent: -100px; padding-left: 100px;">
+                Published a journal in MDPI Sensors: 
+                <a href="https://www.mdpi.com/1424-8220/23/14/6400" style="color: blue;">"A CNN-LSTM Architecture for Marine Vessel Track Association Using AIS Data."</a>
+            </div>
+        </li>
+        <li style="display: flex; margin-bottom: 10px;">
+            <div style="flex: 0 0 100px; font-weight: bold; margin-right: 10px;">May 2023:</div>
+            <div style="flex: 1; text-indent: -100px; padding-left: 100px;">
+                Finalist in the QCRE Data Challenge for 
+                <a href="https://arxiv.org/pdf/2309.13402.pdf" style="color: blue;">"ML Algorithm Synthesizing Domain Knowledge for Fungal Spore Concentration Prediction."</a>
+            </div>
+        </li>
+        <li style="display: flex; margin-bottom: 10px;">
+            <div style="flex: 0 0 100px; font-weight: bold; margin-right: 10px;">April 2023:</div>
+            <div style="flex: 1; text-indent: -100px; padding-left: 100px;">
+                Submitted a paper to the IISE conference on 
+                <a href="https://arxiv.org/abs/2304.01491" style="color: blue;">"Multi-Model LSTM Architecture for Track Association Using AIS Data."</a>
+            </div>
+        </li>
+        <li style="display: flex; margin-bottom: 10px;">
+            <div style="flex: 0 0 100px; font-weight: bold; margin-right: 10px;">October 2022:</div>
+            <div style="flex: 1; text-indent: -100px; padding-left: 100px;">
+                Chaired a session at the INFORMS Annual Meeting on 
+                <a href="https://meetings.informs.org/wordpress/indianapolis2022/" style="color: blue;">Advanced Machine Learning.</a>
+            </div>
+        </li>
+    </ul>
+</div>
+
 ## 🧑‍💻 Technical Skills
 
 - 🐍 **Programming Languages**: Python , R, SQL,
