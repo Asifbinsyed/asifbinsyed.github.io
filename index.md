@@ -22,7 +22,9 @@ As an active researcher, I explore marine surveillance with AI, disease predicti
  <div style="display: flex; align-items: left; margin-left: -3.5em;">2023 - </div>
 </blockquote>
 
-<h2>What's New</h2>
+<hr>
+<h2>🆕 What's New</h2>
+<hr>
 <div style="max-height: 250px; overflow-y: auto; padding: 10px; font-family: Arial, sans-serif; line-height: 1.5;">
     <ul style="padding-left: 20px; margin: 0;">
         <li style="list-style-type: none; margin-bottom: 10px;">
@@ -80,7 +82,6 @@ As an active researcher, I explore marine surveillance with AI, disease predicti
     </ul>
 </div>
 
-<h2>What's New</h2>
 <div style="max-height: 250px; overflow-y: auto; padding: 10px; font-family: Arial, sans-serif; line-height: 1.5;">
     <ul style="padding: 0; margin: 0; list-style: none;">
         <li style="display: flex; margin-bottom: 10px;">
