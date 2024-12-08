@@ -28,9 +28,9 @@ As an active researcher, I explore marine surveillance with AI, disease predicti
         <li><strong>Nov 2024:</strong> Promoted to  Sr. data analyst in supply chain at The Home Depot</li>
         <li><strong>Oct 2024:</strong> Published a journal in Journal of Marine Science and Engineering: <a href="https://www.mdpi.com/2077-1312/12/11/1913" style="color: blue;">"Advancing Marine Surveillance: A Hybrid Approach of Physics Infused Neural Network for Enhanced Vessel Tracking Using Automatic Identification System Data."</a></li>
 
-        <li><strong> Oct 2024:</strong> Awarded my first assosciate of the month by the home depot for discovering an opportunity to save around 2M dollars by reducing extra pallet required </li>
+        <li><strong>Oct 2024:</strong> Awarded my first assosciate of the month by the home depot for discovering an opportunity to save around 2M dollars by reducing extra pallet required </li>
 
-        <li><strong>Oct 2024:</strong> Published a journal in Journal of Computers in Human Behavior: Artificial Humans <a href="https://www.sciencedirect.com/science/article/pii/S2949882124000586" style="color: blue;">"Understanding AI Chatbot adoption in education: PLS-SEM analysis of user behavior factors."</a></li>
+        <li><strong>Aug 2024:</strong> Published a journal in Journal of Computers in Human Behavior: Artificial Humans <a href="https://www.sciencedirect.com/science/article/pii/S2949882124000586" style="color: blue;">"Understanding AI Chatbot adoption in education: PLS-SEM analysis of user behavior factors."</a></li>
 
         <li><strong>Jan 2024:</strong> Started my full time position as a data Analyst in supply chain at The Home Depot</li>
         <li><strong>Dec 2023:</strong> Presented a paper on <a href="https://ieeexplore.ieee.org/abstract/document/10465079" style="color: blue;">"Investigation of Polycystic Ovary Syndrome (PCOS) Diagnosis Using Machine Learning Approaches"</a> and <a href="https://ieeexplore.ieee.org/abstract/document/10441152" style="color: blue;">"A Deep Learning Approach for Satellite and Debris Detection: YOLO in Action"</a> at the 2023 5th International Conference on Sustainable Technologies for Industry 5.0 (STI).</li>
