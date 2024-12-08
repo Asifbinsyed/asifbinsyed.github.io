@@ -96,7 +96,7 @@ As an active researcher, I explore marine surveillance with AI, disease predicti
 My research interests span a wide range of areas in data science and artificial intelligence. I'm passionate about machine learning, deep learning, natural language processing (NLP), and large language model (LLM) applications in supply chain management. Additionally, I have a deep interest in causal inference and graph neural network (GNN) applications in digital health and chemical composition analysis. My recent work focuses on deep learning applications in marine surveillance. I'm also keen on exploring missing value imputation techniques and assessing their credibility in various data analysis contexts.
 
 
-## Highlighted Publications
+## Publications
 <hr>
 1. Haque, T., Syed, M. A. B., Das, S., & Ahmed, I. (2024). **Advancing Marine Surveillance: A Hybrid Approach of Physics Infused Neural Network for Enhanced Vessel Tracking Using Automatic Identification System Data.** Journal of Marine Science and Engineering, 12(11), 1913. https://doi.org/10.3390/jmse12111913
 2. Syed, M. A. B., & Ahmed, I. (2023). **A CNN-LSTM Architecture for Marine Vessel Track Association Using Automatic Identification System (AIS) Data**. Sensors, 23(14), 6400. https://doi.org/10.3390/s23146400
