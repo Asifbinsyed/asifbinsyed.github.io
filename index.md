@@ -24,7 +24,7 @@ As an active researcher, I explore marine surveillance with AI, disease predicti
 
 <h2>🆕 What's New</h2>
 <hr>
-<div style="max-height: 250px; overflow-y: auto; padding: 10px; font-family: Arial, sans-serif; line-height: 1.5;">
+<div style="max-height: 250px; overflow-y: auto; padding: 10px;  line-height: 1;">
     <ul style="padding-left: 20px; margin: 0;">
         <li style="list-style-type: none; margin-bottom: 10px;">
             <span style="font-weight: bold; margin-right: 10px;">Nov 2024:</span>
