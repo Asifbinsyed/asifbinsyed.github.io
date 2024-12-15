@@ -56,7 +56,7 @@ As an active researcher, I explore marine surveillance with AI, disease predicti
         </li>
         <li style="list-style-type: none; margin-bottom: 10px;">
             <span style="font-weight: bold; margin-right: 10px;">Dec 2023:</span>
-            <span>Completed my Masters in Industrial Engineering and submitted my theisis on  <a href="https://researchrepository.wvu.edu/cgi/viewcontent.cgi?article=12915&context=etd" style="color: blue;"><b>"Spatio-Temporal Deep Learning Approaches for Addressing Track Association Problem using Automatic Identification System (AIS) Data"</b></a></span>
+            <span>Completed my Masters in Industrial Engineering and submitted my theisis on  <a href="https://researchrepository.wvu.edu/cgi/viewcontent.cgi?article=12915&context=etd" style="color: gray;"><b>"Spatio-Temporal Deep Learning Approaches for Addressing Track Association Problem using Automatic Identification System (AIS) Data"</b></a></span>
         </li>
         <li style="list-style-type: none; margin-bottom: 10px;">
             <span style="font-weight: bold; margin-right: 10px;">July 2023:</span>
