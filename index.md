@@ -103,8 +103,12 @@ My research interests span a wide range of areas in data science and artificial 
 
 
 
-<blockquote > <font size="4"> Only Consistency can make you the better version of yourself. Github activity always remind me how active I am with my learning. </font>
+<blockquote style="border-left: 4px solid #000080; padding-left: 15px;">
+  <p style="font-size: 18px; color: #000080; font-weight: bold;">
+    Consistency is the key to self-improvement, and my GitHub activity serves as a powerful reminder of my commitment to continuous learning and coding progress.
+  </p>
 </blockquote>
+
 <img src="https://ghchart.rshah.org/409ba5/Asifbinsyed" alt="GitHub Contributions Chart" />
 
 
