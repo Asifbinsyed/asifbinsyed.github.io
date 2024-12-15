@@ -32,7 +32,7 @@ As an active researcher, I explore marine surveillance with AI, disease predicti
         </li>
         <li style="list-style-type: none; margin-bottom: 10px;">
             <span style="font-weight: bold; margin-right: 10px;">Oct 2024:</span>
-            <span>Published a journal in Journal of Marine Science and Engineering: <a href="https://www.mdpi.com/2077-1312/12/11/1913" style="color: blue;">"Advancing Marine Surveillance: A Hybrid Approach of Physics Infused Neural Network for Enhanced Vessel Tracking Using Automatic Identification System Data."</a></span>
+            <span>Published a journal in Journal of Marine Science and Engineering: <a href="https://www.mdpi.com/2077-1312/12/11/1913" style="color: gray ;"><b>"Advancing Marine Surveillance: A Hybrid Approach of Physics Infused Neural Network for Enhanced Vessel Tracking Using Automatic Identification System Data."</b></a></span>
         </li>
         <li style="list-style-type: none; margin-bottom: 10px;">
             <span style="font-weight: bold; margin-right: 10px;">Oct 2024:</span>
