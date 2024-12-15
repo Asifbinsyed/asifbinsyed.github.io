@@ -103,10 +103,13 @@ My research interests span a wide range of areas in data science and artificial 
 
 
 
-<blockquote > Only Consistency can make you the better version of yourself. Github activity always remind me how active I am with my learning. 
+<blockquote > <font size="6"> Only Consistency can make you the better version of yourself. Github activity always remind me how active I am with my learning. </font>
 </blockquote>
 <img src="https://ghchart.rshah.org/409ba5/Asifbinsyed" alt="GitHub Contributions Chart" />
 
+<div class="github-contrib-graph">
+  <img src="https://ghchart.rshah.org/409ba5/Asifbinsyed" alt="GitHub Contributions Chart" />
+</div>
 
 
 
