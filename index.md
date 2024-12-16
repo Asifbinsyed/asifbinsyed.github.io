@@ -78,7 +78,6 @@ As an active researcher, I explore marine surveillance with AI, disease predicti
             <span style="font-weight: bold; margin-right: 10px;">October 2022:</span>
             <span>Chaired a session at the INFORMS Annual Meeting on <a href="https://meetings.informs.org/wordpress/indianapolis2022/" style="color: gray;"><b>Advanced Machine Learning.</b></a></span>
         </li>
-    </ul>
 </div>
 
 ## Technical Skills
