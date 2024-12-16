@@ -25,7 +25,7 @@ As an active researcher, I explore marine surveillance with AI, disease predicti
 <h2> What's New </h2>
 <hr>
 <div style="max-height: 250px; overflow-y: auto; padding: 10px;  line-height: 1.25;">
-    <ul style="padding-left: 15px; margin: 0;">
+    <!-- <ul style="padding-left: 15px; margin: 0;"> -->
         <li style="list-style-type: none; margin-bottom: 10px;">
             <span style="font-weight: bold; margin-right: 10px;">Nov 2024:</span>
             <span>Promoted to  Sr. data analyst in supply chain at The Home Depot</span>
