@@ -25,7 +25,7 @@ As an active researcher, I explore marine surveillance with AI, disease predicti
  <div style="display: flex; align-items: left; margin-left: -3.5em;">2023 - </div>
 </blockquote>
 
-<main>
+<main markdown="1">
 
 <h2 id="whats-new">What's New</h2>
 <hr>
@@ -93,6 +93,7 @@ As an active researcher, I explore marine surveillance with AI, disease predicti
 - 🛠️ **MLOps & DevOps**: Docker, Kubernetes, Jenkins, Git, GitHub Actions, AWS, Azure ML, MLflow, DVC, Weights & Biases
 - 🚀 **Model Deployment**: FastAPI, Flask, TensorFlow Serving, Model Monitoring, A/B Testing, CI/CD Pipelines
 - 📦 **Others**: Containerization, Infrastructure as Code (IaC), Model Versioning, Experiment Tracking, Model Registry
+
 
 <h2 id="research-interest">🔬Research Interest</h2>
 <hr>
