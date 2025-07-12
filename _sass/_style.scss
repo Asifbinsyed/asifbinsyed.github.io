@@ -182,7 +182,7 @@ p {
 /* 2) Move the little tab to the left edge */
 .toc-tab {
   position: absolute;
-  left: 0;            // <- moved from right:0
+  right: 0;            // <- moved from right:0
   top: 50%;
   transform: translateY(-50%);
   width: 1.5rem;
@@ -200,10 +200,10 @@ p {
 .page-toc {
   position: absolute;
   top: 50%;
-  left: 1.5rem;       // <- use left instead of right
+  right: 1.5rem;       // <- use left instead of right
   transform: translateY(-50%);
-  width: auto;
-  max-width: 400px;
+  width: 250px;
+  //max-width: 400px;
   background: #f9f9f9;
   border: 1px solid #ddd;
   padding: 1rem;
