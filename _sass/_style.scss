@@ -172,17 +172,18 @@ p {
 
 // ── Floating TOC sidebar ──────────────────────────────────────
 .page-toc {
-  float: right;
+  position: fixed;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
   width: auto;
   max-width: 200px;
-  position: sticky;
-  top: 1rem;
-  margin: 0 0 1rem 2rem;
   background: #f9f9f9;
   border: 1px solid #ddd;
   padding: 1rem;
   border-radius: 4px;
   overflow: auto;
+  z-index: 10;
 }
 
 .page-toc h2 {
