@@ -37,7 +37,7 @@ As an active researcher, I explore marine surveillance with AI, disease predicti
         </li>
         <li style="list-style-type: none; margin-bottom: 10px;">
             <span style="font-weight: bold; margin-right: 10px;">Oct 2024:</span>
-            <span>Published a journal in Journal of Marine Science and Engineering: <a href="https://www.mdpi.com/2077-1312/12/11/1913" style="color: gray ;"><b>"Advancing Marine Surveillance: A Hybrid Approach of Physics Infused Neural Network for Enhanced Vessel Tracking Using Automatic Identification System Data."</b></a></span>
+            <span>Published a journal in Journal of Marine Science and Engineering: <a href="https://www.mdpi.com/2077-1312/12/11/1913" style="color: magenta ;"><b>"Advancing Marine Surveillance: A Hybrid Approach of Physics Infused Neural Network for Enhanced Vessel Tracking Using Automatic Identification System Data."</b></a></span>
         </li>
         <li style="list-style-type: none; margin-bottom: 10px;">
             <span style="font-weight: bold; margin-right: 10px;">Oct 2024:</span>
@@ -45,7 +45,7 @@ As an active researcher, I explore marine surveillance with AI, disease predicti
         </li>
         <li style="list-style-type: none; margin-bottom: 10px;">
             <span style="font-weight: bold; margin-right: 10px;">Aug 2024:</span>
-            <span>Published a journal in Journal of Computers in Human Behavior: Artificial Humans <a href="https://www.sciencedirect.com/science/article/pii/S2949882124000586" style="color: gray;"><b>"Understanding AI Chatbot adoption in education: PLS-SEM analysis of user behavior factors."</b></a></span>
+            <span>Published a journal in Journal of Computers in Human Behavior: Artificial Humans <a href="https://www.sciencedirect.com/science/article/pii/S2949882124000586" style="color: magenta;"><b>"Understanding AI Chatbot adoption in education: PLS-SEM analysis of user behavior factors."</b></a></span>
         </li>
         <li style="list-style-type: none; margin-bottom: 10px;">
             <span style="font-weight: bold; margin-right: 10px;">Jan 2024:</span>
@@ -53,15 +53,15 @@ As an active researcher, I explore marine surveillance with AI, disease predicti
         </li>
         <li style="list-style-type: none; margin-bottom: 10px;">
             <span style="font-weight: bold; margin-right: 10px;">Dec 2023:</span>
-            <span>Presented a paper on <a href="https://ieeexplore.ieee.org/abstract/document/10465079" style="color: gray;"><b>"Investigation of Polycystic Ovary Syndrome (PCOS) Diagnosis Using Machine Learning Approaches"</b></a> and <a href="https://ieeexplore.ieee.org/abstract/document/10441152" style="color: gray;"><b>"A Deep Learning Approach for Satellite and Debris Detection: YOLO in Action"</b></a> at the 2023 5th International Conference on Sustainable Technologies for Industry 5.0 (STI).</span>
+            <span>Presented a paper on <a href="https://ieeexplore.ieee.org/abstract/document/10465079" style="color: magenta;"><b>"Investigation of Polycystic Ovary Syndrome (PCOS) Diagnosis Using Machine Learning Approaches"</b></a> and <a href="https://ieeexplore.ieee.org/abstract/document/10441152" style="color: ;"><b>"A Deep Learning Approach for Satellite and Debris Detection: YOLO in Action"</b></a> at the 2023 5th International Conference on Sustainable Technologies for Industry 5.0 (STI).</span>
         </li>
         <li style="list-style-type: none; margin-bottom: 10px;">
             <span style="font-weight: bold; margin-right: 10px;">Dec 2023:</span>
-            <span>Presented a paper on <a href="https://ieeexplore.ieee.org/abstract/document/10441258" style="color: gray;"><b>"Pediatric Bone Age Prediction Using Deep Learning"</b></a> and <a href="https://ieeexplore.ieee.org/abstract/document/10464397" style="color: gray;"><b>"Federated Learning in Manufacturing: A Systematic Review and Pathway to Industry 5.0"</b></a> at the 2023 26th International Conference on Computer and Information Technology (ICCIT).</span>
+            <span>Presented a paper on <a href="https://ieeexplore.ieee.org/abstract/document/10441258" style="color: magenta;"><b>"Pediatric Bone Age Prediction Using Deep Learning"</b></a> and <a href="https://ieeexplore.ieee.org/abstract/document/10464397" style="color: magenta;"><b>"Federated Learning in Manufacturing: A Systematic Review and Pathway to Industry 5.0"</b></a> at the 2023 26th International Conference on Computer and Information Technology (ICCIT).</span>
         </li>
         <li style="list-style-type: none; margin-bottom: 10px;">
             <span style="font-weight: bold; margin-right: 10px;">Dec 2023:</span>
-            <span>Completed my Masters in Industrial Engineering and submitted my theisis on  <a href="https://researchrepository.wvu.edu/cgi/viewcontent.cgi?article=12915&context=etd" style="color: gray;"><b>"Spatio-Temporal Deep Learning Approaches for Addressing Track Association Problem using Automatic Identification System (AIS) Data"</b></a></span>
+            <span>Completed my Masters in Industrial Engineering and submitted my theisis on  <a href="https://researchrepository.wvu.edu/cgi/viewcontent.cgi?article=12915&context=etd" style="color: magenta;"><b>"Spatio-Temporal Deep Learning Approaches for Addressing Track Association Problem using Automatic Identification System (AIS) Data"</b></a></span>
         </li>
         <li style="list-style-type: none; margin-bottom: 10px;">
             <span style="font-weight: bold; margin-right: 10px;">July 2023:</span>
@@ -69,19 +69,19 @@ As an active researcher, I explore marine surveillance with AI, disease predicti
         </li>
         <li style="list-style-type: none; margin-bottom: 10px;">
             <span style="font-weight: bold; margin-right: 10px;">July 2023:</span>
-            <span>Published a journal in MDPI Sensors: <a href="https://www.mdpi.com/1424-8220/23/14/6400" style="color: gray;"><b>"A CNN-LSTM Architecture for Marine Vessel Track Association Using AIS Data."</b></a></span>
+            <span>Published a journal in MDPI Sensors: <a href="https://www.mdpi.com/1424-8220/23/14/6400" style="color: magenta;"><b>"A CNN-LSTM Architecture for Marine Vessel Track Association Using AIS Data."</b></a></span>
         </li>
         <li style="list-style-type: none; margin-bottom: 10px;">
             <span style="font-weight: bold; margin-right: 10px;">May 2023:</span>
-            <span>Finalist in the QCRE Data Challenge for <a href="https://arxiv.org/pdf/2309.13402.pdf" style="color: gray;"><b>"ML Algorithm Synthesizing Domain Knowledge for Fungal Spore Concentration Prediction."</b></a></span>
+            <span>Finalist in the QCRE Data Challenge for <a href="https://arxiv.org/pdf/2309.13402.pdf" style="color: magenta;"><b>"ML Algorithm Synthesizing Domain Knowledge for Fungal Spore Concentration Prediction."</b></a></span>
         </li>
         <li style="list-style-type: none; margin-bottom: 10px;">
             <span style="font-weight: bold; margin-right: 10px;">April 2023:</span>
-            <span>Submitted a paper to the IISE conference on <a href="https://arxiv.org/abs/2304.01491" style="color: gray;"><b>"Multi-Model LSTM Architecture for Track Association Using AIS Data."</b></a></span>
+            <span>Submitted a paper to the IISE conference on <a href="https://arxiv.org/abs/2304.01491" style="color: magenta;"><b>"Multi-Model LSTM Architecture for Track Association Using AIS Data."</b></a></span>
         </li>
         <li style="list-style-type: none; margin-bottom: 10px;">
             <span style="font-weight: bold; margin-right: 10px;">October 2022:</span>
-            <span>Chaired a session at the INFORMS Annual Meeting on <a href="https://meetings.informs.org/wordpress/indianapolis2022/" style="color: gray;"><b>Advanced Machine Learning.</b></a></span>
+            <span>Chaired a session at the INFORMS Annual Meeting on <a href="https://meetings.informs.org/wordpress/indianapolis2022/" style="color: magenta;"><b>Advanced Machine Learning.</b></a></span>
         </li>
 </div>
 
