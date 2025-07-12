@@ -92,11 +92,7 @@
         {% if page.toc %}
         <aside class="page-toc">
           <h2>On this page</h2>
-          {% include toc.html
-             html=content
-             h_min=page.toc_min_level | default: site.toc.min_level
-             h_max=page.toc_max_level | default: site.toc.max_level
-             class="toc-list" %}
+          {% include toc.html html=content h_min=2 h_max=4 class="toc-list" %}
         </aside>
         {% endif %}
       </div>
