@@ -169,21 +169,21 @@ h6 {
 p {
     text-align: left;
 }
-/* ── TOC Slide-In Tab & Panel (Right Side) ────────────────────── */
+/* ── TOC Slide-In Tab & Panel (Left Side, Default Hidden) ─────── */
 
-// 1) Fix the container to the right
+// 1) Container on the left, vertically centered
 .toc-container {
   position: fixed;
   top: 50%;
-  right: 0;
+  left: 0;                       // pin to left edge
   transform: translateY(-50%);
   z-index: 10;
 }
 
-// 2) The little click-tab flush to the right edge
+// 2) The little click-tab on the very left
 .toc-tab {
   position: absolute;
-  right: 0;                   // ← tab on the right edge
+  left: 0;                       // tab flush to left
   top: 50%;
   transform: translateY(-50%);
   width: 1.5rem;
@@ -192,19 +192,18 @@ p {
   color: #fff;
   text-align: center;
   line-height: 1.5rem;
-  border-radius: 0 0 0 0;     // no rounding needed on right side
-  border-radius: 4px 0 0 4px; // round top-left & bottom-left for a “pill” shape
+  border-radius: 0 4px 4px 0;    // round the two right corners
   cursor: pointer;
   user-select: none;
 }
 
-// 3) The TOC panel, opening leftwards
+// 3) The TOC panel, opening **rightwards** into view
 .page-toc {
   position: absolute;
   top: 50%;
-  right: 1.5rem;              // leave room for the tab
+  left: 1.5rem;                  // offset by tab width
   transform: translateY(-50%);
-  width: 200px !important;               // or whatever fixed width you like
+  width: 150px !important;       // force a smaller width
   background: #f9f9f9;
   border: 1px solid #ddd;
   padding: 1rem;
@@ -213,9 +212,9 @@ p {
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-// 4) When collapsed, push the panel off to the right
+// 4) **Default hidden**: panel is pushed off-screen to the left
 .toc-container.collapsed .page-toc {
-  transform: translateY(-50%) translateX(100%);
+  transform: translateY(-50%) translateX(-100%);
   opacity: 0;
   pointer-events: none;
 }
