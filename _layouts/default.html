@@ -54,6 +54,17 @@
     {% endif %}
     <link href="https://fonts.googleapis.com/css2?family=Computer+Modern&display=swap" rel="stylesheet">
 </head>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var container = document.querySelector('.toc-container');
+  if (!container) return;
+  var tab = container.querySelector('.toc-tab');
+  tab.addEventListener('click', function() {
+    container.classList.toggle('collapsed');
+    tab.textContent = container.classList.contains('collapsed') ? '>' : '<';
+  });
+});
+</script>
 <body>
   <div class="wrapper">
     <div class="navbar container">
