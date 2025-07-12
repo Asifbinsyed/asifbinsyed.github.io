@@ -13,13 +13,6 @@ footer: yes
 footer_url: "https://github.com/ankitsultana"
 footer_text: "Page design by Ankit Sultana"
 
-plugins:
-  - jekyll-toc
-
-toc:
-  min_level: 2        # start at <h2>
-  max_level: 4        # include down to <h4>
-  no_toc_section_class: no_toc   # pages with class="no_toc" will skip TOC
 
 
 # sass:
