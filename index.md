@@ -1,6 +1,10 @@
 ---
 layout: default
+toc: true
+toc_min_level: 2
+toc_max_level: 4
 ---
+
 
 <img class="profile-picture" src="asif_headshot.webp" >
 
