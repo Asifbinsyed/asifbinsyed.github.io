@@ -79,10 +79,10 @@ hr {
 /* Institute Image */
 
 #ins-logo {
-	margin: auto;
-	display: block;
-	max-height: 100px;
-	text-align: center;
+    margin: auto;
+    display: block;
+    max-height: 100px;
+    text-align: center;
 }
 
 /* Mobile */
@@ -104,31 +104,31 @@ hr {
 }
 
 @media (max-width: 500px) {
-	.navbar {
-		text-align: center;
-		padding: 50px 0px 0px 0px;
-	}
-	#author-name {
-		width: 100%;
-		float: none;
-	}
-	#navlist {
-		padding: 10px 0 10px 0;
-		margin: 0;
-		display: block;
-		float: none;
-		text-align: center;
-		width: 100%;
-	}
-	#navlist li.alignable {
-		display: inline-block;
-	}
-	#navlist li.pull-left {
-		float: none;
-	}
-	#navlist li.nav-list {
-		margin: 0;
-	}
+    .navbar {
+        text-align: center;
+        padding: 50px 0px 0px 0px;
+    }
+    #author-name {
+        width: 100%;
+        float: none;
+    }
+    #navlist {
+        padding: 10px 0 10px 0;
+        margin: 0;
+        display: block;
+        float: none;
+        text-align: center;
+        width: 100%;
+    }
+    #navlist li.alignable {
+        display: inline-block;
+    }
+    #navlist li.pull-left {
+        float: none;
+    }
+    #navlist li.nav-list {
+        margin: 0;
+    }
 }
 
 @import "typography";
@@ -170,11 +170,38 @@ p {
     text-align: left;
 }
 
-// ── Floating TOC sidebar ──────────────────────────────────────
-.page-toc {
+/* ── TOC Slide-In Tab & Panel ─────────────────────────────────── */
+// The fixed right-edge container
+.toc-container {
   position: fixed;
-  right: 2rem;
   top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+// The little click-tab
+.toc-tab {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.5rem;
+  height: 1.5rem;
+  background: $accent;
+  color: #fff;
+  text-align: center;
+  line-height: 1.5rem;
+  border-radius: 4px 0 0 4px;
+  cursor: pointer;
+  user-select: none;
+}
+
+// The TOC panel itself
+.page-toc {
+  position: absolute;
+  top: 50%;
+  right: 1.5rem;                // leaves space for the tab
   transform: translateY(-50%);
   width: auto;
   max-width: 200px;
@@ -183,9 +210,17 @@ p {
   padding: 1rem;
   border-radius: 4px;
   overflow: auto;
-  z-index: 10;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
+// When collapsed (initial state), hide the panel
+.toc-container.collapsed .page-toc {
+  transform: translateY(-50%) translateX(100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+// TOC header styling
 .page-toc h2 {
   margin-top: 0;
   font-size: 1rem;
@@ -194,16 +229,12 @@ p {
   padding-bottom: 0.5rem;
 }
 
-.page-main {
-  // no special rules needed; text flows around the float
-}
-
+// List styles
 .toc-list {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-
 .toc-list li {
   margin: 0.5rem 0;
   font-size: 0.9rem;
