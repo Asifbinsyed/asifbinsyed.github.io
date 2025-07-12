@@ -27,7 +27,7 @@ As an active researcher, I explore marine surveillance with AI, disease predicti
 
 <main markdown="1">
 
-<h2 id="whats-new">What's New</h2>
+<h2 id="whats-new">🆕 What's New</h2>
 <hr>
 <div style="max-height: 250px; overflow-y: auto; padding: 10px; line-height: 1.25;">
   <ul style="list-style: none; margin: 0; padding: 0;">
@@ -110,7 +110,7 @@ As an active researcher, I explore marine surveillance with AI, disease predicti
   </ul>
 </div>
 
-<h2 id="technical-skills">Technical Skills</h2>
+<h2 id="technical-skills">🛠️ Technical Skills</h2>
 <hr>
 - 🐍 **Programming Languages**: Python , R, SQL,
 - 🛠️ **ML DL Framework**: Scikit-learn, Keras, TensorFlow,  PyTorch 
@@ -124,7 +124,7 @@ As an active researcher, I explore marine surveillance with AI, disease predicti
 <hr>
 My research interests span a wide range of areas in data science and artificial intelligence. I'm passionate about machine learning, deep learning, natural language processing (NLP), and large language model (LLM) applications in supply chain management. Additionally, I have a deep interest in causal inference and graph neural network (GNN) applications in digital health and chemical composition analysis. My recent work focuses on deep learning applications in marine surveillance. I'm also keen on exploring missing value imputation techniques and assessing their credibility in various data analysis contexts.
 
-<h2 id="publications">Publications</h2>
+<h2 id="publications">📄 Publications</h2>
 <hr>
 1. Haque, T., Syed, M. A. B., Das, S., & Ahmed, I. (2024). **Advancing Marine Surveillance: A Hybrid Approach of Physics Infused Neural Network for Enhanced Vessel Tracking Using Automatic Identification System Data.** Journal of Marine Science and Engineering, 12(11), 1913. https://doi.org/10.3390/jmse12111913
 2. Syed, M. A. B., & Ahmed, I. (2023). **A CNN-LSTM Architecture for Marine Vessel Track Association Using Automatic Identification System (AIS) Data**. Sensors, 23(14), 6400. https://doi.org/10.3390/s23146400
