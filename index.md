@@ -25,16 +25,6 @@ As an active researcher, I explore marine surveillance with AI, disease predicti
  <div style="display: flex; align-items: left; margin-left: -3.5em;">2023 - </div>
 </blockquote>
 
-<aside class="sticky top-0 p-4 bg-white">
-  <nav>
-    <ol class="list-disc pl-4">
-      <li><a href="#whats-new">What's New</a></li>
-      <li><a href="#technical-skills">Technical Skills</a></li>
-      <li><a href="#research-interest">Research Interest</a></li>
-      <li><a href="#publications">Publications</a></li>
-    </ol>
-  </nav>
-</aside>
 <main>
 
 <h2 id="whats-new">What's New</h2>
