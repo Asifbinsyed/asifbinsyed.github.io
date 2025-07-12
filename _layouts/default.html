@@ -75,27 +75,24 @@
     </div>
     <div style="clear:both"></div>
     <hr>
+    {% if page.is_contact %}
+  <div class="container content contact">
+{% else %}
+  <div class="container content">
+{% endif %}
 
-    {% if page.is_contact == true %}
-      <div class="container content contact">
-    {% else %}
-      <div class="container content">
-    {% endif %}
+  {% if page.toc %}
+  <aside class="page-toc">
+    <h2>On this page</h2>
+    {% include toc.html html=content h_min=2 h_max=4 class="toc-list" %}
+  </aside>
+  {% endif %}
 
-      <div class="page-columns">
-        <!-- Main content column -->
-        <main class="page-main">
-          {{ content }}
-        </main>
+  <main class="page-main">
+    {{ content }}
+  </main>
 
-        <!-- Sidebar TOC column (only when toc: true) -->
-        {% if page.toc %}
-        <aside class="page-toc">
-          <h2>On this page</h2>
-          {% include toc.html html=content h_min=2 h_max=4 class="toc-list" %}
-        </aside>
-        {% endif %}
-      </div>
+    
 
       {% if site.footer == true %}
         <hr />
