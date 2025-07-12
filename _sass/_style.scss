@@ -170,20 +170,19 @@ p {
     text-align: left;
 }
 
-/* ── TOC Slide-In Tab & Panel ─────────────────────────────────── */
-// The fixed right-edge container
+/* 1) Fix the container to the left instead of the right */
 .toc-container {
   position: fixed;
   top: 50%;
-  right: 0;
+  left: 0;            // <- moved from right:0
   transform: translateY(-50%);
   z-index: 10;
 }
 
-// The little click-tab
+/* 2) Move the little tab to the left edge */
 .toc-tab {
   position: absolute;
-  right: 0;
+  left: 0;            // <- moved from right:0
   top: 50%;
   transform: translateY(-50%);
   width: 1.5rem;
@@ -192,16 +191,16 @@ p {
   color: #fff;
   text-align: center;
   line-height: 1.5rem;
-  border-radius: 4px 0 0 4px;
+  border-radius: 0 4px 4px 0;  // <- flip the rounding
   cursor: pointer;
   user-select: none;
 }
 
-// The TOC panel itself
+/* 3) Shift the panel rightward (away from the edge) */
 .page-toc {
   position: absolute;
   top: 50%;
-  right: 1.5rem;                // leaves space for the tab
+  left: 1.5rem;       // <- use left instead of right
   transform: translateY(-50%);
   width: auto;
   max-width: 200px;
@@ -213,9 +212,9 @@ p {
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-// When collapsed (initial state), hide the panel
+/* 4) When collapsed, push it off-screen to the left */
 .toc-container.collapsed .page-toc {
-  transform: translateY(-50%) translateX(100%);
+  transform: translateY(-50%) translateX(-100%);  // <- negative X
   opacity: 0;
   pointer-events: none;
 }
