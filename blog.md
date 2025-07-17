@@ -13,3 +13,8 @@ This page will host random musings and updates. Below is a sample item to start 
 
 - I once coded an entire project using only coffee and sheer determination.
 
+## Posts
+
+- [Fine-Tuning LLMs](finetuning-llm)
+- [Reasoning Model](reasoning-model)
+
