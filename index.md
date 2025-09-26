@@ -8,9 +8,18 @@ toc_max_level: 4
 
 <img class="profile-picture" src="asif_headshot.webp" >
 
-👋 Hi there! I'm **Md Asif Bin Syed**, a *Sr. Supply Chain Data Analyst* at **The Home Depot**, the world's leading home improvement retailer. 
+👋 Hi there! I'm **Md Asif Bin Syed**, a *Sr. Supply Chain Data Analyst* at **The Home Depot**, the world's leading home improvement retailer.
 
-As an active researcher, I explore marine surveillance with AI, disease prediction, and drug discovery. My core expertise includes machine learning, graph neural networks, and natural language processing. Currently, I'm innovating with missing value pattern detection and chemical energy prediction. I'm passionate about advancing AI applications across both industry and scientific domains. As a member of the **Advanced Systems Analytics Lab**, I'm tackling complex track association challenges.
+Currently, I'm developing **offline reinforcement learning agents** that have reduced delivery failures by 4.5% ($6.5M retained revenue) and building **ML models with 84% accuracy** for operational forecasting. My research focuses on **spatio-temporal deep learning**, **track association problems**, and **domain knowledge synthesis** for predictive maintenance and optimization.
+
+I'm a **machine learning researcher and practitioner** who bridges cutting-edge AI research with real-world industry applications. 
+<img class="profile-picture" src="ICML-logo.svg" >
+<img class="profile-picture" src="neurips-navbar-logo.svg" >
+My work spans **reinforcement learning**, **generative AI**, and **deep learning** across diverse domains—from marine surveillance and medical diagnosis to supply chain optimization and time series forecasting. I've published in top-tier venues including **ICML Workshop on Time Series Forecasting**, **Journal of Marine Science and Engineering**, and **IEEE conferences**, with research contributions in **time series foundational models**, **diversity quantification**, and **physics-informed neural networks**.
+
+
+
+
 
 📄 **Research Output**: I have published extensively in top-tier journals and conferences. [View my complete publications →](publications)
 
@@ -246,6 +255,30 @@ hr {
   margin: 8px 0 15px 0;
   border: none;
   border-top: 1px solid #e5e7eb;
+}
+
+/* Compact layout to match publications page */
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Smaller font for What's New section */
+#whats-new + hr + div {
+  font-size: 13px;
+}
+
+#whats-new + hr + div ul li {
+  font-size: 13px;
+}
+
+#whats-new + hr + div ul li span {
+  font-size: 13px;
+}
+
+#whats-new + hr + div ul li a {
+  font-size: 13px;
 }
 </style>
 
