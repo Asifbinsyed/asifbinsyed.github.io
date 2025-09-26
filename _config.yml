@@ -21,10 +21,14 @@ footer_text: "Page design by Ankit Sultana"
 remote_theme: ankitsultana/researcher@gem
 
 nav:
+ - name: "Home"
+   link: "index"
  - name: "About"
-   link: "/asifbinsyed.github.io/"
+   link: "about"
+ - name: "Publications"
+   link: "publications"
  - name: "Resume"
-   link: "resume.pdf"
+   link: "Asif_NW_CV__Copy_.pdf"
  - name: "Contact"
    link: "contact"
  - name: "Blog"

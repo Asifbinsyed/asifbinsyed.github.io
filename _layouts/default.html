@@ -71,7 +71,14 @@ document.addEventListener('DOMContentLoaded', function() {
       {% if site.ins_logo %}
         <img id="ins-logo" src="{{ site.ins_logo }}" />
       {% endif %}
+      {% if page.url != '/' and page.url != '/index.html' %}
+      <div class="author-info alignable pull-left">
+        <img id="author-photo" src="{{ site.baseurl }}/asif_headshot.webp" alt="{{ site.title }}" />
+        <a id="author-name" href="{{ site.url }}{{ site.baseurl }}">{{ site.title }}</a>
+      </div>
+      {% else %}
       <a id="author-name" class="alignable pull-left" href="{{ site.url }}{{ site.baseurl }}">{{ site.title }}</a>
+      {% endif %}
       <ul id="navlist" class="alignable pull-right navbar-ul">
         {% for x in site.nav %}
           {% if x.name == "Resume" %}
