@@ -8,20 +8,13 @@ toc_max_level: 4
 
 <img class="profile-picture" src="asif_headshot.webp" >
 
-👋 Hi there! I'm **Md Asif Bin Syed**, a *Sr. Supply Chain Data Analyst* at **The Home Depot**, the world's leading home improvement retailer.
+👋 Hi there! I'm **Md Asif Bin Syed**, a *Sr. Supply Chain Data Analyst* at **The Home Depot**, the world's leading home improvement retailer. Leading the development of  offline reinforcement learning agents that reduce delivery failures by 4.5% ($6.5M retained revenue) and building ML Model for operational forecasting. 
 
-Currently, I'm developing **offline reinforcement learning agents** that have reduced delivery failures by 4.5% ($6.5M retained revenue) and building **ML models with 84% accuracy** for operational forecasting. My research focuses on **spatio-temporal deep learning**, **track association problems**, and **domain knowledge synthesis** for predictive maintenance and optimization.
-
-I'm a **machine learning researcher and practitioner** who bridges cutting-edge AI research with real-world industry applications. 
+I am a researcher specializing in **reinforcement learning**, **generative AI**, and **deep learning** across domains such as marine surveillance, medical diagnosis, supply chain optimization, and time series forecasting.
 <img class="profile-picture" src="ICML-logo.svg" >
 <img class="profile-picture" src="neurips-navbar-logo.svg" >
-My work spans **reinforcement learning**, **generative AI**, and **deep learning** across diverse domains—from marine surveillance and medical diagnosis to supply chain optimization and time series forecasting. I've published in top-tier venues including **ICML Workshop on Time Series Forecasting**, **Journal of Marine Science and Engineering**, and **IEEE conferences**, with research contributions in **time series foundational models**, **diversity quantification**, and **physics-informed neural networks**.
-
-
-
-
-
-📄 **Research Output**: I have published extensively in top-tier journals and conferences. [View my complete publications →](publications)
+I have published in venues including **ICML Workshop'25**, **NeurIPS Workshop'25**, **IEEE conferences**, with contributions in time series foundation models, diversity quantification, and physics-informed neural networks.  
+📄 [View my complete publications →](publications)
 
 <blockquote style="margin-left: 3.5em;">
     <div style="display: flex; align-items: left; margin-left: -3.5em;">2025 - </div>
@@ -291,4 +284,3 @@ main {
 <img src="https://ghchart.rshah.org/409ba5/Asifbinsyed" alt="GitHub Contributions Chart" />
 
 </main>
-
