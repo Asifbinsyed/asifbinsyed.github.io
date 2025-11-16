@@ -249,6 +249,7 @@ a {
 
 a:hover {
   color: #333;
+
 }
 
 /* Bold author name */
@@ -427,3 +428,4 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 </script>
+
