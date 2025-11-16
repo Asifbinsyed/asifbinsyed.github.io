@@ -81,13 +81,97 @@ hr {
   text-decoration: none;
 }
 
+.author-subtitle-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 4px;
+  flex-wrap: wrap;
+}
+
 #author-subtitle {
   font-size: 16px;
   color: #666666;
-  margin-top: 4px;
   font-weight: 400;
   line-height: 1.4;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", "Roboto", "Helvetica Neue", Arial, sans-serif;
+  margin: 0;
+}
+
+.header-social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  align-items: center;
+}
+
+.header-social-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 0;
+  padding: 3px 6px;
+  background-color: #181717;
+  position: relative;
+  height: 18px;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+}
+
+.header-social-badge:hover {
+  opacity: 0.85;
+  text-decoration: none;
+  color: #fff;
+}
+
+.header-social-badge .header-social-icon {
+  display: inline-block;
+  margin-right: 4px;
+  width: 12px;
+  height: 12px;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+.header-social-badge .header-social-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.header-social-badge .header-social-text {
+  font-size: 10px;
+  line-height: 1;
+}
+
+.header-social-badge.scholar {
+  background-color: #181717;
+}
+
+.header-social-badge.linkedin {
+  background-color: #0077B5;
+}
+
+.header-social-badge.arxiv {
+  background-color: #181717;
+}
+
+.header-social-badge.orcid {
+  background-color: #181717;
+}
+
+.header-social-badge.orcid .header-social-icon.orcid-icon circle {
+  fill: #A6CE39;
+}
+
+.header-social-badge.orcid .header-social-icon.orcid-icon text {
+  fill: #fff;
 }
 
 .navbar {
@@ -208,6 +292,27 @@ hr {
   }
   #author-subtitle {
     font-size: 14px;
+  }
+  .author-subtitle-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .header-social-links {
+    gap: 3px;
+  }
+  .header-social-badge {
+    font-size: 9px;
+    padding: 2px 5px;
+    height: 16px;
+  }
+  .header-social-badge .header-social-icon {
+    width: 10px;
+    height: 10px;
+    margin-right: 3px;
+  }
+  .header-social-badge .header-social-text {
+    font-size: 9px;
   }
   #navlist {
     padding: 10px 0 10px 0;
