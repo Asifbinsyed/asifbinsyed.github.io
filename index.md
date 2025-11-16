@@ -256,7 +256,7 @@ I have published and presented my work at prestigious conferences and journals, 
 
 .skills-list li {
   margin-bottom: 8px;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.6;
   color: #2c2c2c;
   padding-left: 0;
@@ -270,7 +270,7 @@ I have published and presented my work at prestigious conferences and journals, 
 
 @media (max-width: 600px) {
   .skills-list li {
-    font-size: 13px;
+    font-size: 15px;
     line-height: 1.5;
     margin-bottom: 6px;
   }
@@ -577,7 +577,7 @@ main {
 
 .news-content {
   font-family: 'Times New Roman', Times, Georgia, 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.5;
   color: #2c2c2c;
 }
@@ -590,7 +590,7 @@ main {
 
 .news-content ul li {
   font-family: 'Times New Roman', Times, Georgia, 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.5;
   margin-bottom: 0;
   color: #2c2c2c;
@@ -634,27 +634,27 @@ main {
 /* Mobile optimizations for News section */
 @media (max-width: 600px) {
   .news-content {
-    font-size: 12px;
+    font-size: 15px;
     line-height: 1.4;
   }
   
   .news-content ul li {
-    font-size: 12px;
+    font-size: 15px;
     line-height: 1.4;
   }
   
   .news-content ul li span:first-child {
     min-width: 65px;
     margin-right: 6px;
-    font-size: 12px;
+    font-size: 15px;
   }
   
   .news-content ul li span:not(:first-child) {
-    font-size: 12px;
+    font-size: 15px;
   }
   
   .news-content ul li a {
-    font-size: 12px;
+    font-size: 15px;
   }
   
   .news-heading {
@@ -664,7 +664,7 @@ main {
 
 .news-content ul li a {
   font-family: 'Times New Roman', Times, Georgia, 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 700;
   color: #1a1a1a;
   text-decoration: underline;
@@ -923,7 +923,7 @@ a.bracket-link:hover {
 /* Publication entry styling */
 .publication-entry {
   margin-bottom: 0;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.4;
   color: #000;
 }
@@ -934,7 +934,7 @@ a.bracket-link:hover {
 }
 
 .publication-entry em {
-  font-size: 13px;
+  font-size: 15px;
   color: #000;
   font-style: italic;
 }
@@ -947,7 +947,7 @@ a.bracket-link:hover {
 .abstract-toggle {
   color: #8AA1B1;
   text-decoration: none;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 500;
   cursor: pointer;
   margin-left: 5px;
@@ -963,7 +963,7 @@ a.bracket-link:hover {
   padding: 10px;
   background-color: #f8f8f8;
   border-left: 3px solid #8AA1B1;
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1.6;
   color: #333;
 }
