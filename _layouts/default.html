@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% if site.subtitle %} - {{ site.subtitle }}{% endif %}{% endif %}</title>
+    <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -71,7 +71,6 @@ document.addEventListener('DOMContentLoaded', function() {
       {% if site.ins_logo %}
         <img id="ins-logo" src="{{ site.ins_logo }}" />
       {% endif %}
-      {% if page.url != '/' and page.url != '/index.html' %}
       <div class="author-info alignable pull-left">
         <img id="author-photo" src="{{ site.baseurl }}/asif_headshot.webp" alt="{{ site.title }}" />
         <div class="author-name-container">
@@ -81,14 +80,6 @@ document.addEventListener('DOMContentLoaded', function() {
           {% endif %}
         </div>
       </div>
-      {% else %}
-      <div class="author-name-container alignable pull-left">
-        <a id="author-name" href="{{ site.url }}{{ site.baseurl }}">{{ site.title }}</a>
-        {% if site.subtitle %}
-        <div id="author-subtitle">{{ site.subtitle }}</div>
-        {% endif %}
-      </div>
-      {% endif %}
       <ul id="navlist" class="alignable pull-right navbar-ul">
         {% for x in site.nav %}
           {% if x.name == "Resume" %}

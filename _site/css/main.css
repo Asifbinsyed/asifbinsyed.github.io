@@ -74,6 +74,7 @@ hr {
   line-height: 1.2;
   font-family: "Times New Roman", Times, Georgia, serif;
   text-decoration: none;
+  text-transform: uppercase;
 }
 
 #author-name:hover {
