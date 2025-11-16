@@ -182,6 +182,14 @@ I have published and presented my work at prestigious conferences and journals, 
 </div>
 
 <div class="publication-entry">
+<img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <strong>DIVA: Diversity Assessment in Text-to-Image Generation via Hybrid Metrics</strong> · <em><strong>Syed, M. A. B.</strong>, Ahamed, M. Y. (2025)</em> · <strong>ICML 2025 Workshop (4th Muslims in ML Workshop)</strong> · <a class="bracket-link" href="https://openreview.net/forum?id=cYc6i03pL8">OpenReview</a> · <span class="pill icml">ICML</span> <span class="pill deep">Deep Learning</span> <span class="pill vision">Computer Vision</span> <span class="pill foundation">Generative Models</span><br>
+<a href="#" class="abstract-toggle" onclick="toggleAbstract(event, 'abstract7')">Show Abstract</a>
+<div class="abstract-content" id="abstract7" style="display: none;">
+<strong>Abstract:</strong> Generative models like Stable Diffusion, DALL-E, and Imagen have shown impressive capabilities in creating visually compelling images from textual prompts. However, not all models produce a wide variety of outputs from the same prompt. In some applications—such as creative advertising or artistic design—diverse outputs are highly valued for exploring different visual interpretations. In contrast, tasks like forensic analysis or technical illustration require high consistency to ensure reproducibility. Current diversity quantification methods, such as Bayesian frameworks and pixel-based metrics (e.g., FID, SSIM), either ignore prompt-specific variability or fail to disentangle aleatoric and epistemic factors. In this work, we present DIVA, a framework quantifying diversity through hybrid diversity metrics: mean pairwise CLIP embedding distance, feature distribution variance, and information entropy. DIVA integrates these metrics into a unified diversity score, capturing both aleatoric and epistemic uncertainty. It adapts to both diversity-expected prompts and diversity-constrained prompts. Human validation shows strong correlation between our diversity score and human judgments. This work provides a scalable solution for applications requiring reliability and transparency, from creative design to medical imaging. GitHub repository: https://github.com/anonymous4865/diva.
+</div>
+</div>
+
+<div class="publication-entry">
 <img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <strong>Advancing Marine Surveillance: A Hybrid Approach of Physics Infused Neural Network for Enhanced Vessel Tracking Using Automatic Identification System Data</strong> · <em>Haque, T., <strong>Syed, M. A. B.</strong>, Das, S., &amp; Ahmed, I. (2024)</em> · <strong>Journal of Marine Science and Engineering, 12(11), 1913</strong> · <a class="bracket-link" href="https://doi.org/10.3390/jmse12111913">DOI</a> · <span class="pill marine">Marine AI</span> <span class="pill deep">Deep Learning</span> <span class="pill physics">Physics-Informed</span><br>
 <a href="#" class="abstract-toggle" onclick="toggleAbstract(event, 'abstract1')">Show Abstract</a>
 <div class="abstract-content" id="abstract1" style="display: none;">
@@ -223,7 +231,7 @@ I have published and presented my work at prestigious conferences and journals, 
 
 <a href="publications" class="btn btn-primary">View All Publications →</a>
 
-<h2 id="technical-skills">Technical Skills</h2>
+<h2 id="technical-skills">🛠️ Technical Skills</h2>
 <hr>
 <ul class="skills-list">
   <li><strong>Programming Languages:</strong> Python, R, SQL, C</li>
@@ -239,9 +247,11 @@ I have published and presented my work at prestigious conferences and journals, 
 <style>
 .skills-list {
   list-style: none;
-  padding: 0;
+  padding: 0 !important;
   margin: 10px 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  margin-left: 0 !important;
+  padding-left: 0 !important;
 }
 
 .skills-list li {
@@ -250,6 +260,7 @@ I have published and presented my work at prestigious conferences and journals, 
   line-height: 1.6;
   color: #2c2c2c;
   padding-left: 0;
+  margin-left: 0;
 }
 
 .skills-list li strong {
@@ -866,6 +877,28 @@ main {
 }
 .pill.foundation::before {
   content: '🔬';
+  font-size: 12px;
+  width: auto;
+  height: auto;
+  margin-right: 4px;
+}
+
+.pill.icml { 
+  background-color: #353535; /* Graphite */
+}
+.pill.icml::before {
+  content: '🎯';
+  font-size: 12px;
+  width: auto;
+  height: auto;
+  margin-right: 4px;
+}
+
+.pill.vision { 
+  background-color: #BDBBB0; /* Silver */
+}
+.pill.vision::before {
+  content: '👁️';
   font-size: 12px;
   width: auto;
   height: auto;
