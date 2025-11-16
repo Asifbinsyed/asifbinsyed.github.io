@@ -23,8 +23,6 @@ remote_theme: ankitsultana/researcher@gem
 nav:
  - name: "Home"
    link: "index"
- - name: "About"
-   link: "about"
  - name: "Publications"
    link: "publications"
  - name: "Resume"

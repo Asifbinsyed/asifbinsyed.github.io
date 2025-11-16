@@ -86,15 +86,47 @@ hr {
 }
 
 .navbar-ul {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   margin: 0;
-  padding: 5px 0 5px 0;
+  padding: 0;
   margin-left: 20px;
+  gap: 8px;
+  list-style: none;
 }
 
 .nav-list {
   list-style-type: none;
-  margin: 0 5px 0 10px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-list a {
+  color: #272727;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  font-size: 15px;
+  display: inline-block;
+  position: relative;
+}
+
+.nav-list a:hover {
+  background-color: rgba(255, 15, 0, 0.1);
+  color: #FF0F00;
+  transform: translateY(-1px);
+}
+
+.nav-list a:active {
+  transform: translateY(0);
+}
+
+/* Remove the forward slashes between nav items */
+.navbar-ul::before,
+.navbar-ul::after {
+  display: none;
 }
 
 .alignable, .pull-right, .pull-left {
@@ -143,6 +175,11 @@ hr {
   }
   .navbar-ul {
     margin-top: 5px;
+    gap: 4px;
+  }
+  .nav-list a {
+    padding: 6px 12px;
+    font-size: 14px;
   }
 }
 @media (max-width: 500px) {
@@ -161,10 +198,13 @@ hr {
   #navlist {
     padding: 10px 0 10px 0;
     margin: 0;
-    display: block;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     float: none;
     text-align: center;
     width: 100%;
+    gap: 4px;
   }
   #navlist li.alignable, #navlist li.pull-left, #navlist li.pull-right {
     display: inline-block;
@@ -174,6 +214,10 @@ hr {
   }
   #navlist li.nav-list {
     margin: 0;
+  }
+  .nav-list a {
+    padding: 6px 10px;
+    font-size: 13px;
   }
 }
 /*
