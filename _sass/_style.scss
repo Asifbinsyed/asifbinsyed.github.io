@@ -179,6 +179,10 @@ hr {
     background-color: #00CCBB;
 }
 
+.header-social-badge.resume {
+    background-color: #6B7280; /* Gray color for resume */
+}
+
 .navbar {
     padding: 50px 0 50px 0;
 }
@@ -237,8 +241,8 @@ hr {
 .container {
     max-width: 1100px;
     margin: 0 auto;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
     box-sizing: border-box;
 }
 .wrapper {
@@ -255,8 +259,8 @@ hr {
 /* Ensure navbar and content align perfectly - both use .container padding */
 .navbar.container,
 .container.content {
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -303,8 +307,8 @@ hr {
         width: 100%;
         margin-left: auto;
         margin-right: auto;
-        padding-left: 20px;
-        padding-right: 20px;
+        padding-left: 25px;
+        padding-right: 25px;
     }
     .navbar-ul {
         margin-top: 5px;
