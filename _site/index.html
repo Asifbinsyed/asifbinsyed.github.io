@@ -124,12 +124,50 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
   <main class="page-main">
-    <div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 20px;">
-  <div style="flex: 1;">
-    <p style="margin: 0; padding: 0;">👋 Hi there! I'm **Md Asif Bin Syed**, a *Sr. Supply Chain Data Analyst* at **The Home Depot**, the world's leading home improvement retailer. Leading the development of  offline reinforcement learning agents that reduce delivery failures by 4.5% ($6.5M retained revenue) and building ML Model for operational forecasting.</p>
+    <div class="intro-section">
+  <div class="intro-text">
+    <p>👋 Hi there! I'm <strong>Md Asif Bin Syed</strong>, a <em>Sr. Supply Chain Data Analyst</em> at <strong>The Home Depot</strong>, the world's leading home improvement retailer. Leading the development of offline <strong>reinforcement learning</strong> agents that reduce delivery failures by 4.5% ($6.5M retained revenue) and building ML Model for operational forecasting.</p>
   </div>
-  <img class="profile-picture" src="asif_headshot.webp" style="float: none; margin: 0;" />
+  <img class="profile-picture" src="asif_headshot.webp" />
 </div>
+
+<style>
+.intro-section {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  margin-top: 20px;
+  margin-left: 0;
+  padding-left: 0;
+  position: relative;
+}
+
+.intro-text {
+  flex: 1;
+}
+
+.intro-text p {
+  margin: 0;
+  padding: 0;
+}
+
+/* Align with navbar title - account for navbar container padding */
+@media (min-width: 501px) {
+  .intro-section {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .intro-section {
+    flex-direction: column;
+  }
+  
+  .intro-section .profile-picture {
+    align-self: center;
+  }
+}
+</style>
 
 <p>I am a researcher specializing in <strong>reinforcement learning</strong>, <strong>generative AI</strong>, and <strong>deep learning</strong> across domains such as marine surveillance, medical diagnosis, supply chain optimization, and time series forecasting.</p>
 
