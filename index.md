@@ -7,30 +7,34 @@ toc_max_level: 4
 
 
 <div class="intro-section">
-  <div class="intro-text">
-    <p>👋 Hi there! I'm <strong>Md Asif Bin Syed</strong>, a <em>Sr. Supply Chain Data Analyst</em> at <strong>The Home Depot</strong>, the world's leading home improvement retailer. Leading the development of offline <strong>reinforcement learning</strong> agents that reduce delivery failures by 4.5% ($6.5M retained revenue) and building ML Model for operational forecasting.</p>
-  </div>
-  <img class="profile-picture" src="asif_headshot.webp">
+  <img class="profile-picture intro-picture" src="asif_headshot.webp">
+  <p>👋 Hi there! I'm <strong>Md Asif Bin Syed</strong>, a <em>Sr. Supply Chain Data Analyst</em> at <strong>The Home Depot</strong>, the world's leading home improvement retailer. Leading the development of offline <strong>reinforcement learning</strong> agents that reduce delivery failures by 4.5% ($6.5M retained revenue) and building ML Model for operational forecasting.</p>
 </div>
 
 <style>
 .intro-section {
   display: flex;
   align-items: flex-start;
-  gap: 20px;
+  gap: 12px;
   margin-top: 20px;
   margin-left: 0;
   padding-left: 0;
   position: relative;
 }
 
-.intro-text {
+.intro-section p {
+  margin: 0;
+  padding: 0;
   flex: 1;
 }
 
-.intro-text p {
+.intro-picture {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%;
+  flex-shrink: 0;
   margin: 0;
-  padding: 0;
 }
 
 /* Align with navbar title - account for navbar container padding */
@@ -43,16 +47,17 @@ toc_max_level: 4
 @media (max-width: 600px) {
   .intro-section {
     flex-direction: column;
+    gap: 15px;
   }
   
-  .intro-section .profile-picture {
+  .intro-picture {
     align-self: center;
+    width: 160px;
+    height: 160px;
   }
 }
 </style> 
-
 I am a researcher specializing in **reinforcement learning**, **generative AI**, and **deep learning** across domains such as marine surveillance, medical diagnosis, supply chain optimization, and time series forecasting.
-
 I have published in venues including **ICML Workshop'25**, **NeurIPS Workshop'25**, **IEEE conferences**, with contributions in time series foundation models, diversity quantification, and physics-informed neural networks.  
 
 <div class="affiliations-section">
