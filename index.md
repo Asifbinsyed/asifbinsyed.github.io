@@ -13,28 +13,29 @@ toc_max_level: 4
 
 <style>
 .intro-section {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
   margin-top: 20px;
   margin-left: 0;
   padding-left: 0;
   position: relative;
+  overflow: hidden;
 }
 
 .intro-section p {
   margin: 0;
   padding: 0;
-  flex: 1;
+  text-align: justify;
 }
 
 .intro-picture {
-  width: 180px;
-  height: 180px;
+  width: 160px;
+  height: 160px;
   object-fit: cover;
   border-radius: 50%;
-  flex-shrink: 0;
-  margin: 0;
+  float: right;
+  margin-left: 15px;
+  margin-bottom: 10px;
+  margin-top: 0;
+  shape-outside: circle(50%);
 }
 
 /* Align with navbar title - account for navbar container padding */
@@ -45,15 +46,15 @@ toc_max_level: 4
 }
 
 @media (max-width: 600px) {
-  .intro-section {
-    flex-direction: column;
-    gap: 15px;
+  .intro-picture {
+    width: 120px;
+    height: 120px;
+    margin-right: 12px;
+    margin-bottom: 8px;
   }
   
-  .intro-picture {
-    align-self: center;
-    width: 160px;
-    height: 160px;
+  .intro-section p {
+    font-size: 15px;
   }
 }
 </style> 
