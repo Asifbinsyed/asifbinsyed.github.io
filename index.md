@@ -15,6 +15,33 @@ I am a researcher specializing in **reinforcement learning**, **generative AI**,
 <img class="profile-picture" src="neurips-navbar-logo.svg" >
 I have published in venues including **ICML Workshop'25**, **NeurIPS Workshop'25**, **IEEE conferences**, with contributions in time series foundation models, diversity quantification, and physics-informed neural networks.  
 
+<div class="social-links">
+  <a href="https://scholar.google.com/citations?user=YOUR_SCHOLAR_ID" class="social-badge scholar" target="_blank" rel="noopener noreferrer">
+    <svg class="social-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M5 13.18l7 3.82 7-3.82V8.82L12 5l-7 3.82v4.36z" fill="#4285F4"/>
+      <path d="M12 2L2 7l10 5 10-5-10-5z" fill="#4285F4"/>
+      <circle cx="12" cy="7" r="1.5" fill="#fff"/>
+    </svg>
+    <span class="social-text">Google Scholar</span>
+  </a>
+  <a href="https://www.linkedin.com/in/YOUR_LINKEDIN_ID" class="social-badge linkedin" target="_blank" rel="noopener noreferrer">
+    <span class="social-text">LinkedIn</span>
+  </a>
+  <a href="https://arxiv.org/search/?query=YOUR_NAME&searchtype=author" class="social-badge arxiv" target="_blank" rel="noopener noreferrer">
+    <svg class="social-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M18.5 4.5L5.5 19.5M5.5 4.5l13 15" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+    </svg>
+    <span class="social-text">arXiv</span>
+  </a>
+  <a href="https://orcid.org/YOUR_ORCID_ID" class="social-badge orcid" target="_blank" rel="noopener noreferrer">
+    <svg class="social-icon orcid-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="12" cy="12" r="10" fill="#A6CE39"/>
+      <text x="12" y="16" font-size="10" font-weight="700" fill="#fff" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif">iD</text>
+    </svg>
+    <span class="social-text">ORCID</span>
+  </a>
+</div>
+
 <blockquote style="margin-left: 3.5em;">
     <div style="display: flex; align-items: left; margin-left: -3.5em;">2025 - </div>
     <img src="the-home-depot.png" alt="Employer 1" style="width: 24px; height: 24px; margin-right: 10px;">
@@ -29,6 +56,69 @@ I have published in venues including **ICML Workshop'25**, **NeurIPS Workshop'25
 </blockquote>
 
 <main markdown="1">
+
+<h2 id="publications">📄 Publications</h2>
+<hr>
+I have published and presented my work at prestigious conferences and journals, including Journal of Marine Science and Engineering, Sensors, IEEE conferences, and IISE, as well as workshops at various international venues.
+
+<div class="publication-entry">
+<img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <strong>Zero-Shot Time-Series Forecasting: Do Time-Series FMs Outperform Domain-Agnostic FMs?</strong> · <em><strong>Syed, M. A. B.</strong>, et al. (2025)</em> · <strong>NeurIPS 2025 Workshop (BERT²S)</strong> · <a class="bracket-link" href="https://openreview.net/forum?id=HvbMOFV9zZ">OpenReview</a> · <span class="pill neurips">NeurIPS</span> <span class="pill deep">Deep Learning</span> <span class="pill timeseries">Time Series</span> <span class="pill foundation">Foundation Models</span><br>
+<a href="#" class="abstract-toggle" onclick="toggleAbstract(event, 'abstract6')">Show Abstract</a>
+<div class="abstract-content" id="abstract6" style="display: none;">
+<strong>Abstract:</strong> Foundation models (FMs) have achieved major advances in language, vision, and speech. In parallel, time-series foundation models (TSFMs) have been developed to address forecasting tasks. A key question is whether TSFMs truly generalize to unseen time series data, and whether they perform better than general-purpose FMs from other domains in a zero-shot setting. We compare four TSFMs such as Chronos, Times-FM, TimeGPT, and MOMENTs with cross-domain FMs for text (GPT), audio (Whisper), and vision (ViT). For a systematic comparison, we use simple task-agnostic adapters to convert sequences into forecasts, without fine-tuning or changing the backbone models. All models are evaluated on nine diverse datasets that were unseen during training. Our results show that TSFMs perform best on most datasets, highlighting the benefit of temporal pretraining and time-aware design. Overall, the strong zero-shot performance of TSFMs suggests that they may represent a breakthrough comparable to BERT for time series forecasting. At the same time, large text-based models such as GPT remain surprisingly competitive, in some cases even surpassing TSFMs, highlighting the ability of general-purpose models to capture temporal patterns despite not being trained for this task. GitHub repository: https://github.com/anonymous4865/tsfms.
+</div>
+</div>
+
+<div class="publication-entry">
+<img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <strong>Advancing Marine Surveillance: A Hybrid Approach of Physics Infused Neural Network for Enhanced Vessel Tracking Using Automatic Identification System Data</strong> · <em>Haque, T., <strong>Syed, M. A. B.</strong>, Das, S., &amp; Ahmed, I. (2024)</em> · <strong>Journal of Marine Science and Engineering, 12(11), 1913</strong> · <a class="bracket-link" href="https://doi.org/10.3390/jmse12111913">DOI</a> · <span class="pill marine">Marine AI</span> <span class="pill deep">Deep Learning</span> <span class="pill physics">Physics-Informed</span><br>
+<a href="#" class="abstract-toggle" onclick="toggleAbstract(event, 'abstract1')">Show Abstract</a>
+<div class="abstract-content" id="abstract1" style="display: none;">
+<strong>Abstract:</strong> This paper presents a novel hybrid approach combining physics-informed neural networks with automatic identification system (AIS) data for enhanced vessel tracking in marine surveillance applications. Our methodology integrates domain knowledge from maritime physics with deep learning techniques to improve tracking accuracy and robustness. The proposed framework addresses key challenges in vessel trajectory prediction and association, demonstrating significant improvements over traditional methods through extensive experimental validation on real-world AIS datasets.
+</div>
+</div>
+
+<div class="publication-entry">
+<img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <strong>Federated Learning in Manufacturing: A Systematic Review and Pathway to Industry 5.0</strong> · <em><strong>Syed, M. A. B.</strong>, Rhaman, Q., &amp; Sushil, S. (2023)</em> · <strong>IEEE STI 2023</strong> · <a class="bracket-link" href="https://ieeexplore.ieee.org/abstract/document/10464397">DOI</a> · <span class="pill federated">Federated Learning</span> <span class="pill manufacturing">Manufacturing</span> <span class="pill industry">Industry 5.0</span><br>
+<a href="#" class="abstract-toggle" onclick="toggleAbstract(event, 'abstract2')">Show Abstract</a>
+<div class="abstract-content" id="abstract2" style="display: none;">
+<strong>Abstract:</strong> This systematic review explores the application of federated learning in manufacturing environments, examining its potential to enable Industry 5.0 transformation. We analyze current research trends, identify key challenges in distributed learning for industrial settings, and propose a comprehensive framework for implementing federated learning systems in manufacturing. Our analysis covers privacy-preserving machine learning, edge computing integration, and collaborative model training across multiple manufacturing facilities.
+</div>
+</div>
+
+<div class="publication-entry">
+<img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <strong>A CNN-LSTM Architecture for Marine Vessel Track Association Using Automatic Identification System (AIS) Data</strong> · <em><strong>Syed, M. A. B.</strong>, &amp; Ahmed, I. (2023)</em> · <strong>Sensors, 23(14), 6400</strong> · <a class="bracket-link" href="https://doi.org/10.3390/s23146400">DOI</a> · <span class="pill marine">Marine AI</span> <span class="pill deep">Deep Learning</span> <span class="pill tracking">Track Association</span><br>
+<a href="#" class="abstract-toggle" onclick="toggleAbstract(event, 'abstract3')">Show Abstract</a>
+<div class="abstract-content" id="abstract3" style="display: none;">
+<strong>Abstract:</strong> We propose a hybrid CNN-LSTM architecture for solving the track association problem in marine surveillance using AIS data. The model combines convolutional neural networks for spatial feature extraction with long short-term memory networks for temporal sequence modeling. Our approach effectively handles the challenges of vessel trajectory prediction and association in complex maritime environments, achieving superior performance compared to traditional methods on large-scale AIS datasets.
+</div>
+</div>
+
+<div class="publication-entry">
+<img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <strong>Investigation of Polycystic Ovary Syndrome (PCOS) Diagnosis Using Machine Learning Approaches</strong> · <em>Habib, A. Z. S. B., <strong>Syed, M. A. B.</strong>, Islam, M. E., &amp; Tasnim, T. (2023)</em> · <strong>IEEE STI 2023</strong> · <a class="bracket-link" href="https://ieeexplore.ieee.org/abstract/document/10465079">DOI</a> · <span class="pill medical">Medical AI</span> <span class="pill deep">Deep Learning</span> <span class="pill diagnosis">Diagnosis</span><br>
+<a href="#" class="abstract-toggle" onclick="toggleAbstract(event, 'abstract4')">Show Abstract</a>
+<div class="abstract-content" id="abstract4" style="display: none;">
+<strong>Abstract:</strong> This study investigates the application of machine learning techniques for diagnosing Polycystic Ovary Syndrome (PCOS), a common endocrine disorder affecting women. We evaluate multiple machine learning algorithms including support vector machines, random forests, and deep neural networks using clinical and biochemical parameters. Our results demonstrate the potential of ML-based diagnostic systems to assist healthcare professionals in early detection and accurate diagnosis of PCOS, potentially improving patient outcomes through timely intervention.
+</div>
+</div>
+
+<div class="publication-entry">
+<img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <strong>Understanding AI Chatbot Adoption in Education: PLS-SEM Analysis of User Behavior Factors</strong> · <em>Hasan, M. R., Chowdhury, N. I., Rahman, M. H., <strong>Syed, M. A. B.</strong>, &amp; Ryu, J. (2023)</em> · <strong>Journal of Computers in Human Behavior: Artificial Humans</strong> · <a class="bracket-link" href="https://www.sciencedirect.com/science/article/pii/S2949882124000586">DOI</a> · <span class="pill nlp">NLP</span> <span class="pill education">Education</span> <span class="pill plssem">PLS-SEM</span><br>
+<a href="#" class="abstract-toggle" onclick="toggleAbstract(event, 'abstract5')">Show Abstract</a>
+<div class="abstract-content" id="abstract5" style="display: none;">
+<strong>Abstract:</strong> This research employs Partial Least Squares Structural Equation Modeling (PLS-SEM) to investigate the factors influencing AI chatbot adoption in educational settings. We examine user behavior patterns, technology acceptance factors, and educational outcomes associated with chatbot implementation. Our findings reveal key determinants of adoption including perceived usefulness, ease of use, and educational value, providing insights for educators and technology developers seeking to enhance learning experiences through AI-powered conversational interfaces.
+</div>
+</div>
+
+<a href="publications" class="btn btn-primary">View All Publications →</a>
+
+<h2 id="technical-skills">🛠️ Technical Skills</h2>
+<hr>
+- 🐍 **Programming Languages**: Python , R, SQL,
+- 🛠️ **ML DL Framework**: Scikit-learn, Keras, TensorFlow,  PyTorch 
+- 📈**Data Analysis**: MS Excel,  Tableau, Power BI 📈
+- 🛠️ **MLOps & DevOps**: Docker, Kubernetes, Jenkins, Git, GitHub Actions, AWS, Azure ML, MLflow, DVC, Weights & Biases
+- 🚀 **Model Deployment**: FastAPI, Flask, TensorFlow Serving, Model Monitoring, A/B Testing, CI/CD Pipelines
+- 📦 **Others**: Containerization, Infrastructure as Code (IaC), Model Versioning, Experiment Tracking, Model Registry
 
 <h2 id="whats-new" class="news-heading">📰 News and Updates</h2>
 <hr>
@@ -84,7 +174,7 @@ I have published in venues including **ICML Workshop'25**, **NeurIPS Workshop'25
     </li>
     <li>
       <span>July 2023:</span>
-      <span>Awarded "Idea of the Month" at Volvo Trucks for implementing Power Automate and AI to extract invoice data, saving \$200 K.</span>
+      <span>Awarded "Idea of the Month" at Volvo Trucks for implementing Power Automate and AI to extract invoice data, saving $200 K.</span>
     </li>
     <li>
       <span>July 2023:</span>
@@ -113,76 +203,115 @@ I have published in venues including **ICML Workshop'25**, **NeurIPS Workshop'25
   </ul>
 </div>
 
-<h2 id="technical-skills">🛠️ Technical Skills</h2>
-<hr>
-- 🐍 **Programming Languages**: Python , R, SQL,
-- 🛠️ **ML DL Framework**: Scikit-learn, Keras, TensorFlow,  PyTorch 
-- 📈**Data Analysis**: MS Excel,  Tableau, Power BI 📈
-- 🛠️ **MLOps & DevOps**: Docker, Kubernetes, Jenkins, Git, GitHub Actions, AWS, Azure ML, MLflow, DVC, Weights & Biases
-- 🚀 **Model Deployment**: FastAPI, Flask, TensorFlow Serving, Model Monitoring, A/B Testing, CI/CD Pipelines
-- 📦 **Others**: Containerization, Infrastructure as Code (IaC), Model Versioning, Experiment Tracking, Model Registry
-
-
-<h2 id="publications">📄 Publications</h2>
-<hr>
-I have published and presented my work at prestigious conferences and journals, including Journal of Marine Science and Engineering, Sensors, IEEE conferences, and IISE, as well as workshops at various international venues.
-
-<div class="publication-entry">
-<img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <strong>Zero-Shot Time-Series Forecasting: Do Time-Series FMs Outperform Domain-Agnostic FMs?</strong> · <em><strong>Syed, M. A. B.</strong>, et al. (2025)</em> · <strong>NeurIPS 2025 Workshop (BERT²S)</strong> · <a class="bracket-link" href="https://openreview.net/forum?id=HvbMOFV9zZ">OpenReview</a> · <span class="pill neurips">NeurIPS</span> <span class="pill deep">Deep Learning</span> <span class="pill timeseries">Time Series</span> <span class="pill foundation">Foundation Models</span><br>
-<a href="#" class="abstract-toggle" onclick="toggleAbstract(event, 'abstract6')">Show Abstract</a>
-<div class="abstract-content" id="abstract6" style="display: none;">
-<strong>Abstract:</strong> Foundation models (FMs) have achieved major advances in language, vision, and speech. In parallel, time-series foundation models (TSFMs) have been developed to address forecasting tasks. A key question is whether TSFMs truly generalize to unseen time series data, and whether they perform better than general-purpose FMs from other domains in a zero-shot setting. We compare four TSFMs such as Chronos, Times-FM, TimeGPT, and MOMENTs with cross-domain FMs for text (GPT), audio (Whisper), and vision (ViT). For a systematic comparison, we use simple task-agnostic adapters to convert sequences into forecasts, without fine-tuning or changing the backbone models. All models are evaluated on nine diverse datasets that were unseen during training. Our results show that TSFMs perform best on most datasets, highlighting the benefit of temporal pretraining and time-aware design. Overall, the strong zero-shot performance of TSFMs suggests that they may represent a breakthrough comparable to BERT for time series forecasting. At the same time, large text-based models such as GPT remain surprisingly competitive, in some cases even surpassing TSFMs, highlighting the ability of general-purpose models to capture temporal patterns despite not being trained for this task. GitHub repository: https://github.com/anonymous4865/tsfms.
-</div>
-</div>
-
-<div class="publication-entry">
-<img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <strong>Advancing Marine Surveillance: A Hybrid Approach of Physics Infused Neural Network for Enhanced Vessel Tracking Using Automatic Identification System Data</strong> · <em>Haque, T., <strong>Syed, M. A. B.</strong>, Das, S., &amp; Ahmed, I. (2024)</em> · <strong>Journal of Marine Science and Engineering, 12(11), 1913</strong> · <a class="bracket-link" href="https://doi.org/10.3390/jmse12111913">DOI</a> · <span class="pill marine">Marine AI</span> <span class="pill deep">Deep Learning</span> <span class="pill physics">Physics-Informed</span><br>
-<a href="#" class="abstract-toggle" onclick="toggleAbstract(event, 'abstract1')">Show Abstract</a>
-<div class="abstract-content" id="abstract1" style="display: none;">
-<strong>Abstract:</strong> This paper presents a novel hybrid approach combining physics-informed neural networks with automatic identification system (AIS) data for enhanced vessel tracking in marine surveillance applications. Our methodology integrates domain knowledge from maritime physics with deep learning techniques to improve tracking accuracy and robustness. The proposed framework addresses key challenges in vessel trajectory prediction and association, demonstrating significant improvements over traditional methods through extensive experimental validation on real-world AIS datasets.
-</div>
-</div>
-
-<div class="publication-entry">
-<img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <strong>Federated Learning in Manufacturing: A Systematic Review and Pathway to Industry 5.0</strong> · <em><strong>Syed, M. A. B.</strong>, Rhaman, Q., &amp; Sushil, S. (2023)</em> · <strong>IEEE STI 2023</strong> · <a class="bracket-link" href="https://ieeexplore.ieee.org/abstract/document/10464397">DOI</a> · <span class="pill federated">Federated Learning</span> <span class="pill manufacturing">Manufacturing</span> <span class="pill industry">Industry 5.0</span><br>
-<a href="#" class="abstract-toggle" onclick="toggleAbstract(event, 'abstract2')">Show Abstract</a>
-<div class="abstract-content" id="abstract2" style="display: none;">
-<strong>Abstract:</strong> This systematic review explores the application of federated learning in manufacturing environments, examining its potential to enable Industry 5.0 transformation. We analyze current research trends, identify key challenges in distributed learning for industrial settings, and propose a comprehensive framework for implementing federated learning systems in manufacturing. Our analysis covers privacy-preserving machine learning, edge computing integration, and collaborative model training across multiple manufacturing facilities.
-</div>
-  </div>
-
-<div class="publication-entry">
-<img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <strong>A CNN-LSTM Architecture for Marine Vessel Track Association Using Automatic Identification System (AIS) Data</strong> · <em><strong>Syed, M. A. B.</strong>, &amp; Ahmed, I. (2023)</em> · <strong>Sensors, 23(14), 6400</strong> · <a class="bracket-link" href="https://doi.org/10.3390/s23146400">DOI</a> · <span class="pill marine">Marine AI</span> <span class="pill deep">Deep Learning</span> <span class="pill tracking">Track Association</span><br>
-<a href="#" class="abstract-toggle" onclick="toggleAbstract(event, 'abstract3')">Show Abstract</a>
-<div class="abstract-content" id="abstract3" style="display: none;">
-<strong>Abstract:</strong> We propose a hybrid CNN-LSTM architecture for solving the track association problem in marine surveillance using AIS data. The model combines convolutional neural networks for spatial feature extraction with long short-term memory networks for temporal sequence modeling. Our approach effectively handles the challenges of vessel trajectory prediction and association in complex maritime environments, achieving superior performance compared to traditional methods on large-scale AIS datasets.
-  </div>
-  </div>
-
-<div class="publication-entry">
-<img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <strong>Investigation of Polycystic Ovary Syndrome (PCOS) Diagnosis Using Machine Learning Approaches</strong> · <em>Habib, A. Z. S. B., <strong>Syed, M. A. B.</strong>, Islam, M. E., &amp; Tasnim, T. (2023)</em> · <strong>IEEE STI 2023</strong> · <a class="bracket-link" href="https://ieeexplore.ieee.org/abstract/document/10465079">DOI</a> · <span class="pill medical">Medical AI</span> <span class="pill deep">Deep Learning</span> <span class="pill diagnosis">Diagnosis</span><br>
-<a href="#" class="abstract-toggle" onclick="toggleAbstract(event, 'abstract4')">Show Abstract</a>
-<div class="abstract-content" id="abstract4" style="display: none;">
-<strong>Abstract:</strong> This study investigates the application of machine learning techniques for diagnosing Polycystic Ovary Syndrome (PCOS), a common endocrine disorder affecting women. We evaluate multiple machine learning algorithms including support vector machines, random forests, and deep neural networks using clinical and biochemical parameters. Our results demonstrate the potential of ML-based diagnostic systems to assist healthcare professionals in early detection and accurate diagnosis of PCOS, potentially improving patient outcomes through timely intervention.
-  </div>
-</div>
-
-<div class="publication-entry">
-<img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <strong>Understanding AI Chatbot Adoption in Education: PLS-SEM Analysis of User Behavior Factors</strong> · <em>Hasan, M. R., Chowdhury, N. I., Rahman, M. H., <strong>Syed, M. A. B.</strong>, &amp; Ryu, J. (2023)</em> · <strong>Journal of Computers in Human Behavior: Artificial Humans</strong> · <a class="bracket-link" href="https://www.sciencedirect.com/science/article/pii/S2949882124000586">DOI</a> · <span class="pill nlp">NLP</span> <span class="pill education">Education</span> <span class="pill plssem">PLS-SEM</span><br>
-<a href="#" class="abstract-toggle" onclick="toggleAbstract(event, 'abstract5')">Show Abstract</a>
-<div class="abstract-content" id="abstract5" style="display: none;">
-<strong>Abstract:</strong> This research employs Partial Least Squares Structural Equation Modeling (PLS-SEM) to investigate the factors influencing AI chatbot adoption in educational settings. We examine user behavior patterns, technology acceptance factors, and educational outcomes associated with chatbot implementation. Our findings reveal key determinants of adoption including perceived usefulness, ease of use, and educational value, providing insights for educators and technology developers seeking to enhance learning experiences through AI-powered conversational interfaces.
-</div>
-</div>
-
-<a href="publications" class="btn btn-primary">View All Publications →</a>
-
 <style>
 /* Clean typography for homepage */
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   line-height: 1.4;
   color: #333;
+}
+
+/* Social media badges - shields.io style matching the image */
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 20px 0;
+}
+
+.social-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 0;
+  padding: 4px 8px;
+  background-color: #181717;
+  position: relative;
+  height: 20px;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+}
+
+.social-badge:hover {
+  opacity: 0.85;
+  text-decoration: none;
+  color: #fff;
+}
+
+.social-badge .social-icon {
+  display: inline-block;
+  margin-right: 6px;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+
+.social-badge .social-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.social-text {
+  display: inline-block;
+  font-size: 11px;
+  line-height: 1;
+}
+
+/* Social badge colors matching the image */
+.social-badge.scholar {
+  background-color: #181717; /* Black */
+}
+
+.social-badge.scholar .social-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.social-badge.linkedin {
+  background-color: #0077B5; /* LinkedIn blue */
+  padding-left: 8px;
+}
+
+.social-badge.linkedin .social-text {
+  font-weight: 600;
+}
+
+.social-badge.arxiv {
+  background-color: #181717; /* Black */
+}
+
+.social-badge.arxiv .social-icon {
+  width: 14px;
+  height: 14px;
+  margin-right: 6px;
+}
+
+.social-badge.orcid {
+  background-color: #181717; /* Black */
+}
+
+.social-badge.orcid .social-icon.orcid-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 6px;
+}
+
+.social-badge.orcid .social-icon.orcid-icon circle {
+  fill: #A6CE39;
+}
+
+.social-badge.orcid .social-icon.orcid-icon text {
+  fill: #fff;
+  font-size: 9px;
+  font-weight: 700;
 }
 
 .research-highlights {
