@@ -17,7 +17,6 @@ toc_max_level: 4
   margin-left: 0;
   padding-left: 0;
   position: relative;
-  overflow: hidden;
 }
 
 .intro-section p {
@@ -36,6 +35,8 @@ toc_max_level: 4
   margin-bottom: 10px;
   margin-top: 0;
   shape-outside: circle(50%);
+  display: block;
+  clip-path: circle(50%);
 }
 
 /* Align with navbar title - account for navbar container padding */
