@@ -271,8 +271,8 @@ hr {
 .container.content {
   padding-left: 20px;
   padding-right: 20px;
-  margin-left: 0;
-  margin-right: 0;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Fix page-main alignment to match navbar and content */
@@ -310,7 +310,12 @@ hr {
 }
 @media (max-width: 650px) {
   .container {
-    max-width: 83%;
+    max-width: 100%;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px;
+    padding-right: 20px;
   }
   .navbar-ul {
     margin-top: 5px;
