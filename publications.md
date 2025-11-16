@@ -10,84 +10,130 @@ toc_max_level: 4
 
 I have published and presented my work at prestigious conferences and journals, including Journal of Marine Science and Engineering, Sensors, IEEE conferences, and IISE, as well as workshops at various international venues.
 
-You can click on the keywords below to explore my research in specific areas.
-
-
+<div class="affiliations-section">
+  <div class="affiliations-logos">
+    <div class="affiliation-item">
+      <img src="ICML-logo.svg" alt="ICML" class="affiliation-logo">
+      <span class="affiliation-label">ICML</span>
+    </div>
+    <div class="affiliation-item">
+      <img src="neurips-navbar-logo.svg" alt="NeurIPS" class="affiliation-logo">
+      <span class="affiliation-label">NeurIPS</span>
+    </div>
+    <div class="affiliation-item">
+      <img src="West-Virginia-University-WVU-Emblem.png" alt="West Virginia University" class="affiliation-logo">
+      <span class="affiliation-label">WVU</span>
+    </div>
+    <div class="affiliation-item">
+      <img src="georgia-tech-logo.png" alt="Georgia Tech" class="affiliation-logo">
+      <span class="affiliation-label">Georgia Tech</span>
+    </div>
+  </div>
+</div>
 
 ## Journal Articles
 
 <div class="publication-entry">
-▪ <strong>Advancing Marine Surveillance: A Hybrid Approach of Physics Infused Neural Network for Enhanced Vessel Tracking Using Automatic Identification System Data</strong><br>
-<em>Haque, T., <strong>Syed, M. A. B.</strong>, Das, S., &amp; Ahmed, I. (2024)</em><br>
-<strong>Journal of Marine Science and Engineering, 12(11), 1913</strong> · <a class="bracket-link" href="https://doi.org/10.3390/jmse12111913">DOI</a> · <span class="pill marine">Marine AI</span> <span class="pill deep">Deep Learning</span> <span class="pill physics">Physics-Informed</span>
+<img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <strong>Advancing Marine Surveillance: A Hybrid Approach of Physics Infused Neural Network for Enhanced Vessel Tracking Using Automatic Identification System Data</strong> · <em>Haque, T., <strong>Syed, M. A. B.</strong>, Das, S., &amp; Ahmed, I. (2024)</em> · <strong>Journal of Marine Science and Engineering, 12(11), 1913</strong> · <a class="bracket-link" href="https://doi.org/10.3390/jmse12111913">DOI</a> · <span class="pill marine">Marine AI</span> <span class="pill deep">Deep Learning</span><br>
+<a href="#" class="abstract-toggle" onclick="toggleAbstract(event, 'abstract1')">Show Abstract</a>
+<div class="abstract-content" id="abstract1" style="display: none;">
+<strong>Abstract:</strong> This paper presents a novel hybrid approach combining physics-informed neural networks with automatic identification system (AIS) data for enhanced vessel tracking in marine surveillance applications. Our methodology integrates domain knowledge from maritime physics with deep learning techniques to improve tracking accuracy and robustness. The proposed framework addresses key challenges in vessel trajectory prediction and association, demonstrating significant improvements over traditional methods through extensive experimental validation on real-world AIS datasets.
+</div>
 </div>
 
 <div class="publication-entry">
-▪ <strong>Understanding AI Chatbot Adoption in Education: PLS-SEM Analysis of User Behavior Factors</strong><br>
-<em>Hasan, M. R., Chowdhury, N. I., Rahman, M. H., <strong>Syed, M. A. B.</strong>, &amp; Ryu, J. (2023)</em><br>
-<strong>Journal of Computers in Human Behavior: Artificial Humans</strong> · <a class="bracket-link" href="https://www.sciencedirect.com/science/article/pii/S2949882124000586">DOI</a> · <span class="pill nlp">NLP</span> <span class="pill education">Education</span> <span class="pill plssem">PLS-SEM</span>
+<img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <strong>Understanding AI Chatbot Adoption in Education: PLS-SEM Analysis of User Behavior Factors</strong> · <em>Hasan, M. R., Chowdhury, N. I., Rahman, M. H., <strong>Syed, M. A. B.</strong>, &amp; Ryu, J. (2023)</em> · <strong>Journal of Computers in Human Behavior: Artificial Humans</strong> · <a class="bracket-link" href="https://www.sciencedirect.com/science/article/pii/S2949882124000586">DOI</a> · <span class="pill nlp">NLP</span> <span class="pill education">Education</span><br>
+<a href="#" class="abstract-toggle" onclick="toggleAbstract(event, 'abstract2')">Show Abstract</a>
+<div class="abstract-content" id="abstract2" style="display: none;">
+<strong>Abstract:</strong> This research employs Partial Least Squares Structural Equation Modeling (PLS-SEM) to investigate the factors influencing AI chatbot adoption in educational settings. We examine user behavior patterns, technology acceptance factors, and educational outcomes associated with chatbot implementation. Our findings reveal key determinants of adoption including perceived usefulness, ease of use, and educational value, providing insights for educators and technology developers seeking to enhance learning experiences through AI-powered conversational interfaces.
+</div>
 </div>
 
 <div class="publication-entry">
-▪ <strong>A CNN-LSTM Architecture for Marine Vessel Track Association Using Automatic Identification System (AIS) Data</strong><br>
-<em><strong>Syed, M. A. B.</strong>, &amp; Ahmed, I. (2023)</em><br>
-<strong>Sensors, 23(14), 6400</strong> · <a class="bracket-link" href="https://doi.org/10.3390/s23146400">DOI</a> · <span class="pill marine">Marine AI</span> <span class="pill deep">Deep Learning</span> <span class="pill tracking">Track Association</span>
+<img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <strong>A CNN-LSTM Architecture for Marine Vessel Track Association Using Automatic Identification System (AIS) Data</strong> · <em><strong>Syed, M. A. B.</strong>, &amp; Ahmed, I. (2023)</em> · <strong>Sensors, 23(14), 6400</strong> · <a class="bracket-link" href="https://doi.org/10.3390/s23146400">DOI</a> · <span class="pill marine">Marine AI</span> <span class="pill deep">Deep Learning</span><br>
+<a href="#" class="abstract-toggle" onclick="toggleAbstract(event, 'abstract3')">Show Abstract</a>
+<div class="abstract-content" id="abstract3" style="display: none;">
+<strong>Abstract:</strong> We propose a hybrid CNN-LSTM architecture for solving the track association problem in marine surveillance using AIS data. The model combines convolutional neural networks for spatial feature extraction with long short-term memory networks for temporal sequence modeling. Our approach effectively handles the challenges of vessel trajectory prediction and association in complex maritime environments, achieving superior performance compared to traditional methods on large-scale AIS datasets.
+</div>
 </div>
 
 ## Conference Papers
 
 <div class="publication-entry">
-▪ <strong>Investigation of Polycystic Ovary Syndrome (PCOS) Diagnosis Using Machine Learning Approaches</strong><br>
-<em>Habib, A. Z. S. B., <strong>Syed, M. A. B.</strong>, Islam, M. E., &amp; Tasnim, T. (2023)</em><br>
-<strong>IEEE STI 2023</strong> · <a class="bracket-link" href="https://ieeexplore.ieee.org/abstract/document/10465079">DOI</a> · <span class="pill medical">Medical AI</span> <span class="pill deep">Deep Learning</span> <span class="pill diagnosis">Diagnosis</span>
+<img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <strong>Zero-Shot Time-Series Forecasting: Do Time-Series FMs Outperform Domain-Agnostic FMs?</strong> · <em><strong>Syed, M. A. B.</strong>, et al. (2025)</em> · <strong>NeurIPS 2025 Workshop (BERT²S)</strong> · <a class="bracket-link" href="https://openreview.net/forum?id=HvbMOFV9zZ">OpenReview</a> · <span class="pill neurips">NeurIPS</span> <span class="pill deep">Deep Learning</span><br>
+<a href="#" class="abstract-toggle" onclick="toggleAbstract(event, 'abstract4')">Show Abstract</a>
+<div class="abstract-content" id="abstract4" style="display: none;">
+<strong>Abstract:</strong> Foundation models (FMs) have achieved major advances in language, vision, and speech. In parallel, time-series foundation models (TSFMs) have been developed to address forecasting tasks. A key question is whether TSFMs truly generalize to unseen time series data, and whether they perform better than general-purpose FMs from other domains in a zero-shot setting. We compare four TSFMs such as Chronos, Times-FM, TimeGPT, and MOMENTs with cross-domain FMs for text (GPT), audio (Whisper), and vision (ViT). For a systematic comparison, we use simple task-agnostic adapters to convert sequences into forecasts, without fine-tuning or changing the backbone models. All models are evaluated on nine diverse datasets that were unseen during training. Our results show that TSFMs perform best on most datasets, highlighting the benefit of temporal pretraining and time-aware design. Overall, the strong zero-shot performance of TSFMs suggests that they may represent a breakthrough comparable to BERT for time series forecasting. At the same time, large text-based models such as GPT remain surprisingly competitive, in some cases even surpassing TSFMs, highlighting the ability of general-purpose models to capture temporal patterns despite not being trained for this task. GitHub repository: https://github.com/anonymous4865/tsfms.
+</div>
 </div>
 
 <div class="publication-entry">
-▪ <strong>A Deep Learning Approach for Satellite and Debris Detection: YOLO in Action</strong><br>
-<em>Ahamed, M. Y., <strong>Syed, M. A. B.</strong>, Chatterjee, P., &amp; Habib, A. Z. S. B. (2023)</em><br>
-<strong>IEEE ICCIT 2023</strong> · <a class="bracket-link" href="https://ieeexplore.ieee.org/abstract/document/10441152">DOI</a> · <span class="pill cv">Computer Vision</span> <span class="pill deep">Deep Learning</span> <span class="pill yolo">YOLO</span>
+<img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <strong>DIVA: Diversity Assessment in Text-to-Image Generation via Hybrid Metrics</strong> · <em><strong>Syed, M. A. B.</strong>, Ahamed, M. Y. (2025)</em> · <strong>ICML 2025 Workshop (4th Muslims in ML Workshop)</strong> · <a class="bracket-link" href="https://openreview.net/forum?id=cYc6i03pL8">OpenReview</a> · <span class="pill icml">ICML</span> <span class="pill deep">Deep Learning</span><br>
+<a href="#" class="abstract-toggle" onclick="toggleAbstract(event, 'abstract5')">Show Abstract</a>
+<div class="abstract-content" id="abstract5" style="display: none;">
+<strong>Abstract:</strong> Generative models like Stable Diffusion, DALL-E, and Imagen have shown impressive capabilities in creating visually compelling images from textual prompts. However, not all models produce a wide variety of outputs from the same prompt. In some applications—such as creative advertising or artistic design—diverse outputs are highly valued for exploring different visual interpretations. In contrast, tasks like forensic analysis or technical illustration require high consistency to ensure reproducibility. Current diversity quantification methods, such as Bayesian frameworks and pixel-based metrics (e.g., FID, SSIM), either ignore prompt-specific variability or fail to disentangle aleatoric and epistemic factors. In this work, we present DIVA, a framework quantifying diversity through hybrid diversity metrics: mean pairwise CLIP embedding distance, feature distribution variance, and information entropy. DIVA integrates these metrics into a unified diversity score, capturing both aleatoric and epistemic uncertainty. It adapts to both diversity-expected prompts and diversity-constrained prompts. Human validation shows strong correlation between our diversity score and human judgments. This work provides a scalable solution for applications requiring reliability and transparency, from creative design to medical imaging. GitHub repository: https://github.com/anonymous4865/diva.
+</div>
 </div>
 
 <div class="publication-entry">
-▪ <strong>Pediatric Bone Age Prediction Using Deep Learning</strong><br>
-<em>Habib, A. Z. S. B., Islam, M. E., <strong>Syed, M. A. B.</strong>, Ahamed, M. Y., &amp; Tasnim, T. (2023)</em><br>
-<strong>IEEE ICCIT 2023</strong> · <a class="bracket-link" href="https://ieeexplore.ieee.org/abstract/document/10441258">DOI</a> · <span class="pill medical">Medical AI</span> <span class="pill deep">Deep Learning</span> <span class="pill medical-imaging">Medical Imaging</span>
+<img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <strong>Investigation of Polycystic Ovary Syndrome (PCOS) Diagnosis Using Machine Learning Approaches</strong> · <em>Habib, A. Z. S. B., <strong>Syed, M. A. B.</strong>, Islam, M. E., &amp; Tasnim, T. (2023)</em> · <strong>IEEE STI 2023</strong> · <a class="bracket-link" href="https://ieeexplore.ieee.org/abstract/document/10465079">DOI</a> · <span class="pill medical">Medical AI</span> <span class="pill deep">Deep Learning</span><br>
+<a href="#" class="abstract-toggle" onclick="toggleAbstract(event, 'abstract6')">Show Abstract</a>
+<div class="abstract-content" id="abstract6" style="display: none;">
+<strong>Abstract:</strong> This study investigates the application of machine learning techniques for diagnosing Polycystic Ovary Syndrome (PCOS), a common endocrine disorder affecting women. We evaluate multiple machine learning algorithms including support vector machines, random forests, and deep neural networks using clinical and biochemical parameters. Our results demonstrate the potential of ML-based diagnostic systems to assist healthcare professionals in early detection and accurate diagnosis of PCOS, potentially improving patient outcomes through timely intervention.
+</div>
 </div>
 
 <div class="publication-entry">
-▪ <strong>Federated Learning in Manufacturing: A Systematic Review and Pathway to Industry 5.0</strong><br>
-<em><strong>Syed, M. A. B.</strong>, Rhaman, Q., &amp; Sushil, S. (2023)</em><br>
-<strong>IEEE STI 2023</strong> · <a class="bracket-link" href="https://ieeexplore.ieee.org/abstract/document/10464397">DOI</a> · <span class="pill federated">Federated Learning</span> <span class="pill manufacturing">Manufacturing</span> <span class="pill industry">Industry 5.0</span>
+<img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <strong>A Deep Learning Approach for Satellite and Debris Detection: YOLO in Action</strong> · <em>Ahamed, M. Y., <strong>Syed, M. A. B.</strong>, Chatterjee, P., &amp; Habib, A. Z. S. B. (2023)</em> · <strong>IEEE ICCIT 2023</strong> · <a class="bracket-link" href="https://ieeexplore.ieee.org/abstract/document/10441152">DOI</a> · <span class="pill vision">Computer Vision</span> <span class="pill deep">Deep Learning</span><br>
+<a href="#" class="abstract-toggle" onclick="toggleAbstract(event, 'abstract7')">Show Abstract</a>
+<div class="abstract-content" id="abstract7" style="display: none;">
+<strong>Abstract:</strong> This paper presents a deep learning approach for satellite and debris detection using YOLO (You Only Look Once) object detection framework. We address the critical challenge of space debris tracking and satellite identification in orbital environments. Our methodology leverages state-of-the-art object detection techniques to improve accuracy and real-time processing capabilities for space surveillance applications.
+</div>
 </div>
 
 <div class="publication-entry">
-▪ <strong>Multi-Model LSTM Architecture for Track Association Using AIS Data</strong><br>
-<em><strong>Syed, M. A. B.</strong>, &amp; Ahmed, I. (2023)</em><br>
-<strong>IISE Annual Conference 2023</strong> · <a class="bracket-link" href="https://arxiv.org/abs/2304.01491">arXiv</a> · <span class="pill marine">Marine AI</span> <span class="pill deep">Deep Learning</span> <span class="pill tracking">Track Association</span>
+<img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <strong>Pediatric Bone Age Prediction Using Deep Learning</strong> · <em>Habib, A. Z. S. B., Islam, M. E., <strong>Syed, M. A. B.</strong>, Ahamed, M. Y., &amp; Tasnim, T. (2023)</em> · <strong>IEEE ICCIT 2023</strong> · <a class="bracket-link" href="https://ieeexplore.ieee.org/abstract/document/10441258">DOI</a> · <span class="pill medical">Medical AI</span> <span class="pill deep">Deep Learning</span><br>
+<a href="#" class="abstract-toggle" onclick="toggleAbstract(event, 'abstract8')">Show Abstract</a>
+<div class="abstract-content" id="abstract8" style="display: none;">
+<strong>Abstract:</strong> We present a deep learning framework for pediatric bone age prediction from hand radiographs. Our approach utilizes convolutional neural networks to analyze bone development patterns and predict skeletal maturity. The model demonstrates high accuracy in age estimation, providing valuable support for clinical assessment of growth disorders and developmental conditions in pediatric patients.
+</div>
 </div>
 
 <div class="publication-entry">
-▪ <strong>Zero Shot Time Series Forecasting: Do Time Series FMs Outperform Cross Modal FMs?</strong><br>
-<em><strong>Syed, M. A. B.</strong>, et al. (2025)</em><br>
-<strong>NeurIPS'25 Workshop</strong> · <a class="bracket-link" href="https://openreview.net/your-paper-id">OpenReview</a> · <span class="pill dataset">Dataset</span> <span class="pill nlp">NLP</span> <span class="pill llm">LLM</span>
+<img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <strong>Federated Learning in Manufacturing: A Systematic Review and Pathway to Industry 5.0</strong> · <em><strong>Syed, M. A. B.</strong>, Rhaman, Q., &amp; Sushil, S. (2023)</em> · <strong>IEEE STI 2023</strong> · <a class="bracket-link" href="https://ieeexplore.ieee.org/abstract/document/10464397">DOI</a> · <span class="pill federated">Federated Learning</span> <span class="pill manufacturing">Manufacturing</span><br>
+<a href="#" class="abstract-toggle" onclick="toggleAbstract(event, 'abstract9')">Show Abstract</a>
+<div class="abstract-content" id="abstract9" style="display: none;">
+<strong>Abstract:</strong> This systematic review explores the application of federated learning in manufacturing environments, examining its potential to enable Industry 5.0 transformation. We analyze current research trends, identify key challenges in distributed learning for industrial settings, and propose a comprehensive framework for implementing federated learning systems in manufacturing. Our analysis covers privacy-preserving machine learning, edge computing integration, and collaborative model training across multiple manufacturing facilities.
+</div>
+</div>
+
+<div class="publication-entry">
+<img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <strong>Multi-Model LSTM Architecture for Track Association Using AIS Data</strong> · <em><strong>Syed, M. A. B.</strong>, &amp; Ahmed, I. (2023)</em> · <strong>IISE Annual Conference 2023</strong> · <a class="bracket-link" href="https://arxiv.org/abs/2304.01491">arXiv</a> · <span class="pill marine">Marine AI</span> <span class="pill deep">Deep Learning</span><br>
+<a href="#" class="abstract-toggle" onclick="toggleAbstract(event, 'abstract10')">Show Abstract</a>
+<div class="abstract-content" id="abstract10" style="display: none;">
+<strong>Abstract:</strong> This paper proposes a multi-model LSTM architecture for solving the track association problem in marine surveillance using Automatic Identification System (AIS) data. Our approach combines multiple LSTM models to handle complex vessel trajectory patterns and improve association accuracy in challenging maritime environments with high vessel density and signal interference.
+</div>
 </div>
 
 ## Research Contributions
 
 <div class="publication-entry">
-▪ <strong>ML Algorithm Synthesizing Domain Knowledge for Fungal Spore Concentration Prediction</strong><br>
-<em><strong>Syed, M. A. B.</strong>, et al. (2023)</em><br>
-<strong>QCRE Data Challenge (Finalist)</strong> · <a class="bracket-link" href="https://arxiv.org/pdf/2309.13402.pdf">arXiv</a> · <span class="pill challenge">Challenge</span> <span class="pill domain">Domain Knowledge</span> <span class="pill prediction">Prediction</span>
+<img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <strong>ML Algorithm Synthesizing Domain Knowledge for Fungal Spore Concentration Prediction</strong> · <em><strong>Syed, M. A. B.</strong>, et al. (2023)</em> · <strong>QCRE Data Challenge (Finalist)</strong> · <a class="bracket-link" href="https://arxiv.org/pdf/2309.13402.pdf">arXiv</a> · <span class="pill deep">Deep Learning</span> <span class="pill timeseries">Time Series</span><br>
+<a href="#" class="abstract-toggle" onclick="toggleAbstract(event, 'abstract11')">Show Abstract</a>
+<div class="abstract-content" id="abstract11" style="display: none;">
+<strong>Abstract:</strong> This work presents a machine learning algorithm that synthesizes domain knowledge for predicting fungal spore concentration. Our approach integrates expert knowledge with data-driven methods to improve prediction accuracy in environmental monitoring applications. The model was developed as part of the QCRE Data Challenge, where it achieved finalist status.
+</div>
 </div>
 
 ## Master's Thesis
 
 <div class="publication-entry">
-▪ <strong>Spatio-Temporal Deep Learning Approaches for Addressing Track Association Problem Using Automatic Identification System (AIS) Data</strong><br>
-<em><strong>Syed, M. A. B.</strong> (2023)</em><br>
-<strong>West Virginia University</strong> · <a class="bracket-link" href="https://researchrepository.wvu.edu/cgi/viewcontent.cgi?article=12915&context=etd">DOI</a> · <span class="pill thesis">Thesis</span> <span class="pill marine">Marine AI</span> <span class="pill deep">Deep Learning</span> <span class="pill tracking">Track Association</span>
+<img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <strong>Spatio-Temporal Deep Learning Approaches for Addressing Track Association Problem Using Automatic Identification System (AIS) Data</strong> · <em><strong>Syed, M. A. B.</strong> (2023)</em> · <strong>West Virginia University</strong> · <a class="bracket-link" href="https://researchrepository.wvu.edu/cgi/viewcontent.cgi?article=12915&context=etd">DOI</a> · <span class="pill marine">Marine AI</span> <span class="pill deep">Deep Learning</span><br>
+<a href="#" class="abstract-toggle" onclick="toggleAbstract(event, 'abstract12')">Show Abstract</a>
+<div class="abstract-content" id="abstract12" style="display: none;">
+<strong>Abstract:</strong> This thesis presents spatio-temporal deep learning approaches for addressing the track association problem using Automatic Identification System (AIS) data. The research develops novel neural network architectures that effectively combine spatial and temporal information to improve vessel tracking accuracy in marine surveillance applications. The proposed methods demonstrate significant improvements over traditional approaches through comprehensive experimental validation on large-scale AIS datasets.
 </div>
-
+</div>
 
 ---
 
@@ -95,11 +141,11 @@ You can click on the keywords below to explore my research in specific areas.
 
 <div class="impact-stats">
   <div class="stat">
-    <strong>2</strong>
+    <strong>3</strong>
     <span>Journal Articles</span>
   </div>
   <div class="stat">
-    <strong>6</strong>
+    <strong>7</strong>
     <span>Conference Papers</span>
   </div>
   <div class="stat">
@@ -114,169 +160,325 @@ You can click on the keywords below to explore my research in specific areas.
 
 ---
 
-*Last updated: September 2024*
+*Last updated: January 2025*
 
 <style>
-/* Ultra-compact design matching the example */
+/* Import styles from index.md - matching publication styling */
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  line-height: 1.2;
-  color: #000;
-  font-size: 14px;
-}
-/* Base pill style */
-.pill {
-  display: inline-block;
-  padding: 2px 10px;
-  border-radius: 4px;
-  font-size: 11px;
-  font-weight: 600;
-  line-height: 1.2;
-  margin: 0 4px 0 0;
-  color: #000; /* default black text */
-}
-.pill:hover { opacity: 0.9; }
-
-/* Palette-based tags */
-.pill.marine { background: #9AC2C9; }         /* Light Blue */
-.pill.deep { background: #8AA1B1; color:#fff; }  /* Cadet Gray */
-.pill.physics { background: #FFCB47; }        /* Sunglow */
-.pill.education { background: #B9D8C2; }      /* Celadon */
-.pill.nlp { background: #B9D8C2; }            /* Celadon */
-.pill.yolo { background: #9AC2C9; }           /* Light Blue */
-.pill.medical { background: #4A5043; color:#fff; } /* Ebony */
-.pill.federated { background: #8AA1B1; color:#fff; } /* Cadet Gray */
-.pill.dataset { background: #9AC2C9; }        /* Light Blue */
-.pill.llm { background: #FFCB47; }            /* Sunglow */
-.pill.thesis { background: #4A5043; color:#fff; } /* Ebony */
-
-/* Extra categories */
-.pill.tracking { background: #8AA1B1; color:#fff; }    /* Cadet Gray */
-.pill.diagnosis { background: #B9D8C2; }               /* Celadon */
-.pill.medical-imaging { background: #9AC2C9; }         /* Light Blue */
-.pill.manufacturing { background: #4A5043; color:#fff; } /* Ebony */
-.pill.industry { background: #FFCB47; }                /* Sunglow */
-.pill.challenge { background: #9AC2C9; }               /* Light Blue */
-.pill.domain { background: #B9D8C2; }                  /* Celadon */
-.pill.prediction { background: #8AA1B1; color:#fff; }  /* Cadet Gray */
-.pill.plssem { background: #4A5043; color:#fff; }      /* Ebony */
-/* Bracket links */
-a.bracket-link { text-decoration: none; }
-a.bracket-link::before { content: "["; margin-right: 2px; }
-a.bracket-link::after  { content: "]"; margin-left: 2px; }
-.research-keywords {
-  margin: 10px 0 15px 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
-}
-
-.keyword {
-  padding: 3px 8px;
-  background-color: #f0f0f0;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  font-size: 12px;
-  cursor: pointer;
-  transition: all 0.2s ease;
+  line-height: 1.4;
   color: #333;
-  font-weight: 500;
-}
-
-.keyword:hover {
-  background-color: #e0e0e0;
-}
-
-.keyword.active {
-  background-color: #000;
-  color: white;
-  border-color: #000;
-}
-
-/* Ultra-compact publication entries with gaps between publications */
-h4 {
-  margin: 0 0 12px 0;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1.2;
-  color: #000;
-}
-
-h4 + p {
-  margin: 0;
-  font-size: 13px;
-  color: #000;
-  font-style: italic;
-  line-height: 1.2;
-}
-
-h4 + p + p {
-  margin: 0 0 8px 0;
-  font-size: 13px;
-  color: #000;
-  font-weight: 500;
-  line-height: 1.2;
-}
-
-/* Simple tag styling - minimal colors */
-.tag {
-  display: inline;
-  padding: 1px 4px;
-  background-color: #f0f0f0;
-  border-radius: 3px;
-  font-size: 11px;
-  font-weight: 500;
-  color: #333;
-  margin-right: 4px;
 }
 
 /* Section headers */
+h2 {
+  margin: 25px 0 10px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
 h3 {
   margin: 20px 0 8px 0;
   font-size: 16px;
   font-weight: 600;
-  color: #000;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 4px;
+  color: #1a1a1a;
 }
 
-/* Links - minimal styling */
-a {
-  color: #000;
+hr {
+  margin: 8px 0 15px 0;
+  border: none;
+  border-top: 1px solid #e5e7eb;
+}
+
+/* Compact layout to match index.md */
+main {
+  max-width: 100% !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+}
+
+/* Affiliations section styling */
+.affiliations-section {
+  margin: 30px 0;
+  padding: 20px 0;
+}
+
+.affiliations-logos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.affiliation-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.2s ease;
+}
+
+.affiliation-item:hover {
+  transform: translateY(-2px);
+}
+
+.affiliation-logo {
+  height: 50px;
+  width: auto;
+  max-width: 120px;
+  object-fit: contain;
+  filter: grayscale(20%);
+  transition: filter 0.3s ease;
+}
+
+.affiliation-item:hover .affiliation-logo {
+  filter: grayscale(0%);
+}
+
+.affiliation-label {
+  font-size: 12px;
+  color: #666;
+  font-weight: 500;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .affiliations-logos {
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .affiliation-logo {
+    height: 40px;
+    max-width: 100px;
+  }
+}
+
+/* Publications styling - matching index.md format */
+/* Shield-style badge design like GitHub shields.io */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
+  margin: 0 4px 2px 0;
+  color: #fff;
   text-decoration: none;
+  border-radius: 0;
+  padding: 4px 8px;
+  background-color: #181717;
+  position: relative;
+  height: 20px;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+
+.pill::before {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: 6px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  vertical-align: middle;
+}
+
+.pill:hover { 
+  opacity: 0.9;
+  text-decoration: none;
+  color: #fff;
+}
+
+/* Badge color schemes - using provided color palette */
+/* Graphite #353535, White #FFFFFF, Pale Slate #D2D7DF, Silver #BDBBB0, Grey Olive #8A897C */
+.pill.marine { 
+  background-color: #353535; /* Graphite */
+}
+.pill.marine::before {
+  content: '🌊';
+  font-size: 12px;
+  width: auto;
+  height: auto;
+  margin-right: 4px;
+}
+
+.pill.deep { 
+  background-color: #8A897C; /* Grey Olive */
+}
+.pill.deep::before {
+  content: '🧠';
+  font-size: 12px;
+  width: auto;
+  height: auto;
+  margin-right: 4px;
+}
+
+.pill.education { 
+  background-color: #8A897C; /* Grey Olive */
+}
+.pill.education::before {
+  content: '📚';
+  font-size: 12px;
+  width: auto;
+  height: auto;
+  margin-right: 4px;
+}
+
+.pill.nlp { 
+  background-color: #BDBBB0; /* Silver */
+  color: #353535; /* Dark text for light background */
+}
+.pill.nlp::before {
+  content: '💬';
+  font-size: 12px;
+  width: auto;
+  height: auto;
+  margin-right: 4px;
+}
+
+.pill.medical { 
+  background-color: #353535; /* Graphite */
+}
+.pill.medical::before {
+  content: '🏥';
+  font-size: 12px;
+  width: auto;
+  height: auto;
+  margin-right: 4px;
+}
+
+.pill.federated { 
+  background-color: #8A897C; /* Grey Olive */
+}
+.pill.federated::before {
+  content: '🔗';
+  font-size: 12px;
+  width: auto;
+  height: auto;
+  margin-right: 4px;
+}
+
+.pill.manufacturing { 
+  background-color: #D2D7DF; /* Pale Slate */
+  color: #353535; /* Dark text for light background */
+}
+.pill.manufacturing::before {
+  content: '🏭';
+  font-size: 12px;
+  width: auto;
+  height: auto;
+  margin-right: 4px;
+}
+
+.pill.neurips { 
+  background-color: #353535; /* Graphite */
+}
+.pill.neurips::before {
+  content: '🧠';
+  font-size: 12px;
+  width: auto;
+  height: auto;
+  margin-right: 4px;
+}
+
+.pill.timeseries { 
+  background-color: #8A897C; /* Grey Olive */
+}
+.pill.timeseries::before {
+  content: '📈';
+  font-size: 12px;
+  width: auto;
+  height: auto;
+  margin-right: 4px;
+}
+
+.pill.icml { 
+  background-color: #353535; /* Graphite */
+}
+.pill.icml::before {
+  content: '🎯';
+  font-size: 12px;
+  width: auto;
+  height: auto;
+  margin-right: 4px;
+}
+
+.pill.vision { 
+  background-color: #BDBBB0; /* Silver */
+}
+.pill.vision::before {
+  content: '👁️';
+  font-size: 12px;
+  width: auto;
+  height: auto;
+  margin-right: 4px;
+}
+
+/* Bracket links */
+a.bracket-link { 
+  text-decoration: none; 
+  color: #000;
   font-weight: 500;
 }
-
-a:hover {
+a.bracket-link::before { content: "["; margin-right: 2px; }
+a.bracket-link::after  { content: "]"; margin-left: 2px; }
+a.bracket-link:hover {
   color: #333;
-
 }
 
-/* Bold author name */
-strong {
+/* Publication entry styling */
+.publication-entry {
+  margin-bottom: 0;
+  font-size: 16px;
+  line-height: 1.4;
+  color: #000;
+}
+
+.publication-entry strong {
   color: #000;
   font-weight: 600;
-  text-decoration: none;
 }
 
-/* Underline only my name, which is bold inside italics */
-em strong {
-  text-decoration: underline;
-}
-
-/* Author line styling */
-h4 + p {
-  margin: 0;
-  font-size: 13px;
+.publication-entry em {
+  font-size: 15px;
   color: #000;
   font-style: italic;
-  line-height: 1.2;
 }
 
-h4 + p strong {
-  font-weight: 600;
+.publication-entry em strong {
   text-decoration: underline;
-  color: #000;
+}
+
+/* Abstract toggle styling */
+.abstract-toggle {
+  color: #8AA1B1;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.abstract-toggle:hover {
+  color: #4A5043;
+  text-decoration: underline;
+}
+
+.abstract-content {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #f8f8f8;
+  border-left: 3px solid #8AA1B1;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #333;
 }
 
 /* Impact stats - minimal */
@@ -309,123 +511,20 @@ h4 + p strong {
   font-size: 11px;
   font-weight: 500;
 }
-
-/* Hidden publications for filtering */
-.publication {
-  transition: all 0.3s ease;
-}
-
-.publication.hidden {
-  display: none;
-}
-
-/* Remove extra spacing from markdown */
-hr {
-  display: none;
-}
-
-/* Ultra-compact layout */
-main {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 0 15px;
-}
-
-/* Remove all paragraph margins */
-p {
-  margin: 0;
-}
-
-/* Ensure no gaps between lines */
-h4, p {
-  margin: 0;
-  padding: 0;
-}
-
-/* Add line gap between publication entries */
-.publication-entry {
-  margin-bottom: 20px;
-}
-
-/* Navigation menu styling to match other pages */
-.navbar-nav .nav-link {
-  color: #dc3545 !important; /* Red color */
-  font-weight: 500;
-  text-decoration: none;
-  margin: 0 10px;
-}
-
-.navbar-nav .nav-link:hover {
-  color: #c82333 !important; /* Darker red on hover */
-  text-decoration: none;
-}
-
-.navbar-nav .nav-link.active {
-  color: #dc3545 !important;
-  font-weight: 600;
-}
-
-/* Alternative navigation styling if the above doesn't work */
-nav a, .nav a, .navbar a {
-  color: #dc3545 !important;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-nav a:hover, .nav a:hover, .navbar a:hover {
-  color: #c82333 !important;
-  text-decoration: none;
-}
 </style>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  const keywords = document.querySelectorAll('.keyword');
-  const publications = document.querySelectorAll('.publication');
+function toggleAbstract(event, abstractId) {
+  event.preventDefault();
+  const abstract = document.getElementById(abstractId);
+  const toggle = event.target;
   
-  // Add publication class to all publication items
-  const publicationItems = document.querySelectorAll('h4, h3');
-  publicationItems.forEach((item, index) => {
-    if (index > 0) { // Skip the first h3 which is "Publications"
-      item.classList.add('publication');
-    }
-  });
-  
-  keywords.forEach(keyword => {
-    keyword.addEventListener('click', function() {
-      // Remove active class from all keywords
-      keywords.forEach(k => k.classList.remove('active'));
-      // Add active class to clicked keyword
-      this.classList.add('active');
-      
-      const filter = this.textContent.trim();
-      
-      if (filter === 'ALL') {
-        // Show all publications
-        publications.forEach(pub => {
-          pub.style.display = 'block';
-        });
+  if (abstract.style.display === 'none') {
+    abstract.style.display = 'block';
+    toggle.textContent = 'Hide Abstract';
       } else {
-        // Filter publications based on tags
-        publications.forEach(pub => {
-          const tags = pub.querySelectorAll('.tag');
-          let hasMatchingTag = false;
-          
-          tags.forEach(tag => {
-            if (tag.textContent.trim().toLowerCase().includes(filter.toLowerCase())) {
-              hasMatchingTag = true;
-            }
-          });
-          
-          if (hasMatchingTag) {
-            pub.style.display = 'block';
-          } else {
-            pub.style.display = 'none';
-          }
-        });
-      }
-    });
-  });
-});
+    abstract.style.display = 'none';
+    toggle.textContent = 'Show Abstract';
+  }
+}
 </script>
-
