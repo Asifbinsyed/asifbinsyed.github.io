@@ -257,7 +257,10 @@ hr {
 
 .wrapper {
   max-width: 1100px;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  margin-bottom: 0;
   padding-left: 0;
   padding-right: 0;
   box-sizing: border-box;
@@ -270,6 +273,24 @@ hr {
   padding-right: 20px;
   margin-left: 0;
   margin-right: 0;
+}
+
+/* Fix page-main alignment to match navbar and content */
+.container.content .page-main,
+.container.content main {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+  margin-right: 0 !important;
+  padding-right: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Ensure navbar menu aligns with content right edge */
+.navbar.container .navbar-ul.pull-right {
+  margin-right: 0;
+  margin-left: auto;
 }
 
 /* Institute Image */

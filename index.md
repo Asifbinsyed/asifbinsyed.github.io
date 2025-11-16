@@ -555,11 +555,14 @@ hr {
   border-top: 1px solid #e5e7eb;
 }
 
-/* Compact layout to match publications page */
+/* Compact layout to match publications page - ensure full width alignment */
+.container.content main,
 main {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 0 15px;
+  max-width: 100% !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
 }
 
 /* News and Updates section - academic serif typography */

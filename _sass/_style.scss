@@ -262,9 +262,21 @@ hr {
 }
 
 /* Fix page-main alignment to match navbar and content */
-.container.content .page-main {
+.container.content .page-main,
+.container.content main {
     margin-left: 0 !important;
     padding-left: 0 !important;
+    margin-right: 0 !important;
+    padding-right: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+/* Ensure navbar menu aligns with content right edge */
+.navbar.container .navbar-ul.pull-right {
+    margin-right: 0;
+    margin-left: auto;
 }
 
 /* Institute Image */
