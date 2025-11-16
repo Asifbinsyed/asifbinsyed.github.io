@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+    <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% if site.subtitle %} - {{ site.subtitle }}{% endif %}{% endif %}</title>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -33,7 +33,7 @@
     {% endif %}
     <!-- Facebook Open Graph -->
     <meta name="og:description" content="{{ desc }}">
-    <meta name="og:title" content="{{ site.title }}">
+    <meta name="og:title" content="{{ site.title }}{% if site.subtitle %} - {{ site.subtitle }}{% endif %}">
     <meta name="og:url" content="{{ url }}">
     <meta name="og:type" content="article">
     {% if site.og_image %}
@@ -44,7 +44,7 @@
     {% endif %}
     <!-- Twitter -->
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="{{ site.title }}">
+    <meta name="twitter:title" content="{{ site.title }}{% if site.subtitle %} - {{ site.subtitle }}{% endif %}">
     <meta name="twitter:description" content="{{ desc }}">
     <meta name="twitter:url" content="{{ url }}">
     {% if site.twitter_image %}
@@ -74,10 +74,20 @@ document.addEventListener('DOMContentLoaded', function() {
       {% if page.url != '/' and page.url != '/index.html' %}
       <div class="author-info alignable pull-left">
         <img id="author-photo" src="{{ site.baseurl }}/asif_headshot.webp" alt="{{ site.title }}" />
-        <a id="author-name" href="{{ site.url }}{{ site.baseurl }}">{{ site.title }}</a>
+        <div class="author-name-container">
+          <a id="author-name" href="{{ site.url }}{{ site.baseurl }}">{{ site.title }}</a>
+          {% if site.subtitle %}
+          <div id="author-subtitle">{{ site.subtitle }}</div>
+          {% endif %}
+        </div>
       </div>
       {% else %}
-      <a id="author-name" class="alignable pull-left" href="{{ site.url }}{{ site.baseurl }}">{{ site.title }}</a>
+      <div class="author-name-container alignable pull-left">
+        <a id="author-name" href="{{ site.url }}{{ site.baseurl }}">{{ site.title }}</a>
+        {% if site.subtitle %}
+        <div id="author-subtitle">{{ site.subtitle }}</div>
+        {% endif %}
+      </div>
       {% endif %}
       <ul id="navlist" class="alignable pull-right navbar-ul">
         {% for x in site.nav %}

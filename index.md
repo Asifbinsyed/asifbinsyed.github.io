@@ -11,8 +11,7 @@ toc_max_level: 4
 👋 Hi there! I'm **Md Asif Bin Syed**, a *Sr. Supply Chain Data Analyst* at **The Home Depot**, the world's leading home improvement retailer. Leading the development of  offline reinforcement learning agents that reduce delivery failures by 4.5% ($6.5M retained revenue) and building ML Model for operational forecasting. 
 
 I am a researcher specializing in **reinforcement learning**, **generative AI**, and **deep learning** across domains such as marine surveillance, medical diagnosis, supply chain optimization, and time series forecasting.
-<img class="profile-picture" src="ICML-logo.svg" >
-<img class="profile-picture" src="neurips-navbar-logo.svg" >
+
 I have published in venues including **ICML Workshop'25**, **NeurIPS Workshop'25**, **IEEE conferences**, with contributions in time series foundation models, diversity quantification, and physics-informed neural networks.  
 
 <div class="social-links">
@@ -41,6 +40,98 @@ I have published in venues including **ICML Workshop'25**, **NeurIPS Workshop'25
     <span class="social-text">ORCID</span>
   </a>
 </div>
+
+<div class="affiliations-section">
+  <div class="affiliations-logos">
+    <div class="affiliation-item">
+      <img src="ICML-logo.svg" alt="ICML" class="affiliation-logo">
+      <span class="affiliation-label">ICML</span>
+    </div>
+    <div class="affiliation-item">
+      <img src="neurips-navbar-logo.svg" alt="NeurIPS" class="affiliation-logo">
+      <span class="affiliation-label">NeurIPS</span>
+    </div>
+    <div class="affiliation-item">
+      <img src="West-Virginia-University-WVU-Emblem.png" alt="West Virginia University" class="affiliation-logo">
+      <span class="affiliation-label">WVU</span>
+    </div>
+    <div class="affiliation-item">
+      <img src="georgia-tech-logo.png" alt="Georgia Tech" class="affiliation-logo">
+      <span class="affiliation-label">Georgia Tech</span>
+    </div>
+    <div class="affiliation-item">
+      <img src="Shahjalal_University_of_Science_and_Technology_logo.png" alt="Shahjalal University" class="affiliation-logo">
+      <span class="affiliation-label">SUST</span>
+    </div>
+    <div class="affiliation-item">
+      <img src="volvo.svg" alt="Volvo" class="affiliation-logo">
+      <span class="affiliation-label">Volvo</span>
+    </div>
+    <div class="affiliation-item">
+      <img src="the-home-depot.png" alt="The Home Depot" class="affiliation-logo">
+      <span class="affiliation-label">Home Depot</span>
+    </div>
+  </div>
+</div>
+
+<style>
+.affiliations-section {
+  margin: 30px 0;
+  padding: 20px 0;
+}
+
+.affiliations-logos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.affiliation-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.2s ease;
+}
+
+.affiliation-item:hover {
+  transform: translateY(-2px);
+}
+
+.affiliation-logo {
+  height: 50px;
+  width: auto;
+  max-width: 120px;
+  object-fit: contain;
+  filter: grayscale(20%);
+  transition: filter 0.3s ease;
+}
+
+.affiliation-item:hover .affiliation-logo {
+  filter: grayscale(0%);
+}
+
+.affiliation-label {
+  font-size: 12px;
+  color: #666;
+  font-weight: 500;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .affiliations-logos {
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .affiliation-logo {
+    height: 40px;
+    max-width: 100px;
+  }
+}
+</style>
 
 <blockquote style="margin-left: 3.5em;">
     <div style="display: flex; align-items: left; margin-left: -3.5em;">2025 - </div>
