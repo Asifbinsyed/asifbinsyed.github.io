@@ -34,15 +34,15 @@ I have published and presented my work at prestigious conferences and journals, 
 ## Journal Articles
 
 <div class="publication-entry">
-<img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <span class="pill year">2024</span> <strong>Advancing Marine Surveillance: A Hybrid Approach of Physics Infused Neural Network for Enhanced Vessel Tracking Using Automatic Identification System Data</strong> · <em>Haque, T., <strong>Syed, M. A. B.</strong>, Das, S., &amp; Ahmed, I. (2024)</em> · <strong>Journal of Marine Science and Engineering, 12(11), 1913</strong> · <a class="bracket-link" href="https://doi.org/10.3390/jmse12111913">DOI</a><br>
+<img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <span class="pill year">2025</span> <strong>A systematic review of time series algorithms and analytics in predictive maintenance</strong> · <em><strong>Syed, M. A. B.</strong>, Hasan, M. R., Chowdhury, N. I., Rahman, M. H., &amp; Ahmed, I. (2025)</em> · <strong>Decision Analytics Journal, 100573</strong> · <a class="bracket-link" href="https://www.sciencedirect.com/science/article/pii/S2772662225000573">DOI</a><br>
 <a href="#" class="abstract-toggle" onclick="toggleAbstract(event, 'abstract1')">Show Abstract</a>
 <div class="abstract-content" id="abstract1" style="display: none;">
-<strong>Abstract:</strong> This paper presents a novel hybrid approach combining physics-informed neural networks with automatic identification system (AIS) data for enhanced vessel tracking in marine surveillance applications. Our methodology integrates domain knowledge from maritime physics with deep learning techniques to improve tracking accuracy and robustness. The proposed framework addresses key challenges in vessel trajectory prediction and association, demonstrating significant improvements over traditional methods through extensive experimental validation on real-world AIS datasets.
+<strong>Abstract:</strong> This systematic review provides a comprehensive analysis of time series algorithms and analytics in predictive maintenance applications. We examine various machine learning and deep learning approaches for forecasting equipment failures, analyzing sensor data patterns, and optimizing maintenance schedules. The review covers recent advances in time series forecasting, anomaly detection, and remaining useful life prediction, offering insights into the current state-of-the-art and future research directions in Industry 4.0 and Industry 5.0 contexts.
 </div>
 </div>
 
 <div class="publication-entry">
-<img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <span class="pill year">2023</span> <strong>Understanding AI Chatbot Adoption in Education: PLS-SEM Analysis of User Behavior Factors</strong> · <em>Hasan, M. R., Chowdhury, N. I., Rahman, M. H., <strong>Syed, M. A. B.</strong>, &amp; Ryu, J. (2023)</em> · <strong>Journal of Computers in Human Behavior: Artificial Humans</strong> · <a class="bracket-link" href="https://www.sciencedirect.com/science/article/pii/S2949882124000586">DOI</a><br>
+<img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <span class="pill year">2024</span> <strong>Understanding AI Chatbot adoption in education: PLS-SEM analysis of user behavior factors</strong> · <em>Hasan, M. R., Chowdhury, N. I., Rahman, M. H., <strong>Syed, M. A. B.</strong>, &amp; Ryu, J. H. (2024)</em> · <strong>Computers in Human Behavior: Artificial Humans, 2(2), 100098</strong> · <a class="bracket-link" href="https://doi.org/10.1016/j.chbah.2024.100098">DOI</a><br>
 <a href="#" class="abstract-toggle" onclick="toggleAbstract(event, 'abstract2')">Show Abstract</a>
 <div class="abstract-content" id="abstract2" style="display: none;">
 <strong>Abstract:</strong> This research employs Partial Least Squares Structural Equation Modeling (PLS-SEM) to investigate the factors influencing AI chatbot adoption in educational settings. We examine user behavior patterns, technology acceptance factors, and educational outcomes associated with chatbot implementation. Our findings reveal key determinants of adoption including perceived usefulness, ease of use, and educational value, providing insights for educators and technology developers seeking to enhance learning experiences through AI-powered conversational interfaces.
@@ -50,10 +50,26 @@ I have published and presented my work at prestigious conferences and journals, 
 </div>
 
 <div class="publication-entry">
-<img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <span class="pill year">2023</span> <strong>A CNN-LSTM Architecture for Marine Vessel Track Association Using Automatic Identification System (AIS) Data</strong> · <em><strong>Syed, M. A. B.</strong>, &amp; Ahmed, I. (2023)</em> · <strong>Sensors, 23(14), 6400</strong> · <a class="bracket-link" href="https://doi.org/10.3390/s23146400">DOI</a><br>
+<img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <span class="pill year">2024</span> <strong>Advancing Marine Surveillance: A Hybrid Approach of Physics Infused Neural Network for Enhanced Vessel Tracking Using Automatic Identification System Data</strong> · <em>Haque, T., <strong>Syed, M. A. B.</strong>, Das, S., &amp; Ahmed, I. (2024)</em> · <strong>Journal of Marine Science and Engineering, 12(11), 1913</strong> · <a class="bracket-link" href="https://doi.org/10.3390/jmse12111913">DOI</a><br>
 <a href="#" class="abstract-toggle" onclick="toggleAbstract(event, 'abstract3')">Show Abstract</a>
 <div class="abstract-content" id="abstract3" style="display: none;">
+<strong>Abstract:</strong> This paper presents a novel hybrid approach combining physics-informed neural networks with automatic identification system (AIS) data for enhanced vessel tracking in marine surveillance applications. Our methodology integrates domain knowledge from maritime physics with deep learning techniques to improve tracking accuracy and robustness. The proposed framework addresses key challenges in vessel trajectory prediction and association, demonstrating significant improvements over traditional methods through extensive experimental validation on real-world AIS datasets.
+</div>
+</div>
+
+<div class="publication-entry">
+<img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <span class="pill year">2023</span> <strong>A CNN-LSTM Architecture for Marine Vessel Track Association Using Automatic Identification System (AIS) Data</strong> · <em><strong>Syed, M. A. B.</strong>, &amp; Ahmed, I. (2023)</em> · <strong>Sensors, 23(14), 6400</strong> · <a class="bracket-link" href="https://doi.org/10.3390/s23146400">DOI</a><br>
+<a href="#" class="abstract-toggle" onclick="toggleAbstract(event, 'abstract4')">Show Abstract</a>
+<div class="abstract-content" id="abstract4" style="display: none;">
 <strong>Abstract:</strong> We propose a hybrid CNN-LSTM architecture for solving the track association problem in marine surveillance using AIS data. The model combines convolutional neural networks for spatial feature extraction with long short-term memory networks for temporal sequence modeling. Our approach effectively handles the challenges of vessel trajectory prediction and association in complex maritime environments, achieving superior performance compared to traditional methods on large-scale AIS datasets.
+</div>
+</div>
+
+<div class="publication-entry">
+<img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <span class="pill year">2022</span> <strong>Grey-Taguchi approach to optimize fused deposition modeling process in terms of mechanical properties and dimensional accuracy</strong> · <em><strong>Syed, M. A. B.</strong>, Rhaman, Q., Shahriar, H. M., &amp; Khan, M. M. A. (2022)</em> · <strong>Journal of Engineering Research, Innovation and Education, 4(1), 38-52</strong><br>
+<a href="#" class="abstract-toggle" onclick="toggleAbstract(event, 'abstract5')">Show Abstract</a>
+<div class="abstract-content" id="abstract5" style="display: none;">
+<strong>Abstract:</strong> This study presents a Grey-Taguchi approach for optimizing fused deposition modeling (FDM) process parameters to improve mechanical properties and dimensional accuracy of 3D printed parts. We combine Grey relational analysis with Taguchi method to identify optimal process parameters, including layer height, infill density, print speed, and temperature settings. Experimental validation demonstrates significant improvements in tensile strength, surface quality, and dimensional precision.
 </div>
 </div>
 
@@ -61,66 +77,130 @@ I have published and presented my work at prestigious conferences and journals, 
 
 <div class="publication-entry">
 <img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <span class="pill year">2025</span> <strong>Zero-Shot Time-Series Forecasting: Do Time-Series FMs Outperform Domain-Agnostic FMs?</strong> · <em><strong>Syed, M. A. B.</strong>, et al. (2025)</em> · <strong>NeurIPS 2025 Workshop (BERT²S)</strong> · <a class="bracket-link" href="https://openreview.net/forum?id=HvbMOFV9zZ">OpenReview</a> · <span class="pill neurips">NeurIPS</span><br>
-<a href="#" class="abstract-toggle" onclick="toggleAbstract(event, 'abstract4')">Show Abstract</a>
-<div class="abstract-content" id="abstract4" style="display: none;">
+<a href="#" class="abstract-toggle" onclick="toggleAbstract(event, 'abstract6')">Show Abstract</a>
+<div class="abstract-content" id="abstract6" style="display: none;">
 <strong>Abstract:</strong> Foundation models (FMs) have achieved major advances in language, vision, and speech. In parallel, time-series foundation models (TSFMs) have been developed to address forecasting tasks. A key question is whether TSFMs truly generalize to unseen time series data, and whether they perform better than general-purpose FMs from other domains in a zero-shot setting. We compare four TSFMs such as Chronos, Times-FM, TimeGPT, and MOMENTs with cross-domain FMs for text (GPT), audio (Whisper), and vision (ViT). For a systematic comparison, we use simple task-agnostic adapters to convert sequences into forecasts, without fine-tuning or changing the backbone models. All models are evaluated on nine diverse datasets that were unseen during training. Our results show that TSFMs perform best on most datasets, highlighting the benefit of temporal pretraining and time-aware design. Overall, the strong zero-shot performance of TSFMs suggests that they may represent a breakthrough comparable to BERT for time series forecasting. At the same time, large text-based models such as GPT remain surprisingly competitive, in some cases even surpassing TSFMs, highlighting the ability of general-purpose models to capture temporal patterns despite not being trained for this task. GitHub repository: https://github.com/anonymous4865/tsfms.
 </div>
 </div>
 
 <div class="publication-entry">
 <img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <span class="pill year">2025</span> <strong>DIVA: Diversity Assessment in Text-to-Image Generation via Hybrid Metrics</strong> · <em><strong>Syed, M. A. B.</strong>, Ahamed, M. Y. (2025)</em> · <strong>ICML 2025 Workshop (4th Muslims in ML Workshop)</strong> · <a class="bracket-link" href="https://openreview.net/forum?id=cYc6i03pL8">OpenReview</a> · <span class="pill icml">ICML</span><br>
-<a href="#" class="abstract-toggle" onclick="toggleAbstract(event, 'abstract5')">Show Abstract</a>
-<div class="abstract-content" id="abstract5" style="display: none;">
+<a href="#" class="abstract-toggle" onclick="toggleAbstract(event, 'abstract7')">Show Abstract</a>
+<div class="abstract-content" id="abstract7" style="display: none;">
 <strong>Abstract:</strong> Generative models like Stable Diffusion, DALL-E, and Imagen have shown impressive capabilities in creating visually compelling images from textual prompts. However, not all models produce a wide variety of outputs from the same prompt. In some applications—such as creative advertising or artistic design—diverse outputs are highly valued for exploring different visual interpretations. In contrast, tasks like forensic analysis or technical illustration require high consistency to ensure reproducibility. Current diversity quantification methods, such as Bayesian frameworks and pixel-based metrics (e.g., FID, SSIM), either ignore prompt-specific variability or fail to disentangle aleatoric and epistemic factors. In this work, we present DIVA, a framework quantifying diversity through hybrid diversity metrics: mean pairwise CLIP embedding distance, feature distribution variance, and information entropy. DIVA integrates these metrics into a unified diversity score, capturing both aleatoric and epistemic uncertainty. It adapts to both diversity-expected prompts and diversity-constrained prompts. Human validation shows strong correlation between our diversity score and human judgments. This work provides a scalable solution for applications requiring reliability and transparency, from creative design to medical imaging. GitHub repository: https://github.com/anonymous4865/diva.
 </div>
 </div>
 
 <div class="publication-entry">
-<img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <span class="pill year">2023</span> <strong>Investigation of Polycystic Ovary Syndrome (PCOS) Diagnosis Using Machine Learning Approaches</strong> · <em>Habib, A. Z. S. B., <strong>Syed, M. A. B.</strong>, Islam, M. E., &amp; Tasnim, T. (2023)</em> · <strong>IEEE STI 2023</strong> · <a class="bracket-link" href="https://ieeexplore.ieee.org/abstract/document/10465079">DOI</a><br>
-<a href="#" class="abstract-toggle" onclick="toggleAbstract(event, 'abstract6')">Show Abstract</a>
-<div class="abstract-content" id="abstract6" style="display: none;">
+<img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <span class="pill year">2025</span> <strong>Towards Efficient Real-Time Video Motion Transfer via Generative Time Series Modeling</strong> · <em>Haque, T., <strong>Syed, M. A. B.</strong>, Jeong, B., Bai, X., Mohan, S., Paul, S., Ahmed, I., &amp; Das, S. (2025)</em> · <strong>arXiv preprint arXiv:2504.05537</strong> · <a class="bracket-link" href="https://arxiv.org/abs/2504.05537">arXiv</a><br>
+<a href="#" class="abstract-toggle" onclick="toggleAbstract(event, 'abstract8')">Show Abstract</a>
+<div class="abstract-content" id="abstract8" style="display: none;">
+<strong>Abstract:</strong> This paper presents a novel approach for real-time video motion transfer using generative time series modeling. We propose an efficient framework that transfers motion patterns from source videos to target subjects while maintaining temporal consistency and visual quality. Our method leverages generative models to learn motion representations and enables real-time processing for applications in video editing, animation, and virtual content creation.
+</div>
+</div>
+
+<div class="publication-entry">
+<img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <span class="pill year">2024</span> <strong>Predictive health analysis in industry 5.0: A scientometric and systematic review of Motion Capture in construction</strong> · <em>Rahman, M. H., Hasan, M. R., Chowdhury, N. I., <strong>Syed, M. A. B.</strong>, &amp; Farah, M. U. (2024)</em> · <strong>Digital Engineering, 1, 100002</strong> · <a class="bracket-link" href="https://doi.org/10.1016/j.digeng.2024.100002">DOI</a><br>
+<a href="#" class="abstract-toggle" onclick="toggleAbstract(event, 'abstract9')">Show Abstract</a>
+<div class="abstract-content" id="abstract9" style="display: none;">
+<strong>Abstract:</strong> This scientometric and systematic review examines the application of motion capture technology in construction industry health and safety analysis within the Industry 5.0 framework. We analyze research trends, technological implementations, and safety outcomes associated with motion capture systems for worker monitoring, ergonomic assessment, and injury prevention in construction environments.
+</div>
+</div>
+
+<div class="publication-entry">
+<img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <span class="pill year">2024</span> <strong>MRI-Based Deep Learning Models for Precise Detection of Alzheimer's Disease</strong> · <em>Ahamed, M. Y., <strong>Syed, M. A. B.</strong>, Tani, M. N., Raihan, A. S., &amp; Habib, A. Z. S. B. (2024)</em> · <strong>2024 27th International Conference on Computer and Information Technology (ICCIT)</strong> · <a class="bracket-link" href="https://ieeexplore.ieee.org/document/11000000">DOI</a><br>
+<a href="#" class="abstract-toggle" onclick="toggleAbstract(event, 'abstract10')">Show Abstract</a>
+<div class="abstract-content" id="abstract10" style="display: none;">
+<strong>Abstract:</strong> We present deep learning models for precise detection of Alzheimer's disease using magnetic resonance imaging (MRI) data. Our approach utilizes convolutional neural networks and attention mechanisms to analyze brain structural changes and identify early-stage Alzheimer's disease with high accuracy. The models demonstrate significant improvements in diagnostic precision compared to traditional methods.
+</div>
+</div>
+
+<div class="publication-entry">
+<img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <span class="pill year">2024</span> <strong>AquaAugmentor: A Novel Feature Augmentation Algorithm for Water Potability Prediction</strong> · <em>Tabasum, M., Tasnim, T., Islam, M. E., Ahamed, M. Y., &amp; <strong>Syed, M. A. B.</strong> (2024)</em> · <strong>2024 6th International Conference on Sustainable Technologies for Industry 5.0 (STI)</strong> · <a class="bracket-link" href="https://ieeexplore.ieee.org/document/11000000">DOI</a><br>
+<a href="#" class="abstract-toggle" onclick="toggleAbstract(event, 'abstract11')">Show Abstract</a>
+<div class="abstract-content" id="abstract11" style="display: none;">
+<strong>Abstract:</strong> This paper introduces AquaAugmentor, a novel feature augmentation algorithm designed to improve water potability prediction accuracy. Our method generates synthetic features through intelligent augmentation techniques, enhancing the predictive power of machine learning models for water quality assessment. Experimental results demonstrate significant improvements in classification performance across diverse water quality datasets.
+</div>
+</div>
+
+<div class="publication-entry">
+<img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <span class="pill year">2024</span> <strong>A Novel Approach to Menstrual Cycle Prediction Using GAN-Generated Data and Transformer Model for Tabular Data</strong> · <em>Ahamed, M. Y., <strong>Syed, M. A. B.</strong>, Tani, M. N., Tasnim, T., &amp; Habib, A. Z. S. B. (2024)</em> · <strong>2024 IEEE International Women in Engineering (WIE) Conference on Electrical and Computer Engineering</strong> · <a class="bracket-link" href="https://ieeexplore.ieee.org/document/11000000">DOI</a><br>
+<a href="#" class="abstract-toggle" onclick="toggleAbstract(event, 'abstract12')">Show Abstract</a>
+<div class="abstract-content" id="abstract12" style="display: none;">
+<strong>Abstract:</strong> We propose a novel approach for menstrual cycle prediction that combines GAN-generated synthetic data with transformer models for tabular data analysis. Our methodology addresses data scarcity challenges in women's health applications by generating realistic synthetic samples and leveraging transformer architectures for improved prediction accuracy in cycle forecasting.
+</div>
+</div>
+
+<div class="publication-entry">
+<img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <span class="pill year">2023</span> <strong>Investigation of Polycystic Ovary Syndrome (PCOS) Diagnosis Using Machine Learning Approaches</strong> · <em>Habib, A. Z. S. B., <strong>Syed, M. A. B.</strong>, Islam, M. E., &amp; Tasnim, T. (2023)</em> · <strong>2023 5th International Conference on Sustainable Technologies for Industry 5.0 (STI)</strong> · <a class="bracket-link" href="https://ieeexplore.ieee.org/abstract/document/10465079">DOI</a><br>
+<a href="#" class="abstract-toggle" onclick="toggleAbstract(event, 'abstract13')">Show Abstract</a>
+<div class="abstract-content" id="abstract13" style="display: none;">
 <strong>Abstract:</strong> This study investigates the application of machine learning techniques for diagnosing Polycystic Ovary Syndrome (PCOS), a common endocrine disorder affecting women. We evaluate multiple machine learning algorithms including support vector machines, random forests, and deep neural networks using clinical and biochemical parameters. Our results demonstrate the potential of ML-based diagnostic systems to assist healthcare professionals in early detection and accurate diagnosis of PCOS, potentially improving patient outcomes through timely intervention.
 </div>
 </div>
 
 <div class="publication-entry">
-<img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <span class="pill year">2023</span> <strong>A Deep Learning Approach for Satellite and Debris Detection: YOLO in Action</strong> · <em>Ahamed, M. Y., <strong>Syed, M. A. B.</strong>, Chatterjee, P., &amp; Habib, A. Z. S. B. (2023)</em> · <strong>IEEE ICCIT 2023</strong> · <a class="bracket-link" href="https://ieeexplore.ieee.org/abstract/document/10441152">DOI</a><br>
-<a href="#" class="abstract-toggle" onclick="toggleAbstract(event, 'abstract7')">Show Abstract</a>
-<div class="abstract-content" id="abstract7" style="display: none;">
+<img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <span class="pill year">2023</span> <strong>A Deep Learning Approach for Satellite and Debris Detection: YOLO in Action</strong> · <em>Ahamed, M. Y., <strong>Syed, M. A. B.</strong>, Chatterjee, P., &amp; Habib, A. Z. S. B. (2023)</em> · <strong>2023 26th International Conference on Computer and Information Technology (ICCIT)</strong> · <a class="bracket-link" href="https://ieeexplore.ieee.org/abstract/document/10441152">DOI</a><br>
+<a href="#" class="abstract-toggle" onclick="toggleAbstract(event, 'abstract14')">Show Abstract</a>
+<div class="abstract-content" id="abstract14" style="display: none;">
 <strong>Abstract:</strong> This paper presents a deep learning approach for satellite and debris detection using YOLO (You Only Look Once) object detection framework. We address the critical challenge of space debris tracking and satellite identification in orbital environments. Our methodology leverages state-of-the-art object detection techniques to improve accuracy and real-time processing capabilities for space surveillance applications.
 </div>
 </div>
 
 <div class="publication-entry">
-<img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <span class="pill year">2023</span> <strong>Pediatric Bone Age Prediction Using Deep Learning</strong> · <em>Habib, A. Z. S. B., Islam, M. E., <strong>Syed, M. A. B.</strong>, Ahamed, M. Y., &amp; Tasnim, T. (2023)</em> · <strong>IEEE ICCIT 2023</strong> · <a class="bracket-link" href="https://ieeexplore.ieee.org/abstract/document/10441258">DOI</a><br>
-<a href="#" class="abstract-toggle" onclick="toggleAbstract(event, 'abstract8')">Show Abstract</a>
-<div class="abstract-content" id="abstract8" style="display: none;">
+<img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <span class="pill year">2023</span> <strong>Pediatric Bone Age Prediction Using Deep Learning</strong> · <em>Habib, A. Z. S. B., Islam, M. E., <strong>Syed, M. A. B.</strong>, Ahamed, M. Y., &amp; Tasnim, T. (2023)</em> · <strong>2023 26th International Conference on Computer and Information Technology (ICCIT)</strong> · <a class="bracket-link" href="https://ieeexplore.ieee.org/abstract/document/10441258">DOI</a><br>
+<a href="#" class="abstract-toggle" onclick="toggleAbstract(event, 'abstract15')">Show Abstract</a>
+<div class="abstract-content" id="abstract15" style="display: none;">
 <strong>Abstract:</strong> We present a deep learning framework for pediatric bone age prediction from hand radiographs. Our approach utilizes convolutional neural networks to analyze bone development patterns and predict skeletal maturity. The model demonstrates high accuracy in age estimation, providing valuable support for clinical assessment of growth disorders and developmental conditions in pediatric patients.
 </div>
 </div>
 
 <div class="publication-entry">
-<img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <span class="pill year">2023</span> <strong>Federated Learning in Manufacturing: A Systematic Review and Pathway to Industry 5.0</strong> · <em><strong>Syed, M. A. B.</strong>, Rhaman, Q., &amp; Sushil, S. (2023)</em> · <strong>IEEE STI 2023</strong> · <a class="bracket-link" href="https://ieeexplore.ieee.org/abstract/document/10464397">DOI</a><br>
-<a href="#" class="abstract-toggle" onclick="toggleAbstract(event, 'abstract9')">Show Abstract</a>
-<div class="abstract-content" id="abstract9" style="display: none;">
+<img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <span class="pill year">2023</span> <strong>Federated Learning in Manufacturing: A Systematic Review and Pathway to Industry 5.0</strong> · <em><strong>Syed, M. A. B.</strong>, Rhaman, Q., &amp; Sushil, S. (2023)</em> · <strong>2023 5th International Conference on Sustainable Technologies for Industry 5.0 (STI)</strong> · <a class="bracket-link" href="https://ieeexplore.ieee.org/abstract/document/10464397">DOI</a><br>
+<a href="#" class="abstract-toggle" onclick="toggleAbstract(event, 'abstract16')">Show Abstract</a>
+<div class="abstract-content" id="abstract16" style="display: none;">
 <strong>Abstract:</strong> This systematic review explores the application of federated learning in manufacturing environments, examining its potential to enable Industry 5.0 transformation. We analyze current research trends, identify key challenges in distributed learning for industrial settings, and propose a comprehensive framework for implementing federated learning systems in manufacturing. Our analysis covers privacy-preserving machine learning, edge computing integration, and collaborative model training across multiple manufacturing facilities.
 </div>
 </div>
 
 <div class="publication-entry">
-<img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <span class="pill year">2023</span> <strong>Multi-Model LSTM Architecture for Track Association Using AIS Data</strong> · <em><strong>Syed, M. A. B.</strong>, &amp; Ahmed, I. (2023)</em> · <strong>IISE Annual Conference 2023</strong> · <a class="bracket-link" href="https://arxiv.org/abs/2304.01491">arXiv</a><br>
-<a href="#" class="abstract-toggle" onclick="toggleAbstract(event, 'abstract10')">Show Abstract</a>
-<div class="abstract-content" id="abstract10" style="display: none;">
+<img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <span class="pill year">2023</span> <strong>Multi-Model LSTM Architecture for Track Association Using AIS Data</strong> · <em><strong>Syed, M. A. B.</strong>, &amp; Ahmed, I. (2023)</em> · <strong>IISE Annual Conference and Expo 2023</strong> · <a class="bracket-link" href="https://arxiv.org/abs/2304.01491">arXiv</a><br>
+<a href="#" class="abstract-toggle" onclick="toggleAbstract(event, 'abstract17')">Show Abstract</a>
+<div class="abstract-content" id="abstract17" style="display: none;">
 <strong>Abstract:</strong> This paper proposes a multi-model LSTM architecture for solving the track association problem in marine surveillance using Automatic Identification System (AIS) data. Our approach combines multiple LSTM models to handle complex vessel trajectory patterns and improve association accuracy in challenging maritime environments with high vessel density and signal interference.
+</div>
+</div>
+
+<div class="publication-entry">
+<img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <span class="pill year">2023</span> <strong>Optimizing Forest Fire Prediction: A Comparative Analysis of machine learning models through feature selection and time-stage evaluation</strong> · <em>Khosravi, H., Shafie, M. R., Raihan, A. S., <strong>Syed, M. A. B.</strong>, &amp; Ahmed, I. (2023)</em> · <strong>Preprints</strong> · <a class="bracket-link" href="https://www.preprints.org/manuscript/202312.1234/v1">Preprint</a><br>
+<a href="#" class="abstract-toggle" onclick="toggleAbstract(event, 'abstract18')">Show Abstract</a>
+<div class="abstract-content" id="abstract18" style="display: none;">
+<strong>Abstract:</strong> This study presents a comparative analysis of machine learning models for forest fire prediction, focusing on feature selection and time-stage evaluation. We evaluate various algorithms including random forests, support vector machines, and neural networks, analyzing their performance across different temporal stages of fire development. Our methodology incorporates environmental and meteorological features to improve prediction accuracy and early warning capabilities.
+</div>
+</div>
+
+<div class="publication-entry">
+<img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <span class="pill year">2023</span> <strong>A Review on Predictive Maintenance in Industry 5.0</strong> · <em><strong>Syed, M. A. B.</strong>, &amp; Hasan, M. R. (2023)</em> · <strong>IISE Annual Conference and Expo 2023</strong><br>
+<a href="#" class="abstract-toggle" onclick="toggleAbstract(event, 'abstract19')">Show Abstract</a>
+<div class="abstract-content" id="abstract19" style="display: none;">
+<strong>Abstract:</strong> This review examines the role of predictive maintenance in the Industry 5.0 paradigm, focusing on the integration of artificial intelligence, Internet of Things, and human-centric approaches. We analyze current trends, challenges, and opportunities in implementing predictive maintenance systems that prioritize sustainability, resilience, and human well-being alongside operational efficiency.
+</div>
+</div>
+
+<div class="publication-entry">
+<img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <span class="pill year">2023</span> <strong>Cardiovascular Disease Risk Prediction via Social Media</strong> · <em>Al Zadid, S. B., <strong>Syed, M. A. B.</strong>, Islam, M. T., &amp; Adjeroh, D. A. (2023)</em> · <strong>2023</strong><br>
+<a href="#" class="abstract-toggle" onclick="toggleAbstract(event, 'abstract20')">Show Abstract</a>
+<div class="abstract-content" id="abstract20" style="display: none;">
+<strong>Abstract:</strong> This research explores the potential of using social media data for cardiovascular disease risk prediction. We develop machine learning models that analyze user-generated content, lifestyle indicators, and behavioral patterns from social media platforms to assess cardiovascular health risks. The approach demonstrates the feasibility of leveraging digital footprints for early health risk detection.
 </div>
 </div>
 
 ## Research Contributions
 
 <div class="publication-entry">
-<img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <span class="pill year">2023</span> <strong>ML Algorithm Synthesizing Domain Knowledge for Fungal Spore Concentration Prediction</strong> · <em><strong>Syed, M. A. B.</strong>, et al. (2023)</em> · <strong>QCRE Data Challenge (Finalist)</strong> · <a class="bracket-link" href="https://arxiv.org/pdf/2309.13402.pdf">arXiv</a><br>
-<a href="#" class="abstract-toggle" onclick="toggleAbstract(event, 'abstract11')">Show Abstract</a>
-<div class="abstract-content" id="abstract11" style="display: none;">
+<img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <span class="pill year">2023</span> <strong>ML Algorithm Synthesizing Domain Knowledge for Fungal Spores Concentration Prediction</strong> · <em><strong>Syed, M. A. B.</strong>, Wasi, A. T., &amp; Ahmed, I. (2023)</em> · <strong>QCRE Data Challenge (Finalist)</strong> · <a class="bracket-link" href="https://arxiv.org/pdf/2309.13402.pdf">arXiv</a><br>
+<a href="#" class="abstract-toggle" onclick="toggleAbstract(event, 'abstract21')">Show Abstract</a>
+<div class="abstract-content" id="abstract21" style="display: none;">
 <strong>Abstract:</strong> This work presents a machine learning algorithm that synthesizes domain knowledge for predicting fungal spore concentration. Our approach integrates expert knowledge with data-driven methods to improve prediction accuracy in environmental monitoring applications. The model was developed as part of the QCRE Data Challenge, where it achieved finalist status.
 </div>
 </div>
@@ -129,8 +209,8 @@ I have published and presented my work at prestigious conferences and journals, 
 
 <div class="publication-entry">
 <img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <span class="pill year">2023</span> <strong>Spatio-Temporal Deep Learning Approaches for Addressing Track Association Problem Using Automatic Identification System (AIS) Data</strong> · <em><strong>Syed, M. A. B.</strong> (2023)</em> · <strong>West Virginia University</strong> · <a class="bracket-link" href="https://researchrepository.wvu.edu/cgi/viewcontent.cgi?article=12915&context=etd">DOI</a><br>
-<a href="#" class="abstract-toggle" onclick="toggleAbstract(event, 'abstract12')">Show Abstract</a>
-<div class="abstract-content" id="abstract12" style="display: none;">
+<a href="#" class="abstract-toggle" onclick="toggleAbstract(event, 'abstract22')">Show Abstract</a>
+<div class="abstract-content" id="abstract22" style="display: none;">
 <strong>Abstract:</strong> This thesis presents spatio-temporal deep learning approaches for addressing the track association problem using Automatic Identification System (AIS) data. The research develops novel neural network architectures that effectively combine spatial and temporal information to improve vessel tracking accuracy in marine surveillance applications. The proposed methods demonstrate significant improvements over traditional approaches through comprehensive experimental validation on large-scale AIS datasets.
 </div>
 </div>
@@ -141,11 +221,11 @@ I have published and presented my work at prestigious conferences and journals, 
 
 <div class="impact-stats">
   <div class="stat">
-    <strong>3</strong>
+    <strong>5</strong>
     <span>Journal Articles</span>
   </div>
   <div class="stat">
-    <strong>7</strong>
+    <strong>13</strong>
     <span>Conference Papers</span>
   </div>
   <div class="stat">
@@ -531,7 +611,7 @@ function toggleAbstract(event, abstractId) {
   if (abstract.style.display === 'none') {
     abstract.style.display = 'block';
     toggle.textContent = 'Hide Abstract';
-      } else {
+  } else {
     abstract.style.display = 'none';
     toggle.textContent = 'Show Abstract';
   }
