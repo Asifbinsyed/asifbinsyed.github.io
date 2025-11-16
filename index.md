@@ -6,9 +6,12 @@ toc_max_level: 4
 ---
 
 
-<img class="profile-picture" src="asif_headshot.webp" >
-
-👋 Hi there! I'm **Md Asif Bin Syed**, a *Sr. Supply Chain Data Analyst* at **The Home Depot**, the world's leading home improvement retailer. Leading the development of  offline reinforcement learning agents that reduce delivery failures by 4.5% ($6.5M retained revenue) and building ML Model for operational forecasting. 
+<div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 20px;">
+  <div style="flex: 1;">
+    <p style="margin: 0; padding: 0;">👋 Hi there! I'm **Md Asif Bin Syed**, a *Sr. Supply Chain Data Analyst* at **The Home Depot**, the world's leading home improvement retailer. Leading the development of  offline reinforcement learning agents that reduce delivery failures by 4.5% ($6.5M retained revenue) and building ML Model for operational forecasting.</p>
+  </div>
+  <img class="profile-picture" src="asif_headshot.webp" style="float: none; margin: 0;">
+</div> 
 
 I am a researcher specializing in **reinforcement learning**, **generative AI**, and **deep learning** across domains such as marine surveillance, medical diagnosis, supply chain optimization, and time series forecasting.
 
