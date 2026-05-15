@@ -19,10 +19,25 @@ toc_max_level: 4
   position: relative;
 }
 
+.intro-section {
+  font-family: 'Times New Roman', Times, Georgia, serif;
+}
+
 .intro-section p {
   margin: 0;
   padding: 0;
   text-align: justify;
+}
+
+.employment-note {
+  font-family: 'Times New Roman', Times, Georgia, serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #2c2c2c;
+}
+
+.employment-note a {
+  color: #2563eb;
 }
 
 .intro-picture {
@@ -158,21 +173,21 @@ I have published in venues including **ICML 2026**, **ICML Workshop'25**, **Neur
 <blockquote style="margin-left: 3.5em;">
     <div style="display: flex; align-items: left; margin-left: -3.5em;">2025 - </div>
     <img src="the-home-depot.png" alt="Employer 1" style="width: 24px; height: 24px; margin-right: 10px;">
-  <font size="3"> Working in <a href="https://www.homedepot.com" style="color: blue;">The Home Depot</a> leveraging machine learning and reinforcement learning to optimize our delivery network - using predictive models to forecast delivery times, route optimization algorithms to determine the most efficient delivery paths, and reinforcement learning to dynamically adjust delivery schedules based on real-time conditions.</font>
+  <span class="employment-note"> Working in <a href="https://www.homedepot.com">The Home Depot</a> leveraging machine learning and reinforcement learning to optimize our delivery network - using predictive models to forecast delivery times, route optimization algorithms to determine the most efficient delivery paths, and reinforcement learning to dynamically adjust delivery schedules based on real-time conditions.</span>
  <div style="display: flex; align-items: left; margin-left: -3.5em;">2024 - </div>
 </blockquote>
 
 <blockquote style="margin-left: 3.5em;">
     <img src="volvo.svg" alt="Employer 1" style="width: 24px; height: 24px; margin-right: 10px;">
-  <font size="3">leverage machine learning in <a href="https://www.homedepot.com" style="color: blue;">Volvo</a>  to optimize the  load for carrier  and forecasting the demand for inboud deliveries</font>
+  <span class="employment-note">leverage machine learning in <a href="https://www.volvo.com">Volvo</a> to optimize the load for carrier and forecasting the demand for inbound deliveries</span>
  <div style="display: flex; align-items: left; margin-left: -3.5em;">2023 - </div>
 </blockquote>
 
 <main markdown="1">
 
-<h2 id="publications">📄 Publications</h2>
+<h2 id="publications">📄 Selected Publications</h2>
 <hr>
-I have published and presented my work at prestigious conferences and journals, including ICML, Journal of Marine Science and Engineering, Sensors, IEEE conferences, and IISE, as well as workshops at various international venues. Selected highlights below, organized by year (newest first).
+I have published and presented my work at prestigious conferences and journals, including ICML, Journal of Marine Science and Engineering, Sensors, IEEE conferences, and IISE, as well as workshops at various international venues. A curated selection is listed below, organized by year (newest first).
 
 <h3 class="pub-year-heading" id="home-2026">2026</h3>
 
@@ -252,7 +267,6 @@ I have published and presented my work at prestigious conferences and journals, 
   list-style: none;
   padding: 0 !important;
   margin: 10px 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
   margin-left: 0 !important;
   padding-left: 0 !important;
 }
@@ -400,11 +414,15 @@ For language models, I'm working on reasoning models, process reward models (PRM
 </div>
 
 <style>
-/* Clean typography for homepage */
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  line-height: 1.4;
-  color: #333;
+/* Homepage content typography — match site-wide serif */
+main,
+.intro-section,
+.publication-entry,
+.pub-year-heading,
+.skills-list,
+.news-content,
+.employment-note {
+  font-family: 'Times New Roman', Times, Georgia, serif;
 }
 
 /* Social media badges - shields.io style matching the image */
@@ -604,9 +622,8 @@ main {
   box-sizing: border-box !important;
 }
 
-/* News and Updates section - academic serif typography */
+/* News and Updates section */
 .news-heading {
-  font-family: 'Times New Roman', Times, Georgia, 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
   font-size: 1.5em;
   font-weight: 700;
   color: #1a1a1a;
@@ -615,7 +632,6 @@ main {
 }
 
 .news-content {
-  font-family: 'Times New Roman', Times, Georgia, 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
   font-size: 16px;
   line-height: 1.5;
   color: #2c2c2c;
@@ -628,7 +644,6 @@ main {
 }
 
 .news-content ul li {
-  font-family: 'Times New Roman', Times, Georgia, 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
   font-size: 16px;
   line-height: 1.5;
   margin-bottom: 0;
@@ -702,7 +717,6 @@ main {
 }
 
 .news-content ul li a {
-  font-family: 'Times New Roman', Times, Georgia, 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
   font-size: 16px;
   font-weight: 700;
   color: #1a1a1a;
