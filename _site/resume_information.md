@@ -86,7 +86,7 @@
 
 ## Skills
 
-- **Technical**: SQL, Git, Docker, Linux, Kubernetes, Vertex AI, PowerBI, GCP, Minitab, SharePoint, Power Automate, Power Apps, Excel (VBA, Solver, Pivot, PowerQuery), Tableau, SAP Ariba, SAP MDCS, SolidWorks, MS Project, MS Access, CPLEX.  
+- **Technical**: SQL, Git, Docker, Linux, Kubernetes, nginx, vLLM, Ray, SLURM, HPC clusters, Vertex AI, PowerBI, GCP, Minitab, SharePoint, Power Automate, Power Apps, Excel (VBA, Solver, Pivot, PowerQuery), Tableau, SAP Ariba, SAP MDCS, SolidWorks, MS Project, MS Access, CPLEX.  
 - **Programming**: Python (PyTorch, TensorFlow, Keras, Scikit-learn, Pandas, Numpy, Matplotlib, etc.), C.  
 - **Databases**: BigQuery, MySQL, PostgreSQL.  
 - **Web Dev**: HTML, CSS.  

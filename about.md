@@ -72,10 +72,12 @@ I have published extensively in top-tier journals and conferences, including ICM
 - **Data Analysis**: MS Excel, Tableau, Power BI, Minitab
 
 ### MLOps & DevOps
-- **Containerization**: Docker, Kubernetes
+- **Containerization**: Docker, Kubernetes, nginx
 - **CI/CD**: Jenkins, Git, GitHub Actions
 - **Cloud Platforms**: AWS, Azure ML, GCP, Vertex AI
 - **MLOps Tools**: MLflow, DVC, Weights & Biases
+- **Distributed ML & HPC**: Ray, SLURM, HPC clusters
+- **Model Serving**: vLLM, FastAPI, Flask
 
 ### Databases & Web Development
 - **Databases**: BigQuery, MySQL, PostgreSQL

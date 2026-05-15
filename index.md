@@ -256,9 +256,10 @@ I have published and presented my work at prestigious conferences and journals, 
   <li><strong>ML/DL Frameworks:</strong> Scikit-learn, Keras, TensorFlow, PyTorch</li>
   <li><strong>Data Analysis:</strong> MS Excel, Tableau, Power BI, Minitab</li>
   <li><strong>Cloud Platforms:</strong> AWS, Azure ML, GCP, Vertex AI</li>
-  <li><strong>MLOps & DevOps:</strong> Docker, Kubernetes, Jenkins, Git, GitHub Actions, MLflow, DVC, Weights & Biases</li>
+  <li><strong>MLOps & DevOps:</strong> Docker, Kubernetes, Jenkins, Git, GitHub Actions, MLflow, DVC, Weights & Biases, nginx</li>
+  <li><strong>Distributed ML & HPC:</strong> Ray, SLURM, HPC clusters</li>
   <li><strong>Databases:</strong> BigQuery, MySQL, PostgreSQL</li>
-  <li><strong>Model Deployment:</strong> FastAPI, Flask, TensorFlow Serving, Model Monitoring, A/B Testing, CI/CD Pipelines</li>
+  <li><strong>Model Deployment:</strong> FastAPI, Flask, vLLM, TensorFlow Serving, Model Monitoring, A/B Testing, CI/CD Pipelines</li>
   <li><strong>Other Tools:</strong> SAP Ariba, SAP MDCS, SolidWorks, MS Project, MS Access, CPLEX, HTML, CSS</li>
 </ul>
 
