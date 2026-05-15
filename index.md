@@ -13,7 +13,7 @@ toc_max_level: 4
 I am a researcher specializing in **reinforcement learning**, **generative AI**, and **deep learning** across domains such as marine surveillance, medical diagnosis, supply chain optimization, and time series forecasting.
 <img class="profile-picture" src="ICML-logo.svg" >
 <img class="profile-picture" src="neurips-navbar-logo.svg" >
-I have published in venues including **ICML Workshop'25**, **NeurIPS Workshop'25**, **IEEE conferences**, with contributions in time series foundation models, diversity quantification, and physics-informed neural networks.  
+I have published in venues including **ICML 2026**, **ICML Workshop'25**, **NeurIPS Workshop'25**, and **IEEE conferences**, with contributions in time series foundation models, domain-level benchmarking, diversity quantification, and physics-informed neural networks.  
 📄 [View my complete publications →](publications)
 
 <blockquote style="margin-left: 3.5em;">
@@ -33,8 +33,36 @@ I have published in venues including **ICML Workshop'25**, **NeurIPS Workshop'25
 
 <h2 id="whats-new">🆕 What's New</h2>
 <hr>
-<div style="max-height: 250px; overflow-y: auto; padding: 10px; line-height: 1.25;">
+<div style="max-height: 320px; overflow-y: auto; padding: 10px; line-height: 1.25;">
   <ul style="list-style: none; margin: 0; padding: 0;">
+    <li style="margin-bottom: 10px;">
+      <span style="font-weight: bold; margin-right: 10px;">Apr 2026:</span>
+      <span>Paper accepted at <b>ICML 2026</b>:
+        <a href="https://openreview.net/forum?id=W2eEMPjzIQ&noteId=4ckkULe0sC"><b>"Position: Time-Series Foundation Models Require Explicit Domain-Level Benchmarks"</b></a>
+      </span>
+    </li>
+    <li style="margin-bottom: 10px;">
+      <span style="font-weight: bold; margin-right: 10px;">Mar 2026:</span>
+      <span>Project <b>Adhawk</b>—an agentic human-in-the-loop tool to curate customer lists using SQL and natural language—named a <b>Finalist</b> in the DSA Hackathon 2025 at The Home Depot</span>
+    </li>
+    <li style="margin-bottom: 10px;">
+      <span style="font-weight: bold; margin-right: 10px;">Jan 2026:</span>
+      <span>Published in <i>Multimedia Tools and Applications</i> (Springer):
+        <a href="https://link.springer.com/article/10.1007/s11042-026-21138-4"><b>"Towards Efficient Real-Time Video Motion Transfer via Generative Time Series Modeling"</b></a>
+      </span>
+    </li>
+    <li style="margin-bottom: 10px;">
+      <span style="font-weight: bold; margin-right: 10px;">Dec 2025:</span>
+      <span>Paper accepted at <b>NeurIPS Workshop'25</b>:
+        <a href="https://openreview.net/forum?id=HvbMOFV9zZ"><b>"Zero Shot Time Series Forecasting: Do Time Series FMs Outperform Cross Modal FMs?"</b></a>
+      </span>
+    </li>
+    <li style="margin-bottom: 10px;">
+      <span style="font-weight: bold; margin-right: 10px;">Jul 2025:</span>
+      <span>Paper presented at <b>ICML Workshop'25</b> (Muslims in ML):
+        <a href="https://openreview.net/forum?id=cYc6i03pL8"><b>"DIVA: Diversity Assessment in Text-to-Image Generation via Hybrid Metrics"</b></a>
+      </span>
+    </li>
     <li style="margin-bottom: 10px;">
       <span style="font-weight: bold; margin-right: 10px;">Nov 2024:</span>
       <span>Promoted to Sr. data analyst in supply chain at The Home Depot</span>
@@ -126,20 +154,24 @@ I have published in venues including **ICML Workshop'25**, **NeurIPS Workshop'25
 
 <h2 id="research-interest">🔬Research Interest</h2>
 <hr>
-My research interests span a wide range of areas in data science and artificial intelligence. I'm passionate about machine learning, deep learning, natural language processing (NLP), and large language model (LLM) applications in supply chain management. Additionally, I have a deep interest in causal inference and graph neural network (GNN) applications in digital health and chemical composition analysis. My recent work focuses on deep learning applications in marine surveillance. I'm also keen on exploring missing value imputation techniques and assessing their credibility in various data analysis contexts.
+Most of my work lately falls into two areas: time-series foundation models, and agentic systems built on top of large language models.
+
+On the time-series side, I care about whether these models actually hold up when you split benchmarks by domain, how they perform zero-shot on new datasets, and how generative time-series methods can support things like real-time video motion transfer. In industry, I've also spent a lot of time on offline reinforcement learning and forecasting for supply chain problems at The Home Depot.
+
+For language models, I'm working on reasoning models, process reward models (PRMs), tool calling, and agentic AI security—the practical question is how to get reliable multi-step behavior without something breaking once you put the system in front of real users. One example is Adhawk, a human-in-the-loop tool we built to curate customer lists using natural language and SQL. I also study how to measure diversity in generative image models, and I still publish on physics-informed deep learning for marine surveillance when the problem calls for it. If you're working on any of these topics and think there's overlap, I'm happy to collaborate—[get in touch](contact).
 
 <h2 id="publications">📄 Publications</h2>
 <hr>
-I have published and presented my work at prestigious conferences and journals, including Journal of Marine Science and Engineering, Sensors, IEEE conferences, and IISE, as well as workshops at various international venues.
+I have published and presented my work at prestigious conferences and journals, including ICML, Journal of Marine Science and Engineering, Sensors, IEEE conferences, and IISE, as well as workshops at various international venues.
 
 <div class="research-highlights">
   <div class="highlight-stat">
-    <strong>2</strong>
+    <strong>3</strong>
     <span>Journal Articles</span>
   </div>
   <div class="highlight-stat">
-    <strong>6</strong>
-    <span>Conference Papers</span>
+    <strong>8</strong>
+now     <span>Conference Papers</span>
   </div>
   <div class="highlight-stat">
     <strong>1</strong>
@@ -152,13 +184,15 @@ I have published and presented my work at prestigious conferences and journals, 
 </div>
 
 <div class="research-areas">
+  <span class="area-tag">Time Series FMs</span>
+  <span class="area-tag">Agentic AI</span>
+  <span class="area-tag">Reasoning Models</span>
+  <span class="area-tag">Tool Calling</span>
+  <span class="area-tag">Reinforcement Learning</span>
+  <span class="area-tag">Generative AI</span>
+  <span class="area-tag">LLM Security</span>
+  <span class="area-tag">Supply Chain ML</span>
   <span class="area-tag">Marine AI</span>
-  <span class="area-tag">Deep Learning</span>
-  <span class="area-tag">Medical AI</span>
-  <span class="area-tag">Track Association</span>
-  <span class="area-tag">NLP</span>
-  <span class="area-tag">Computer Vision</span>
-  <span class="area-tag">Federated Learning</span>
 </div>
 
 <a href="publications" class="btn btn-primary">View All Publications →</a>

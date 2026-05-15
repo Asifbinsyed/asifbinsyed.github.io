@@ -8,13 +8,19 @@ toc_max_level: 4
 
 # Publications
 
-I have published and presented my work at prestigious conferences and journals, including Journal of Marine Science and Engineering, Sensors, IEEE conferences, and IISE, as well as workshops at various international venues.
+I have published and presented my work at prestigious conferences and journals, including ICML, Journal of Marine Science and Engineering, Sensors, IEEE conferences, and IISE, as well as workshops at various international venues.
 
 You can click on the keywords below to explore my research in specific areas.
 
 
 
 ## Journal Articles
+
+<div class="publication-entry">
+▪ <strong>Towards Efficient Real-Time Video Motion Transfer via Generative Time Series Modeling</strong><br>
+<em>Haque, T., <strong>Syed, M. A. B.</strong>, Jeong, B., Bai, X., Mohan, S., Paul, S., Ahmed, I., &amp; Das, S. (2026)</em><br>
+<strong>Multimedia Tools and Applications (Springer)</strong> · <a class="bracket-link" href="https://link.springer.com/article/10.1007/s11042-026-21138-4">Springer</a> · <a class="bracket-link" href="https://doi.org/10.1007/s11042-026-21138-4">DOI</a> · <span class="pill deep">Deep Learning</span> <span class="pill prediction">Time Series</span> <span class="pill domain">Video Motion Transfer</span>
+</div>
 
 <div class="publication-entry">
 ▪ <strong>Advancing Marine Surveillance: A Hybrid Approach of Physics Infused Neural Network for Enhanced Vessel Tracking Using Automatic Identification System Data</strong><br>
@@ -35,6 +41,12 @@ You can click on the keywords below to explore my research in specific areas.
 </div>
 
 ## Conference Papers
+
+<div class="publication-entry">
+▪ <strong>Position: Time-Series Foundation Models Require Explicit Domain-Level Benchmarks</strong><br>
+<em><strong>Syed, M. A. B.</strong>, Ahamed, M. Y., &amp; Wasi, A. T. (2026)</em><br>
+<strong>ICML 2026</strong> · <a class="bracket-link" href="https://openreview.net/forum?id=W2eEMPjzIQ&noteId=4ckkULe0sC">OpenReview</a> · <span class="pill dataset">Time Series</span> <span class="pill domain">Benchmarking</span> <span class="pill prediction">Foundation Models</span>
+</div>
 
 <div class="publication-entry">
 ▪ <strong>Investigation of Polycystic Ovary Syndrome (PCOS) Diagnosis Using Machine Learning Approaches</strong><br>
@@ -68,8 +80,14 @@ You can click on the keywords below to explore my research in specific areas.
 
 <div class="publication-entry">
 ▪ <strong>Zero Shot Time Series Forecasting: Do Time Series FMs Outperform Cross Modal FMs?</strong><br>
+<em><strong>Syed, M. A. B.</strong>, &amp; Ahamed, M. Y. (2025)</em><br>
+<strong>NeurIPS'25 Workshop</strong> · <a class="bracket-link" href="https://openreview.net/forum?id=HvbMOFV9zZ">OpenReview</a> · <span class="pill dataset">Time Series</span> <span class="pill prediction">Foundation Models</span> <span class="pill llm">LLM</span>
+</div>
+
+<div class="publication-entry">
+▪ <strong>DIVA: Diversity Assessment in Text-to-Image Generation via Hybrid Metrics</strong><br>
 <em><strong>Syed, M. A. B.</strong>, et al. (2025)</em><br>
-<strong>NeurIPS'25 Workshop</strong> · <a class="bracket-link" href="https://openreview.net/your-paper-id">OpenReview</a> · <span class="pill dataset">Dataset</span> <span class="pill nlp">NLP</span> <span class="pill llm">LLM</span>
+<strong>ICML'25 Workshop (Muslims in ML)</strong> · <a class="bracket-link" href="https://openreview.net/forum?id=cYc6i03pL8">OpenReview</a> · <span class="pill dataset">Diversity</span> <span class="pill nlp">Generative AI</span> <span class="pill llm">Computer Vision</span>
 </div>
 
 ## Research Contributions
@@ -95,11 +113,11 @@ You can click on the keywords below to explore my research in specific areas.
 
 <div class="impact-stats">
   <div class="stat">
-    <strong>2</strong>
+    <strong>3</strong>
     <span>Journal Articles</span>
   </div>
   <div class="stat">
-    <strong>6</strong>
+    <strong>8</strong>
     <span>Conference Papers</span>
   </div>
   <div class="stat">
@@ -114,7 +132,7 @@ You can click on the keywords below to explore my research in specific areas.
 
 ---
 
-*Last updated: September 2024*
+*Last updated: May 2026*
 
 <style>
 /* Ultra-compact design matching the example */

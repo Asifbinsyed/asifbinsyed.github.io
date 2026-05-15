@@ -53,12 +53,13 @@ I'm **Md Asif Bin Syed**, a *Sr. Supply Chain Data Analyst* at **The Home Depot*
 
 ## Research & Publications
 
-I have published extensively in top-tier journals and conferences, including Journal of Marine Science and Engineering, Sensors, IEEE conferences, and IISE. My research spans:
+I have published extensively in top-tier journals and conferences, including ICML, Journal of Marine Science and Engineering, Sensors, IEEE conferences, and IISE. My research spans:
 
 - **Marine AI & Surveillance**: Deep learning approaches for vessel tracking using AIS data
 - **Medical AI**: PCOS diagnosis, pediatric bone age prediction, cardiovascular disease prediction
 - **Computer Vision**: Satellite and debris detection using YOLO
 - **Federated Learning**: Applications in manufacturing and Industry 5.0
+- **Time Series Foundation Models**: Domain-level benchmarking and evaluation ([ICML 2026](https://openreview.net/forum?id=W2eEMPjzIQ&noteId=4ckkULe0sC))
 - **NLP & Education**: AI chatbot adoption analysis using PLS-SEM
 
 [View my complete publications →](publications)
