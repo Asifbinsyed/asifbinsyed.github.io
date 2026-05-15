@@ -8,7 +8,7 @@ toc_max_level: 4
 
 # Publications
 
-I have published and presented my work at prestigious conferences and journals, including Journal of Marine Science and Engineering, Sensors, IEEE conferences, and IISE, as well as workshops at various international venues.
+I have published and presented my work at prestigious conferences and journals, including ICML, Journal of Marine Science and Engineering, Sensors, IEEE conferences, and IISE, as well as workshops at various international venues.
 
 <div class="affiliations-section">
   <div class="affiliations-logos">
@@ -32,6 +32,10 @@ I have published and presented my work at prestigious conferences and journals, 
 </div>
 
 ## Journal Articles
+
+<div class="publication-entry">
+<img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <span class="pill year">2026</span> <strong>Towards Efficient Real-Time Video Motion Transfer via Generative Time Series Modeling</strong> · <em>Haque, T., <strong>Syed, M. A. B.</strong>, Jeong, B., Bai, X., Mohan, S., Paul, S., Ahmed, I., &amp; Das, S. (2026)</em> · <strong>Multimedia Tools and Applications (Springer)</strong> · <a class="bracket-link" href="https://link.springer.com/article/10.1007/s11042-026-21138-4">Springer</a> · <a class="bracket-link" href="https://doi.org/10.1007/s11042-026-21138-4">DOI</a> · <span class="pill icml">Published</span><br>
+</div>
 
 <div class="publication-entry">
 <img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <span class="pill year">2025</span> <strong>A systematic review of time series algorithms and analytics in predictive maintenance</strong> · <em><strong>Syed, M. A. B.</strong>, Hasan, M. R., Chowdhury, N. I., Rahman, M. H., &amp; Ahmed, I. (2025)</em> · <strong>Decision Analytics Journal, 100573</strong> · <a class="bracket-link" href="https://www.sciencedirect.com/science/article/pii/S2772662225000573">DOI</a><br>
@@ -76,6 +80,10 @@ I have published and presented my work at prestigious conferences and journals, 
 ## Conference Papers
 
 <div class="publication-entry">
+<img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <span class="pill year">2026</span> <strong>Position: Time-Series Foundation Models Require Explicit Domain-Level Benchmarks</strong> · <em><strong>Syed, M. A. B.</strong>, Ahamed, M. Y., &amp; Wasi, A. T. (2026)</em> · <strong>ICML 2026</strong> · <a class="bracket-link" href="https://openreview.net/forum?id=W2eEMPjzIQ&noteId=4ckkULe0sC">OpenReview</a> · <span class="pill icml">ICML</span><br>
+</div>
+
+<div class="publication-entry">
 <img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <span class="pill year">2025</span> <strong>Zero-Shot Time-Series Forecasting: Do Time-Series FMs Outperform Domain-Agnostic FMs?</strong> · <em><strong>Syed, M. A. B.</strong>, et al. (2025)</em> · <strong>NeurIPS 2025 Workshop (BERT²S)</strong> · <a class="bracket-link" href="https://openreview.net/forum?id=HvbMOFV9zZ">OpenReview</a> · <span class="pill neurips">NeurIPS</span><br>
 <a href="#" class="abstract-toggle" onclick="toggleAbstract(event, 'abstract6')">Show Abstract</a>
 <div class="abstract-content" id="abstract6" style="display: none;">
@@ -88,14 +96,6 @@ I have published and presented my work at prestigious conferences and journals, 
 <a href="#" class="abstract-toggle" onclick="toggleAbstract(event, 'abstract7')">Show Abstract</a>
 <div class="abstract-content" id="abstract7" style="display: none;">
 <strong>Abstract:</strong> Generative models like Stable Diffusion, DALL-E, and Imagen have shown impressive capabilities in creating visually compelling images from textual prompts. However, not all models produce a wide variety of outputs from the same prompt. In some applications—such as creative advertising or artistic design—diverse outputs are highly valued for exploring different visual interpretations. In contrast, tasks like forensic analysis or technical illustration require high consistency to ensure reproducibility. Current diversity quantification methods, such as Bayesian frameworks and pixel-based metrics (e.g., FID, SSIM), either ignore prompt-specific variability or fail to disentangle aleatoric and epistemic factors. In this work, we present DIVA, a framework quantifying diversity through hybrid diversity metrics: mean pairwise CLIP embedding distance, feature distribution variance, and information entropy. DIVA integrates these metrics into a unified diversity score, capturing both aleatoric and epistemic uncertainty. It adapts to both diversity-expected prompts and diversity-constrained prompts. Human validation shows strong correlation between our diversity score and human judgments. This work provides a scalable solution for applications requiring reliability and transparency, from creative design to medical imaging. GitHub repository: https://github.com/anonymous4865/diva.
-</div>
-</div>
-
-<div class="publication-entry">
-<img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <span class="pill year">2025</span> <strong>Towards Efficient Real-Time Video Motion Transfer via Generative Time Series Modeling</strong> · <em>Haque, T., <strong>Syed, M. A. B.</strong>, Jeong, B., Bai, X., Mohan, S., Paul, S., Ahmed, I., &amp; Das, S. (2025)</em> · <strong>arXiv preprint arXiv:2504.05537</strong> · <a class="bracket-link" href="https://arxiv.org/abs/2504.05537">arXiv</a><br>
-<a href="#" class="abstract-toggle" onclick="toggleAbstract(event, 'abstract8')">Show Abstract</a>
-<div class="abstract-content" id="abstract8" style="display: none;">
-<strong>Abstract:</strong> This paper presents a novel approach for real-time video motion transfer using generative time series modeling. We propose an efficient framework that transfers motion patterns from source videos to target subjects while maintaining temporal consistency and visual quality. Our method leverages generative models to learn motion representations and enables real-time processing for applications in video editing, animation, and virtual content creation.
 </div>
 </div>
 

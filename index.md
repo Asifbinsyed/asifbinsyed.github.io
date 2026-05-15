@@ -61,7 +61,7 @@ toc_max_level: 4
 </style> 
 I am a researcher specializing in **reinforcement learning**, **generative AI**, and **deep learning** across domains such as marine surveillance, medical diagnosis, supply chain optimization, and time series forecasting. Currently pursuing an <strong>MS in Computer Science</strong> with a specialization in Machine Learning at <strong>Georgia Institute of Technology</strong>.
 
-I have published in venues including **ICML Workshop'25**, **NeurIPS Workshop'25**, **IEEE conferences**, with contributions in time series foundation models, diversity quantification, and physics-informed neural networks. My work focuses on building production-grade ML systems that solve real-world business problems while advancing the state-of-the-art in machine learning research.  
+I have published in venues including **ICML 2026**, **ICML Workshop'25**, **NeurIPS Workshop'25**, and **IEEE conferences**, with contributions in time series foundation models, domain-level benchmarking, diversity quantification, and physics-informed neural networks. My work focuses on building production-grade ML systems that solve real-world business problems while advancing the state-of-the-art in machine learning research.  
 
 <div class="affiliations-section">
   <div class="affiliations-logos">
@@ -172,8 +172,12 @@ I have published in venues including **ICML Workshop'25**, **NeurIPS Workshop'25
 
 <h2 id="publications">📄 Publications</h2>
 <hr>
-I have published and presented my work at prestigious conferences and journals, including Journal of Marine Science and Engineering, Sensors, IEEE conferences, and IISE, as well as workshops at various international venues.
+I have published and presented my work at prestigious conferences and journals, including ICML, Journal of Marine Science and Engineering, Sensors, IEEE conferences, and IISE, as well as workshops at various international venues.
 
+
+<div class="publication-entry">
+<img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <span class="pill year">2026</span> <strong>Position: Time-Series Foundation Models Require Explicit Domain-Level Benchmarks</strong> · <em><strong>Syed, M. A. B.</strong>, Ahamed, M. Y., &amp; Wasi, A. T. (2026)</em> · <strong>ICML 2026</strong> · <a class="bracket-link" href="https://openreview.net/forum?id=W2eEMPjzIQ&noteId=4ckkULe0sC">OpenReview</a> · <span class="pill icml">ICML</span><br>
+</div>
 
 <div class="publication-entry">
 <img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <span class="pill year">2025</span> <strong>Zero-Shot Time-Series Forecasting: Do Time-Series FMs Outperform Domain-Agnostic FMs?</strong> · <em><strong>Syed, M. A. B.</strong>, et al. (2025)</em> · <strong>NeurIPS 2025 Workshop (BERT²S)</strong> · <a class="bracket-link" href="https://openreview.net/forum?id=HvbMOFV9zZ">OpenReview</a> · <span class="pill neurips">NeurIPS</span><br>
@@ -200,7 +204,7 @@ I have published and presented my work at prestigious conferences and journals, 
 </div>
 
 <div class="publication-entry">
-<img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <span class="pill year">2025</span> <strong>Towards Efficient Real-Time Video Motion Transfer via Generative Time Series Modeling</strong> · <em>Haque, T., <strong>Syed, M. A. B.</strong>, Jeong, B., Bai, X., Mohan, S., Paul, S., Ahmed, I., &amp; Das, S. (2025)</em> · <strong>arXiv preprint arXiv:2504.05537</strong> · <a class="bracket-link" href="https://arxiv.org/abs/2504.05537">arXiv</a><br>
+<img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px; display: inline-block;"> <span class="pill year">2026</span> <strong>Towards Efficient Real-Time Video Motion Transfer via Generative Time Series Modeling</strong> · <em>Haque, T., <strong>Syed, M. A. B.</strong>, Jeong, B., Bai, X., Mohan, S., Paul, S., Ahmed, I., &amp; Das, S. (2026)</em> · <strong>Multimedia Tools and Applications (Springer)</strong> · <a class="bracket-link" href="https://link.springer.com/article/10.1007/s11042-026-21138-4">Springer</a> · <a class="bracket-link" href="https://doi.org/10.1007/s11042-026-21138-4">DOI</a><br>
 <a href="#" class="abstract-toggle" onclick="toggleAbstract(event, 'abstract4')">Show Abstract</a>
 <div class="abstract-content" id="abstract4" style="display: none;">
 <strong>Abstract:</strong> This paper presents a novel approach for real-time video motion transfer using generative time series modeling. We propose an efficient framework that transfers motion patterns from source videos to target subjects while maintaining temporal consistency and visual quality. Our method leverages generative models to learn motion representations and enables real-time processing for applications in video editing, animation, and virtual content creation.
@@ -271,10 +275,46 @@ I have published and presented my work at prestigious conferences and journals, 
 }
 </style>
 
+<h2 id="research-interest">🔬 Research Interest</h2>
+<hr>
+Most of my work lately falls into two areas: time-series foundation models, and agentic systems built on top of large language models.
+
+On the time-series side, I care about whether these models actually hold up when you split benchmarks by domain, how they perform zero-shot on new datasets, and how generative time-series methods can support things like real-time video motion transfer. In industry, I've also spent a lot of time on offline reinforcement learning and forecasting for supply chain problems at The Home Depot.
+
+For language models, I'm working on reasoning models, process reward models (PRMs), tool calling, and agentic AI security—the practical question is how to get reliable multi-step behavior without something breaking once you put the system in front of real users. One example is Adhawk, a human-in-the-loop tool we built to curate customer lists using natural language and SQL. I also study how to measure diversity in generative image models, and I still publish on physics-informed deep learning for marine surveillance when the problem calls for it. If you're working on any of these topics and think there's overlap, I'm happy to collaborate—[get in touch](contact).
+
 <h2 id="whats-new" class="news-heading">📰 News and Updates</h2>
 <hr>
-<div class="news-content" style="max-height: 250px; overflow-y: auto; padding: 10px;">
+<div class="news-content" style="max-height: 320px; overflow-y: auto; padding: 10px;">
   <ul>
+    <li>
+      <span>Apr 2026:</span>
+      <span>Paper accepted at <b>ICML 2026</b>:
+        <a href="https://openreview.net/forum?id=W2eEMPjzIQ&noteId=4ckkULe0sC"><b>"Position: Time-Series Foundation Models Require Explicit Domain-Level Benchmarks"</b></a>
+      </span>
+    </li>
+    <li>
+      <span>Mar 2026:</span>
+      <span>Project <b>Adhawk</b>—an agentic human-in-the-loop tool to curate customer lists using SQL and natural language—named a <b>Finalist</b> in the DSA Hackathon 2025 at The Home Depot</span>
+    </li>
+    <li>
+      <span>Jan 2026:</span>
+      <span>Published in <i>Multimedia Tools and Applications</i> (Springer):
+        <a href="https://link.springer.com/article/10.1007/s11042-026-21138-4"><b>"Towards Efficient Real-Time Video Motion Transfer via Generative Time Series Modeling"</b></a>
+      </span>
+    </li>
+    <li>
+      <span>Dec 2025:</span>
+      <span>Paper accepted at <b>NeurIPS Workshop'25</b>:
+        <a href="https://openreview.net/forum?id=HvbMOFV9zZ"><b>"Zero Shot Time Series Forecasting: Do Time Series FMs Outperform Cross Modal FMs?"</b></a>
+      </span>
+    </li>
+    <li>
+      <span>Jul 2025:</span>
+      <span>Paper presented at <b>ICML Workshop'25</b> (Muslims in ML):
+        <a href="https://openreview.net/forum?id=cYc6i03pL8"><b>"DIVA: Diversity Assessment in Text-to-Image Generation via Hybrid Metrics"</b></a>
+      </span>
+    </li>
     <li>
       <span>Nov 2024:</span>
       <span>Promoted to Sr. data analyst in supply chain at The Home Depot</span>
