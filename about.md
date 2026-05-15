@@ -8,11 +8,11 @@ toc_max_level: 4
 
 # About Me
 
-I'm **Md Asif Bin Syed**, a *Sr. Supply Chain Data Analyst* at **The Home Depot**, the world's leading home improvement retailer. I'm passionate about leveraging machine learning and data science to solve complex business problems and drive innovation in supply chain operations.
+I'm **Md Asif Bin Syed**, a *Applied ML Scientist, Delivery Analytics* at **The Home Depot**, the world's leading home improvement retailer. I'm passionate about leveraging machine learning and data science to solve complex business problems and drive innovation in supply chain operations.
 
 ## Professional Journey
 
-### Current Role: Sr. Supply Chain Data Analyst — The Home Depot, Atlanta, GA *(Jan 2024 – Present)*
+### Current Role: Applied ML Scientist, Delivery Analytics — The Home Depot, Atlanta, GA *(Jan 2024 – Present)*
 
 - Led a team of seven Data Scientists and Software Engineers to develop a **SmartFulfill agent** using offline RL, reducing on-time delivery failures by 4.5% ($6.5M retained revenue)
 - Conducted statistical analysis on **10M+ orders** to identify key delivery drivers

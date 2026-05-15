@@ -8,7 +8,7 @@
 
 ## Employment History
 
-### Sr. Supply Chain Data Analyst — The Home Depot, Atlanta, GA *(Jan 2024 – Present)*
+### Applied ML Scientist, Delivery Analytics — The Home Depot, Atlanta, GA *(Jan 2024 – Present)*
 - Led a team of seven Data Scientists and Software Engineers to develop a **SmartFulfill agent** using offline RL, reducing on-time delivery failures by 4.5% ($6.5M retained revenue).
 - Conducted statistical analysis on **10M+ orders** to identify key delivery drivers.
 - Built an ML model forecasting on-time delivery with **84% accuracy**, now being integrated into sourcing logic.
