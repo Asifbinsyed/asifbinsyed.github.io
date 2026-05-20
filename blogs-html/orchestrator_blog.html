@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orchestrator: Agentic System-এর আসল Brain</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Literata:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@400;500&family=Noto+Sans+Bengali:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0f0f0f;
+    --surface: #161616;
+    --surface2: #1e1e1e;
+    --border: #2a2a2a;
+    --text: #e8e4dc;
+    --muted: #7a7570;
+    --accent: #c8a96e;
+    --accent2: #7eb8a4;
+    --accent3: #c97b6e;
+    --radius: 12px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Literata', 'Noto Sans Bengali', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.85;
+    min-height: 100vh;
+  }
+
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0; opacity: 0.6;
+  }
+
+  header {
+    position: relative; z-index: 1;
+    border-bottom: 1px solid var(--border); padding: 20px 0;
+  }
+  .header-inner {
+    max-width: 760px; margin: 0 auto; padding: 0 28px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .site-name {
+    font-family: 'DM Mono', monospace; font-size: 13px;
+    color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  nav a {
+    font-family: 'DM Mono', monospace; font-size: 12px;
+    color: var(--muted); text-decoration: none;
+    margin-left: 24px; letter-spacing: 0.04em; transition: color 0.2s;
+  }
+  nav a:hover { color: var(--text); }
+
+  main {
+    position: relative; z-index: 1;
+    max-width: 760px; margin: 0 auto; padding: 0 28px 100px;
+  }
+
+  .post-meta {
+    padding: 52px 0 20px;
+    border-bottom: 1px solid var(--border); margin-bottom: 48px;
+  }
+
+  .breadcrumb {
+    font-family: 'DM Mono', monospace; font-size: 11px;
+    color: var(--muted); letter-spacing: 0.04em;
+    margin-bottom: 18px; display: flex; align-items: center; gap: 8px;
+  }
+  .breadcrumb a { color: var(--accent2); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--text); }
+  .breadcrumb span { color: #3a3a3a; }
+
+  .series-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'DM Mono', monospace; font-size: 11px;
+    background: #1a2a20; border: 1px solid #2a4a30;
+    color: var(--accent2); padding: 5px 12px; border-radius: 20px;
+    margin-bottom: 20px; letter-spacing: 0.04em;
+  }
+  .series-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent2); }
+
+  .tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+  .tag {
+    font-family: 'DM Mono', monospace; font-size: 11px;
+    padding: 4px 10px; border-radius: 4px;
+    letter-spacing: 0.04em; text-transform: uppercase;
+  }
+  .tag-ai   { background: #1a2a24; color: var(--accent2); border: 1px solid #2a4a3a; }
+  .tag-sys  { background: #2a1e14; color: var(--accent);  border: 1px solid #4a3020; }
+  .tag-orch { background: #1a1228; color: #a896d8;        border: 1px solid #2a1a48; }
+
+  h1 {
+    font-family: 'Literata', Georgia, serif;
+    font-size: clamp(26px, 4vw, 38px); font-weight: 600;
+    line-height: 1.25; color: var(--text);
+    margin-bottom: 20px; letter-spacing: -0.01em;
+  }
+  .subtitle {
+    font-size: 16px; color: var(--muted); line-height: 1.6; margin-bottom: 24px;
+  }
+  .byline { display: flex; align-items: center; gap: 14px; }
+  .avatar {
+    width: 38px; height: 38px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'DM Mono', monospace; font-size: 14px; font-weight: 500;
+    color: var(--bg); flex-shrink: 0;
+  }
+  .byline-text { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--muted); }
+  .byline-text strong { display: block; color: var(--text); font-size: 13px; margin-bottom: 2px; }
+
+  .prose p { margin-bottom: 1.6em; color: var(--text); }
+  .prose p.lead { font-size: 20px; color: #ccc8c0; line-height: 1.75; }
+  .prose strong { color: var(--accent); font-weight: 600; }
+  .prose em { font-style: italic; color: #b0aca4; }
+
+  h2 {
+    font-family: 'Literata', Georgia, serif;
+    font-size: 22px; font-weight: 600;
+    color: var(--text); margin: 48px 0 16px;
+    letter-spacing: -0.01em;
+  }
+
+  .pullquote {
+    margin: 40px 0; padding: 28px 32px;
+    border-left: 3px solid var(--accent);
+    background: var(--surface);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    font-size: 19px; line-height: 1.7; color: #d4cfc7; font-style: italic;
+  }
+
+  .section-label {
+    font-family: 'DM Mono', monospace; font-size: 11px;
+    color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase;
+    margin: 52px 0 20px; display: flex; align-items: center; gap: 12px;
+  }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  .diagram-section {
+    margin: 48px 0; background: var(--surface);
+    border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden;
+  }
+  .diagram-label {
+    padding: 14px 20px; border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 10px;
+    font-family: 'DM Mono', monospace; font-size: 12px;
+    color: var(--muted); letter-spacing: 0.04em;
+  }
+  .diagram-label span { display: inline-block; width: 8px; height: 8px; border-radius: 50%; }
+  .dot-r { background: #c97b6e; } .dot-y { background: #c8a96e; } .dot-g { background: #7eb8a4; }
+  .diagram-inner { padding: 8px; background: #0c0c0c; }
+
+  svg { display: block; width: 100%; }
+  .t  { font-family: 'DM Mono', monospace; font-size: 14px; fill: #e8e4dc; }
+  .ts { font-family: 'DM Mono', monospace; font-size: 11px; fill: #7a7570; }
+  .th { font-family: 'DM Mono', monospace; font-size: 14px; fill: #e8e4dc; font-weight: 500; }
+  .c-blue   rect { fill: #0d2035; stroke: #1d4870; } .c-blue   .th,.c-blue   .t { fill: #7eb8e8; } .c-blue   .ts { fill: #4a7aaa; }
+  .c-teal   rect { fill: #0d2520; stroke: #1d5040; } .c-teal   .th,.c-teal   .t { fill: #7eb8a4; } .c-teal   .ts { fill: #3a7860; }
+  .c-amber  rect { fill: #251a05; stroke: #503808; } .c-amber  .th,.c-amber  .t { fill: #c8a96e; } .c-amber  .ts { fill: #806830; }
+  .c-purple rect { fill: #1a1228; stroke: #382858; } .c-purple .th,.c-purple .t { fill: #a896d8; } .c-purple .ts { fill: #605090; }
+  .c-green  rect { fill: #0d2010; stroke: #204018; } .c-green  .th,.c-green  .t { fill: #88c878; } .c-green  .ts { fill: #407830; }
+  .c-red    rect { fill: #251010; stroke: #502020; } .c-red    .th,.c-red    .t { fill: #d88888; } .c-red    .ts { fill: #885050; }
+  .c-gray   rect { fill: #181818; stroke: #303030; } .c-gray   .th,.c-gray   .t { fill: #a0a0a0; } .c-gray   .ts { fill: #606060; }
+  .subcard  { fill: #0f0f0f; stroke: #2a2a2a; }
+
+  .compare-table {
+    width: 100%; border-collapse: collapse;
+    margin: 32px 0; font-size: 15px; font-family: 'DM Mono', monospace;
+  }
+  .compare-table th {
+    background: var(--surface2); color: var(--accent);
+    font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--border);
+  }
+  .compare-table td {
+    padding: 12px 16px; border-bottom: 1px solid var(--border);
+    color: #c0bbb3; vertical-align: top; line-height: 1.6;
+  }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .compare-table td:first-child { color: var(--text); font-weight: 500; width: 30%; }
+  .compare-table tr:nth-child(even) td { background: var(--surface); }
+
+  pre {
+    padding: 20px; overflow-x: auto;
+    font-family: 'DM Mono', monospace; font-size: 13px;
+    line-height: 1.7; color: #c8c4bc; margin: 0;
+  }
+  .kw  { color: #a896d8; } .str { color: #88c878; }
+  .cm  { color: #4a4a4a; } .fn  { color: #7eb8e8; }
+  .num { color: #c8a96e; } .dec { color: #d88888; }
+  .tp  { color: #c8a96e; }
+
+  .flow-steps { margin: 40px 0; }
+  .flow-step { display: flex; gap: 18px; margin-bottom: 18px; align-items: flex-start; }
+  .step-num {
+    flex-shrink: 0; width: 30px; height: 30px; border-radius: 50%;
+    background: var(--surface2); border: 1px solid var(--border);
+    font-family: 'DM Mono', monospace; font-size: 12px; color: var(--accent);
+    display: flex; align-items: center; justify-content: center; margin-top: 4px;
+  }
+  .step-body { font-size: 15px; color: #c0bbb3; line-height: 1.7; padding-top: 4px; }
+  .step-body strong { color: var(--text); }
+
+  .callout {
+    margin: 32px 0; padding: 20px 24px;
+    border-radius: var(--radius); border: 1px solid;
+    font-size: 15px; line-height: 1.7;
+  }
+  .callout.warn  { background: #1f1a0a; border-color: #4a3808; color: #c8a96e; }
+  .callout.info  { background: #0d1f1a; border-color: #1d4838; color: #7eb8a4; }
+  .callout.error { background: #1f0d0d; border-color: #4a1818; color: #d88888; }
+  .callout-label {
+    font-family: 'DM Mono', monospace; font-size: 10px;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    margin-bottom: 8px; opacity: 0.7;
+  }
+
+  code {
+    font-family: 'DM Mono', monospace; font-size: 14px;
+    background: var(--surface2); border: 1px solid var(--border);
+    padding: 2px 7px; border-radius: 4px; color: var(--accent2);
+  }
+
+  /* state machine visualization */
+  .state-flow {
+    display: flex; align-items: center; gap: 0;
+    margin: 32px 0; overflow-x: auto; padding-bottom: 8px;
+  }
+  .state-node {
+    flex-shrink: 0;
+    padding: 10px 16px; border-radius: 8px; border: 1px solid;
+    font-family: 'DM Mono', monospace; font-size: 12px;
+    text-align: center; min-width: 90px;
+  }
+  .state-node.idle    { background: #181818; border-color: #303030; color: #606060; }
+  .state-node.plan    { background: #1a1228; border-color: #382858; color: #a896d8; }
+  .state-node.route   { background: #0d2035; border-color: #1d4870; color: #7eb8e8; }
+  .state-node.run     { background: #251a05; border-color: #503808; color: #c8a96e; }
+  .state-node.wait    { background: #0d2520; border-color: #1d5040; color: #7eb8a4; }
+  .state-node.eval    { background: #251020; border-color: #502040; color: #d898c8; }
+  .state-node.done    { background: #0d2010; border-color: #204018; color: #88c878; }
+  .state-node.fail    { background: #251010; border-color: #502020; color: #d88888; }
+  .state-arrow {
+    flex-shrink: 0; padding: 0 4px;
+    font-family: 'DM Mono', monospace; font-size: 14px; color: #3a3a3a;
+  }
+
+  .tradeoff-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 16px; margin: 32px 0;
+  }
+  @media (max-width: 560px) { .tradeoff-grid { grid-template-columns: 1fr; } }
+  .tradeoff-card {
+    padding: 18px 20px; border-radius: var(--radius); border: 1px solid;
+  }
+  .tradeoff-card.seq  { background: #1a1f2a; border-color: #2a3a5a; }
+  .tradeoff-card.par  { background: #0d2010; border-color: #204018; }
+  .tradeoff-card h4 {
+    font-family: 'DM Mono', monospace; font-size: 12px;
+    margin-bottom: 10px; letter-spacing: 0.04em;
+  }
+  .tradeoff-card.seq h4 { color: #7eb8e8; }
+  .tradeoff-card.par h4 { color: #88c878; }
+  .tradeoff-card p { font-size: 14px; color: var(--muted); line-height: 1.6; margin: 0; }
+
+  .post-nav {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 16px; margin: 60px 0 0;
+  }
+  .nav-card {
+    padding: 20px; background: var(--surface);
+    border: 1px solid var(--border); border-radius: var(--radius);
+    text-decoration: none; transition: border-color 0.2s;
+  }
+  .nav-card:hover { border-color: var(--accent); }
+  .nav-direction {
+    font-family: 'DM Mono', monospace; font-size: 10px;
+    color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px;
+  }
+  .nav-title { font-family: 'Literata', serif; font-size: 15px; color: var(--text); line-height: 1.4; }
+  .nav-card.next { text-align: right; }
+
+  footer {
+    position: relative; z-index: 1;
+    border-top: 1px solid var(--border); padding: 32px 28px;
+    max-width: 760px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+  }
+  footer p { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--muted); }
+  .gh-link {
+    font-family: 'DM Mono', monospace; font-size: 12px; color: var(--accent);
+    text-decoration: none; border: 1px solid var(--border); padding: 8px 16px;
+    border-radius: 6px; transition: all 0.2s; display: flex; align-items: center; gap: 8px;
+  }
+  .gh-link:hover { background: var(--surface); border-color: var(--accent); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .post-meta       { animation: fadeUp 0.5s ease both; }
+  .diagram-section { animation: fadeUp 0.6s 0.1s ease both; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <span class="site-name">asif.dev</span>
+    <nav>
+      <a href="#">Writing</a>
+      <a href="#">Projects</a>
+      <a href="#">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <div class="post-meta">
+    <div class="breadcrumb">
+      <a href="#">Agentic Systems Series</a>
+      <span>/</span>
+      Part 4 of 8
+    </div>
+    <div class="series-badge">
+      <span class="dot"></span>
+      Series: Production Agentic System
+    </div>
+    <div class="tags">
+      <span class="tag tag-ai">AI Engineering</span>
+      <span class="tag tag-sys">System Design</span>
+      <span class="tag tag-orch">Orchestration</span>
+    </div>
+    <h1>Orchestrator: Agentic System-এর আসল Brain</h1>
+    <p class="subtitle">
+      Gateway request নেয়। Observability দেখে। কিন্তু সিদ্ধান্ত নেয় কে?
+      কোন agent কী করবে, কোন order-এ, কী হলে retry করবে?
+      সব কিছু orchestrator decide করে। এটাই সবচেয়ে complex piece।
+    </p>
+    <div class="byline">
+      <div class="avatar">A</div>
+      <div class="byline-text">
+        <strong>Asif Bin Syed</strong>
+        ML Researcher · OMSCS @ Georgia Tech · May 2026
+      </div>
+    </div>
+  </div>
+
+  <article class="prose">
+
+    <p class="lead">
+      তুমি একটা junior developer hire করলে। সে কাজ করতে পারে।
+      কিন্তু কোন কাজটা আগে করবে, কীভাবে করবে, কোথায় আটকে গেলে
+      কী করবে সেটা তোমাকে বলে দিতে হবে।
+      Sub-agents ঠিক এরকম। <strong>Orchestrator হলো সেই senior যে বলে দেয়।</strong>
+    </p>
+
+    <p>
+      আগের তিনটা post-এ দেখলাম gateway কীভাবে request নেয়,
+      observability কীভাবে সব দেখে। কিন্তু এই দুইটার মাঝখানে
+      যে layer সব কিছু coordinate করে সেটা orchestrator।
+      এটা না থাকলে agents গুলো randomly কাজ করবে,
+      একে অপরের সাথে conflict করবে, কোনো coherent output আসবে না।
+    </p>
+
+    <div class="pullquote">
+      Orchestrator হলো conductor। Orchestra-তে প্রতিটা musician
+      নিজের instrument বাজাতে জানে। কিন্তু conductor ছাড়া
+      সেটা music না, শুধু noise।
+    </div>
+
+    <div class="section-label">Orchestrator আসলে কী করে</div>
+
+    <p>
+      চারটা core responsibility। প্রতিটা আলাদাভাবে complex।
+      একসাথে এটাই orchestrator।
+    </p>
+
+  </article>
+
+  <!-- DIAGRAM: Orchestrator internals -->
+  <div class="diagram-section">
+    <div class="diagram-label">
+      <span class="dot-r"></span>
+      <span class="dot-y"></span>
+      <span class="dot-g"></span>
+      orchestrator-internals.svg · Core Responsibilities
+    </div>
+    <div class="diagram-inner">
+<svg viewBox="0 0 680 560" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="#4a7aaa" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+  <marker id="ar2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="#505050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+  <marker id="ar3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="#c8a96e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+</defs>
+
+<!-- incoming task -->
+<g class="c-blue">
+  <rect x="240" y="14" width="200" height="42" rx="8" stroke-width="0.5"/>
+  <text class="th" x="340" y="30" text-anchor="middle">Incoming task</text>
+  <text class="ts" x="340" y="46" text-anchor="middle">natural language goal from user</text>
+</g>
+<line x1="340" y1="56" x2="340" y2="80" stroke="#4a7aaa" stroke-width="1.2" marker-end="url(#ar)"/>
+
+<!-- ORCHESTRATOR outer box -->
+<g class="c-purple">
+  <rect x="14" y="80" width="652" height="340" rx="12" stroke-width="0.5"/>
+  <text class="th" x="340" y="100" text-anchor="middle" font-size="13">Orchestrator</text>
+  <text class="ts" x="340" y="116" text-anchor="middle">coordinates all agents, manages state, makes decisions</text>
+</g>
+
+<!-- 1. Task Planner -->
+<g class="c-amber">
+  <rect x="28" y="126" width="290" height="130" rx="8" stroke-width="0.5"/>
+  <text class="th" x="173" y="146" text-anchor="middle" font-size="12">1. Task Planner</text>
+  <text class="ts" x="173" y="162" text-anchor="middle">Goal to executable steps</text>
+</g>
+<rect class="subcard" x="38" y="172" width="124" height="74" rx="5" stroke-width="0.5"/>
+<text class="ts" x="100" y="188" text-anchor="middle" fill="#7a7570">Decompose</text>
+<text class="ts" x="48" y="202" fill="#4a4a4a">Break goal into</text>
+<text class="ts" x="48" y="214" fill="#4a4a4a">atomic steps</text>
+<text class="ts" x="48" y="226" fill="#4a4a4a">order matters</text>
+<text class="ts" x="48" y="238" fill="#4a4a4a">deps explicit</text>
+
+<rect class="subcard" x="174" y="172" width="134" height="74" rx="5" stroke-width="0.5"/>
+<text class="ts" x="241" y="188" text-anchor="middle" fill="#7a7570">Prioritise</text>
+<text class="ts" x="184" y="202" fill="#4a4a4a">Critical path</text>
+<text class="ts" x="184" y="214" fill="#4a4a4a">Parallelisable</text>
+<text class="ts" x="184" y="226" fill="#4a4a4a">steps found</text>
+<text class="ts" x="184" y="238" fill="#4a4a4a">DAG built</text>
+
+<!-- 2. Agent Router -->
+<g class="c-blue">
+  <rect x="362" y="126" width="290" height="130" rx="8" stroke-width="0.5"/>
+  <text class="th" x="507" y="146" text-anchor="middle" font-size="12">2. Agent Router</text>
+  <text class="ts" x="507" y="162" text-anchor="middle">Right agent for each step</text>
+</g>
+<rect class="subcard" x="372" y="172" width="124" height="74" rx="5" stroke-width="0.5"/>
+<text class="ts" x="434" y="188" text-anchor="middle" fill="#7a7570">Capability match</text>
+<text class="ts" x="382" y="202" fill="#4a4a4a">Step type vs</text>
+<text class="ts" x="382" y="214" fill="#4a4a4a">agent skills</text>
+<text class="ts" x="382" y="226" fill="#4a4a4a">load aware</text>
+<text class="ts" x="382" y="238" fill="#4a4a4a">routing</text>
+
+<rect class="subcard" x="508" y="172" width="134" height="74" rx="5" stroke-width="0.5"/>
+<text class="ts" x="575" y="188" text-anchor="middle" fill="#7a7570">Dispatch</text>
+<text class="ts" x="518" y="202" fill="#4a4a4a">Sequential or</text>
+<text class="ts" x="518" y="214" fill="#4a4a4a">parallel run</text>
+<text class="ts" x="518" y="226" fill="#4a4a4a">timeout set</text>
+<text class="ts" x="518" y="238" fill="#4a4a4a">callback wired</text>
+
+<!-- arrow between planner and router -->
+<line x1="318" y1="190" x2="362" y2="190" stroke="#c8a96e" stroke-width="1" marker-end="url(#ar3)"/>
+<text class="ts" x="340" y="184" text-anchor="middle" fill="#806830">plan</text>
+
+<!-- 3. State Machine -->
+<g class="c-teal">
+  <rect x="28" y="272" width="290" height="136" rx="8" stroke-width="0.5"/>
+  <text class="th" x="173" y="292" text-anchor="middle" font-size="12">3. State Machine</text>
+  <text class="ts" x="173" y="308" text-anchor="middle">Tracks every step, every agent</text>
+</g>
+<rect class="subcard" x="38" y="316" width="124" height="82" rx="5" stroke-width="0.5"/>
+<text class="ts" x="100" y="332" text-anchor="middle" fill="#7a7570">Step states</text>
+<text class="ts" x="48" y="346" fill="#4a4a4a">pending</text>
+<text class="ts" x="48" y="358" fill="#4a4a4a">running</text>
+<text class="ts" x="48" y="370" fill="#4a4a4a">done / failed</text>
+<text class="ts" x="48" y="382" fill="#4a4a4a">retry count</text>
+
+<rect class="subcard" x="174" y="316" width="134" height="82" rx="5" stroke-width="0.5"/>
+<text class="ts" x="241" y="332" text-anchor="middle" fill="#7a7570">Transitions</text>
+<text class="ts" x="184" y="346" fill="#4a4a4a">on success</text>
+<text class="ts" x="184" y="358" fill="#4a4a4a">on failure</text>
+<text class="ts" x="184" y="370" fill="#4a4a4a">on timeout</text>
+<text class="ts" x="184" y="382" fill="#4a4a4a">on interrupt</text>
+
+<!-- 4. Context Manager -->
+<g class="c-green">
+  <rect x="362" y="272" width="290" height="136" rx="8" stroke-width="0.5"/>
+  <text class="th" x="507" y="292" text-anchor="middle" font-size="12">4. Context Manager</text>
+  <text class="ts" x="507" y="308" text-anchor="middle">What agents know and remember</text>
+</g>
+<rect class="subcard" x="372" y="316" width="124" height="82" rx="5" stroke-width="0.5"/>
+<text class="ts" x="434" y="332" text-anchor="middle" fill="#7a7570">Window mgmt</text>
+<text class="ts" x="382" y="346" fill="#4a4a4a">Prune old turns</text>
+<text class="ts" x="382" y="358" fill="#4a4a4a">Compress history</text>
+<text class="ts" x="382" y="370" fill="#4a4a4a">Token budget</text>
+<text class="ts" x="382" y="382" fill="#4a4a4a">per agent</text>
+
+<rect class="subcard" x="508" y="316" width="134" height="82" rx="5" stroke-width="0.5"/>
+<text class="ts" x="575" y="332" text-anchor="middle" fill="#7a7570">Shared state</text>
+<text class="ts" x="518" y="346" fill="#4a4a4a">Results from</text>
+<text class="ts" x="518" y="358" fill="#4a4a4a">prev steps</text>
+<text class="ts" x="518" y="370" fill="#4a4a4a">passed to</text>
+<text class="ts" x="518" y="382" fill="#4a4a4a">next agents</text>
+
+<!-- vertical arrow between planner and state -->
+<line x1="120" y1="256" x2="120" y2="272" stroke="#505050" stroke-width="1" marker-end="url(#ar2)"/>
+<!-- vertical arrow between router and context -->
+<line x1="500" y1="256" x2="500" y2="272" stroke="#505050" stroke-width="1" marker-end="url(#ar2)"/>
+
+<!-- output arrow -->
+<line x1="340" y1="420" x2="340" y2="450" stroke="#4a7aaa" stroke-width="1.2" marker-end="url(#ar)"/>
+
+<!-- SUB-AGENTS row -->
+<g class="c-gray">
+  <rect x="14" y="450" width="652" height="90" rx="10" stroke-width="0.5"/>
+  <text class="th" x="340" y="470" text-anchor="middle" font-size="12">Sub-agents (receive dispatched tasks)</text>
+  <text class="ts" x="340" y="486" text-anchor="middle">orchestrator controls what they get, when they run, what happens if they fail</text>
+</g>
+<rect class="subcard" x="24" y="494" width="140" height="38" rx="5" stroke-width="0.5"/>
+<text class="ts" x="94" y="508" text-anchor="middle" fill="#7a7570">Research agent</text>
+<text class="ts" x="94" y="522" text-anchor="middle" fill="#4a4a4a">search + summarize</text>
+
+<rect class="subcard" x="176" y="494" width="140" height="38" rx="5" stroke-width="0.5"/>
+<text class="ts" x="246" y="508" text-anchor="middle" fill="#7a7570">Code agent</text>
+<text class="ts" x="246" y="522" text-anchor="middle" fill="#4a4a4a">write + execute</text>
+
+<rect class="subcard" x="328" y="494" width="140" height="38" rx="5" stroke-width="0.5"/>
+<text class="ts" x="398" y="508" text-anchor="middle" fill="#7a7570">Analysis agent</text>
+<text class="ts" x="398" y="522" text-anchor="middle" fill="#4a4a4a">data + insights</text>
+
+<rect class="subcard" x="480" y="494" width="176" height="38" rx="5" stroke-width="0.5"/>
+<text class="ts" x="568" y="508" text-anchor="middle" fill="#7a7570">Custom agent</text>
+<text class="ts" x="568" y="522" text-anchor="middle" fill="#4a4a4a">domain-specific</text>
+</svg>
+    </div>
+  </div>
+
+  <article class="prose">
+
+    <div class="section-label">Task Decomposition: সবচেয়ে কঠিন কাজ</div>
+
+    <p>
+      User বলে: <em>"আমার PRM paper-এর জন্য related work section লিখে দাও।"</em>
+      Orchestrator এটা নেয় আর ভাঙে:
+    </p>
+
+    <div class="callout info">
+      <div class="callout-label">Decomposition example</div>
+      Goal: "PRM paper-এর related work section লেখো"<br><br>
+      Step 1: arXiv-এ PRM, ORM, process supervision search করো<br>
+      Step 2: Top 15 papers-এর abstract read করো<br>
+      Step 3: Papers গুলো থিম অনুযায়ী group করো<br>
+      Step 4: প্রতিটা থিমের জন্য 2-3 sentence লেখো<br>
+      Step 5: Sections একসাথে compile করো<br><br>
+      Step 1, 2 sequential। Step 3, 4 step 2-এর উপর depend করে।
+      Step 5 সব শেষে।
+    </div>
+
+    <p>
+      এই decomposition-টা easy মনে হচ্ছে। কিন্তু orchestrator-কে
+      বুঝতে হবে কোন steps parallel চলতে পারে, কোনটা আগেরটার
+      output ছাড়া শুরু হতে পারবে না।
+      এটাই DAG: Directed Acyclic Graph।
+    </p>
+
+    <div class="section-label">Sequential vs Parallel: কখন কোনটা</div>
+
+    <div class="tradeoff-grid">
+      <div class="tradeoff-card seq">
+        <h4>Sequential execution</h4>
+        <p>Step B-এর জন্য step A-এর output দরকার। Order মানতে হবে। Simpler to debug। একটা fail করলে পরেরটা চলে না।</p>
+      </div>
+      <div class="tradeoff-card par">
+        <h4>Parallel execution</h4>
+        <p>Independent steps একসাথে চলে। অনেক দ্রুত। কিন্তু shared state সাবধানে handle করতে হয়। Race condition possible।</p>
+      </div>
+    </div>
+
+    <p>
+      Real orchestrator দুইটাই করে। arXiv search আর Semantic Scholar search
+      parallel। কিন্তু summarization শুধু search শেষ হওয়ার পরে।
+      Orchestrator এই dependency graph বোঝে।
+    </p>
+
+    <div class="section-label">State Machine: কোথায় আছে এখন</div>
+
+    <p>
+      প্রতিটা task-এর একটা state আছে। Orchestrator সেটা track রাখে।
+      কোনো step fail করলে কী হবে সেটাও orchestrator decide করে।
+      Retry করবে? Skip করবে? পুরো task fail করবে?
+    </p>
+
+  </article>
+
+  <!-- State machine flow -->
+  <div style="margin: 32px 0; overflow-x: auto;">
+    <div class="state-flow">
+      <div class="state-node idle">IDLE</div>
+      <div class="state-arrow">→</div>
+      <div class="state-node plan">PLANNING</div>
+      <div class="state-arrow">→</div>
+      <div class="state-node route">ROUTING</div>
+      <div class="state-arrow">→</div>
+      <div class="state-node run">RUNNING</div>
+      <div class="state-arrow">→</div>
+      <div class="state-node wait">WAITING</div>
+      <div class="state-arrow">→</div>
+      <div class="state-node eval">EVALUATING</div>
+      <div class="state-arrow">→</div>
+      <div class="state-node done">DONE</div>
+    </div>
+    <div style="font-family:'DM Mono',monospace;font-size:11px;color:#4a4a4a;margin-top:8px;padding:0 2px;">
+      Any state can transition to FAILED → retry logic → back to ROUTING
+    </div>
+  </div>
+
+  <article class="prose">
+
+    <p>
+      State machine ছাড়া orchestrator জানে না কোথায় আছে।
+      Crash হলে কোথা থেকে resume করবে? জানে না।
+      কোন agent কতক্ষণ চলছে? Track নেই।
+      State machine এই সব সমস্যা solve করে।
+    </p>
+
+    <div class="callout warn">
+      <div class="callout-label">Common mistake</div>
+      State machine না রাখলে orchestrator-এ একটা বড় সমস্যা হয়:
+      একই step দুইবার run হয়। Agent timeout হলে orchestrator
+      মনে করে step হয়নি, আবার dispatch করে। কিন্তু first agent
+      আসলে complete করে ফেলেছে। Duplicate work, conflicting results।
+    </div>
+
+    <div class="section-label">Context Management: কী জানবে Agent</div>
+
+    <p>
+      প্রতিটা agent-এর একটা context window আছে। সীমিত।
+      Orchestrator decide করে কোন agent কী জানবে।
+      সব কিছু সবাইকে দিলে context overflow হয়, cost বাড়ে।
+      কম দিলে agent ভুল decision নেয়।
+    </p>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Agent</th>
+          <th>কী context দরকার</th>
+          <th>কী দরকার নেই</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Research agent</td>
+          <td>Original query, search keywords, previous search results</td>
+          <td>Code execution history, user auth details</td>
+        </tr>
+        <tr>
+          <td>Code agent</td>
+          <td>Task specification, relevant code snippets, test cases</td>
+          <td>Full paper list, unrelated search results</td>
+        </tr>
+        <tr>
+          <td>Analysis agent</td>
+          <td>Data from previous steps, analysis goal, output format</td>
+          <td>Raw search queries, intermediate code drafts</td>
+        </tr>
+        <tr>
+          <td>Synthesis agent</td>
+          <td>All previous outputs, final goal, format requirements</td>
+          <td>Internal orchestrator state, retry counts</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="section-label">Retry Logic: Failure Handle করা</div>
+
+    <p>
+      Production-এ সব কিছু fail করে। API timeout হয়। Rate limit লাগে।
+      Agent ভুল output দেয়। Orchestrator-কে এই সব gracefully handle করতে হবে।
+    </p>
+
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="step-num">1</div>
+        <div class="step-body"><strong>Transient failure:</strong> network timeout, API rate limit। Exponential backoff দিয়ে retry করো। সাধারণত 3 বার। তারপরও fail হলে escalate।</div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">2</div>
+        <div class="step-body"><strong>Agent quality failure:</strong> output আসছে কিন্তু ভুল format, incomplete, বা incoherent। Re-prompt করো different instruction দিয়ে। Max 2 retry।</div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">3</div>
+        <div class="step-body"><strong>Permanent failure:</strong> 3 retry-তেও কাজ হয়নি। Step skip করো যদি optional। না হলে পুরো task fail করো। User-কে notify করো কোথায় আটকেছে।</div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">4</div>
+        <div class="step-body"><strong>Partial success:</strong> কিছু steps হয়েছে, কিছু হয়নি। যতটুকু হয়েছে সেটা return করো। Partial output with clear indication of what's missing।</div>
+      </div>
+    </div>
+
+    <div class="section-label">Implementation: Simple Orchestrator</div>
+
+  </article>
+
+  <div class="diagram-section">
+    <div class="diagram-label">
+      <span class="dot-r"></span>
+      <span class="dot-y"></span>
+      <span class="dot-g"></span>
+      orchestrator.py · Core implementation
+    </div>
+    <div class="diagram-inner">
+<pre><span class="cm"># core/orchestrator.py</span>
+<span class="kw">from</span> dataclasses <span class="kw">import</span> dataclass, field
+<span class="kw">from</span> enum <span class="kw">import</span> Enum
+<span class="kw">from</span> typing <span class="kw">import</span> Callable, Any
+<span class="kw">import</span> asyncio, logging
+
+log = logging.<span class="fn">getLogger</span>(<span class="str">"orchestrator"</span>)
+
+<span class="kw">class</span> <span class="tp">StepStatus</span>(Enum):
+    PENDING  = <span class="str">"pending"</span>
+    RUNNING  = <span class="str">"running"</span>
+    DONE     = <span class="str">"done"</span>
+    FAILED   = <span class="str">"failed"</span>
+    SKIPPED  = <span class="str">"skipped"</span>
+
+<span class="dec">@dataclass</span>
+<span class="kw">class</span> <span class="tp">Step</span>:
+    id:          str
+    name:        str
+    agent_fn:    Callable           <span class="cm"># the agent to call</span>
+    depends_on:  list[str] = field(default_factory=list)
+    max_retries: int = <span class="num">3</span>
+    optional:    bool = False
+    <span class="cm"># runtime fields</span>
+    status:      <span class="tp">StepStatus</span> = <span class="tp">StepStatus</span>.PENDING
+    result:      Any = None
+    retries:     int = <span class="num">0</span>
+    error:       str = None
+
+<span class="kw">class</span> <span class="tp">Orchestrator</span>:
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, steps: list[<span class="tp">Step</span>]):
+        self.steps = {s.id: s <span class="kw">for</span> s <span class="kw">in</span> steps}
+        self.context: dict = {}         <span class="cm"># shared state across steps</span>
+
+    <span class="kw">async def</span> <span class="fn">run</span>(self) -> dict:
+        <span class="kw">while</span> self.<span class="fn">_has_pending</span>():
+            ready = self.<span class="fn">_get_ready_steps</span>()
+            <span class="kw">if not</span> ready:
+                <span class="kw">break</span>                   <span class="cm"># deadlock guard</span>
+
+            <span class="cm"># run ready steps in parallel</span>
+            <span class="kw">await</span> asyncio.<span class="fn">gather</span>(
+                *[self.<span class="fn">_run_step</span>(step) <span class="kw">for</span> step <span class="kw">in</span> ready]
+            )
+
+        <span class="kw">return</span> self.context
+
+    <span class="kw">async def</span> <span class="fn">_run_step</span>(self, step: <span class="tp">Step</span>):
+        step.status = <span class="tp">StepStatus</span>.RUNNING
+        log.<span class="fn">info</span>(<span class="str">f"Starting step: {step.name}"</span>)
+
+        <span class="kw">while</span> step.retries <= step.max_retries:
+            <span class="kw">try</span>:
+                <span class="cm"># pass shared context into agent</span>
+                result = <span class="kw">await</span> step.<span class="fn">agent_fn</span>(self.context)
+                self.context[step.id] = result
+                step.result = result
+                step.status = <span class="tp">StepStatus</span>.DONE
+                log.<span class="fn">info</span>(<span class="str">f"Step done: {step.name}"</span>)
+                <span class="kw">return</span>
+
+            <span class="kw">except</span> Exception <span class="kw">as</span> e:
+                step.retries += <span class="num">1</span>
+                step.error = <span class="fn">str</span>(e)
+                log.<span class="fn">warning</span>(<span class="str">f"Step failed ({step.retries}/{step.max_retries}): {e}"</span>)
+                <span class="kw">if</span> step.retries <= step.max_retries:
+                    <span class="kw">await</span> asyncio.<span class="fn">sleep</span>(<span class="num">2</span> ** step.retries)  <span class="cm"># exponential backoff</span>
+
+        <span class="cm"># all retries exhausted</span>
+        <span class="kw">if</span> step.optional:
+            step.status = <span class="tp">StepStatus</span>.SKIPPED
+            log.<span class="fn">warning</span>(<span class="str">f"Optional step skipped: {step.name}"</span>)
+        <span class="kw">else</span>:
+            step.status = <span class="tp">StepStatus</span>.FAILED
+            <span class="kw">raise</span> <span class="fn">RuntimeError</span>(<span class="str">f"Step failed after retries: {step.name}"</span>)
+
+    <span class="kw">def</span> <span class="fn">_has_pending</span>(self) -> bool:
+        <span class="kw">return</span> <span class="fn">any</span>(
+            s.status == <span class="tp">StepStatus</span>.PENDING
+            <span class="kw">for</span> s <span class="kw">in</span> self.steps.<span class="fn">values</span>()
+        )
+
+    <span class="kw">def</span> <span class="fn">_get_ready_steps</span>(self) -> list[<span class="tp">Step</span>]:
+        <span class="cm"># a step is ready if pending and all deps are done</span>
+        <span class="kw">return</span> [
+            s <span class="kw">for</span> s <span class="kw">in</span> self.steps.<span class="fn">values</span>()
+            <span class="kw">if</span> s.status == <span class="tp">StepStatus</span>.PENDING
+            <span class="kw">and</span> <span class="fn">all</span>(
+                self.steps[dep].status == <span class="tp">StepStatus</span>.DONE
+                <span class="kw">for</span> dep <span class="kw">in</span> s.depends_on
+            )
+        ]
+
+
+<span class="cm"># --- Usage: research digest pipeline ---</span>
+<span class="kw">async def</span> <span class="fn">run_digest</span>(query: str):
+    steps = [
+        <span class="tp">Step</span>(
+            id=<span class="str">"search_arxiv"</span>,
+            name=<span class="str">"Search arXiv"</span>,
+            agent_fn=<span class="kw">lambda</span> ctx: <span class="fn">arxiv_agent</span>(query),
+            depends_on=[],
+        ),
+        <span class="tp">Step</span>(
+            id=<span class="str">"search_s2"</span>,
+            name=<span class="str">"Search Semantic Scholar"</span>,
+            agent_fn=<span class="kw">lambda</span> ctx: <span class="fn">s2_agent</span>(query),
+            depends_on=[],              <span class="cm"># parallel with arXiv</span>
+            optional=True,              <span class="cm"># ok if S2 is down</span>
+        ),
+        <span class="tp">Step</span>(
+            id=<span class="str">"summarize"</span>,
+            name=<span class="str">"Summarize papers"</span>,
+            agent_fn=<span class="kw">lambda</span> ctx: <span class="fn">summarize_agent</span>(
+                ctx[<span class="str">"search_arxiv"</span>] + ctx.<span class="fn">get</span>(<span class="str">"search_s2"</span>, [])
+            ),
+            depends_on=[<span class="str">"search_arxiv"</span>],  <span class="cm"># needs arxiv first</span>
+        ),
+        <span class="tp">Step</span>(
+            id=<span class="str">"notify"</span>,
+            name=<span class="str">"Send notification"</span>,
+            agent_fn=<span class="kw">lambda</span> ctx: <span class="fn">ntfy_agent</span>(ctx[<span class="str">"summarize"</span>]),
+            depends_on=[<span class="str">"summarize"</span>],
+        ),
+    ]
+
+    orch = <span class="tp">Orchestrator</span>(steps)
+    <span class="kw">return await</span> orch.<span class="fn">run</span>()</pre>
+    </div>
+  </div>
+
+  <article class="prose">
+
+    <p>
+      এই code-টা দেখলে বুঝবে: orchestrator শুধু coordination করছে।
+      actual কাজ agent-দের। Orchestrator জানে না arXiv search কীভাবে হয়।
+      সে শুধু জানে কখন call করতে হবে, output কোথায় রাখতে হবে,
+      fail হলে কী করতে হবে।
+    </p>
+
+    <div class="callout info">
+      <div class="callout-label">Note</div>
+      এই orchestrator-টাই তোমার arXiv digest toy project-এ directly use করতে পারবে।
+      <code>search_arxiv</code>, <code>search_s2</code>, <code>summarize</code>, <code>notify</code>
+      চারটা step। arXiv আর S2 parallel। Summarize depends on search। Simple।
+      কিন্তু এই pattern দিয়েই production-grade system বানানো যায়।
+    </div>
+
+    <div class="pullquote">
+      Orchestrator-এর complexity তার নিজের logic-এ না।
+      তার complexity হলো সে অনেক কিছু জানে না এবং
+      জানার দরকার নেই। শুধু জানে কখন, কাকে, কী দিয়ে call করতে হবে।
+      এই separation of concerns-ই system-কে maintainable রাখে।
+    </div>
+
+    <p>
+      পরের post-এ দেখবো <strong>Memory + Vector Store</strong>:
+      agents কীভাবে past context মনে রাখে,
+      vector embedding কী, semantic search কীভাবে কাজ করে,
+      আর সেই interview trade-off: memory orchestrator-এ রাখবে না sub-agent-এ।
+    </p>
+
+    <p>
+      কোনো question থাকলে comment করো।
+      <code>#Orchestrator</code> <code>#AgenticAI</code> <code>#AIEngineering</code>
+    </p>
+
+  </article>
+
+  <div class="post-nav">
+    <a class="nav-card" href="observability_blog.html">
+      <div class="nav-direction">Previous post</div>
+      <div class="nav-title">Observability Layer: Production-এ অন্ধকারে কাজ করা যায় না</div>
+    </a>
+    <a class="nav-card next" href="#">
+      <div class="nav-direction">Next post</div>
+      <div class="nav-title">Memory + Vector Store: Agent কীভাবে মনে রাখে</div>
+    </a>
+  </div>
+
+</main>
+
+<footer>
+  <p>© 2026 Asif Bin Syed · ML Researcher · OMSCS @ Georgia Tech</p>
+  <a class="gh-link" href="https://github.com/asifbinsyed33" target="_blank">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+    </svg>
+    github/asifbinsyed33
+  </a>
+</footer>
+
+</body>
+</html>

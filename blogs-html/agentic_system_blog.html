@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Production-Grade Agentic System: Asif Bin Syed</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Literata:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@400;500&family=Noto+Sans+Bengali:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0f0f0f;
+    --surface: #161616;
+    --surface2: #1e1e1e;
+    --border: #2a2a2a;
+    --text: #e8e4dc;
+    --muted: #7a7570;
+    --accent: #c8a96e;
+    --accent2: #7eb8a4;
+    --accent3: #c97b6e;
+    --tag-bg: #1e1e1e;
+    --radius: 12px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Literata', 'Noto Sans Bengali', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.85;
+    min-height: 100vh;
+  }
+
+  /* ── NOISE TEXTURE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.6;
+  }
+
+  /* ── HEADER ── */
+  header {
+    position: relative;
+    z-index: 1;
+    border-bottom: 1px solid var(--border);
+    padding: 20px 0;
+  }
+
+  .header-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .site-name {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  nav a {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    text-decoration: none;
+    margin-left: 24px;
+    letter-spacing: 0.04em;
+    transition: color 0.2s;
+  }
+  nav a:hover { color: var(--text); }
+
+  /* ── MAIN LAYOUT ── */
+  main {
+    position: relative;
+    z-index: 1;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 28px 100px;
+  }
+
+  /* ── POST META ── */
+  .post-meta {
+    padding: 52px 0 20px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 48px;
+  }
+
+  .tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .tag-ai    { background: #1a2a24; color: var(--accent2); border: 1px solid #2a4a3a; }
+  .tag-sys   { background: #2a1e14; color: var(--accent);  border: 1px solid #4a3020; }
+  .tag-ml    { background: #2a1a1a; color: var(--accent3); border: 1px solid #4a2828; }
+
+  h1 {
+    font-family: 'Literata', Georgia, serif;
+    font-size: clamp(26px, 4vw, 38px);
+    font-weight: 600;
+    line-height: 1.25;
+    color: var(--text);
+    margin-bottom: 20px;
+    letter-spacing: -0.01em;
+  }
+
+  .subtitle {
+    font-size: 16px;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+
+  .byline {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--bg);
+    flex-shrink: 0;
+  }
+
+  .byline-text {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .byline-text strong {
+    display: block;
+    color: var(--text);
+    font-size: 13px;
+    margin-bottom: 2px;
+  }
+
+  /* ── ARTICLE BODY ── */
+  .prose p {
+    margin-bottom: 1.6em;
+    color: var(--text);
+  }
+
+  .prose p.lead {
+    font-size: 20px;
+    color: #ccc8c0;
+    line-height: 1.75;
+  }
+
+  .prose strong { color: var(--accent); font-weight: 600; }
+
+  .prose em { font-style: italic; color: #b0aca4; }
+
+  /* ── PULL QUOTE ── */
+  .pullquote {
+    margin: 40px 0;
+    padding: 28px 32px;
+    border-left: 3px solid var(--accent);
+    background: var(--surface);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    font-size: 19px;
+    line-height: 1.7;
+    color: #d4cfc7;
+    font-style: italic;
+  }
+
+  /* ── DIAGRAM SECTION ── */
+  .diagram-section {
+    margin: 48px 0;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+
+  .diagram-label {
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+
+  .diagram-label span {
+    display: inline-block;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+  }
+  .dot-r { background: #c97b6e; }
+  .dot-y { background: #c8a96e; }
+  .dot-g { background: #7eb8a4; }
+
+  .diagram-inner {
+    padding: 8px;
+    background: #0c0c0c;
+  }
+
+  /* ── SVG DIAGRAM STYLES ── */
+  svg { display: block; width: 100%; }
+
+  /* pre-built classes for diagram */
+  .t  { font-family: 'DM Mono', monospace; font-size: 14px; fill: #e8e4dc; font-weight: 400; }
+  .ts { font-family: 'DM Mono', monospace; font-size: 11px; fill: #7a7570; font-weight: 400; }
+  .th { font-family: 'DM Mono', monospace; font-size: 14px; fill: #e8e4dc; font-weight: 500; }
+
+  /* color classes, dark-mode only palette */
+  .c-blue   rect, .c-blue   circle { fill: #0d2035; stroke: #1d4870; }
+  .c-blue   .t, .c-blue   .th { fill: #7eb8e8; } .c-blue   .ts { fill: #4a7aaa; }
+
+  .c-teal   rect, .c-teal   circle { fill: #0d2520; stroke: #1d5040; }
+  .c-teal   .t, .c-teal   .th { fill: #7eb8a4; } .c-teal   .ts { fill: #3a7860; }
+
+  .c-amber  rect, .c-amber  circle { fill: #251a05; stroke: #503808; }
+  .c-amber  .t, .c-amber  .th { fill: #c8a96e; } .c-amber  .ts { fill: #806830; }
+
+  .c-purple rect, .c-purple circle { fill: #1a1228; stroke: #382858; }
+  .c-purple .t, .c-purple .th { fill: #a896d8; } .c-purple .ts { fill: #605090; }
+
+  .c-green  rect, .c-green  circle { fill: #0d2010; stroke: #204018; }
+  .c-green  .t, .c-green  .th { fill: #88c878; } .c-green  .ts { fill: #407830; }
+
+  .c-red    rect, .c-red    circle { fill: #251010; stroke: #502020; }
+  .c-red    .t, .c-red    .th { fill: #d88888; } .c-red    .ts { fill: #885050; }
+
+  .c-pink   rect, .c-pink   circle { fill: #251020; stroke: #502040; }
+  .c-pink   .t, .c-pink   .th { fill: #d898c8; } .c-pink   .ts { fill: #885080; }
+
+  .c-gray   rect, .c-gray   circle { fill: #181818; stroke: #303030; }
+  .c-gray   .t, .c-gray   .th { fill: #a0a0a0; } .c-gray   .ts { fill: #606060; }
+
+  .box { fill: #1a1a1a; stroke: #2a2a2a; }
+  .arr { stroke: #4a4a4a; stroke-width: 1.5; fill: none; }
+  .leader { stroke: #3a3a3a; stroke-width: 0.5; stroke-dasharray: 3 3; fill: none; }
+
+  /* sub-card inside colored parent */
+  .subcard { fill: #0f0f0f; stroke: #2a2a2a; }
+
+  /* ── TRADE-OFF BOX ── */
+  .tradeoff-box {
+    margin: 40px 0;
+    padding: 24px 28px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+  }
+
+  .tradeoff-box h3 {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    color: var(--accent);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .tradeoff-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  @media (max-width: 560px) { .tradeoff-grid { grid-template-columns: 1fr; } }
+
+  .tradeoff-card {
+    padding: 16px 18px;
+    border-radius: 8px;
+    border: 1px solid;
+  }
+  .tradeoff-card.con {
+    background: #1a1f2a;
+    border-color: #2a3a5a;
+  }
+  .tradeoff-card.dis {
+    background: #1f1a2a;
+    border-color: #3a2a5a;
+  }
+  .tradeoff-card h4 {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    margin-bottom: 8px;
+    letter-spacing: 0.04em;
+  }
+  .tradeoff-card.con h4 { color: var(--accent2); }
+  .tradeoff-card.dis h4 { color: #a896d8; }
+
+  .tradeoff-card p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.6;
+    margin: 0 !important;
+  }
+
+  /* ── FLOW TABLE ── */
+  .flow-steps {
+    margin: 40px 0;
+    counter-reset: step;
+  }
+
+  .flow-step {
+    display: flex;
+    gap: 18px;
+    margin-bottom: 18px;
+    align-items: flex-start;
+  }
+
+  .step-num {
+    flex-shrink: 0;
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 4px;
+  }
+
+  .step-body {
+    font-size: 15px;
+    color: #c0bbb3;
+    line-height: 1.7;
+    padding-top: 4px;
+  }
+  .step-body strong { color: var(--text); }
+
+  /* ── CODE INLINE ── */
+  code {
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    padding: 2px 7px;
+    border-radius: 4px;
+    color: var(--accent2);
+  }
+
+  /* ── SECTION DIVIDER ── */
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin: 52px 0 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    position: relative;
+    z-index: 1;
+    border-top: 1px solid var(--border);
+    padding: 32px 28px;
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  footer p {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .gh-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--accent);
+    text-decoration: none;
+    border: 1px solid var(--border);
+    padding: 8px 16px;
+    border-radius: 6px;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .gh-link:hover {
+    background: var(--surface);
+    border-color: var(--accent);
+  }
+
+  /* ── ENTRANCE ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .post-meta   { animation: fadeUp 0.5s ease both; }
+  .prose p:first-child { animation: fadeUp 0.5s 0.1s ease both; }
+  .diagram-section { animation: fadeUp 0.6s 0.15s ease both; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <span class="site-name">asif.dev</span>
+    <nav>
+      <a href="#">Writing</a>
+      <a href="#">Projects</a>
+      <a href="#">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<!-- MAIN -->
+<main>
+
+  <!-- POST META -->
+  <div class="post-meta">
+    <div class="tags">
+      <span class="tag tag-ai">AI Engineering</span>
+      <span class="tag tag-sys">System Design</span>
+      <span class="tag tag-ml">Machine Learning</span>
+    </div>
+
+    <h1>AI Engineer Interview-এ যা হয়: Production Agentic System Design</h1>
+
+    <p class="subtitle">
+      Components জানলেই হয় না। কোথায় connect করবে, কেন connect করবে, সেটা জানতে হয়।
+      এই post-এ একটা real interview-এর গল্প, আর তার পুরো system diagram।
+    </p>
+
+    <div class="byline">
+      <div class="avatar">A</div>
+      <div class="byline-text">
+        <strong>Asif Bin Syed</strong>
+        ML Researcher · OMSCS @ Georgia Tech · May 2026
+      </div>
+    </div>
+  </div>
+
+  <!-- ARTICLE BODY -->
+  <article class="prose">
+
+    <p class="lead">
+      কখনো মনে হয়েছে AI Engineering job market-এ আসলে কি ধরণের কাজের
+      চাহিদা সবচেয়ে বেশি? Claude এখন এক prompt-এ UI বানিয়ে দেয়, right?
+      তাহলে Senior AI Engineers-রা large companies-এ
+      <strong>$200K, $400K salary</strong> নিয়ে আসলে করেটা কি?
+    </p>
+
+    <p>
+      উত্তরটা simple: <strong>system design</strong>। Infrastructure।
+      Scalability। Millions of users handle করা। Frontend বা একটা chatbot বানানো
+      এখন AI করে দেয়। কিন্তু সেই chatbot যখন 10 million user একসাথে hit করে,
+      তখন কী হয়? কীভাবে সেটা handle করবে? এই প্রশ্নের উত্তরের জন্যই
+      companies এত টাকা দেয়।
+    </p>
+
+    <div class="pullquote">
+      "That's what they were actually testing, not whether I could drag boxes.
+      Whether I understood the trade-offs well enough to defend my choices under pushback."
+    </div>
+
+    <p>
+      LinkedIn-এ একটা post দেখলাম। একজন AI Engineer interview দিতে গিয়ে
+      blank canvas পেয়েছে। বলে দিয়েছে: <em>"Design a production-grade agentic
+      system. Components are on the left. Go."</em>
+    </p>
+
+    <p>
+      Components গুলো ছিল: <code>Orchestrator</code>, <code>Sub-agents</code>,
+      <code>Memory module</code>, <code>Tool registry</code>,
+      <code>Vector store</code>, <code>LLM gateway</code>,
+      <code>Observability layer</code>, <code>Guardrails</code>।
+      কোনো instruction নেই। No hints।
+    </p>
+
+    <div class="section-label">System Diagram</div>
+
+  </article>
+
+  <!-- DIAGRAM -->
+  <div class="diagram-section">
+    <div class="diagram-label">
+      <span class="dot-r"></span>
+      <span class="dot-y"></span>
+      <span class="dot-g"></span>
+      production-agentic-system.svg · Architecture Overview
+    </div>
+    <div class="diagram-inner">
+<svg viewBox="0 0 680 940" xmlns="http://www.w3.org/2000/svg" role="img">
+<title>Production-Grade Agentic System Architecture</title>
+<desc>Architecture diagram: LLM Gateway → Observability → Orchestrator → Memory/Vector Store → Sub-Agents → Tool Registry, with Guardrails spanning the right column.</desc>
+<defs>
+  <marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="#4a7aaa" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+  <marker id="ar2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="#3a3a3a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+</defs>
+
+<!-- Title -->
+<text class="th" x="340" y="26" text-anchor="middle" font-size="14" fill="#c8a96e">Production-grade agentic system</text>
+
+<!-- ROW 0: User -->
+<g class="c-gray">
+  <rect x="240" y="38" width="200" height="44" rx="10" stroke-width="0.5"/>
+  <text class="th" x="340" y="55" text-anchor="middle">User / application</text>
+  <text class="ts" x="340" y="71" text-anchor="middle">Web · Mobile · API client</text>
+</g>
+
+<!-- user → gateway -->
+<line x1="340" y1="82" x2="340" y2="102" stroke="#4a7aaa" stroke-width="1.2" marker-end="url(#ar)"/>
+<text class="ts" x="356" y="95" fill="#4a4a4a">1. request</text>
+
+<!-- ROW 1: LLM Gateway -->
+<g class="c-blue">
+  <rect x="14" y="102" width="652" height="60" rx="10" stroke-width="0.5"/>
+  <text class="th" x="340" y="120" text-anchor="middle">LLM gateway</text>
+  <text class="ts" x="340" y="136" text-anchor="middle">Entry point, all traffic passes through here</text>
+</g>
+<rect class="subcard" x="24" y="112" width="116" height="40" rx="6" stroke-width="0.5"/>
+<text class="ts" x="82" y="126" text-anchor="middle" fill="#7a7570">Routing</text>
+<text class="ts" x="82" y="140" text-anchor="middle" fill="#4a4a4a">Model selection</text>
+
+<rect class="subcard" x="150" y="112" width="116" height="40" rx="6" stroke-width="0.5"/>
+<text class="ts" x="208" y="126" text-anchor="middle" fill="#7a7570">Rate limiting</text>
+<text class="ts" x="208" y="140" text-anchor="middle" fill="#4a4a4a">Request throttle</text>
+
+<rect class="subcard" x="276" y="112" width="128" height="40" rx="6" stroke-width="0.5"/>
+<text class="ts" x="340" y="126" text-anchor="middle" fill="#7a7570">Cost tracking</text>
+<text class="ts" x="340" y="140" text-anchor="middle" fill="#4a4a4a">Token usage &amp; billing</text>
+
+<rect class="subcard" x="414" y="112" width="116" height="40" rx="6" stroke-width="0.5"/>
+<text class="ts" x="472" y="126" text-anchor="middle" fill="#7a7570">Auth &amp; authz</text>
+<text class="ts" x="472" y="140" text-anchor="middle" fill="#4a4a4a">API keys, scopes</text>
+
+<rect class="subcard" x="540" y="112" width="116" height="40" rx="6" stroke-width="0.5"/>
+<text class="ts" x="598" y="126" text-anchor="middle" fill="#7a7570">Load balancing</text>
+<text class="ts" x="598" y="140" text-anchor="middle" fill="#4a4a4a">Multi-provider</text>
+
+<!-- gateway → obs -->
+<line x1="340" y1="162" x2="340" y2="182" stroke="#4a7aaa" stroke-width="1.2" marker-end="url(#ar)"/>
+
+<!-- ROW 2: Observability -->
+<g class="c-pink">
+  <rect x="14" y="182" width="652" height="56" rx="10" stroke-width="0.5"/>
+  <text class="th" x="340" y="200" text-anchor="middle">Observability layer</text>
+  <text class="ts" x="340" y="216" text-anchor="middle">Always active, spans entire system</text>
+</g>
+<rect class="subcard" x="24" y="191" width="136" height="38" rx="6" stroke-width="0.5"/>
+<text class="ts" x="92" y="206" text-anchor="middle" fill="#7a7570">Distributed tracing</text>
+<text class="ts" x="92" y="220" text-anchor="middle" fill="#4a4a4a">Latency per hop</text>
+
+<rect class="subcard" x="170" y="191" width="116" height="38" rx="6" stroke-width="0.5"/>
+<text class="ts" x="228" y="206" text-anchor="middle" fill="#7a7570">Metrics</text>
+<text class="ts" x="228" y="220" text-anchor="middle" fill="#4a4a4a">Error rate, throughput</text>
+
+<rect class="subcard" x="296" y="191" width="116" height="38" rx="6" stroke-width="0.5"/>
+<text class="ts" x="354" y="206" text-anchor="middle" fill="#7a7570">Alerting</text>
+<text class="ts" x="354" y="220" text-anchor="middle" fill="#4a4a4a">PagerDuty, Slack</text>
+
+<rect class="subcard" x="422" y="191" width="104" height="38" rx="6" stroke-width="0.5"/>
+<text class="ts" x="474" y="206" text-anchor="middle" fill="#7a7570">Logs</text>
+<text class="ts" x="474" y="220" text-anchor="middle" fill="#4a4a4a">Structured events</text>
+
+<rect class="subcard" x="536" y="191" width="120" height="38" rx="6" stroke-width="0.5"/>
+<text class="ts" x="596" y="206" text-anchor="middle" fill="#7a7570">Cost audit</text>
+<text class="ts" x="596" y="220" text-anchor="middle" fill="#4a4a4a">Per-agent spend</text>
+
+<!-- obs → orch -->
+<line x1="340" y1="238" x2="340" y2="258" stroke="#4a7aaa" stroke-width="1.2" marker-end="url(#ar)"/>
+
+<!-- GUARDRAILS: right column -->
+<g class="c-red">
+  <rect x="506" y="258" width="160" height="368" rx="10" stroke-width="0.5"/>
+  <text class="th" x="586" y="278" text-anchor="middle">Guardrails</text>
+  <text class="ts" x="586" y="293" text-anchor="middle">Applied at every layer</text>
+</g>
+<rect class="subcard" x="516" y="302" width="140" height="48" rx="6" stroke-width="0.5"/>
+<text class="ts" x="586" y="317" text-anchor="middle" fill="#7a7570">Input filter</text>
+<text class="ts" x="526" y="331" fill="#4a4a4a">Block harmful prompts</text>
+<text class="ts" x="526" y="343" fill="#4a4a4a">Validate schema</text>
+
+<rect class="subcard" x="516" y="358" width="140" height="48" rx="6" stroke-width="0.5"/>
+<text class="ts" x="586" y="373" text-anchor="middle" fill="#7a7570">Output filter</text>
+<text class="ts" x="526" y="387" fill="#4a4a4a">Block toxic responses</text>
+<text class="ts" x="526" y="399" fill="#4a4a4a">Fact-check constraints</text>
+
+<rect class="subcard" x="516" y="414" width="140" height="48" rx="6" stroke-width="0.5"/>
+<text class="ts" x="586" y="429" text-anchor="middle" fill="#7a7570">Policy enforcement</text>
+<text class="ts" x="526" y="443" fill="#4a4a4a">Company rules</text>
+<text class="ts" x="526" y="455" fill="#4a4a4a">Copyright / compliance</text>
+
+<rect class="subcard" x="516" y="470" width="140" height="48" rx="6" stroke-width="0.5"/>
+<text class="ts" x="586" y="485" text-anchor="middle" fill="#7a7570">PII redaction</text>
+<text class="ts" x="526" y="499" fill="#4a4a4a">Strip emails, phones</text>
+<text class="ts" x="526" y="511" fill="#4a4a4a">Anonymize user data</text>
+
+<rect class="subcard" x="516" y="526" width="140" height="48" rx="6" stroke-width="0.5"/>
+<text class="ts" x="586" y="541" text-anchor="middle" fill="#7a7570">Budget cap</text>
+<text class="ts" x="526" y="555" fill="#4a4a4a">Per-agent token limits</text>
+<text class="ts" x="526" y="567" fill="#4a4a4a">Cost circuit breaker</text>
+
+<!-- validate arrow -->
+<line x1="494" y1="304" x2="508" y2="326" stroke="#3a3a3a" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#ar2)"/>
+<text class="ts" x="486" y="314" text-anchor="end" fill="#4a4a4a">validate</text>
+
+<!-- ROW 3: Orchestrator -->
+<g class="c-purple">
+  <rect x="14" y="258" width="482" height="110" rx="10" stroke-width="0.5"/>
+  <text class="th" x="255" y="278" text-anchor="middle">Orchestrator: the brain</text>
+  <text class="ts" x="255" y="293" text-anchor="middle">2. Decomposes task → routes to sub-agents → manages state</text>
+</g>
+<rect class="subcard" x="24" y="300" width="106" height="58" rx="6" stroke-width="0.5"/>
+<text class="ts" x="77" y="316" text-anchor="middle" fill="#7a7570">Task planner</text>
+<text class="ts" x="34" y="330" fill="#4a4a4a">Decompose goal</text>
+<text class="ts" x="34" y="342" fill="#4a4a4a">Prioritise steps</text>
+
+<rect class="subcard" x="140" y="300" width="106" height="58" rx="6" stroke-width="0.5"/>
+<text class="ts" x="193" y="316" text-anchor="middle" fill="#7a7570">Agent router</text>
+<text class="ts" x="150" y="330" fill="#4a4a4a">Select sub-agent</text>
+<text class="ts" x="150" y="342" fill="#4a4a4a">Parallel dispatch</text>
+
+<rect class="subcard" x="256" y="300" width="106" height="58" rx="6" stroke-width="0.5"/>
+<text class="ts" x="309" y="316" text-anchor="middle" fill="#7a7570">State machine</text>
+<text class="ts" x="266" y="330" fill="#4a4a4a">Track progress</text>
+<text class="ts" x="266" y="342" fill="#4a4a4a">Handle retries</text>
+
+<rect class="subcard" x="372" y="300" width="114" height="58" rx="6" stroke-width="0.5"/>
+<text class="ts" x="429" y="316" text-anchor="middle" fill="#7a7570">Context window</text>
+<text class="ts" x="382" y="330" fill="#4a4a4a">Prune history</text>
+<text class="ts" x="382" y="342" fill="#4a4a4a">Summarise old turns</text>
+
+<!-- orch → memory -->
+<line x1="150" y1="368" x2="150" y2="396" stroke="#4a7aaa" stroke-width="1.2" marker-end="url(#ar)"/>
+<!-- orch → sub-agents -->
+<line x1="350" y1="368" x2="350" y2="506" stroke="#4a7aaa" stroke-width="1.2" marker-end="url(#ar)"/>
+<text class="ts" x="366" y="440" fill="#4a4a4a">3. dispatch</text>
+
+<!-- ROW 4: Memory + Vector Store -->
+<g class="c-green">
+  <rect x="14" y="396" width="482" height="100" rx="10" stroke-width="0.5"/>
+  <text class="th" x="255" y="416" text-anchor="middle">Memory module + vector store</text>
+  <text class="ts" x="255" y="430" text-anchor="middle">The key design trade-off: centralised vs distributed</text>
+</g>
+<rect class="subcard" x="24" y="438" width="222" height="48" rx="6" stroke-width="0.5"/>
+<text class="ts" x="135" y="454" text-anchor="middle" fill="#7a7570">Memory module</text>
+<text class="ts" x="34" y="468" fill="#4a4a4a">Short-term: active conversation context</text>
+<text class="ts" x="34" y="480" fill="#4a4a4a">Long-term: episodic &amp; semantic store</text>
+
+<rect class="subcard" x="256" y="438" width="230" height="48" rx="6" stroke-width="0.5"/>
+<text class="ts" x="371" y="454" text-anchor="middle" fill="#7a7570">Vector store (embeddings)</text>
+<text class="ts" x="266" y="468" fill="#4a4a4a">Semantic search over past context</text>
+<text class="ts" x="266" y="480" fill="#4a4a4a">Retrieve relevant docs / tool outputs</text>
+
+<line x1="246" y1="462" x2="256" y2="462" stroke="#3a3a3a" stroke-width="0.8" stroke-dasharray="3 2" marker-end="url(#ar2)"/>
+
+<text class="ts" x="255" y="502" text-anchor="middle" fill="#4a4a4a">Centralised (orchestrator) = consistent  |  Distributed (per sub-agent) = faster</text>
+
+<!-- ROW 5: Sub-Agents -->
+<g class="c-amber">
+  <rect x="14" y="514" width="482" height="130" rx="10" stroke-width="0.5"/>
+  <text class="th" x="255" y="534" text-anchor="middle">Sub-agents: the workers</text>
+  <text class="ts" x="255" y="548" text-anchor="middle">Receive tasks, call tools via registry</text>
+</g>
+<rect class="subcard" x="24" y="556" width="106" height="78" rx="6" stroke-width="0.5"/>
+<text class="ts" x="77" y="572" text-anchor="middle" fill="#7a7570">Research agent</text>
+<text class="ts" x="34" y="586" fill="#4a4a4a">Web search</text>
+<text class="ts" x="34" y="598" fill="#4a4a4a">Summarise docs</text>
+<text class="ts" x="34" y="610" fill="#4a4a4a">Fact-check claims</text>
+
+<rect class="subcard" x="140" y="556" width="106" height="78" rx="6" stroke-width="0.5"/>
+<text class="ts" x="193" y="572" text-anchor="middle" fill="#7a7570">Code agent</text>
+<text class="ts" x="150" y="586" fill="#4a4a4a">Write &amp; execute</text>
+<text class="ts" x="150" y="598" fill="#4a4a4a">Debug &amp; test</text>
+<text class="ts" x="150" y="610" fill="#4a4a4a">Generate scripts</text>
+
+<rect class="subcard" x="256" y="556" width="106" height="78" rx="6" stroke-width="0.5"/>
+<text class="ts" x="309" y="572" text-anchor="middle" fill="#7a7570">Analysis agent</text>
+<text class="ts" x="266" y="586" fill="#4a4a4a">Parse data</text>
+<text class="ts" x="266" y="598" fill="#4a4a4a">Generate insights</text>
+<text class="ts" x="266" y="610" fill="#4a4a4a">Chart &amp; report</text>
+
+<rect class="subcard" x="372" y="556" width="114" height="78" rx="6" stroke-width="0.5"/>
+<text class="ts" x="429" y="572" text-anchor="middle" fill="#7a7570">Custom agent</text>
+<text class="ts" x="382" y="586" fill="#4a4a4a">Domain-specific</text>
+<text class="ts" x="382" y="598" fill="#4a4a4a">User-defined logic</text>
+<text class="ts" x="382" y="610" fill="#4a4a4a">Plug-in capable</text>
+
+<!-- agents → tool registry -->
+<line x1="255" y1="644" x2="255" y2="664" stroke="#4a7aaa" stroke-width="1.2" marker-end="url(#ar)"/>
+<text class="ts" x="272" y="657" fill="#4a4a4a">4. tool call</text>
+
+<!-- ROW 6: Tool Registry -->
+<g class="c-teal">
+  <rect x="14" y="664" width="482" height="120" rx="10" stroke-width="0.5"/>
+  <text class="th" x="255" y="683" text-anchor="middle">Tool registry: controlled access</text>
+  <text class="ts" x="255" y="697" text-anchor="middle">Agents never call tools directly. Always via registry.</text>
+</g>
+<rect class="subcard" x="24" y="704" width="86" height="68" rx="6" stroke-width="0.5"/>
+<text class="ts" x="67" y="720" text-anchor="middle" fill="#7a7570">Web search</text>
+<text class="ts" x="34" y="734" fill="#4a4a4a">Real-time info</text>
+<text class="ts" x="34" y="746" fill="#4a4a4a">News &amp; web</text>
+
+<rect class="subcard" x="120" y="704" width="86" height="68" rx="6" stroke-width="0.5"/>
+<text class="ts" x="163" y="720" text-anchor="middle" fill="#7a7570">Code exec</text>
+<text class="ts" x="130" y="734" fill="#4a4a4a">Sandboxed run</text>
+<text class="ts" x="130" y="746" fill="#4a4a4a">Python / shell</text>
+
+<rect class="subcard" x="216" y="704" width="86" height="68" rx="6" stroke-width="0.5"/>
+<text class="ts" x="259" y="720" text-anchor="middle" fill="#7a7570">DB query</text>
+<text class="ts" x="226" y="734" fill="#4a4a4a">SQL / NoSQL</text>
+<text class="ts" x="226" y="746" fill="#4a4a4a">Structured data</text>
+
+<rect class="subcard" x="312" y="704" width="86" height="68" rx="6" stroke-width="0.5"/>
+<text class="ts" x="355" y="720" text-anchor="middle" fill="#7a7570">External APIs</text>
+<text class="ts" x="322" y="734" fill="#4a4a4a">3rd-party SaaS</text>
+<text class="ts" x="322" y="746" fill="#4a4a4a">Webhooks</text>
+
+<rect class="subcard" x="408" y="704" width="78" height="68" rx="6" stroke-width="0.5"/>
+<text class="ts" x="447" y="720" text-anchor="middle" fill="#7a7570">File I/O</text>
+<text class="ts" x="418" y="734" fill="#4a4a4a">Read / write</text>
+<text class="ts" x="418" y="746" fill="#4a4a4a">Object store</text>
+
+<!-- Flow summary (right, below guardrails) -->
+<rect class="subcard" x="506" y="638" width="160" height="156" rx="10" stroke-width="0.5"/>
+<text class="ts" x="586" y="657" text-anchor="middle" fill="#c8a96e">Flow summary</text>
+<text class="ts" x="516" y="673" fill="#5a5a5a">1. Request → LLM gateway</text>
+<text class="ts" x="516" y="687" fill="#5a5a5a">2. Observability starts tracing</text>
+<text class="ts" x="516" y="701" fill="#5a5a5a">3. Orchestrator plans &amp; routes</text>
+<text class="ts" x="516" y="715" fill="#5a5a5a">4. Memory provides context</text>
+<text class="ts" x="516" y="729" fill="#5a5a5a">5. Sub-agents execute tasks</text>
+<text class="ts" x="516" y="743" fill="#5a5a5a">6. Tools called via registry</text>
+<text class="ts" x="516" y="757" fill="#5a5a5a">7. Guardrails filter every step</text>
+<text class="ts" x="516" y="771" fill="#5a5a5a">8. Response returned to user</text>
+
+<!-- ROW 7: Monitoring -->
+<g class="c-green">
+  <rect x="14" y="804" width="652" height="110" rx="10" stroke-width="0.5"/>
+  <text class="th" x="340" y="823" text-anchor="middle">Monitoring &amp; observability stack</text>
+  <text class="ts" x="340" y="837" text-anchor="middle">Prometheus → Grafana → alerts on anomalies</text>
+</g>
+<rect class="subcard" x="24" y="844" width="146" height="58" rx="6" stroke-width="0.5"/>
+<text class="ts" x="97" y="860" text-anchor="middle" fill="#7a7570">Prometheus</text>
+<text class="ts" x="34" y="874" fill="#4a4a4a">Scrape /metrics endpoint</text>
+<text class="ts" x="34" y="886" fill="#4a4a4a">Alerting rules</text>
+
+<rect class="subcard" x="180" y="844" width="146" height="58" rx="6" stroke-width="0.5"/>
+<text class="ts" x="253" y="860" text-anchor="middle" fill="#7a7570">Grafana</text>
+<text class="ts" x="190" y="874" fill="#4a4a4a">Latency dashboards</text>
+<text class="ts" x="190" y="886" fill="#4a4a4a">Per-agent cost view</text>
+
+<rect class="subcard" x="336" y="844" width="160" height="58" rx="6" stroke-width="0.5"/>
+<text class="ts" x="416" y="860" text-anchor="middle" fill="#7a7570">Distributed tracing</text>
+<text class="ts" x="346" y="874" fill="#4a4a4a">OpenTelemetry / Jaeger</text>
+<text class="ts" x="346" y="886" fill="#4a4a4a">Full request span tree</text>
+
+<rect class="subcard" x="506" y="844" width="158" height="58" rx="6" stroke-width="0.5"/>
+<text class="ts" x="585" y="860" text-anchor="middle" fill="#7a7570">Log aggregation</text>
+<text class="ts" x="516" y="874" fill="#4a4a4a">Centralised log store</text>
+<text class="ts" x="516" y="886" fill="#4a4a4a">Structured search</text>
+
+<!-- monitoring feedback arrow -->
+<line x1="255" y1="784" x2="255" y2="804" stroke="#3a3a3a" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#ar2)"/>
+
+<!-- return arrow (right side, back to user) -->
+<path d="M666 162 L666 60 L440 60" fill="none" stroke="#3a3a3a" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#ar2)"/>
+<text class="ts" x="672" y="115" fill="#4a4a4a">8. response</text>
+</svg>
+    </div>
+  </div>
+
+  <!-- REST OF ARTICLE -->
+  <article class="prose">
+
+    <div class="section-label">Component Breakdown</div>
+
+    <p>
+      এই diagram-এর প্রতিটা component একটা specific কারণে ওখানে আছে।
+      Random না। চলো প্রতিটা layer কেন সেখানে সেটা বুঝি।
+    </p>
+
+    <p>
+      <strong>LLM Gateway</strong> সবার আগে কারণ এটা একটা bouncer।
+      কোন model-এ request যাবে, rate limit কত, কত token খরচ হলো, সব এখানে।
+      এটা ছাড়া system uncontrollable।
+    </p>
+
+    <p>
+      <strong>Observability Layer</strong> পুরো system জুড়ে active।
+      Production-এ কিছু break করলে, observability না থাকলে তুমি জানবেই না
+      কোথায় problem। এটা CCTV-র মতো। সবসময় চলছে।
+    </p>
+
+    <p>
+      <strong>Orchestrator</strong> হলো আসল brain। এটা task নেয়,
+      ভাঙে, route করে, আর state track রাখে। এখানে সবচেয়ে complex logic থাকে।
+    </p>
+
+    <!-- TRADE-OFF BOX -->
+    <div class="section-label">The Key Interview Question</div>
+
+    <p>
+      Interview-এ সবচেয়ে interesting প্রশ্ন ছিল: <em>"Memory কোথায় থাকবে?"</em>
+      Interviewer মেয়েটির vector store orchestrator-এ রাখা দেখে জিজ্ঞেস করলো,
+      <em>"Why not at the sub-agent level?"</em>
+    </p>
+
+    <div class="tradeoff-box">
+      <h3>Memory placement: trade-off</h3>
+      <div class="tradeoff-grid">
+        <div class="tradeoff-card con">
+          <h4>Centralised (Orchestrator-এ)</h4>
+          <p>সব agent same info দেখবে। Consistent। কিন্তু একটু slow, central store-এ যেতে হয়।</p>
+        </div>
+        <div class="tradeoff-card dis">
+          <h4>Distributed (Sub-agent-এ)</h4>
+          <p>Fast, local memory access। কিন্তু Agent A আর Agent B আলাদা info দেখতে পারে। Sync complex।</p>
+        </div>
+      </div>
+    </div>
+
+    <p>
+      দুইটাই valid। কিন্তু interview-এ তোমাকে জানতে হবে তুমি কোনটা কেন choose করছ।
+      <strong>Defend করতে হবে।</strong> সেটাই আসল test।
+    </p>
+
+    <div class="section-label">পুরো Flow: Step by Step</div>
+
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="step-num">1</div>
+        <div class="step-body"><strong>User request আসে</strong>: Web app, mobile, বা API client থেকে LLM Gateway-এ hit করে।</div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">2</div>
+        <div class="step-body"><strong>Gateway route করে</strong>: কোন model? Rate limit ঠিক আছে? Cost track হলো। তারপর পাস করে।</div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">3</div>
+        <div class="step-body"><strong>Observability trace শুরু</strong>: প্রতিটা hop track হচ্ছে। Latency measure হচ্ছে। Logs লেখা হচ্ছে।</div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">4</div>
+        <div class="step-body"><strong>Orchestrator task plan করে</strong>: বড় task ভেঙে sub-tasks বানায়। কোন agent কী করবে decide করে।</div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">5</div>
+        <div class="step-body"><strong>Memory context দেয়</strong>: Vector store থেকে relevant past context retrieve হয়। Agent aware হয় কী হয়েছিল।</div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">6</div>
+        <div class="step-body"><strong>Sub-agents কাজ করে</strong>: Research, Code, Analysis agent নিজের task execute করে।</div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">7</div>
+        <div class="step-body"><strong>Tool Registry-র মাধ্যমে</strong>: agents direct tool call করে না। Registry permission check করে, তারপর tool call হয়।</div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">8</div>
+        <div class="step-body"><strong>Guardrails filter করে</strong>: input এবং output দুইটাই filter। PII redact। Policy check। তারপর response user-এ ফেরে।</div>
+      </div>
+    </div>
+
+    <div class="pullquote">
+      System design মানে just boxes draw করা না। মানে হলো প্রতিটা
+      connection-এর কারণ বোঝা, প্রতিটা trade-off defend করা।
+      Not tools. <strong>Decisions।</strong>
+    </div>
+
+    <p>
+      আমি এই architecture নিয়ে আরও detail-এ লিখবো। প্রতিটা component
+      কীভাবে implement করা যায়, কোন stack ভালো, আর কীভাবে এটা
+      আমার ML research-এ apply হচ্ছে।
+      আপাতত এই diagram-টা LinkedIn-এ দেখা interview story থেকে inspired।
+    </p>
+
+    <p>
+      কোনো question থাকলে comment করো। আর
+      <code>#SystemDesign</code> <code>#AIEngineering</code> <code>#AgenticAI</code>
+      follow করলে এরকম আরো post পাবে। 🚀
+    </p>
+
+  </article>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Asif Bin Syed · ML Researcher · OMSCS @ Georgia Tech</p>
+  <a class="gh-link" href="https://github.com/asifbinsyed33" target="_blank">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+    </svg>
+    github/asifbinsyed33
+  </a>
+</footer>
+
+</body>
+</html>
