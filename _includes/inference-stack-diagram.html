@@ -1,0 +1,95 @@
+<div class="arch-diagram">
+<style>
+.arch-diagram {
+  margin: 1.5em 0;
+  overflow-x: auto;
+  border: 1px solid #e5e7eb;
+  padding: 12px;
+  background: #fafafa;
+}
+.arch-diagram svg {
+  display: block;
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+  margin: 0 auto;
+}
+.arch-diagram .box-title {
+  font-family: monospace;
+  font-size: 13px;
+  font-weight: 600;
+  fill: #1f2937;
+}
+.arch-diagram .box-sub {
+  font-family: monospace;
+  font-size: 10px;
+  fill: #6b7280;
+}
+.arch-diagram .lane { stroke-width: 1; }
+.arch-diagram .lane-gray { fill: #f3f4f6; stroke: #9ca3af; }
+.arch-diagram .lane-blue { fill: #dbeafe; stroke: #3b82f6; }
+.arch-diagram .lane-teal { fill: #ccfbf1; stroke: #14b8a6; }
+.arch-diagram .lane-amber { fill: #fef3c7; stroke: #d97706; }
+.arch-diagram .lane-green { fill: #dcfce7; stroke: #22c55e; }
+.arch-diagram .lane-purple { fill: #ede9fe; stroke: #7c3aed; }
+.arch-diagram .flow-line {
+  stroke: #6b7280;
+  stroke-width: 1.2;
+  fill: none;
+}
+</style>
+<svg viewBox="0 0 480 720" xmlns="http://www.w3.org/2000/svg" role="img">
+  <title>LLM inference stack (simplified)</title>
+  <defs>
+    <marker id="inf-arrow" viewBox="0 0 10 10" refX="8" refY="5"
+      markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#6b7280"
+        stroke-width="1.2" stroke-linecap="round"/>
+    </marker>
+  </defs>
+
+  <text class="box-title" x="240" y="22" text-anchor="middle">
+    LLM inference stack
+  </text>
+
+  <rect class="lane lane-gray" x="60" y="36" width="360" height="44" rx="8"/>
+  <text class="box-title" x="240" y="56" text-anchor="middle">Agent / Gateway</text>
+  <text class="box-sub" x="240" y="70" text-anchor="middle">policy, routing, budget (see agentic post)</text>
+
+  <line class="flow-line" x1="240" y1="80" x2="240" y2="96" marker-end="url(#inf-arrow)"/>
+
+  <rect class="lane lane-blue" x="60" y="96" width="360" height="44" rx="8"/>
+  <text class="box-title" x="240" y="116" text-anchor="middle">Inference API</text>
+  <text class="box-sub" x="240" y="130" text-anchor="middle">OpenAI-compatible HTTP, queue, auth</text>
+
+  <line class="flow-line" x1="240" y1="140" x2="240" y2="156" marker-end="url(#inf-arrow)"/>
+
+  <rect class="lane lane-teal" x="60" y="156" width="360" height="44" rx="8"/>
+  <text class="box-title" x="240" y="176" text-anchor="middle">Serving engine</text>
+  <text class="box-sub" x="240" y="190" text-anchor="middle">vLLM, TGI, TensorRT-LLM, llama.cpp</text>
+
+  <line class="flow-line" x1="240" y1="200" x2="240" y2="216" marker-end="url(#inf-arrow)"/>
+
+  <rect class="lane lane-amber" x="60" y="216" width="360" height="44" rx="8"/>
+  <text class="box-title" x="240" y="236" text-anchor="middle">Scheduler</text>
+  <text class="box-sub" x="240" y="250" text-anchor="middle">continuous batching, preemption, max seq len</text>
+
+  <line class="flow-line" x1="240" y1="260" x2="240" y2="276" marker-end="url(#inf-arrow)"/>
+
+  <rect class="lane lane-purple" x="60" y="276" width="360" height="44" rx="8"/>
+  <text class="box-title" x="240" y="296" text-anchor="middle">KV cache + kernels</text>
+  <text class="box-sub" x="240" y="310" text-anchor="middle">PagedAttention, FlashAttention, prefix cache</text>
+
+  <line class="flow-line" x1="240" y1="320" x2="240" y2="336" marker-end="url(#inf-arrow)"/>
+
+  <rect class="lane lane-green" x="60" y="336" width="360" height="44" rx="8"/>
+  <text class="box-title" x="240" y="356" text-anchor="middle">Model weights</text>
+  <text class="box-sub" x="240" y="370" text-anchor="middle">FP16, FP8, INT8, quantized GGUF</text>
+
+  <line class="flow-line" x1="240" y1="380" x2="240" y2="396" marker-end="url(#inf-arrow)"/>
+
+  <rect class="lane lane-gray" x="60" y="396" width="360" height="44" rx="8"/>
+  <text class="box-title" x="240" y="416" text-anchor="middle">Hardware</text>
+  <text class="box-sub" x="240" y="430" text-anchor="middle">GPU, TPU, Apple MPS, CPU fallback</text>
+</svg>
+</div>
