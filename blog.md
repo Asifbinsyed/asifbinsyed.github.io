@@ -13,7 +13,6 @@ This page will host random musings and updates. Below is a sample item to start 
 
 - I once coded an entire project using only coffee and sheer determination.
 
-
 ## Articles
 - [Production Agentic System Design](/agentic-system-design) (architecture, observability, orchestrator)
 - [Fine-Tuning LLMs](/fine-tuning-llm)
