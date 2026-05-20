@@ -19,7 +19,7 @@ Components জানলেই হয় না। কোথায় connect ক
 
 **Part 1**: [Interview story ও architecture](#part-1-interview-story-ও-architecture) ·
 **Part 2**: [Implementation ও stack](#part-2-implementation-ও-stack) ·
-**Deep dives**: [Observability](#observability-layer-deep-dive) · [Orchestrator](#orchestrator-deep-dive)
+**Deep dives**: [Observability](#observability-layer-deep-dive) · [Orchestrator](#orchestrator-deep-dive) · [Memory](#memory-layer-deep-dive)
 
 ---
 
@@ -110,7 +110,7 @@ choose করছ। **Defend করতে হবে।** সেটাই আস�
 > connection-এর কারণ বোঝা, প্রতিটা trade-off defend করা। Not tools.
 > **Decisions।**
 
-Part 1 এখানেই শেষ। Part 2-এ stack overview, observability ও orchestrator deep dives,
+Part 1 এখানেই শেষ। Part 2-এ stack overview, observability, orchestrator, memory deep dives,
 আর ML research mapping।
 
 ---
@@ -596,26 +596,235 @@ durable workflows, or the pattern above for minimal control.
 
 ---
 
-### Memory + vector store
+### Memory + vector store (overview)
 
-দুই ধরনের memory:
+Short-term (session) + long-term (persistent) memory, often backed by
+**Redis**, **PostgreSQL**, and a vector DB (**pgvector**, **Chroma**,
+**Pinecone**).
 
-| Type | Holds | Typical store |
-|------|--------|----------------|
-| Short-term | Current session turns | Redis, in-process buffer |
-| Long-term | Past sessions, docs, tool outputs | Vector DB + metadata DB |
+Part 1-এর interview question: memory orchestrator-এ না sub-agent-এ?
+Answer depends on task dependencies. নিচে full deep dive।
 
-Vector store options: **pgvector**, **Pinecone**, **Weaviate**, **Qdrant**,
-**Chroma** (local / research).
+---
 
-Part 1-এর trade-off এখানে practical:
+## Memory layer (deep dive)
 
-- **Centralised (orchestrator)**: one retrieval API, consistent context,
-  easier audit
-- **Distributed (per sub-agent)**: faster local reads, harder sync
+*Series: Production Agentic System · Part 5 focus*
 
-Research prototype-এ centralised শুরু করি। Scale-এ hybrid: orchestrator
-owns canonical memory, agents keep small scratch cache।
+এই series-এর শুরুতে interview question ছিল: *"Memory কোথায় থাকবে?"*
+এই section-এ memory types, vector store, trade-off, এবং ChromaDB
+implementation।
+
+তুমি researcher-কে জিজ্ঞেস করলে: "তিন মাস আগে PRM নিয়ে কী পড়েছিলে?"
+সে মনে করতে পারে। কিন্তু LLM agent-কে জিজ্ঞেস করলে?
+**প্রতিটা conversation fresh start।** Memory layer এই gap fill করে।
+
+Agent-এর memory না থাকলে প্রতিটা request-এ সব আবার explain করতে হয়।
+Memory layer agent-কে context দেয়: কোথায় আছে, আগে কী হয়েছে, কী relevant।
+
+> Memory ছাড়া agent হলো goldfish। Memory দিলে সে researcher হয়:
+> past experiment মনে রাখে, pattern দেখে, build করে।
+
+### Memory চার ধরনের
+
+Human memory-র মতো agent memory-ও এক রকম না। চারটা type, চারটা কাজ:
+
+**Short-term memory**  
+Current conversation context। LLM context window-এ থাকে। Session শেষে
+চলে যায়। Fast কিন্তু ephemeral।
+
+**Long-term memory**  
+Persistent store (database বা vector store)। Session-এর পরেও survive করে।
+User preferences, past decisions।
+
+**Episodic memory**  
+"কখন কী হয়েছিল।" Specific events, experiments, outcomes। Timeline-based।
+
+**Semantic memory**  
+Facts এবং concepts। "PRM মানে কী।" Knowledge base, structured বা
+vector-indexed।
+
+Memory layer orchestrator আর agents-এর মাঝখানে বসে। Orchestrator context
+request করে, memory retrieve করে, agent কাজ করে, output write-back হয়।
+
+### Memory architecture
+
+{% include memory-diagram.html %}
+
+### Vector store: embedding কীভাবে কাজ করে
+
+Vector store-এর core idea: text-কে numbers-এ convert করো। Similar text
+থেকে similar vectors। "এই query-র কাছাকাছি কী আছে?" cosine distance
+দিয়ে খুঁজো। এটাই **semantic search**।
+
+"What is the capital of France?" আর "France-এর রাজধানী কী?" string match
+হবে না, কিন্তু embedding space-এ কাছাকাছি থাকবে। Meaning একই।
+
+Example embeddings (simplified):
+
+| Text | Vector (truncated) |
+|------|-------------------|
+| "PRM outperforms ORM on math tasks" | [0.82, -0.14, 0.67, ...] |
+| "Process reward better than outcome reward" | [0.79, -0.11, 0.71, ...] |
+| "GRPO training on Qwen2.5 1.5B" | [0.34, 0.67, 0.12, ...] |
+
+Query: *"which reward model is better?"*
+
+| Candidate | Cosine similarity |
+|-----------|-------------------|
+| "PRM outperforms ORM on math tasks" | 0.94 |
+| "Process reward better than outcome reward" | 0.91 |
+| "GRPO training on Qwen2.5 1.5B" | 0.38 |
+
+Top two relevant, third irrelevant। Threshold (e.g. 0.7) দিয়ে filter
+করলে শুধু useful context prompt-এ যায়।
+
+### The trade-off: centralised vs distributed
+
+Part 1 interview question-এর full answer:
+
+| | Centralised (orchestrator) | Distributed (sub-agent) |
+|--|--------------------------|-------------------------|
+| Consistency | সব agent same view | agents diverge করতে পারে |
+| Latency | একটু বেশি | কম, local access |
+| Sync | single source, simple | complex |
+| Debugging | এক জায়গায় | scattered state |
+| Best for | multi-step dependent tasks | parallel independent tasks |
+
+> **Interview answer:** "Centralised memory choose করলাম কারণ task-গুলো
+> sequential এবং dependent। Research output analysis agent ব্যবহার করে।
+> Consistency critical। Distributed বেছে নিতাম যদি agents fully
+> independent parallel করতো।" Not "centralised is always better."
+> Rather: "এই context-এ centralised কারণ..."
+
+### Implementation: ChromaDB দিয়ে
+
+Toy project এবং research harness-এ **ChromaDB** easy start: local,
+no server, simple Python API।
+
+```python
+# memory/vector_store.py
+import uuid
+from dataclasses import dataclass
+from datetime import datetime
+
+import chromadb
+from chromadb.utils import embedding_functions
+
+
+@dataclass
+class MemoryEntry:
+    content: str
+    source: str
+    tags: list[str]
+    timestamp: str = None
+
+    def __post_init__(self):
+        if not self.timestamp:
+            self.timestamp = datetime.now().isoformat()
+
+
+class ResearchMemory:
+    def __init__(self, persist_dir: str = "./memory_store"):
+        self.client = chromadb.PersistentClient(path=persist_dir)
+        self.ef = embedding_functions.SentenceTransformerEmbeddingFunction(
+            model_name="all-MiniLM-L6-v2"
+        )
+        self.collection = self.client.get_or_create_collection(
+            name="research_memory",
+            embedding_function=self.ef,
+            metadata={"hnsw:space": "cosine"},
+        )
+
+    def store(self, entry: MemoryEntry) -> str:
+        mem_id = str(uuid.uuid4())
+        self.collection.add(
+            ids=[mem_id],
+            documents=[entry.content],
+            metadatas=[{
+                "source": entry.source,
+                "tags": ",".join(entry.tags),
+                "timestamp": entry.timestamp,
+            }],
+        )
+        return mem_id
+
+    def retrieve(
+        self,
+        query: str,
+        n: int = 5,
+        threshold: float = 0.7,
+        tags: list[str] = None,
+    ) -> list[dict]:
+        where = None
+        if tags:
+            where = {"tags": {"$contains": tags[0]}}
+
+        results = self.collection.query(
+            query_texts=[query],
+            n_results=n,
+            where=where,
+        )
+
+        memories = []
+        for i, doc in enumerate(results["documents"][0]):
+            score = 1 - results["distances"][0][i]
+            if score >= threshold:
+                memories.append({
+                    "content": doc,
+                    "score": round(score, 3),
+                    "metadata": results["metadatas"][0][i],
+                })
+
+        return sorted(memories, key=lambda x: x["score"], reverse=True)
+
+    def store_run(self, run_id: str, query: str, papers: list, summaries: list):
+        self.store(MemoryEntry(
+            content=f"Research query: {query}",
+            source=run_id,
+            tags=["query"],
+        ))
+        for paper, summary in zip(papers, summaries):
+            self.store(MemoryEntry(
+                content=f"{paper.title}: {summary}",
+                source=run_id,
+                tags=["paper", "summary"],
+            ))
+
+
+memory = ResearchMemory()
+
+past = memory.retrieve(
+    query="PRM vs ORM generalization",
+    threshold=0.85,
+    tags=["query"],
+)
+if past:
+    print(f"Similar query run before: {past[0]['metadata']['source']}")
+
+memory.store_run(run_id, query, papers, summaries)
+```
+
+### Memory কীভাবে agent prompt-এ যায়
+
+1. **Task আসে orchestrator-এ:** "PRM paper-এর related work লেখো।"
+2. **Memory controller query করে:** আগে এই topic-এ কী search হয়েছিল?
+   Vector store থেকে top 3-5 memories retrieve।
+3. **Context builder assemble করে:** memories + task + instructions,
+   token budget মেনে।
+4. **Agent prompt পায়:** task + relevant past context + prior findings।
+5. **Output memory-তে store হয়:** পরের request-এ auto retrieve।
+
+> **Token budget সাবধান:** সব memory prompt-এ দিলে overflow। Memory
+> controller-এর কাজ: most relevant বেছে নেওয়া, সব দেওয়া না।
+
+> Memory system ভালো হলে agent output ভালো হয়। Output ভালো হলে memory
+> richer হয়। Flywheel: প্রথম কয়েক run slow, সময়ের সাথে system smarter।
+
+Vector store options (recap): **pgvector**, **Pinecone**, **Weaviate**,
+**Qdrant**, **Chroma** (local / research).
+
+---
 
 ### Sub-agents
 
@@ -728,6 +937,7 @@ built in।
 | Part 2 | Stack choices, implementation patterns, research mapping |
 | Observability deep dive | Metrics, traces, logs, OpenTelemetry, Langfuse, alerts |
 | Orchestrator deep dive | DAG, state machine, context, retry, Python orchestrator |
+| Memory deep dive | Four memory types, vectors, trade-off, ChromaDB |
 
 System design interview শেষ হয় diagram দিয়ে না। শেষ হয় যখন তুমি
 বলতে পারো: gateway দিয়ে cost control, registry দিয়ে tool safety,
