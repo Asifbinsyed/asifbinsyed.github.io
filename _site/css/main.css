@@ -1,0 +1,600 @@
+@charset "UTF-8";
+/*
+ * Customization Variables
+ */
+/*
+ * Build Variables, don't touch
+ */
+/*
+ * Basic
+ */
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 16px;
+  height: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: #FF0F00;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+hr {
+  border: 0;
+  height: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/*
+ * Navbar
+ */
+/* Author info container with photo and name */
+.author-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+#author-photo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #e0e0e0;
+  transition: border-color 0.3s ease;
+}
+
+#author-photo:hover {
+  border-color: #FF0F00;
+}
+
+.author-name-container {
+  display: flex;
+  flex-direction: column;
+}
+
+#author-name {
+  font-size: 36px;
+  font-weight: 700;
+  color: #000000;
+  display: inline-block;
+  margin: 0;
+  line-height: 1.2;
+  font-family: "Times New Roman", Times, Georgia, serif;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+#author-name:hover {
+  text-decoration: none;
+}
+
+#author-subtitle-inline {
+  font-size: 28px;
+  font-weight: 700;
+  color: #000000;
+  text-transform: uppercase;
+  font-family: "Times New Roman", Times, Georgia, serif;
+}
+
+.author-subtitle-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 4px;
+  flex-wrap: wrap;
+}
+
+#author-subtitle {
+  font-size: 16px;
+  color: #666666;
+  font-weight: 400;
+  line-height: 1.4;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", "Roboto", "Helvetica Neue", Arial, sans-serif;
+  margin: 0;
+}
+
+.header-social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  align-items: center;
+}
+
+.header-social-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 0;
+  padding: 3px 6px;
+  background-color: #181717;
+  position: relative;
+  height: 18px;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+}
+
+.header-social-badge:hover {
+  opacity: 0.85;
+  text-decoration: none;
+  color: #fff;
+}
+
+.header-social-badge .header-social-icon {
+  display: inline-block;
+  margin-right: 4px;
+  width: 12px;
+  height: 12px;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+.header-social-badge .header-social-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.header-social-badge .header-social-text {
+  font-size: 10px;
+  line-height: 1;
+}
+
+.header-social-badge.scholar {
+  background-color: #181717;
+}
+
+.header-social-badge.linkedin {
+  background-color: #0077B5;
+}
+
+.header-social-badge.arxiv {
+  background-color: #181717;
+}
+
+.header-social-badge.orcid {
+  background-color: #181717;
+}
+
+.header-social-badge.orcid .header-social-icon.orcid-icon circle {
+  fill: #A6CE39;
+}
+
+.header-social-badge.orcid .header-social-icon.orcid-icon text {
+  fill: #fff;
+}
+
+.header-social-badge.researchgate {
+  background-color: #00CCBB;
+}
+
+.header-social-badge.resume {
+  background-color: #6B7280; /* Gray color for resume */
+}
+
+.navbar {
+  padding: 50px 0 50px 0;
+}
+
+.navbar-ul {
+  display: inline-flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  margin-left: 20px;
+  gap: 8px;
+  list-style: none;
+}
+
+.nav-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-list a {
+  color: #272727;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  font-size: 15px;
+  display: inline-block;
+  position: relative;
+}
+
+.nav-list a:hover {
+  background-color: rgba(255, 15, 0, 0.1);
+  color: #FF0F00;
+  transform: translateY(-1px);
+}
+
+.nav-list a:active {
+  transform: translateY(0);
+}
+
+/* Remove the forward slashes between nav items */
+.navbar-ul::before,
+.navbar-ul::after {
+  display: none;
+}
+
+.alignable, .pull-right, .pull-left {
+  display: inline-block;
+}
+
+.pull-left {
+  float: left;
+}
+
+.pull-right {
+  float: right;
+}
+
+/* Divs */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding-left: 30px;
+  padding-right: 30px;
+  box-sizing: border-box;
+}
+
+.wrapper {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  box-sizing: border-box;
+}
+
+/* Ensure navbar and content align perfectly - both use .container padding */
+.navbar.container,
+.container.content {
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Fix page-main alignment to match navbar and content */
+.container.content .page-main,
+.container.content main {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+  margin-right: 0 !important;
+  padding-right: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Ensure navbar menu aligns with content right edge */
+.navbar.container .navbar-ul.pull-right {
+  margin-right: 0;
+  margin-left: auto;
+}
+
+/* Institute Image */
+#ins-logo {
+  margin: auto;
+  display: block;
+  max-height: 100px;
+  text-align: center;
+}
+
+/* Mobile */
+@media (max-width: 800px) {
+  .container {
+    max-width: 600px;
+    transition: 0.3s ease all;
+  }
+}
+@media (max-width: 650px) {
+  .container {
+    max-width: 100%;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+  .navbar-ul {
+    margin-top: 5px;
+    gap: 4px;
+  }
+  .nav-list a {
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+}
+@media (max-width: 500px) {
+  .navbar {
+    text-align: center;
+    padding: 50px 0px 0px 0px;
+  }
+  .author-name-container {
+    width: 100%;
+    float: none;
+    text-align: center;
+  }
+  #author-name {
+    width: 100%;
+    float: none;
+    font-size: 28px;
+  }
+  #author-subtitle {
+    font-size: 14px;
+  }
+  .author-subtitle-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .header-social-links {
+    gap: 3px;
+  }
+  .header-social-badge {
+    font-size: 9px;
+    padding: 2px 5px;
+    height: 16px;
+  }
+  .header-social-badge .header-social-icon {
+    width: 10px;
+    height: 10px;
+    margin-right: 3px;
+  }
+  .header-social-badge .header-social-text {
+    font-size: 9px;
+  }
+  #navlist {
+    padding: 10px 0 10px 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    float: none;
+    text-align: center;
+    width: 100%;
+    gap: 4px;
+  }
+  #navlist li.alignable, #navlist li.pull-left, #navlist li.pull-right {
+    display: inline-block;
+  }
+  #navlist li.pull-left {
+    float: none;
+  }
+  #navlist li.nav-list {
+    margin: 0;
+  }
+  .nav-list a {
+    padding: 6px 10px;
+    font-size: 13px;
+  }
+}
+/*
+ * Customization Variables
+ */
+/*
+ * Build Variables, don't touch
+ */
+.content a:hover {
+  text-decoration: underline;
+}
+.content ol {
+  counter-reset: list;
+}
+.content ol > li {
+  list-style-position: none;
+  position: relative;
+  list-style: none;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.content ul > li {
+  margin: 5px 0 5px 0;
+}
+.content ul {
+  padding: 0 20px 0 20px;
+}
+.content ol {
+  padding: 0 30px 0 30px;
+}
+.content ol > li:before {
+  content: "[" counter(list, decimal) "] ";
+  counter-increment: list;
+  position: absolute;
+  left: -30px;
+}
+.content blockquote {
+  border-left: 5px solid #333333;
+  margin: 20px 0 20px 0;
+  padding: 2px 8px 2px 8px;
+  font-style: italic;
+}
+.content .profile-picture {
+  height: 100px;
+  width: 100px;
+  position: relative;
+  margin: -10px 0 0 15px;
+  float: right;
+  border-radius: 50%;
+}
+p .content .profile-picture {
+  padding: 0;
+  margin: 0;
+}
+@media (max-width: 480px) {
+  .content .profile-picture img {
+    margin-top: -5px;
+  }
+}
+.content img {
+  text-align: center;
+  width: 100%;
+}
+
+table {
+  margin: 15px 0;
+  border-collapse: collapse;
+  width: 100%;
+  padding: 0;
+}
+
+table tr {
+  border-top: 1px solid #cccccc;
+  background-color: white;
+  margin: 0;
+  padding: 0;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+table tr th {
+  font-weight: bold;
+  border: 1px solid #cccccc;
+  text-align: left;
+  margin: 0;
+  padding: 6px 13px;
+}
+
+table tr td {
+  border: 1px solid #cccccc;
+  text-align: left;
+  margin: 0;
+  padding: 6px 13px;
+}
+
+table tr th :first-child, table tr td :first-child {
+  margin: 0;
+}
+
+table tr th :last-child, table tr td :last-child {
+  margin: 0;
+}
+
+.profile-picture {
+  width: 300px;
+}
+
+h1, h2, h3, h4, h5, h6, p, a {
+  font-family: "Times New Roman", Times, serif;
+}
+
+h1 {
+  font-size: 2.5em;
+}
+
+h2 {
+  font-size: 2em;
+}
+
+h3 {
+  font-size: 1.75em;
+}
+
+h4 {
+  font-size: 1.5em;
+}
+
+h5 {
+  font-size: 1.25em;
+}
+
+h6 {
+  font-size: 1em;
+}
+
+p {
+  text-align: left;
+}
+
+/* ── TOC Slide-In Tab & Panel (Left Side, Default Hidden) ─────── */
+.toc-container {
+  position: fixed;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+.toc-tab {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.5rem;
+  height: 1.5rem;
+  background: #FF0F00;
+  color: #fff;
+  text-align: center;
+  line-height: 1.5rem;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  user-select: none;
+}
+
+.page-toc {
+  position: absolute;
+  top: 50%;
+  left: 1.5rem;
+  transform: translateY(-50%);
+  width: 150px !important;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  border-radius: 4px;
+  overflow: auto;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.toc-container.collapsed .page-toc {
+  transform: translateY(-50%) translateX(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.page-toc h2 {
+  margin-top: 0;
+  font-size: 1rem;
+  text-transform: uppercase;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 0.5rem;
+}
+
+.toc-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.toc-list li {
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+}
+
+/*# sourceMappingURL=main.css.map */

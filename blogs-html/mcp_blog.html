@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MCP: Tool Registry-র ভেতরে যে Protocol সব কিছু Connect করে</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Literata:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@400;500&family=Noto+Sans+Bengali:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0f0f0f;
+    --surface: #161616;
+    --surface2: #1e1e1e;
+    --border: #2a2a2a;
+    --text: #e8e4dc;
+    --muted: #7a7570;
+    --accent: #c8a96e;
+    --accent2: #7eb8a4;
+    --accent3: #c97b6e;
+    --radius: 12px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: 'Literata', 'Noto Sans Bengali', Georgia, serif;
+    font-size: 18px; line-height: 1.85; min-height: 100vh;
+  }
+
+  body::before {
+    content: ''; position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0; opacity: 0.6;
+  }
+
+  header { position: relative; z-index: 1; border-bottom: 1px solid var(--border); padding: 20px 0; }
+  .header-inner { max-width: 760px; margin: 0 auto; padding: 0 28px; display: flex; align-items: center; justify-content: space-between; }
+  .site-name { font-family: 'DM Mono', monospace; font-size: 13px; color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase; }
+  nav a { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--muted); text-decoration: none; margin-left: 24px; letter-spacing: 0.04em; transition: color 0.2s; }
+  nav a:hover { color: var(--text); }
+
+  main { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; padding: 0 28px 100px; }
+
+  .post-meta { padding: 52px 0 20px; border-bottom: 1px solid var(--border); margin-bottom: 48px; }
+
+  .breadcrumb { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); letter-spacing: 0.04em; margin-bottom: 18px; display: flex; align-items: center; gap: 8px; }
+  .breadcrumb a { color: var(--accent2); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--text); }
+  .breadcrumb span { color: #3a3a3a; }
+
+  .series-badge { display: inline-flex; align-items: center; gap: 8px; font-family: 'DM Mono', monospace; font-size: 11px; background: #1a2a20; border: 1px solid #2a4a30; color: var(--accent2); padding: 5px 12px; border-radius: 20px; margin-bottom: 20px; letter-spacing: 0.04em; }
+  .series-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent2); }
+
+  .tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+  .tag { font-family: 'DM Mono', monospace; font-size: 11px; padding: 4px 10px; border-radius: 4px; letter-spacing: 0.04em; text-transform: uppercase; }
+  .tag-ai   { background: #1a2a24; color: var(--accent2); border: 1px solid #2a4a3a; }
+  .tag-sys  { background: #2a1e14; color: var(--accent);  border: 1px solid #4a3020; }
+  .tag-mcp  { background: #102028; color: #7eb8e8;        border: 1px solid #1a3848; }
+
+  h1 { font-family: 'Literata', Georgia, serif; font-size: clamp(26px, 4vw, 38px); font-weight: 600; line-height: 1.25; color: var(--text); margin-bottom: 20px; letter-spacing: -0.01em; }
+  .subtitle { font-size: 16px; color: var(--muted); line-height: 1.6; margin-bottom: 24px; }
+  .byline { display: flex; align-items: center; gap: 14px; }
+  .avatar { width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent2)); display: flex; align-items: center; justify-content: center; font-family: 'DM Mono', monospace; font-size: 14px; font-weight: 500; color: var(--bg); flex-shrink: 0; }
+  .byline-text { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--muted); }
+  .byline-text strong { display: block; color: var(--text); font-size: 13px; margin-bottom: 2px; }
+
+  .prose p { margin-bottom: 1.6em; color: var(--text); }
+  .prose p.lead { font-size: 20px; color: #ccc8c0; line-height: 1.75; }
+  .prose strong { color: var(--accent); font-weight: 600; }
+  .prose em { font-style: italic; color: #b0aca4; }
+
+  .pullquote { margin: 40px 0; padding: 28px 32px; border-left: 3px solid var(--accent); background: var(--surface); border-radius: 0 var(--radius) var(--radius) 0; font-size: 19px; line-height: 1.7; color: #d4cfc7; font-style: italic; }
+
+  .section-label { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; margin: 52px 0 20px; display: flex; align-items: center; gap: 12px; }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  .diagram-section { margin: 48px 0; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+  .diagram-label { padding: 14px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; font-family: 'DM Mono', monospace; font-size: 12px; color: var(--muted); letter-spacing: 0.04em; }
+  .diagram-label span { display: inline-block; width: 8px; height: 8px; border-radius: 50%; }
+  .dot-r { background: #c97b6e; } .dot-y { background: #c8a96e; } .dot-g { background: #7eb8a4; }
+  .diagram-inner { padding: 8px; background: #0c0c0c; }
+
+  svg { display: block; width: 100%; }
+  .t  { font-family: 'DM Mono', monospace; font-size: 14px; fill: #e8e4dc; }
+  .ts { font-family: 'DM Mono', monospace; font-size: 11px; fill: #7a7570; }
+  .th { font-family: 'DM Mono', monospace; font-size: 14px; fill: #e8e4dc; font-weight: 500; }
+  .c-blue   rect { fill: #0d2035; stroke: #1d4870; } .c-blue   .th,.c-blue   .t { fill: #7eb8e8; } .c-blue   .ts { fill: #4a7aaa; }
+  .c-teal   rect { fill: #0d2520; stroke: #1d5040; } .c-teal   .th,.c-teal   .t { fill: #7eb8a4; } .c-teal   .ts { fill: #3a7860; }
+  .c-amber  rect { fill: #251a05; stroke: #503808; } .c-amber  .th,.c-amber  .t { fill: #c8a96e; } .c-amber  .ts { fill: #806830; }
+  .c-purple rect { fill: #1a1228; stroke: #382858; } .c-purple .th,.c-purple .t { fill: #a896d8; } .c-purple .ts { fill: #605090; }
+  .c-green  rect { fill: #0d2010; stroke: #204018; } .c-green  .th,.c-green  .t { fill: #88c878; } .c-green  .ts { fill: #407830; }
+  .c-red    rect { fill: #251010; stroke: #502020; } .c-red    .th,.c-red    .t { fill: #d88888; } .c-red    .ts { fill: #885050; }
+  .c-gray   rect { fill: #181818; stroke: #303030; } .c-gray   .th,.c-gray   .t { fill: #a0a0a0; } .c-gray   .ts { fill: #606060; }
+  .subcard  { fill: #0f0f0f; stroke: #2a2a2a; }
+
+  pre { padding: 20px; overflow-x: auto; font-family: 'DM Mono', monospace; font-size: 13px; line-height: 1.7; color: #c8c4bc; margin: 0; }
+  .kw  { color: #a896d8; } .str { color: #88c878; }
+  .cm  { color: #4a4a4a; } .fn  { color: #7eb8e8; }
+  .num { color: #c8a96e; } .dec { color: #d88888; }
+  .tp  { color: #c8a96e; }
+
+  .flow-steps { margin: 40px 0; }
+  .flow-step { display: flex; gap: 18px; margin-bottom: 18px; align-items: flex-start; }
+  .step-num { flex-shrink: 0; width: 30px; height: 30px; border-radius: 50%; background: var(--surface2); border: 1px solid var(--border); font-family: 'DM Mono', monospace; font-size: 12px; color: var(--accent); display: flex; align-items: center; justify-content: center; margin-top: 4px; }
+  .step-body { font-size: 15px; color: #c0bbb3; line-height: 1.7; padding-top: 4px; }
+  .step-body strong { color: var(--text); }
+
+  .callout { margin: 32px 0; padding: 20px 24px; border-radius: var(--radius); border: 1px solid; font-size: 15px; line-height: 1.7; }
+  .callout.warn  { background: #1f1a0a; border-color: #4a3808; color: #c8a96e; }
+  .callout.info  { background: #0d1f1a; border-color: #1d4838; color: #7eb8a4; }
+  .callout.error { background: #1f0d0d; border-color: #4a1818; color: #d88888; }
+  .callout-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px; opacity: 0.7; }
+
+  code { font-family: 'DM Mono', monospace; font-size: 14px; background: var(--surface2); border: 1px solid var(--border); padding: 2px 7px; border-radius: 4px; color: var(--accent2); }
+
+  .compare-table { width: 100%; border-collapse: collapse; margin: 32px 0; font-size: 15px; font-family: 'DM Mono', monospace; }
+  .compare-table th { background: var(--surface2); color: var(--accent); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--border); }
+  .compare-table td { padding: 12px 16px; border-bottom: 1px solid var(--border); color: #c0bbb3; vertical-align: top; line-height: 1.6; }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .compare-table td:first-child { color: var(--text); font-weight: 500; width: 28%; }
+  .compare-table tr:nth-child(even) td { background: var(--surface); }
+
+  /* MCP server cards */
+  .mcp-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin: 32px 0; }
+  @media (max-width: 600px) { .mcp-grid { grid-template-columns: 1fr 1fr; } }
+  .mcp-card { padding: 16px; border-radius: var(--radius); border: 1px solid var(--border); background: var(--surface); }
+  .mcp-card-name { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--accent2); margin-bottom: 6px; font-weight: 500; }
+  .mcp-card-desc { font-size: 13px; color: var(--muted); line-height: 1.5; margin-bottom: 10px; }
+  .mcp-card-url  { font-family: 'DM Mono', monospace; font-size: 10px; color: #4a4a4a; }
+
+  /* before/after split */
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 32px 0; }
+  @media (max-width: 560px) { .split { grid-template-columns: 1fr; } }
+  .split-card { padding: 18px; border-radius: var(--radius); border: 1px solid; }
+  .split-card.before { background: #251010; border-color: #502020; }
+  .split-card.after  { background: #0d2010; border-color: #204018; }
+  .split-card h4 { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 12px; }
+  .split-card.before h4 { color: #d88888; }
+  .split-card.after  h4 { color: #88c878; }
+  .split-card pre { padding: 0; font-size: 12px; background: transparent; }
+
+  .post-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 60px 0 0; }
+  .nav-card { padding: 20px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); text-decoration: none; transition: border-color 0.2s; }
+  .nav-card:hover { border-color: var(--accent); }
+  .nav-direction { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px; }
+  .nav-title { font-family: 'Literata', serif; font-size: 15px; color: var(--text); line-height: 1.4; }
+  .nav-card.next { text-align: right; }
+
+  footer { position: relative; z-index: 1; border-top: 1px solid var(--border); padding: 32px 28px; max-width: 760px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  footer p { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--muted); }
+  .gh-link { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--accent); text-decoration: none; border: 1px solid var(--border); padding: 8px 16px; border-radius: 6px; transition: all 0.2s; display: flex; align-items: center; gap: 8px; }
+  .gh-link:hover { background: var(--surface); border-color: var(--accent); }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+  .post-meta       { animation: fadeUp 0.5s ease both; }
+  .diagram-section { animation: fadeUp 0.6s 0.1s ease both; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <span class="site-name">asif.dev</span>
+    <nav><a href="#">Writing</a><a href="#">Projects</a><a href="#">GitHub</a></nav>
+  </div>
+</header>
+
+<main>
+
+  <div class="post-meta">
+    <div class="breadcrumb">
+      <a href="#">Agentic Systems Series</a>
+      <span>/</span>
+      Bonus: MCP Integration
+    </div>
+    <div class="series-badge"><span class="dot"></span> Series: Production Agentic System</div>
+    <div class="tags">
+      <span class="tag tag-ai">AI Engineering</span>
+      <span class="tag tag-sys">System Design</span>
+      <span class="tag tag-mcp">MCP</span>
+    </div>
+    <h1>MCP: Tool Registry-র ভেতরে যে Protocol সব কিছু Connect করে</h1>
+    <p class="subtitle">
+      আগের post-এ Tool Registry দেখলাম। কিন্তু registry actual tools-কে
+      কীভাবে call করে? এখানেই আসে MCP: Model Context Protocol।
+      এটা হলো standardized bridge যেটা LLM-কে যেকোনো external tool-এর
+      সাথে একটা common language-এ কথা বলতে দেয়।
+    </p>
+    <div class="byline">
+      <div class="avatar">A</div>
+      <div class="byline-text">
+        <strong>Asif Bin Syed</strong>
+        ML Researcher · OMSCS @ Georgia Tech · May 2026
+      </div>
+    </div>
+  </div>
+
+  <article class="prose">
+
+    <p class="lead">
+      আগে প্রতিটা tool আলাদা করে implement করতে হতো।
+      arXiv-এর জন্য আলাদা function। Obsidian-এর জন্য আলাদা।
+      W&B-এর জন্য আলাদা। প্রতিটার error handling, authentication,
+      retry logic আলাদা। Code হয় duplicated, maintenance nightmare।
+      <strong>MCP এই সমস্যা একবারে solve করে।</strong>
+    </p>
+
+    <p>
+      MCP হলো Anthropic-এর open standard। একটা protocol define করে
+      যেটা মেনে tool server বানালে যেকোনো MCP-compatible client
+      সেটা use করতে পারবে। Tool Registry শুধু MCP protocol বোঝে।
+      বাকি সব implementation detail tool server-এ।
+    </p>
+
+    <div class="pullquote">
+      MCP হলো USB-C। একটা standard port।
+      যেকোনো device plug করো, কাজ হবে।
+      আগে প্রতিটা device-এর আলাদা cable লাগতো।
+      MCP আসার আগে প্রতিটা tool-এর আলাদা integration লাগতো।
+    </div>
+
+    <div class="section-label">Architecture-এ MCP কোথায়</div>
+
+  </article>
+
+  <div class="diagram-section">
+    <div class="diagram-label">
+      <span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span>
+      mcp-in-architecture.svg · MCP layer position
+    </div>
+    <div class="diagram-inner">
+<svg viewBox="0 0 680 580" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="#4a7aaa" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+  <marker id="arg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="#407830" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+  <marker id="ard" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="#505050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+</defs>
+
+<!-- Sub-agent -->
+<g class="c-amber">
+  <rect x="220" y="14" width="240" height="44" rx="8" stroke-width="0.5"/>
+  <text class="th" x="340" y="32" text-anchor="middle">Sub-agent</text>
+  <text class="ts" x="340" y="48" text-anchor="middle">requests tool by name</text>
+</g>
+<line x1="340" y1="58" x2="340" y2="82" stroke="#4a7aaa" stroke-width="1.2" marker-end="url(#ar)"/>
+
+<!-- Tool Registry -->
+<g class="c-teal">
+  <rect x="140" y="82" width="400" height="60" rx="8" stroke-width="0.5"/>
+  <text class="th" x="340" y="106" text-anchor="middle">Tool Registry</text>
+  <text class="ts" x="340" y="124" text-anchor="middle">permission check, rate limit, audit log</text>
+</g>
+<line x1="340" y1="142" x2="340" y2="166" stroke="#4a7aaa" stroke-width="1.2" marker-end="url(#ar)"/>
+
+<!-- MCP Client -->
+<g class="c-blue">
+  <rect x="100" y="166" width="480" height="80" rx="10" stroke-width="0.5"/>
+  <text class="th" x="340" y="190" text-anchor="middle" font-size="13">MCP Client Layer</text>
+  <text class="ts" x="340" y="208" text-anchor="middle">translates tool calls into MCP protocol messages</text>
+  <text class="ts" x="340" y="224" text-anchor="middle">handles connection, auth, retry, response parsing</text>
+</g>
+
+<!-- connection lines to servers -->
+<line x1="160" y1="246" x2="90"  y2="286" stroke="#505050" stroke-width="1" marker-end="url(#ard)"/>
+<line x1="260" y1="246" x2="230" y2="286" stroke="#505050" stroke-width="1" marker-end="url(#ard)"/>
+<line x1="340" y1="246" x2="340" y2="286" stroke="#505050" stroke-width="1" marker-end="url(#ard)"/>
+<line x1="420" y1="246" x2="450" y2="286" stroke="#505050" stroke-width="1" marker-end="url(#ard)"/>
+<line x1="520" y1="246" x2="590" y2="286" stroke="#505050" stroke-width="1" marker-end="url(#ard)"/>
+
+<!-- MCP Servers row 1 -->
+<text class="ts" x="340" y="278" text-anchor="middle" fill="#4a4a4a">MCP servers (each is a separate process or remote endpoint)</text>
+
+<g class="c-gray">
+  <rect x="14"  y="286" width="118" height="80" rx="8" stroke-width="0.5"/>
+  <text class="th" x="73" y="306" text-anchor="middle" font-size="11">arXiv MCP</text>
+  <text class="ts" x="73" y="322" text-anchor="middle">paper search</text>
+  <text class="ts" x="73" y="338" text-anchor="middle">abstract fetch</text>
+  <text class="ts" x="73" y="354" text-anchor="middle">citation lookup</text>
+</g>
+<g class="c-gray">
+  <rect x="144" y="286" width="118" height="80" rx="8" stroke-width="0.5"/>
+  <text class="th" x="203" y="306" text-anchor="middle" font-size="11">Obsidian MCP</text>
+  <text class="ts" x="203" y="322" text-anchor="middle">read notes</text>
+  <text class="ts" x="203" y="338" text-anchor="middle">write notes</text>
+  <text class="ts" x="203" y="354" text-anchor="middle">search vault</text>
+</g>
+<g class="c-gray">
+  <rect x="274" y="286" width="118" height="80" rx="8" stroke-width="0.5"/>
+  <text class="th" x="333" y="306" text-anchor="middle" font-size="11">Notion MCP</text>
+  <text class="ts" x="333" y="322" text-anchor="middle">create page</text>
+  <text class="ts" x="333" y="338" text-anchor="middle">update DB</text>
+  <text class="ts" x="333" y="354" text-anchor="middle">search</text>
+</g>
+<g class="c-gray">
+  <rect x="404" y="286" width="118" height="80" rx="8" stroke-width="0.5"/>
+  <text class="th" x="463" y="306" text-anchor="middle" font-size="11">W&amp;B MCP</text>
+  <text class="ts" x="463" y="322" text-anchor="middle">log metrics</text>
+  <text class="ts" x="463" y="338" text-anchor="middle">fetch runs</text>
+  <text class="ts" x="463" y="354" text-anchor="middle">compare</text>
+</g>
+<g class="c-gray">
+  <rect x="534" y="286" width="132" height="80" rx="8" stroke-width="0.5"/>
+  <text class="th" x="600" y="306" text-anchor="middle" font-size="11">Atlassian MCP</text>
+  <text class="ts" x="600" y="322" text-anchor="middle">Jira issues</text>
+  <text class="ts" x="600" y="338" text-anchor="middle">Confluence</text>
+  <text class="ts" x="600" y="354" text-anchor="middle">create ticket</text>
+</g>
+
+<!-- protocol label -->
+<rect x="14" y="380" width="652" height="28" rx="4" fill="#181818" stroke="#2a2a2a" stroke-width="0.5"/>
+<text class="ts" x="340" y="398" text-anchor="middle" fill="#4a4a4a">all communication via JSON-RPC 2.0 over stdio or HTTP/SSE: same protocol, different transports</text>
+
+<!-- Custom MCP server -->
+<line x1="340" y1="420" x2="340" y2="444" stroke="#407830" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#arg)"/>
+<g class="c-green">
+  <rect x="140" y="444" width="400" height="80" rx="10" stroke-width="0.5"/>
+  <text class="th" x="340" y="468" text-anchor="middle" font-size="12">Custom Research MCP Server</text>
+  <text class="ts" x="340" y="486" text-anchor="middle">তোমার নিজের server: arXiv + Semantic Scholar + HF Papers একসাথে</text>
+  <text class="ts" x="340" y="502" text-anchor="middle">একটা MCP server, multiple tools inside</text>
+</g>
+<text class="ts" x="340" y="536" text-anchor="middle" fill="#407830">তুমি নিজে বানাতে পারো: Python MCP SDK দিয়ে</text>
+</svg>
+    </div>
+  </div>
+
+  <article class="prose">
+
+    <div class="section-label">MCP ছাড়া vs MCP সহ</div>
+
+  </article>
+
+  <div class="split">
+    <div class="split-card before">
+      <h4>MCP ছাড়া (আগে)</h4>
+      <pre><span class="cm"># প্রতিটা tool আলাদা implement</span>
+<span class="kw">async def</span> <span class="fn">search_arxiv</span>(q):
+    <span class="kw">import</span> arxiv
+    <span class="cm"># custom error handling</span>
+    <span class="cm"># custom auth</span>
+    <span class="cm"># custom retry</span>
+    ...
+
+<span class="kw">async def</span> <span class="fn">write_obsidian</span>(path, content):
+    <span class="kw">import</span> requests
+    <span class="cm"># different auth</span>
+    <span class="cm"># different error format</span>
+    <span class="cm"># different retry logic</span>
+    ...
+
+<span class="cm"># 10 tools = 10 implementations</span>
+<span class="cm"># 10 different error patterns</span>
+<span class="cm"># 10 different auth methods</span></pre>
+    </div>
+    <div class="split-card after">
+      <h4>MCP সহ (এখন)</h4>
+      <pre><span class="cm"># একটা MCP client, সব tool</span>
+<span class="kw">from</span> mcp <span class="kw">import</span> ClientSession
+
+<span class="kw">async with</span> <span class="fn">ClientSession</span>() <span class="kw">as</span> session:
+    <span class="cm"># same interface, every tool</span>
+    result = <span class="kw">await</span> session.<span class="fn">call_tool</span>(
+        <span class="str">"search_arxiv"</span>,
+        {<span class="str">"query"</span>: <span class="str">"PRM vs ORM"</span>}
+    )
+
+    result = <span class="kw">await</span> session.<span class="fn">call_tool</span>(
+        <span class="str">"write_obsidian"</span>,
+        {<span class="str">"path"</span>: <span class="str">"notes/digest.md"</span>}
+    )
+
+<span class="cm"># 10 tools = same interface</span>
+<span class="cm"># error handling: once</span>
+<span class="cm"># auth: per server, not per tool</span></pre>
+    </div>
+  </div>
+
+  <article class="prose">
+
+    <div class="section-label">তোমার Connected MCP Servers</div>
+
+    <p>
+      তুমি already অনেকগুলো MCP server connected আছো।
+      এগুলো সরাসরি তোমার research harness-এ plug করা যাবে।
+    </p>
+
+  </article>
+
+  <div class="mcp-grid">
+    <div class="mcp-card">
+      <div class="mcp-card-name">Notion</div>
+      <div class="mcp-card-desc">GRPO learning plan, vocabulary collection, experiment notes</div>
+      <div class="mcp-card-url">mcp.notion.com/mcp</div>
+    </div>
+    <div class="mcp-card">
+      <div class="mcp-card-name">Google Drive</div>
+      <div class="mcp-card-desc">Research papers, Obsidian vault backup, shared docs</div>
+      <div class="mcp-card-url">drivemcp.googleapis.com</div>
+    </div>
+    <div class="mcp-card">
+      <div class="mcp-card-name">Gmail</div>
+      <div class="mcp-card-desc">Research emails, paper notifications, collaborator messages</div>
+      <div class="mcp-card-url">gmailmcp.googleapis.com</div>
+    </div>
+    <div class="mcp-card">
+      <div class="mcp-card-name">Atlassian</div>
+      <div class="mcp-card-desc">Jira: RES project for PRM research, AC for OMSCS coursework</div>
+      <div class="mcp-card-url">mcp.atlassian.com/v1/mcp</div>
+    </div>
+    <div class="mcp-card">
+      <div class="mcp-card-name">Hugging Face</div>
+      <div class="mcp-card-desc">Model hub, paper search, space discovery, dataset lookup</div>
+      <div class="mcp-card-url">huggingface.co/mcp</div>
+    </div>
+    <div class="mcp-card">
+      <div class="mcp-card-name">Google Calendar</div>
+      <div class="mcp-card-desc">Research schedule, OMSCS deadlines, experiment timeline</div>
+      <div class="mcp-card-url">calendarmcp.googleapis.com</div>
+    </div>
+    <div class="mcp-card">
+      <div class="mcp-card-name">Linear</div>
+      <div class="mcp-card-desc">Project tracking, issue management, sprint planning</div>
+      <div class="mcp-card-url">mcp.linear.app/sse</div>
+    </div>
+    <div class="mcp-card">
+      <div class="mcp-card-name">Excalidraw</div>
+      <div class="mcp-card-desc">Architecture diagrams, research flow visualization</div>
+      <div class="mcp-card-url">mcp.excalidraw.com/mcp</div>
+    </div>
+    <div class="mcp-card">
+      <div class="mcp-card-name">Custom arXiv</div>
+      <div class="mcp-card-desc">নিজে বানাবো: arXiv + S2 + HF Papers একসাথে</div>
+      <div class="mcp-card-url">localhost:8000/mcp (planned)</div>
+    </div>
+  </div>
+
+  <article class="prose">
+
+    <div class="section-label">Custom MCP Server বানানো: arXiv Digest-এর জন্য</div>
+
+    <p>
+      Toy project-এর arXiv search-কে MCP server বানিয়ে ফেলো।
+      তারপর research harness-এ same server use করবে।
+      Python MCP SDK দিয়ে অনেক simple।
+    </p>
+
+  </article>
+
+  <div class="diagram-section">
+    <div class="diagram-label">
+      <span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span>
+      mcp_server.py · Custom research MCP server
+    </div>
+    <div class="diagram-inner">
+<pre><span class="cm"># mcp_server.py</span>
+<span class="kw">from</span> mcp.server <span class="kw">import</span> Server
+<span class="kw">from</span> mcp.server.stdio <span class="kw">import</span> stdio_server
+<span class="kw">from</span> mcp.types <span class="kw">import</span> Tool, TextContent
+<span class="kw">import</span> arxiv, httpx, json
+
+app = <span class="fn">Server</span>(<span class="str">"research-mcp"</span>)
+
+<span class="dec">@app.list_tools()</span>
+<span class="kw">async def</span> <span class="fn">list_tools</span>() -> list[<span class="tp">Tool</span>]:
+    <span class="kw">return</span> [
+        <span class="tp">Tool</span>(
+            name=<span class="str">"search_arxiv"</span>,
+            description=<span class="str">"Search arXiv for ML papers by query"</span>,
+            inputSchema={
+                <span class="str">"type"</span>: <span class="str">"object"</span>,
+                <span class="str">"properties"</span>: {
+                    <span class="str">"query"</span>:       {<span class="str">"type"</span>: <span class="str">"string"</span>},
+                    <span class="str">"max_results"</span>: {<span class="str">"type"</span>: <span class="str">"integer"</span>, <span class="str">"default"</span>: <span class="num">5</span>},
+                },
+                <span class="str">"required"</span>: [<span class="str">"query"</span>]
+            }
+        ),
+        <span class="tp">Tool</span>(
+            name=<span class="str">"search_semantic_scholar"</span>,
+            description=<span class="str">"Search Semantic Scholar with citation data"</span>,
+            inputSchema={
+                <span class="str">"type"</span>: <span class="str">"object"</span>,
+                <span class="str">"properties"</span>: {
+                    <span class="str">"query"</span>:     {<span class="str">"type"</span>: <span class="str">"string"</span>},
+                    <span class="str">"year_from"</span>: {<span class="str">"type"</span>: <span class="str">"integer"</span>},
+                },
+                <span class="str">"required"</span>: [<span class="str">"query"</span>]
+            }
+        ),
+        <span class="tp">Tool</span>(
+            name=<span class="str">"fetch_hf_papers"</span>,
+            description=<span class="str">"Get trending ML papers from HuggingFace Papers"</span>,
+            inputSchema={
+                <span class="str">"type"</span>: <span class="str">"object"</span>,
+                <span class="str">"properties"</span>: {
+                    <span class="str">"date"</span>: {<span class="str">"type"</span>: <span class="str">"string"</span>, <span class="str">"description"</span>: <span class="str">"YYYY-MM-DD"</span>},
+                },
+            }
+        ),
+    ]
+
+<span class="dec">@app.call_tool()</span>
+<span class="kw">async def</span> <span class="fn">call_tool</span>(name: str, arguments: dict):
+    <span class="kw">if</span> name == <span class="str">"search_arxiv"</span>:
+        client = arxiv.<span class="fn">Client</span>()
+        search = arxiv.<span class="fn">Search</span>(
+            query=arguments[<span class="str">"query"</span>],
+            max_results=arguments.<span class="fn">get</span>(<span class="str">"max_results"</span>, <span class="num">5</span>),
+            sort_by=arxiv.SortCriterion.Relevance
+        )
+        papers = []
+        <span class="kw">for</span> r <span class="kw">in</span> client.<span class="fn">results</span>(search):
+            papers.<span class="fn">append</span>({
+                <span class="str">"title"</span>:     r.title,
+                <span class="str">"abstract"</span>:  r.summary[:<span class="num">600</span>],
+                <span class="str">"authors"</span>:   [a.name <span class="kw">for</span> a <span class="kw">in</span> r.authors[:<span class="num">3</span>]],
+                <span class="str">"url"</span>:       r.entry_id,
+                <span class="str">"published"</span>: <span class="fn">str</span>(r.published.date()),
+            })
+        <span class="kw">return</span> [<span class="tp">TextContent</span>(type=<span class="str">"text"</span>, text=json.<span class="fn">dumps</span>(papers))]
+
+    <span class="kw">elif</span> name == <span class="str">"search_semantic_scholar"</span>:
+        <span class="kw">async with</span> httpx.<span class="fn">AsyncClient</span>() <span class="kw">as</span> client:
+            r = <span class="kw">await</span> client.<span class="fn">get</span>(
+                <span class="str">"https://api.semanticscholar.org/graph/v1/paper/search"</span>,
+                params={<span class="str">"query"</span>: arguments[<span class="str">"query"</span>], <span class="str">"limit"</span>: <span class="num">5</span>,
+                        <span class="str">"fields"</span>: <span class="str">"title,abstract,authors,year,citationCount"</span>}
+            )
+            <span class="kw">return</span> [<span class="tp">TextContent</span>(type=<span class="str">"text"</span>, text=r.text)]
+
+
+<span class="kw">async def</span> <span class="fn">main</span>():
+    <span class="kw">async with</span> <span class="fn">stdio_server</span>() <span class="kw">as</span> (read_stream, write_stream):
+        <span class="kw">await</span> app.<span class="fn">run</span>(read_stream, write_stream, app.<span class="fn">create_initialization_options</span>())
+
+<span class="kw">if</span> __name__ == <span class="str">"__main__"</span>:
+    <span class="kw">import</span> asyncio
+    asyncio.<span class="fn">run</span>(<span class="fn">main</span>())</pre>
+    </div>
+  </div>
+
+  <article class="prose">
+
+    <div class="section-label">Tool Registry-তে MCP Client Integrate করা</div>
+
+  </article>
+
+  <div class="diagram-section">
+    <div class="diagram-label">
+      <span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span>
+      tools/mcp_bridge.py · Registry connects to MCP servers
+    </div>
+    <div class="diagram-inner">
+<pre><span class="cm"># tools/mcp_bridge.py</span>
+<span class="kw">from</span> mcp <span class="kw">import</span> ClientSession, StdioServerParameters
+<span class="kw">from</span> mcp.client.stdio <span class="kw">import</span> stdio_client
+<span class="kw">from</span> tools.registry <span class="kw">import</span> registry, ToolDefinition
+
+<span class="kw">class</span> <span class="tp">MCPBridge</span>:
+    <span class="str">"""Wraps MCP server tools and registers them in ToolRegistry."""</span>
+
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, server_script: str, allowed_agents: list[str]):
+        self.server_script  = server_script
+        self.allowed_agents = allowed_agents
+        self._session       = None
+
+    <span class="kw">async def</span> <span class="fn">connect</span>(self):
+        params = <span class="fn">StdioServerParameters</span>(
+            command=<span class="str">"python"</span>,
+            args=[self.server_script],
+        )
+        self._read, self._write = <span class="kw">await</span> <span class="fn">stdio_client</span>(params).__aenter__()
+        self._session = <span class="kw">await</span> <span class="fn">ClientSession</span>(
+            self._read, self._write
+        ).__aenter__()
+        <span class="kw">await</span> self._session.<span class="fn">initialize</span>()
+
+        <span class="cm"># auto-register all tools from MCP server</span>
+        tools_response = <span class="kw">await</span> self._session.<span class="fn">list_tools</span>()
+        <span class="kw">for</span> tool <span class="kw">in</span> tools_response.tools:
+            <span class="fn">self</span>._register_tool(tool)
+
+    <span class="kw">def</span> <span class="fn">_register_tool</span>(self, mcp_tool):
+        <span class="cm"># wrap MCP tool call as async function</span>
+        session = self._session
+        tool_name = mcp_tool.name
+
+        <span class="kw">async def</span> <span class="fn">call_fn</span>(**kwargs):
+            result = <span class="kw">await</span> session.<span class="fn">call_tool</span>(tool_name, kwargs)
+            <span class="kw">return</span> result.content[<span class="num">0</span>].text
+
+        registry.<span class="fn">register</span>(<span class="tp">ToolDefinition</span>(
+            name=tool_name,
+            fn=call_fn,
+            allowed_agents=self.allowed_agents,
+            description=mcp_tool.description,
+        ))
+
+
+<span class="cm"># --- Bootstrap: connect all MCP servers ---</span>
+<span class="kw">async def</span> <span class="fn">setup_mcp</span>():
+    <span class="cm"># custom research server (local)</span>
+    research_bridge = <span class="tp">MCPBridge</span>(
+        server_script=<span class="str">"mcp_server.py"</span>,
+        allowed_agents=[<span class="str">"research_agent"</span>],
+    )
+    <span class="kw">await</span> research_bridge.<span class="fn">connect</span>()
+
+    <span class="cm"># Notion MCP (remote)</span>
+    <span class="cm"># similar pattern but with HTTP/SSE transport</span>
+    <span class="cm"># allowed for synthesis_agent only</span></pre>
+    </div>
+  </div>
+
+  <article class="prose">
+
+    <div class="section-label">MCP-র তিনটা Core Concept</div>
+
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="step-num">1</div>
+        <div class="step-body"><strong>Tools:</strong> Agent যা call করে। arXiv search, Obsidian write এগুলো সব tool। প্রতিটার input schema defined। Registry এই schema validate করে।</div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">2</div>
+        <div class="step-body"><strong>Resources:</strong> Agent যা read করে। Files, database records, API responses। Tool থেকে আলাদা কারণ এটা read-only। Agent passively consume করে।</div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">3</div>
+        <div class="step-body"><strong>Prompts:</strong> Server-defined prompt templates। Agent system prompt-এ inject হয়। এটাই Skills-এর সাথে connect হয়, পরের post-এ details।</div>
+      </div>
+    </div>
+
+    <div class="callout info">
+      <div class="callout-label">তোমার arXiv digest project-এ</div>
+      এখন: Python functions directly call করছো।<br>
+      After MCP: same functions MCP server-এ wrap করো।<br>
+      Benefit: পরে research harness-এ same server use করবে।
+      Code duplicate হবে না। Tool Registry-তে registration automatic।
+    </div>
+
+    <div class="pullquote">
+      MCP মানে "আমি এই tool বানালাম একবার,
+      যেকোনো agent যেকোনো system থেকে use করতে পারবে।"
+      Portability। Standardization। Reusability।
+      Production system-এ এই তিনটা জিনিসই
+      long-term maintainability নিশ্চিত করে।
+    </div>
+
+    <p>
+      কোনো question থাকলে comment করো।
+      <code>#MCP</code> <code>#ModelContextProtocol</code> <code>#AgenticAI</code>
+    </p>
+
+  </article>
+
+  <div class="post-nav">
+    <a class="nav-card" href="tool_registry_blog.html">
+      <div class="nav-direction">Previous post</div>
+      <div class="nav-title">Tool Registry: Agents যখন Tool Call করে, কে Check করে?</div>
+    </a>
+    <a class="nav-card next" href="skills_blog.html">
+      <div class="nav-direction">Next post</div>
+      <div class="nav-title">Skills: Agent-এর System Prompt-এ Inject হওয়া Reusable Instructions</div>
+    </a>
+  </div>
+
+</main>
+
+<footer>
+  <p>© 2026 Asif Bin Syed · ML Researcher · OMSCS @ Georgia Tech</p>
+  <a class="gh-link" href="https://github.com/asifbinsyed33" target="_blank">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+    </svg>
+    github/asifbinsyed33
+  </a>
+</footer>
+
+</body>
+</html>

@@ -33,23 +33,196 @@ hr {
  * Navbar
  */
 
-#author-name {
-    font-size: 30px;
-    color: #272727;
-    display: inline-block;
+/* Author info container with photo and name */
+.author-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
+
+#author-photo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #e0e0e0;
+    transition: border-color 0.3s ease;
+}
+
+#author-photo:hover {
+    border-color: $accent;
+}
+
+.author-name-container {
+    display: flex;
+    flex-direction: column;
+}
+
+#author-name {
+    font-size: 36px;
+    font-weight: 700;
+    color: #000000;
+    display: inline-block;
+    margin: 0;
+    line-height: 1.2;
+    font-family: 'Times New Roman', Times, Georgia, serif;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+#author-name:hover {
+    text-decoration: none;
+}
+
+#author-subtitle-inline {
+    font-size: 28px;
+    font-weight: 700;
+    color: #000000;
+    text-transform: uppercase;
+    font-family: 'Times New Roman', Times, Georgia, serif;
+}
+
+.author-subtitle-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 4px;
+    flex-wrap: wrap;
+}
+
+#author-subtitle {
+    font-size: 16px;
+    color: #666666;
+    font-weight: 400;
+    line-height: 1.4;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+}
+
+.header-social-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    align-items: center;
+}
+
+.header-social-badge {
+    display: inline-flex;
+    align-items: center;
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 0;
+    padding: 3px 6px;
+    background-color: #181717;
+    position: relative;
+    height: 18px;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    transition: opacity 0.2s;
+    white-space: nowrap;
+}
+
+.header-social-badge:hover {
+    opacity: 0.85;
+    text-decoration: none;
+    color: #fff;
+}
+
+.header-social-badge .header-social-icon {
+    display: inline-block;
+    margin-right: 4px;
+    width: 12px;
+    height: 12px;
+    vertical-align: middle;
+    flex-shrink: 0;
+}
+
+.header-social-badge .header-social-icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.header-social-badge .header-social-text {
+    font-size: 10px;
+    line-height: 1;
+}
+
+.header-social-badge.scholar {
+    background-color: #181717;
+}
+
+.header-social-badge.linkedin {
+    background-color: #0077B5;
+}
+
+.header-social-badge.arxiv {
+    background-color: #181717;
+}
+
+.header-social-badge.orcid {
+    background-color: #181717;
+}
+
+.header-social-badge.orcid .header-social-icon.orcid-icon circle {
+    fill: #A6CE39;
+}
+
+.header-social-badge.orcid .header-social-icon.orcid-icon text {
+    fill: #fff;
+}
+
+.header-social-badge.researchgate {
+    background-color: #00CCBB;
+}
+
+.header-social-badge.resume {
+    background-color: #6B7280; /* Gray color for resume */
+}
+
 .navbar {
     padding: 50px 0 50px 0;
 }
 .navbar-ul {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     margin: 0;
-    padding: 5px 0 5px 0;
+    padding: 0;
     margin-left: 20px;
+    gap: 8px;
+    list-style: none;
 }
 .nav-list {
     list-style-type: none;
-    margin: 0 5px 0 10px;
+    margin: 0;
+    padding: 0;
+}
+.nav-list a {
+    color: #272727;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    font-size: 15px;
+    display: inline-block;
+    position: relative;
+}
+.nav-list a:hover {
+    background-color: rgba(255, 15, 0, 0.1);
+    color: $accent;
+    transform: translateY(-1px);
+}
+.nav-list a:active {
+    transform: translateY(0);
+}
+/* Remove the forward slashes between nav items */
+.navbar-ul::before,
+.navbar-ul::after {
+    display: none;
 }
 .alignable {
     display: inline-block;
@@ -67,13 +240,47 @@ hr {
 
 .container {
     max-width: 1100px;
-    margin: auto;
+    margin: 0 auto;
+    padding-left: 30px;
+    padding-right: 30px;
+    box-sizing: border-box;
 }
 .wrapper {
     max-width: 1100px;
-    margin: auto;
-    padding-left: 20px;
-    padding-right: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    box-sizing: border-box;
+}
+
+/* Ensure navbar and content align perfectly - both use .container padding */
+.navbar.container,
+.container.content {
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Fix page-main alignment to match navbar and content */
+.container.content .page-main,
+.container.content main {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+    margin-right: 0 !important;
+    padding-right: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+/* Ensure navbar menu aligns with content right edge */
+.navbar.container .navbar-ul.pull-right {
+    margin-right: 0;
+    margin-left: auto;
 }
 
 /* Institute Image */
@@ -96,10 +303,20 @@ hr {
 
 @media (max-width: 650px) {
     .container {
-        max-width: 83%;
+        max-width: 100%;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 25px;
+        padding-right: 25px;
     }
     .navbar-ul {
         margin-top: 5px;
+        gap: 4px;
+    }
+    .nav-list a {
+        padding: 6px 12px;
+        font-size: 14px;
     }
 }
 
@@ -108,17 +325,50 @@ hr {
         text-align: center;
         padding: 50px 0px 0px 0px;
     }
+    .author-name-container {
+        width: 100%;
+        float: none;
+        text-align: center;
+    }
     #author-name {
         width: 100%;
         float: none;
+        font-size: 28px;
+    }
+    #author-subtitle {
+        font-size: 14px;
+    }
+    .author-subtitle-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    .header-social-links {
+        gap: 3px;
+    }
+    .header-social-badge {
+        font-size: 9px;
+        padding: 2px 5px;
+        height: 16px;
+    }
+    .header-social-badge .header-social-icon {
+        width: 10px;
+        height: 10px;
+        margin-right: 3px;
+    }
+    .header-social-badge .header-social-text {
+        font-size: 9px;
     }
     #navlist {
         padding: 10px 0 10px 0;
         margin: 0;
-        display: block;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
         float: none;
         text-align: center;
         width: 100%;
+        gap: 4px;
     }
     #navlist li.alignable {
         display: inline-block;
@@ -128,6 +378,10 @@ hr {
     }
     #navlist li.nav-list {
         margin: 0;
+    }
+    .nav-list a {
+        padding: 6px 10px;
+        font-size: 13px;
     }
 }
 
@@ -238,3 +492,5 @@ p {
   margin: 0.5rem 0;
   font-size: 0.9rem;
 }
+
+@import "code_theme";

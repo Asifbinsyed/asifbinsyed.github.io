@@ -1,0 +1,129 @@
+<div class="arch-diagram">
+<style>
+.arch-diagram {
+  margin: 1.5em 0;
+  overflow-x: auto;
+  border: 1px solid #e5e7eb;
+  padding: 12px;
+  background: #fafafa;
+}
+.arch-diagram svg {
+  display: block;
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+  margin: 0 auto;
+}
+.arch-diagram .box-title {
+  font-family: monospace;
+  font-size: 13px;
+  font-weight: 600;
+  fill: #1f2937;
+}
+.arch-diagram .box-sub {
+  font-family: monospace;
+  font-size: 10px;
+  fill: #6b7280;
+}
+.arch-diagram .arrow-label {
+  font-family: monospace;
+  font-size: 9px;
+  fill: #9ca3af;
+}
+.arch-diagram .lane {
+  stroke-width: 1;
+}
+.arch-diagram .lane-gray { fill: #f3f4f6; stroke: #9ca3af; }
+.arch-diagram .lane-blue { fill: #dbeafe; stroke: #3b82f6; }
+.arch-diagram .lane-pink { fill: #fce7f3; stroke: #ec4899; }
+.arch-diagram .lane-purple { fill: #ede9fe; stroke: #7c3aed; }
+.arch-diagram .lane-green { fill: #dcfce7; stroke: #22c55e; }
+.arch-diagram .lane-amber { fill: #fef3c7; stroke: #d97706; }
+.arch-diagram .lane-teal { fill: #ccfbf1; stroke: #14b8a6; }
+.arch-diagram .lane-red { fill: #fee2e2; stroke: #ef4444; }
+.arch-diagram .flow-line {
+  stroke: #6b7280;
+  stroke-width: 1.2;
+  fill: none;
+}
+</style>
+<svg viewBox="0 0 480 620" xmlns="http://www.w3.org/2000/svg" role="img">
+  <title>Production agentic system (simplified)</title>
+  <desc>Top-to-bottom flow: User, LLM Gateway, Observability, Orchestrator, Memory, Sub-agents, Tool Registry, Guardrails.</desc>
+  <defs>
+    <marker id="flow-arrow" viewBox="0 0 10 10" refX="8" refY="5"
+      markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#6b7280"
+        stroke-width="1.2" stroke-linecap="round"/>
+    </marker>
+  </defs>
+
+  <text class="box-title" x="240" y="22" text-anchor="middle">
+    Production agentic system
+  </text>
+
+  <!-- 1. User -->
+  <rect class="lane lane-gray" x="60" y="36" width="360" height="48" rx="8"/>
+  <text class="box-title" x="240" y="58" text-anchor="middle">User / application</text>
+  <text class="box-sub" x="240" y="72" text-anchor="middle">Web, mobile, API</text>
+
+  <line class="flow-line" x1="240" y1="84" x2="240" y2="100" marker-end="url(#flow-arrow)"/>
+
+  <!-- 2. LLM Gateway -->
+  <rect class="lane lane-blue" x="60" y="100" width="360" height="48" rx="8"/>
+  <text class="box-title" x="240" y="122" text-anchor="middle">LLM gateway</text>
+  <text class="box-sub" x="240" y="136" text-anchor="middle">Routing, rate limits, auth, cost</text>
+
+  <line class="flow-line" x1="240" y1="148" x2="240" y2="164" marker-end="url(#flow-arrow)"/>
+
+  <!-- 3. Observability -->
+  <rect class="lane lane-pink" x="60" y="164" width="360" height="48" rx="8"/>
+  <text class="box-title" x="240" y="186" text-anchor="middle">Observability layer</text>
+  <text class="box-sub" x="240" y="200" text-anchor="middle">Tracing, metrics, logs, alerts</text>
+
+  <line class="flow-line" x1="240" y1="212" x2="240" y2="228" marker-end="url(#flow-arrow)"/>
+
+  <!-- 4. Orchestrator -->
+  <rect class="lane lane-purple" x="60" y="228" width="360" height="48" rx="8"/>
+  <text class="box-title" x="240" y="250" text-anchor="middle">Orchestrator</text>
+  <text class="box-sub" x="240" y="264" text-anchor="middle">Plan tasks, route agents, track state</text>
+
+  <line class="flow-line" x1="240" y1="276" x2="240" y2="292" marker-end="url(#flow-arrow)"/>
+
+  <!-- 5. Memory -->
+  <rect class="lane lane-green" x="60" y="292" width="360" height="48" rx="8"/>
+  <text class="box-title" x="240" y="314" text-anchor="middle">Memory + vector store</text>
+  <text class="box-sub" x="240" y="328" text-anchor="middle">Context retrieval (central or per agent)</text>
+
+  <line class="flow-line" x1="240" y1="340" x2="240" y2="356" marker-end="url(#flow-arrow)"/>
+
+  <!-- 6. Sub-agents -->
+  <rect class="lane lane-amber" x="60" y="356" width="360" height="48" rx="8"/>
+  <text class="box-title" x="240" y="378" text-anchor="middle">Sub-agents</text>
+  <text class="box-sub" x="240" y="392" text-anchor="middle">Research, code, analysis, custom</text>
+
+  <line class="flow-line" x1="240" y1="404" x2="240" y2="420" marker-end="url(#flow-arrow)"/>
+
+  <!-- 7. Tool registry -->
+  <rect class="lane lane-teal" x="60" y="420" width="360" height="48" rx="8"/>
+  <text class="box-title" x="240" y="442" text-anchor="middle">Tool registry</text>
+  <text class="box-sub" x="240" y="456" text-anchor="middle">Controlled tool access (search, code, DB, APIs)</text>
+
+  <line class="flow-line" x1="240" y1="468" x2="240" y2="484" marker-end="url(#flow-arrow)"/>
+
+  <!-- 8. Guardrails -->
+  <rect class="lane lane-red" x="60" y="484" width="360" height="48" rx="8"/>
+  <text class="box-title" x="240" y="506" text-anchor="middle">Guardrails</text>
+  <text class="box-sub" x="240" y="520" text-anchor="middle">Input/output filters, policy, PII, budget caps</text>
+
+  <line class="flow-line" x1="240" y1="532" x2="240" y2="548" marker-end="url(#flow-arrow)"/>
+
+  <!-- Response -->
+  <rect class="lane lane-gray" x="60" y="548" width="360" height="48" rx="8"/>
+  <text class="box-title" x="240" y="570" text-anchor="middle">Response to user</text>
+  <text class="box-sub" x="240" y="584" text-anchor="middle">Filtered output returned upstream</text>
+
+  <text class="arrow-label" x="252" y="96">request</text>
+  <text class="arrow-label" x="252" y="540">filter</text>
+</svg>
+</div>

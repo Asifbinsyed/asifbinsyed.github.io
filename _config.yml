@@ -1,9 +1,21 @@
-title: "Asif Syed | ML Scientist"
+title: "Asif Syed"
 subtitle: "ML Scientist"
 url: "https://asifbinsyed.github.io"
 repository: "Asifbinsyed/asifbinsyed.github.io"
 
 markdown: kramdown
+highlighter: rouge
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: highlight
+    span:
+      line_numbers: false
+    block:
+      line_numbers: false
+
 #ins_logo: "./bits-logo.png"
 
 tracking_id: #
@@ -11,7 +23,7 @@ tracking_id: #
 
 footer: yes
 footer_url: "https://github.com/ankitsultana"
-footer_text: "Page design by Ankit Sultana"
+footer_text: "Template design credit Ankit Sultana"
 
 
 
@@ -21,11 +33,11 @@ footer_text: "Page design by Ankit Sultana"
 remote_theme: ankitsultana/researcher@gem
 
 nav:
- - name: "About"
-   link: "/asifbinsyed.github.io/"
- - name: "Resume"
-   link: "resume.pdf"
- - name: "Contact"
-   link: "contact"
+ - name: "Home"
+   link: "index"
+ - name: "Publications"
+   link: "publications"
+ - name: "Regular Pulse"
+   link: "regular-pulse"
  - name: "Blog"
    link: "blog"

@@ -1,0 +1,150 @@
+// Dark code blocks for markdown posts (Rouge / Pygments token classes)
+
+$page-code-bg: #0d1117;
+$page-code-border: #30363d;
+$page-code-text: #e6edf3;
+$page-code-font: 'Inconsolata', ui-monospace, SFMono-Regular, Menlo,
+  Consolas, monospace;
+
+// Scrollable fenced blocks (div wrapper from Rouge)
+.page-main div.highlighter-rouge {
+  background: $page-code-bg !important;
+  border: 1px solid $page-code-border;
+  border-radius: 8px;
+  margin: 1.25rem 0;
+  overflow: auto;
+  max-height: min(70vh, 560px);
+  -webkit-overflow-scrolling: touch;
+  scrollbar-color: #484f58 $page-code-bg;
+}
+
+.page-main div.highlighter-rouge::-webkit-scrollbar {
+  height: 10px;
+  width: 10px;
+}
+
+.page-main div.highlighter-rouge::-webkit-scrollbar-track {
+  background: $page-code-bg;
+}
+
+.page-main div.highlighter-rouge::-webkit-scrollbar-thumb {
+  background: #484f58;
+  border-radius: 5px;
+}
+
+.page-main div.highlighter-rouge > .highlight {
+  background: transparent !important;
+  border: none;
+  margin: 0;
+}
+
+.page-main .highlighter-rouge pre,
+.page-main .highlighter-rouge pre.highlight,
+.page-main pre.highlight {
+  background: transparent !important;
+  color: $page-code-text !important;
+  margin: 0;
+  padding: 1rem 1.25rem;
+  overflow: visible;
+  white-space: pre;
+  word-wrap: normal;
+  tab-size: 4;
+  font-family: $page-code-font;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+}
+
+.page-main .highlighter-rouge code,
+.page-main .highlighter-rouge pre code {
+  background: transparent !important;
+  color: inherit !important;
+  padding: 0;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  white-space: inherit;
+}
+
+.page-main .highlighter-rouge .highlight,
+.page-main .highlighter-rouge .highlight span {
+  font-family: inherit;
+}
+
+// Rouge syntax tokens
+.page-main .highlight {
+  .c, .cm, .cp, .c1, .cs, .ch {
+    color: #8b949e;
+    font-style: italic;
+  }
+
+  .k, .kc, .kd, .kn, .kp, .kr, .kt {
+    color: #ff7b72;
+  }
+
+  .s, .sa, .sb, .sc, .dl, .sd, .s2, .se, .sh, .si, .sx,
+  .sr, .s1, .ss {
+    color: #a5d6ff;
+  }
+
+  .n, .na, .nb, .nc, .no, .nd, .ni, .ne, .nf, .nl, .nn,
+  .nx, .py, .nv, .vc, .vg, .vi, .vm {
+    color: $page-code-text;
+  }
+
+  .nf, .fm {
+    color: #d2a8ff;
+  }
+
+  .nc, .nn, .bp {
+    color: #ffa657;
+  }
+
+  .m, .mb, .mf, .mh, .mi, .mo, .il {
+    color: #79c0ff;
+  }
+
+  .o, .ow, .p {
+    color: #c9d1d9;
+  }
+
+  .nt {
+    color: #7ee787;
+  }
+
+  .err {
+    color: #ffa198;
+    background: #490202;
+  }
+
+  .gd {
+    color: #ffa198;
+  }
+
+  .gi {
+    color: #7ee787;
+  }
+
+  .ge {
+    font-style: italic;
+  }
+
+  .gs {
+    font-weight: bold;
+  }
+}
+
+// Inline code (not fenced blocks)
+.page-main p > code,
+.page-main li > code,
+.page-main td code,
+.page-main blockquote code,
+.page-main :not(pre) > code {
+  background: #1a1f26 !important;
+  color: #7ee787 !important;
+  padding: 0.15em 0.4em;
+  border: 1px solid $page-code-border;
+  border-radius: 4px;
+  font-family: $page-code-font;
+  font-size: 0.88em;
+  white-space: break-spaces;
+}

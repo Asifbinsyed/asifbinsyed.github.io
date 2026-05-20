@@ -1,15 +1,14 @@
 ---
 layout: default
-toc: true
-toc_min_level: 2
-toc_max_level: 4
+title: "Reasoning Models"
 ---
 
-# Reasoning Model
+Reasoning models aim to tackle tasks that require step-by-step logical thinking. They often integrate planning or structured representations to enable complex problem solving.
 
-Discussion about building AI systems that can reason effectively.
+## Key Ideas
+- Break down a problem into intermediate steps
+- Use external tools or memory to keep track of progress
+- Chain-of-thought prompts guide large language models to reason more effectively
 
-## Random Item
-
-- My reasoning model once deduced that a cat was secretly ruling the house.
-
+### Simple Example
+A reasoning approach might ask a language model to first outline a solution, then verify each step before returning a final answer. This approach can produce more reliable results compared to a single-shot response.

@@ -1,0 +1,274 @@
+%%%%
+% MTecknology's Resume
+%%%%
+% Author: Michael Lustfield
+% License: CC-BY-4
+% - https://creativecommons.org/licenses/by/4.0/legalcode.txt
+%%%%
+
+\documentclass[letterpaper,10pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%
+%% BEGIN_FILE: mteck.sty
+%% NOTE: Everything between here and END_FILE can
+%% be relocated to "mteck.sty" and then included with:
+%\usepackage{mteck}
+
+% Dependencies
+% NOTE: Some packages (lastpage, hyperref) require second build!
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{fontawesome5}
+\usepackage{multicol}
+\usepackage{bookmark}
+\usepackage{lastpage}
+\usepackage{ragged2e}
+
+
+% Sans-Serif
+%\usepackage[sfdefault]{FiraSans}
+%\usepackage[sfdefault]{roboto}
+%\usepackage[sfdefault]{noto-sans}
+%\usepackage[default]{sourcesanspro}
+
+% Serif
+\usepackage{CormorantGaramond}
+\usepackage{charter}
+
+% Colors
+% Use with \color{Name}
+% Can wrap entire heading with {\color{accent} [...] }
+\usepackage{xcolor}
+%\definecolor{accentTitle}{HTML}{0e6e55}
+\definecolor{accentTitle}{HTML}{4682B4}
+\definecolor{accentText}{HTML}{4682B4}
+\definecolor{accentLine}{HTML}{a16f0b}
+
+% Misc. Options
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\usepackage[margin=1.2in]{geometry}
+\urlstyle{same}
+
+% Adjust Margins
+\addtolength{\oddsidemargin}{-0.75in}
+\addtolength{\evensidemargin}{-1.1in}
+\addtolength{\textwidth}{1.3in}
+\addtolength{\topmargin}{-1.in}
+\addtolength{\textheight}{1.7in}
+
+\setlength{\multicolsep}{-3.0pt}
+\setlength{\columnsep}{-1pt}
+\setlength{\tabcolsep}{0pt}
+\setlength{\footskip}{3.7pt}
+\raggedbottom
+\raggedright
+
+% ATS Readability
+\input{glyphtounicode}
+\pdfgentounicode=1
+
+%-----------------%
+% Custom Commands %
+%-----------------%
+
+% Centered title along with subtitle between HR
+% Usage: \documentTitle{Name}{Details}
+\newcommand{\documentTitle}[2]{
+  \begin{center}
+    {\Huge\color{accentTitle} #1}
+    \vspace{10pt}
+    {\color{accentLine} \hrule}
+    \vspace{2pt}
+    %{\footnotesize\color{accentTitle} #2}
+    \footnotesize{#2}
+    \vspace{2pt}
+    {\color{accentLine} \hrule}
+  \end{center}
+}
+
+% Create a footer with correct padding
+% Usage: \documentFooter{\thepage of X}
+\newcommand{\documentFooter}[1]{
+  \setlength{\footskip}{10.25pt}
+  \fancyfoot[C]{\footnotesize #1}
+}
+
+% Simple wrapper to set up page numbering
+% Usage: \numberedPages
+% WARNING: Must run pdflatex twice!
+\newcommand{\numberedPages}{
+  \documentFooter{\thepage/\pageref{LastPage}}
+}
+
+% Section heading with horizontal rule
+% Usage: \section{Title}
+\titleformat{\section}{
+  \vspace{-5pt}
+  \color{accentText}
+  \raggedright\large\bfseries
+}{}{0em}{}[\color{accentLine}\titlerule]
+
+% Section heading with separator and content on same line
+% Usage: \tinysection{Title}
+\newcommand{\tinysection}[1]{
+  \phantomsection
+  \addcontentsline{toc}{section}{#1}
+  {\large{\bfseries\color{accentText}#1} {\color{accentLine} |}}
+}
+
+% Indented line with arguments left/right aligned in document
+% Usage: \heading{Left}{Right}
+\newcommand{\heading}[2]{
+  \hspace{0pt}#1\hfill#2\\
+}
+
+% Adds \textbf to \heading
+\newcommand{\headingBf}[2]{
+  \heading{\textbf{#1}}{\textbf{#2}}
+}
+
+% Adds \textit to \heading
+\newcommand{\headingIt}[2]{
+  \heading{\textit{#1}}{\textit{#2}}
+  \vspace{0.2em}
+}
+\newenvironment{resume_list}{
+  \vspace{-7pt}
+  \begin{itemize}[itemsep=-0.5pt, parsep=1pt, leftmargin=20pt]
+}{
+  \end{itemize}
+}
+
+% Formats an item to use as an itemized title
+% Usage: \itemTitle{Title}
+\newcommand{\itemTitle}[1]{
+  \item[] \underline{#1}\vspace{4pt}
+}
+
+% Bullets used in itemized lists
+%\renewcommand\labelitemi{--}
+
+%% END_FILE: mteck.sty
+%%%%%%%%%%%%%%%%%%%%%%
+
+
+%===================%
+% ASIF SYED's Resume - Tailored for Sam's Club Data Scientist III %
+%===================%
+
+%\numberedPages % NOTE: lastpage requires a second build
+%\documentFooter{\thepage of 2} % Does similar without using lastpage
+\begin{document}
+
+  %---------%
+  % Heading %
+  %---------%
+
+\documentTitle{ASIF SYED}{
+    \href{tel:6812854251}{
+      \raisebox{-0.05\height} \faPhone\ 681-285-4251} ~ | ~
+    \href{mailto:asifbinsyed33@gmail.com}{
+      \raisebox{-0.15\height} \faEnvelope\ asifbinsyed33@gmail.com} ~ | ~
+    \href{https://linkedin.com/in/asifbinsyed/}{
+      \raisebox{-0.15\height} \faLinkedin\ linkedin.com/in/asifbinsyed} ~ | ~
+    \href{https://github.com/Asifbinsyed}{
+      \raisebox{-0.15\height} \faGithub\ github.com/Asifbinsyed} ~ | ~
+\href{https://asifbinsyed.github.io}{
+      \raisebox{-0.15\height} \faGlobe\ asifbinsyed.com}
+  }
+
+  %---------%
+  % Summary %
+  %---------%
+\section{SUMMARY} 
+% \tinysection{SUMMARY} 
+% \begin{justify}
+Over \textbf{5+ years}, I have transformed multiple business challenges into production-grade ML and AI solutions and delivered measurable business impact including \textbf{\$30M+ in cost savings} and improved model accuracy by 8-10\% across multiple projects. Hands-on experience in building and deploying production-grade ML and AI solutions for business use cases like report generation and Tableau Agent using modern frameworks like \textbf{LangGraph} and \textbf{ADK}. Published research in top-tier ML conference workshops including \textbf{NeurIPS} and \textbf{ICML}.
+% \end{justify}
+
+  %------------%
+  % Experience %
+  %------------%
+
+\section{EXPERIENCES}
+\headingBf{THE HOME DEPOT}{Jan 2024 -- Present}
+\headingIt{Sr. Data Analyst | Delivery Analytics Team}{Atlanta, GA}
+\begin{justify}
+\begin{resume_list}
+
+
+\item Developed and productionized an ML model (85\% accuracy) to detect on-time delivery failures; validated with A/B testing, resulting in an 8.5\% reduction in failures and retention of \$10M+ in customer spending annually.
+\item Collaborated with data scientists and software engineers to develop a \textbf{SmartFulfill agent} using offline RL to optimize fulfillment decisions and reduce false alarms by 23\%.
+\item Developed an automated report generation agent using LLM and LangGraph framework, streamlining weekly reporting processes and saving approximately \textbf{208 hours annually} (4 hours per week).
+
+\item Built a Tableau agent using Google's ADK (Agent Development Kit) to enable leadership to make data-driven decisions independently, reducing ad-hoc requests and accelerating decision-making processes.
+
+\item Leveraged LLM to pinpoint root causes of delivery failures and enhanced accuracy of previous root cause analysis by 9\% through thematic analysis of store associates' and drivers' comments.
+
+\item Collaborated with Online Delivery Analytics team to devise an optimization model to pinpoint the optimal carrier for each vendor, maximizing discounts from primary carriers and \textbf{potentially yielding over \$30 million in savings}.
+
+\item Developed a SQL workbook to calculate recommended pallet counts, validated results through an API endpoint, and constructed a \textbf{pallet compliance dashboard} for stakeholders, potentially generating \textbf{annual savings of \$2 million}.
+
+\end{resume_list}
+\end{justify}
+
+\headingBf{VOLVO GROUP}{Jan 2023 -- Dec 2023}
+\headingIt{Data Analyst | Logistics Purchasing Team}{Greensboro, NC}
+\begin{justify}
+\begin{resume_list}
+\item Improved weekly inbound shipment predictions by 8\% in 3 months using SQL, time-series, and machine learning.
+\item Engineered \textbf{10+ Power Automate flows, 5+ Power Apps, and 5+ Power BI dashboards} for process visualization, saving over 300 hours annually.
+\item Constructed a Power Automate flow for invoice data analysis, identifying \$200K in savings on a \$1.8M invoices.
+\end{resume_list}
+\end{justify}
+
+\headingBf{SYSTEMS ANALYTICS LAB, WEST VIRGINIA UNIVERSITY}{Aug 2021 -- Dec 2022}
+\headingIt{Data Science Research Assistant}{Morgantown, WV}
+\begin{justify}
+\begin{resume_list}
+\item Increased prediction accuracy by 10\% by analyzing tunnel heating issues using Python and time-series ML algorithms.
+\item Developed a hybrid deep neural network for a track association in marine surveillance, achieving 85\% accuracy.
+\item Performed data analysis on patient datasets and clustered similar patient groups using PCA and K-Means algorithms.
+\end{resume_list}
+\end{justify}
+
+  %------------%
+  % Publications %
+  %------------%
+
+  \section{SELECTED PUBLICATIONS}
+
+  \begin{resume_list}
+  \item \textbf{Zero-Shot Time-Series Forecasting: Do Time-Series FMs Outperform Domain-Agnostic FMs?} Syed, M. A. B., et al. \textit{NeurIPS 2025 Workshop (BERT²S)}, 2025
+  \item \textbf{DIVA: Diversity Assessment in Text-to-Image Generation via Hybrid Metrics} Syed, M. A. B., Ahamed, M. Y. \textit{ICML 2025 Workshop (4th Muslims in ML Workshop)}, 2025
+  \end{resume_list}
+
+  
+  %--------%
+  % Skills %
+  %--------%
+\section{SKILLS}
+\begin{tabular}{@{}p{3cm}p{15.5cm}@{}}
+    \textbf{Technical Skills:} & SQL (Google BigQuery), Python (Pandas, Scikit-learn, NumPy, TensorFlow, PyTorch), LangGraph, ADK (Agent Development Kit), GCP, Vertex AI, MLOps, Tableau, CPLEX, Power BI, Git, MS Excel (Pivot Table, Power Query, VBA) \\
+    \textbf{Certifications:} & Microsoft Certified Power BI Data Analyst (PL-300), Certified Six Sigma Green Belt (IISE)  \\
+    \textbf{Awards:} & \textbf{Bronze Medalist} for The Home Depot Data Science and Analytics \textbf{Hackathon (2024)}, Finalist of Data Challenge for Quality Control and Reliability Engineering (IISE) \\
+
+\end{tabular}
+  %-----------%
+  % Education %
+  %-----------%
+
+  \section{EDUCATION}
+
+  \headingBf{Georgia Institute of Technology}{2025} 
+  \headingIt{MS in Computer Science (Specialization in Machine Learning)}{}
+
+
+
+\end{document}
