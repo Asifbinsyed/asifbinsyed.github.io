@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Observability Layer: Production-এ অন্ধকারে কাজ করা যায় না</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Literata:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@400;500&family=Noto+Sans+Bengali:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0f0f0f;
+    --surface: #161616;
+    --surface2: #1e1e1e;
+    --border: #2a2a2a;
+    --text: #e8e4dc;
+    --muted: #7a7570;
+    --accent: #c8a96e;
+    --accent2: #7eb8a4;
+    --accent3: #c97b6e;
+    --radius: 12px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Literata', 'Noto Sans Bengali', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.85;
+    min-height: 100vh;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.6;
+  }
+
+  header {
+    position: relative; z-index: 1;
+    border-bottom: 1px solid var(--border);
+    padding: 20px 0;
+  }
+
+  .header-inner {
+    max-width: 760px; margin: 0 auto;
+    padding: 0 28px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+
+  .site-name {
+    font-family: 'DM Mono', monospace; font-size: 13px;
+    color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase;
+  }
+
+  nav a {
+    font-family: 'DM Mono', monospace; font-size: 12px;
+    color: var(--muted); text-decoration: none;
+    margin-left: 24px; letter-spacing: 0.04em; transition: color 0.2s;
+  }
+  nav a:hover { color: var(--text); }
+
+  main {
+    position: relative; z-index: 1;
+    max-width: 760px; margin: 0 auto;
+    padding: 0 28px 100px;
+  }
+
+  .post-meta {
+    padding: 52px 0 20px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 48px;
+  }
+
+  .breadcrumb {
+    font-family: 'DM Mono', monospace; font-size: 11px;
+    color: var(--muted); letter-spacing: 0.04em;
+    margin-bottom: 18px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .breadcrumb a { color: var(--accent2); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--text); }
+  .breadcrumb span { color: #3a3a3a; }
+
+  .series-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'DM Mono', monospace; font-size: 11px;
+    background: #1a2a20; border: 1px solid #2a4a30;
+    color: var(--accent2); padding: 5px 12px; border-radius: 20px;
+    margin-bottom: 20px; letter-spacing: 0.04em;
+  }
+  .series-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent2); }
+
+  .tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+  .tag {
+    font-family: 'DM Mono', monospace; font-size: 11px;
+    padding: 4px 10px; border-radius: 4px;
+    letter-spacing: 0.04em; text-transform: uppercase;
+  }
+  .tag-ai  { background: #1a2a24; color: var(--accent2); border: 1px solid #2a4a3a; }
+  .tag-sys { background: #2a1e14; color: var(--accent);  border: 1px solid #4a3020; }
+  .tag-obs { background: #1a1a2a; color: #a896d8;        border: 1px solid #2a2a4a; }
+
+  h1 {
+    font-family: 'Literata', Georgia, serif;
+    font-size: clamp(26px, 4vw, 38px); font-weight: 600;
+    line-height: 1.25; color: var(--text);
+    margin-bottom: 20px; letter-spacing: -0.01em;
+  }
+
+  .subtitle {
+    font-size: 16px; color: var(--muted);
+    line-height: 1.6; margin-bottom: 24px;
+  }
+
+  .byline { display: flex; align-items: center; gap: 14px; }
+  .avatar {
+    width: 38px; height: 38px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'DM Mono', monospace; font-size: 14px; font-weight: 500;
+    color: var(--bg); flex-shrink: 0;
+  }
+  .byline-text { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--muted); }
+  .byline-text strong { display: block; color: var(--text); font-size: 13px; margin-bottom: 2px; }
+
+  .prose p { margin-bottom: 1.6em; color: var(--text); }
+  .prose p.lead { font-size: 20px; color: #ccc8c0; line-height: 1.75; }
+  .prose strong { color: var(--accent); font-weight: 600; }
+  .prose em { font-style: italic; color: #b0aca4; }
+
+  .pullquote {
+    margin: 40px 0; padding: 28px 32px;
+    border-left: 3px solid var(--accent);
+    background: var(--surface);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    font-size: 19px; line-height: 1.7;
+    color: #d4cfc7; font-style: italic;
+  }
+
+  .section-label {
+    font-family: 'DM Mono', monospace; font-size: 11px;
+    color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase;
+    margin: 52px 0 20px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  .diagram-section {
+    margin: 48px 0; background: var(--surface);
+    border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden;
+  }
+  .diagram-label {
+    padding: 14px 20px; border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 10px;
+    font-family: 'DM Mono', monospace; font-size: 12px;
+    color: var(--muted); letter-spacing: 0.04em;
+  }
+  .diagram-label span { display: inline-block; width: 8px; height: 8px; border-radius: 50%; }
+  .dot-r { background: #c97b6e; } .dot-y { background: #c8a96e; } .dot-g { background: #7eb8a4; }
+  .diagram-inner { padding: 8px; background: #0c0c0c; }
+
+  svg { display: block; width: 100%; }
+  .t  { font-family: 'DM Mono', monospace; font-size: 14px; fill: #e8e4dc; font-weight: 400; }
+  .ts { font-family: 'DM Mono', monospace; font-size: 11px; fill: #7a7570; font-weight: 400; }
+  .th { font-family: 'DM Mono', monospace; font-size: 14px; fill: #e8e4dc; font-weight: 500; }
+  .c-blue   rect { fill: #0d2035; stroke: #1d4870; } .c-blue   .th,.c-blue   .t { fill: #7eb8e8; } .c-blue   .ts { fill: #4a7aaa; }
+  .c-teal   rect { fill: #0d2520; stroke: #1d5040; } .c-teal   .th,.c-teal   .t { fill: #7eb8a4; } .c-teal   .ts { fill: #3a7860; }
+  .c-amber  rect { fill: #251a05; stroke: #503808; } .c-amber  .th,.c-amber  .t { fill: #c8a96e; } .c-amber  .ts { fill: #806830; }
+  .c-purple rect { fill: #1a1228; stroke: #382858; } .c-purple .th,.c-purple .t { fill: #a896d8; } .c-purple .ts { fill: #605090; }
+  .c-green  rect { fill: #0d2010; stroke: #204018; } .c-green  .th,.c-green  .t { fill: #88c878; } .c-green  .ts { fill: #407830; }
+  .c-red    rect { fill: #251010; stroke: #502020; } .c-red    .th,.c-red    .t { fill: #d88888; } .c-red    .ts { fill: #885050; }
+  .c-pink   rect { fill: #251020; stroke: #502040; } .c-pink   .th,.c-pink   .t { fill: #d898c8; } .c-pink   .ts { fill: #885080; }
+  .c-gray   rect { fill: #181818; stroke: #303030; } .c-gray   .th,.c-gray   .t { fill: #a0a0a0; } .c-gray   .ts { fill: #606060; }
+  .subcard  { fill: #0f0f0f; stroke: #2a2a2a; }
+
+  .compare-table {
+    width: 100%; border-collapse: collapse;
+    margin: 32px 0; font-size: 15px; font-family: 'DM Mono', monospace;
+  }
+  .compare-table th {
+    background: var(--surface2); color: var(--accent);
+    font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--border);
+  }
+  .compare-table td {
+    padding: 12px 16px; border-bottom: 1px solid var(--border);
+    color: #c0bbb3; vertical-align: top; line-height: 1.6;
+  }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .compare-table td:first-child { color: var(--text); font-weight: 500; width: 28%; }
+  .compare-table tr:nth-child(even) td { background: var(--surface); }
+
+  .code-block {
+    margin: 32px 0; background: #0a0a0a;
+    border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden;
+  }
+  .code-header {
+    padding: 10px 16px; border-bottom: 1px solid var(--border);
+    font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .lang-badge {
+    background: var(--surface2); border: 1px solid var(--border);
+    padding: 2px 8px; border-radius: 3px;
+    font-size: 10px; color: var(--accent2); letter-spacing: 0.04em;
+  }
+  pre {
+    padding: 20px; overflow-x: auto;
+    font-family: 'DM Mono', monospace; font-size: 13px;
+    line-height: 1.7; color: #c8c4bc; margin: 0;
+  }
+  .kw  { color: #a896d8; } .str { color: #88c878; }
+  .cm  { color: #4a4a4a; } .fn  { color: #7eb8e8; }
+  .num { color: #c8a96e; } .dec { color: #d88888; }
+
+  .flow-steps { margin: 40px 0; }
+  .flow-step { display: flex; gap: 18px; margin-bottom: 18px; align-items: flex-start; }
+  .step-num {
+    flex-shrink: 0; width: 30px; height: 30px; border-radius: 50%;
+    background: var(--surface2); border: 1px solid var(--border);
+    font-family: 'DM Mono', monospace; font-size: 12px; color: var(--accent);
+    display: flex; align-items: center; justify-content: center; margin-top: 4px;
+  }
+  .step-body { font-size: 15px; color: #c0bbb3; line-height: 1.7; padding-top: 4px; }
+  .step-body strong { color: var(--text); }
+
+  .callout {
+    margin: 32px 0; padding: 20px 24px;
+    border-radius: var(--radius); border: 1px solid;
+    font-size: 15px; line-height: 1.7;
+  }
+  .callout.warn  { background: #1f1a0a; border-color: #4a3808; color: #c8a96e; }
+  .callout.info  { background: #0d1f1a; border-color: #1d4838; color: #7eb8a4; }
+  .callout.error { background: #1f0d0d; border-color: #4a1818; color: #d88888; }
+  .callout-label {
+    font-family: 'DM Mono', monospace; font-size: 10px;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    margin-bottom: 8px; opacity: 0.7;
+  }
+
+  code {
+    font-family: 'DM Mono', monospace; font-size: 14px;
+    background: var(--surface2); border: 1px solid var(--border);
+    padding: 2px 7px; border-radius: 4px; color: var(--accent2);
+  }
+
+  /* three-pillars layout */
+  .pillars {
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px; margin: 32px 0;
+  }
+  @media (max-width: 580px) { .pillars { grid-template-columns: 1fr; } }
+  .pillar {
+    padding: 20px; border-radius: var(--radius);
+    border: 1px solid var(--border); background: var(--surface);
+  }
+  .pillar-icon {
+    font-family: 'DM Mono', monospace; font-size: 10px;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .pillar-icon.metrics { color: var(--accent); }
+  .pillar-icon.traces  { color: var(--accent2); }
+  .pillar-icon.logs    { color: #a896d8; }
+  .pillar h3 { font-family: 'Literata', serif; font-size: 17px; color: var(--text); margin-bottom: 8px; }
+  .pillar p  { font-size: 14px; color: var(--muted); line-height: 1.6; margin: 0; }
+
+  .post-nav {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 16px; margin: 60px 0 0;
+  }
+  .nav-card {
+    padding: 20px; background: var(--surface);
+    border: 1px solid var(--border); border-radius: var(--radius);
+    text-decoration: none; transition: border-color 0.2s;
+  }
+  .nav-card:hover { border-color: var(--accent); }
+  .nav-direction {
+    font-family: 'DM Mono', monospace; font-size: 10px;
+    color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px;
+  }
+  .nav-title { font-family: 'Literata', serif; font-size: 15px; color: var(--text); line-height: 1.4; }
+  .nav-card.next { text-align: right; }
+
+  footer {
+    position: relative; z-index: 1;
+    border-top: 1px solid var(--border); padding: 32px 28px;
+    max-width: 760px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+  }
+  footer p { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--muted); }
+  .gh-link {
+    font-family: 'DM Mono', monospace; font-size: 12px; color: var(--accent);
+    text-decoration: none; border: 1px solid var(--border); padding: 8px 16px;
+    border-radius: 6px; transition: all 0.2s; display: flex; align-items: center; gap: 8px;
+  }
+  .gh-link:hover { background: var(--surface); border-color: var(--accent); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .post-meta       { animation: fadeUp 0.5s ease both; }
+  .diagram-section { animation: fadeUp 0.6s 0.1s ease both; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <span class="site-name">asif.dev</span>
+    <nav>
+      <a href="#">Writing</a>
+      <a href="#">Projects</a>
+      <a href="#">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <div class="post-meta">
+    <div class="breadcrumb">
+      <a href="#">Agentic Systems Series</a>
+      <span>/</span>
+      Part 3 of 8
+    </div>
+    <div class="series-badge">
+      <span class="dot"></span>
+      Series: Production Agentic System
+    </div>
+    <div class="tags">
+      <span class="tag tag-ai">AI Engineering</span>
+      <span class="tag tag-sys">System Design</span>
+      <span class="tag tag-obs">Observability</span>
+    </div>
+    <h1>Observability Layer: Production-এ অন্ধকারে কাজ করা যায় না</h1>
+    <p class="subtitle">
+      System deploy করলেই কাজ শেষ না। আসল কাজ শুরু হয় তারপর।
+      কী হচ্ছে জানতে হবে, কোথায় ধীর হচ্ছে দেখতে হবে, কিছু break করার
+      আগেই বুঝতে হবে। Observability ছাড়া এটা সম্ভব না।
+    </p>
+    <div class="byline">
+      <div class="avatar">A</div>
+      <div class="byline-text">
+        <strong>Asif Bin Syed</strong>
+        ML Researcher · OMSCS @ Georgia Tech · May 2026
+      </div>
+    </div>
+  </div>
+
+  <article class="prose">
+
+    <p class="lead">
+      রাত ৩টা। তোমার phone-এ notification আসলো: "API error rate 40%।"
+      তুমি laptop খুলে dashboard দেখলে। কিছুই বুঝলে না কারণ কোনো
+      dashboard নেই। Log দেখলে। লক্ষ লক্ষ line। কোথায় problem?
+      জানো না। <strong>এটাই হয় observability না থাকলে।</strong>
+    </p>
+
+    <p>
+      Observability মানে শুধু logging না। তিনটা জিনিস একসাথে:
+      <strong>Metrics</strong> (কী হচ্ছে সংখ্যায়),
+      <strong>Traces</strong> (কোথায় কতক্ষণ লাগছে),
+      আর <strong>Logs</strong> (ঠিক কী ঘটেছে)।
+      এই তিনটাকে একসাথে বলে observability-র তিন স্তম্ভ।
+    </p>
+
+  </article>
+
+  <!-- THREE PILLARS -->
+  <div class="pillars">
+    <div class="pillar">
+      <div class="pillar-icon metrics">Metrics</div>
+      <h3>সংখ্যায় স্বাস্থ্য</h3>
+      <p>Latency, error rate, throughput। Time-series data। Dashboard-এ দেখা যায়। Alert trigger করে।</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-icon traces">Traces</div>
+      <h3>Request-এর যাত্রা</h3>
+      <p>একটা request কোথায় কতক্ষণ কাটালো। Gateway থেকে agent থেকে tool পর্যন্ত পুরো path।</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-icon logs">Logs</div>
+      <h3>ঘটনার রেকর্ড</h3>
+      <p>কী ঘটেছে exactly। Error stack trace, input/output, context। Debug-এর সময় দরকার।</p>
+    </div>
+  </div>
+
+  <article class="prose">
+    <div class="section-label">পুরো Architecture</div>
+    <p>
+      Agentic system-এ observability একটু বেশি complex কারণ
+      request একটা না, অনেকগুলো component-এর মধ্যে ঘুরে।
+      Gateway, orchestrator, sub-agent, tool registry, সব জায়গায়
+      কী হচ্ছে সেটা একসাথে দেখতে হবে।
+    </p>
+  </article>
+
+  <!-- DIAGRAM: Observability architecture -->
+  <div class="diagram-section">
+    <div class="diagram-label">
+      <span class="dot-r"></span>
+      <span class="dot-y"></span>
+      <span class="dot-g"></span>
+      observability-architecture.svg · Full Stack
+    </div>
+    <div class="diagram-inner">
+<svg viewBox="0 0 680 700" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="#4a7aaa" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+  <marker id="ar2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="#505050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+</defs>
+
+<!-- ROW 1: Instrumented system components -->
+<text class="ts" x="340" y="22" text-anchor="middle" fill="#4a4a4a">Instrumented system (every component emits telemetry)</text>
+
+<g class="c-blue">
+  <rect x="14" y="30" width="130" height="70" rx="8" stroke-width="0.5"/>
+  <text class="th" x="79" y="50" text-anchor="middle" font-size="11">LLM Gateway</text>
+  <text class="ts" x="79" y="66" text-anchor="middle">req count</text>
+  <text class="ts" x="79" y="80" text-anchor="middle">latency, cost</text>
+</g>
+
+<g class="c-purple">
+  <rect x="158" y="30" width="130" height="70" rx="8" stroke-width="0.5"/>
+  <text class="th" x="223" y="50" text-anchor="middle" font-size="11">Orchestrator</text>
+  <text class="ts" x="223" y="66" text-anchor="middle">task duration</text>
+  <text class="ts" x="223" y="80" text-anchor="middle">agent calls</text>
+</g>
+
+<g class="c-amber">
+  <rect x="302" y="30" width="130" height="70" rx="8" stroke-width="0.5"/>
+  <text class="th" x="367" y="50" text-anchor="middle" font-size="11">Sub-Agents</text>
+  <text class="ts" x="367" y="66" text-anchor="middle">exec time</text>
+  <text class="ts" x="367" y="80" text-anchor="middle">success/fail</text>
+</g>
+
+<g class="c-teal">
+  <rect x="446" y="30" width="130" height="70" rx="8" stroke-width="0.5"/>
+  <text class="th" x="511" y="50" text-anchor="middle" font-size="11">Tool Registry</text>
+  <text class="ts" x="511" y="66" text-anchor="middle">tool call count</text>
+  <text class="ts" x="511" y="80" text-anchor="middle">timeout rate</text>
+</g>
+
+<!-- arrows: components → collector -->
+<line x1="79"  y1="100" x2="79"  y2="140" stroke="#4a7aaa" stroke-width="1" marker-end="url(#ar)"/>
+<line x1="223" y1="100" x2="223" y2="140" stroke="#a896d8" stroke-width="1" marker-end="url(#ar)"/>
+<line x1="367" y1="100" x2="367" y2="140" stroke="#c8a96e" stroke-width="1" marker-end="url(#ar)"/>
+<line x1="511" y1="100" x2="511" y2="140" stroke="#7eb8a4" stroke-width="1" marker-end="url(#ar)"/>
+
+<text class="ts" x="340" y="126" text-anchor="middle" fill="#4a4a4a">OpenTelemetry SDK emits spans, metrics, logs</text>
+
+<!-- ROW 2: Collector -->
+<g class="c-gray">
+  <rect x="14" y="140" width="652" height="54" rx="8" stroke-width="0.5"/>
+  <text class="th" x="340" y="160" text-anchor="middle">OpenTelemetry Collector</text>
+  <text class="ts" x="340" y="178" text-anchor="middle">Receives all telemetry, batches and routes to backends</text>
+</g>
+
+<!-- collector → backends -->
+<line x1="150" y1="194" x2="120" y2="234" stroke="#505050" stroke-width="1" marker-end="url(#ar2)"/>
+<line x1="290" y1="194" x2="290" y2="234" stroke="#505050" stroke-width="1" marker-end="url(#ar2)"/>
+<line x1="430" y1="194" x2="430" y2="234" stroke="#505050" stroke-width="1" marker-end="url(#ar2)"/>
+<line x1="570" y1="194" x2="580" y2="234" stroke="#505050" stroke-width="1" marker-end="url(#ar2)"/>
+
+<!-- ROW 3: Storage backends -->
+<text class="ts" x="340" y="225" text-anchor="middle" fill="#4a4a4a">Storage backends</text>
+
+<g class="c-amber">
+  <rect x="14" y="234" width="152" height="86" rx="8" stroke-width="0.5"/>
+  <text class="th" x="90" y="254" text-anchor="middle" font-size="11">Prometheus</text>
+  <text class="ts" x="90" y="270" text-anchor="middle">Metrics store</text>
+</g>
+<rect class="subcard" x="22" y="278" width="136" height="34" rx="5" stroke-width="0.5"/>
+<text class="ts" x="90" y="291" text-anchor="middle" fill="#7a7570">Time-series DB</text>
+<text class="ts" x="90" y="305" text-anchor="middle" fill="#4a4a4a">Pull-based scraping</text>
+
+<g class="c-blue">
+  <rect x="180" y="234" width="152" height="86" rx="8" stroke-width="0.5"/>
+  <text class="th" x="256" y="254" text-anchor="middle" font-size="11">Jaeger / Tempo</text>
+  <text class="ts" x="256" y="270" text-anchor="middle">Trace store</text>
+</g>
+<rect class="subcard" x="188" y="278" width="136" height="34" rx="5" stroke-width="0.5"/>
+<text class="ts" x="256" y="291" text-anchor="middle" fill="#7a7570">Distributed traces</text>
+<text class="ts" x="256" y="305" text-anchor="middle" fill="#4a4a4a">Span search, DAG view</text>
+
+<g class="c-purple">
+  <rect x="346" y="234" width="152" height="86" rx="8" stroke-width="0.5"/>
+  <text class="th" x="422" y="254" text-anchor="middle" font-size="11">Loki</text>
+  <text class="ts" x="422" y="270" text-anchor="middle">Log store</text>
+</g>
+<rect class="subcard" x="354" y="278" width="136" height="34" rx="5" stroke-width="0.5"/>
+<text class="ts" x="422" y="291" text-anchor="middle" fill="#7a7570">Structured logs</text>
+<text class="ts" x="422" y="305" text-anchor="middle" fill="#4a4a4a">Label-based filtering</text>
+
+<g class="c-teal">
+  <rect x="512" y="234" width="152" height="86" rx="8" stroke-width="0.5"/>
+  <text class="th" x="588" y="254" text-anchor="middle" font-size="11">LLM-specific</text>
+  <text class="ts" x="588" y="270" text-anchor="middle">Langfuse / Phoenix</text>
+</g>
+<rect class="subcard" x="520" y="278" width="136" height="34" rx="5" stroke-width="0.5"/>
+<text class="ts" x="588" y="291" text-anchor="middle" fill="#7a7570">Prompt + response</text>
+<text class="ts" x="588" y="305" text-anchor="middle" fill="#4a4a4a">Token cost per call</text>
+
+<!-- ROW 4: Grafana (visualization) -->
+<line x1="90"  y1="320" x2="90"  y2="360" stroke="#505050" stroke-width="1" marker-end="url(#ar2)"/>
+<line x1="256" y1="320" x2="256" y2="360" stroke="#505050" stroke-width="1" marker-end="url(#ar2)"/>
+<line x1="422" y1="320" x2="422" y2="360" stroke="#505050" stroke-width="1" marker-end="url(#ar2)"/>
+<line x1="588" y1="320" x2="500" y2="360" stroke="#505050" stroke-width="1" marker-end="url(#ar2)"/>
+
+<g class="c-green">
+  <rect x="14" y="360" width="652" height="70" rx="8" stroke-width="0.5"/>
+  <text class="th" x="340" y="380" text-anchor="middle">Grafana: unified visualization</text>
+  <text class="ts" x="340" y="396" text-anchor="middle">Single pane of glass: metrics + traces + logs together</text>
+</g>
+<rect class="subcard" x="24" y="406" width="140" height="16" rx="4" stroke-width="0.5"/>
+<text class="ts" x="94" y="418" text-anchor="middle" fill="#7a7570">Latency dashboards</text>
+<rect class="subcard" x="174" y="406" width="140" height="16" rx="4" stroke-width="0.5"/>
+<text class="ts" x="244" y="418" text-anchor="middle" fill="#7a7570">Error rate panels</text>
+<rect class="subcard" x="324" y="406" width="140" height="16" rx="4" stroke-width="0.5"/>
+<text class="ts" x="394" y="418" text-anchor="middle" fill="#7a7570">Cost per agent</text>
+<rect class="subcard" x="474" y="406" width="180" height="16" rx="4" stroke-width="0.5"/>
+<text class="ts" x="564" y="418" text-anchor="middle" fill="#7a7570">Trace waterfall view</text>
+
+<!-- ROW 5: Alerting -->
+<line x1="340" y1="430" x2="340" y2="460" stroke="#4a7aaa" stroke-width="1.2" marker-end="url(#ar)"/>
+
+<g class="c-red">
+  <rect x="14" y="460" width="652" height="70" rx="8" stroke-width="0.5"/>
+  <text class="th" x="340" y="480" text-anchor="middle">Alerting: Prometheus Alertmanager</text>
+  <text class="ts" x="340" y="496" text-anchor="middle">Thresholds breach = alert fires, routes to the right person</text>
+</g>
+<rect class="subcard" x="24" y="506" width="128" height="16" rx="4" stroke-width="0.5"/>
+<text class="ts" x="88" y="518" text-anchor="middle" fill="#7a7570">Slack / PagerDuty</text>
+<rect class="subcard" x="162" y="506" width="128" height="16" rx="4" stroke-width="0.5"/>
+<text class="ts" x="226" y="518" text-anchor="middle" fill="#7a7570">Error rate > 5%</text>
+<rect class="subcard" x="300" y="506" width="128" height="16" rx="4" stroke-width="0.5"/>
+<text class="ts" x="364" y="518" text-anchor="middle" fill="#7a7570">P99 latency > 10s</text>
+<rect class="subcard" x="438" y="506" width="128" height="16" rx="4" stroke-width="0.5"/>
+<text class="ts" x="502" y="518" text-anchor="middle" fill="#7a7570">Cost spike > $50/hr</text>
+<rect class="subcard" x="576" y="506" width="80" height="16" rx="4" stroke-width="0.5"/>
+<text class="ts" x="616" y="518" text-anchor="middle" fill="#7a7570">Agent timeout</text>
+
+<!-- ROW 6: On-call response -->
+<line x1="340" y1="530" x2="340" y2="560" stroke="#4a7aaa" stroke-width="1.2" marker-end="url(#ar)"/>
+
+<g class="c-gray">
+  <rect x="14" y="560" width="652" height="120" rx="8" stroke-width="0.5"/>
+  <text class="th" x="340" y="580" text-anchor="middle">On-call response workflow</text>
+  <text class="ts" x="340" y="596" text-anchor="middle">Alert fires. Engineer opens Grafana. Follows the signal.</text>
+</g>
+<rect class="subcard" x="24" y="604" width="140" height="66" rx="6" stroke-width="0.5"/>
+<text class="ts" x="94" y="621" text-anchor="middle" fill="#7a7570">1. Check metrics</text>
+<text class="ts" x="34" y="636" fill="#4a4a4a">Which service?</text>
+<text class="ts" x="34" y="650" fill="#4a4a4a">Which endpoint?</text>
+<text class="ts" x="34" y="664" fill="#4a4a4a">Since when?</text>
+
+<rect class="subcard" x="178" y="604" width="140" height="66" rx="6" stroke-width="0.5"/>
+<text class="ts" x="248" y="621" text-anchor="middle" fill="#7a7570">2. Open trace</text>
+<text class="ts" x="188" y="636" fill="#4a4a4a">Find slow span</text>
+<text class="ts" x="188" y="650" fill="#4a4a4a">Which agent?</text>
+<text class="ts" x="188" y="664" fill="#4a4a4a">Which tool call?</text>
+
+<rect class="subcard" x="332" y="604" width="140" height="66" rx="6" stroke-width="0.5"/>
+<text class="ts" x="402" y="621" text-anchor="middle" fill="#7a7570">3. Read logs</text>
+<text class="ts" x="342" y="636" fill="#4a4a4a">Exact error msg</text>
+<text class="ts" x="342" y="650" fill="#4a4a4a">Stack trace</text>
+<text class="ts" x="342" y="664" fill="#4a4a4a">Input that failed</text>
+
+<rect class="subcard" x="486" y="604" width="166" height="66" rx="6" stroke-width="0.5"/>
+<text class="ts" x="569" y="621" text-anchor="middle" fill="#7a7570">4. Fix and verify</text>
+<text class="ts" x="496" y="636" fill="#4a4a4a">Deploy fix</text>
+<text class="ts" x="496" y="650" fill="#4a4a4a">Watch error rate drop</text>
+<text class="ts" x="496" y="664" fill="#4a4a4a">Close alert</text>
+</svg>
+    </div>
+  </div>
+
+  <article class="prose">
+
+    <div class="section-label">তিনটা Pillar কেন তিনটাই লাগে</div>
+
+    <p>
+      শুধু metrics থাকলে জানবে "error rate বেড়েছে।"
+      কিন্তু কোথায়? জানবে না।
+      Trace যোগ করলে জানবে "orchestrator-এ slow।"
+      কিন্তু কেন? জানবে না।
+      Log যোগ করলে জানবে "OpenAI API timeout, model overloaded।"
+      <strong>তখন fix করতে পারবে।</strong>
+    </p>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Signal</th>
+          <th>প্রশ্নের উত্তর দেয়</th>
+          <th>Tool</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Metrics</td>
+          <td>"কী" হচ্ছে? Error rate কত? Latency কত?</td>
+          <td><code>Prometheus</code></td>
+        </tr>
+        <tr>
+          <td>Traces</td>
+          <td>"কোথায়" হচ্ছে? কোন component slow?</td>
+          <td><code>Jaeger</code> বা <code>Tempo</code></td>
+        </tr>
+        <tr>
+          <td>Logs</td>
+          <td>"কেন" হচ্ছে? ঠিক কোন error, কোন input?</td>
+          <td><code>Loki</code> বা <code>Elasticsearch</code></td>
+        </tr>
+        <tr>
+          <td>LLM-specific</td>
+          <td>কোন prompt কত cost করলো? কোন model fail করলো?</td>
+          <td><code>Langfuse</code> বা <code>Arize Phoenix</code></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="section-label">Distributed Tracing: Agentic System-এ সবচেয়ে জরুরি</div>
+
+    <p>
+      Normal web app-এ tracing comparatively simple। Request আসে,
+      DB query হয়, response যায়। কিন্তু agentic system-এ একটা request
+      হয়তো orchestrator call করে, orchestrator তিনটা sub-agent parallel-এ
+      চালায়, প্রতিটা agent দুইটা করে tool call করে।
+      মোট ৭টা component। সবার timing একসাথে দেখতে হবে।
+    </p>
+
+    <div class="callout info">
+      <div class="callout-label">Distributed trace: কেমন দেখতে</div>
+      Gateway span: 2,340ms<br>
+      &nbsp;&nbsp;Orchestrator span: 2,180ms<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;Research agent span: 1,800ms<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Web search tool: 1,650ms &lt;-- এখানেই সমস্যা<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;Code agent span: 380ms<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Code executor tool: 320ms
+    </div>
+
+    <p>
+      এই waterfall দেখলেই বুঝতে পারবে কোথায় ২ সেকেন্ড যাচ্ছে।
+      Web search tool slow। হয়তো rate limit, হয়তো network,
+      হয়তো external API-র সমস্যা। Log দেখলে exact কারণ পাবে।
+    </p>
+
+    <div class="section-label">Implementation: OpenTelemetry দিয়ে</div>
+
+    <p>
+      OpenTelemetry একটা vendor-neutral standard। একবার instrument
+      করলে Jaeger, Tempo, Datadog, যেকোনো backend-এ পাঠাতে পারবে।
+      Agentic system-এ প্রতিটা component-এ span create করতে হবে।
+    </p>
+
+  </article>
+
+  <div class="diagram-section">
+    <div class="diagram-label">
+      <span class="dot-r"></span>
+      <span class="dot-y"></span>
+      <span class="dot-g"></span>
+      observability.py · OpenTelemetry instrumentation
+    </div>
+    <div class="diagram-inner">
+<pre><span class="cm"># observability/tracer.py</span>
+<span class="kw">from</span> opentelemetry <span class="kw">import</span> trace, metrics
+<span class="kw">from</span> opentelemetry.sdk.trace <span class="kw">import</span> TracerProvider
+<span class="kw">from</span> opentelemetry.exporter.otlp.proto.grpc.trace_exporter <span class="kw">import</span> OTLPSpanExporter
+<span class="kw">from</span> opentelemetry.sdk.metrics <span class="kw">import</span> MeterProvider
+<span class="kw">import</span> time, logging, structlog
+
+<span class="cm"># --- Setup tracer ---</span>
+provider = <span class="fn">TracerProvider</span>()
+provider.add_span_processor(
+    <span class="fn">BatchSpanProcessor</span>(<span class="fn">OTLPSpanExporter</span>(endpoint=<span class="str">"http://otel-collector:4317"</span>))
+)
+trace.<span class="fn">set_tracer_provider</span>(provider)
+tracer = trace.<span class="fn">get_tracer</span>(<span class="str">"agentic-system"</span>)
+
+<span class="cm"># --- Setup metrics ---</span>
+meter = metrics.<span class="fn">get_meter</span>(<span class="str">"agentic-system"</span>)
+
+llm_latency = meter.<span class="fn">create_histogram</span>(
+    name=<span class="str">"llm.request.duration"</span>,
+    description=<span class="str">"LLM call duration in seconds"</span>,
+    unit=<span class="str">"s"</span>,
+)
+agent_calls = meter.<span class="fn">create_counter</span>(
+    name=<span class="str">"agent.calls.total"</span>,
+    description=<span class="str">"Total sub-agent invocations"</span>,
+)
+token_cost = meter.<span class="fn">create_counter</span>(
+    name=<span class="str">"llm.tokens.total"</span>,
+    description=<span class="str">"Cumulative tokens used"</span>,
+)
+
+<span class="cm"># --- Structured logger ---</span>
+log = structlog.<span class="fn">get_logger</span>()
+
+<span class="cm"># --- Decorator for any agent function ---</span>
+<span class="kw">def</span> <span class="fn">observe</span>(agent_name: str):
+    <span class="kw">def</span> <span class="fn">decorator</span>(func):
+        <span class="kw">async def</span> <span class="fn">wrapper</span>(*args, **kwargs):
+            <span class="kw">with</span> tracer.<span class="fn">start_as_current_span</span>(agent_name) <span class="kw">as</span> span:
+                start = time.<span class="fn">time</span>()
+                span.<span class="fn">set_attribute</span>(<span class="str">"agent.name"</span>, agent_name)
+                <span class="kw">try</span>:
+                    result = <span class="kw">await</span> <span class="fn">func</span>(*args, **kwargs)
+                    span.<span class="fn">set_attribute</span>(<span class="str">"agent.status"</span>, <span class="str">"success"</span>)
+                    agent_calls.<span class="fn">add</span>(<span class="num">1</span>, {<span class="str">"agent"</span>: agent_name, <span class="str">"status"</span>: <span class="str">"ok"</span>})
+                    <span class="kw">return</span> result
+                <span class="kw">except</span> Exception <span class="kw">as</span> e:
+                    span.<span class="fn">record_exception</span>(e)
+                    span.<span class="fn">set_attribute</span>(<span class="str">"agent.status"</span>, <span class="str">"error"</span>)
+                    agent_calls.<span class="fn">add</span>(<span class="num">1</span>, {<span class="str">"agent"</span>: agent_name, <span class="str">"status"</span>: <span class="str">"error"</span>})
+                    log.<span class="fn">error</span>(<span class="str">"agent_failed"</span>, agent=agent_name, error=<span class="fn">str</span>(e))
+                    <span class="kw">raise</span>
+                <span class="kw">finally</span>:
+                    duration = time.<span class="fn">time</span>() - start
+                    llm_latency.<span class="fn">record</span>(duration, {<span class="str">"agent"</span>: agent_name})
+        <span class="kw">return</span> wrapper
+    <span class="kw">return</span> decorator
+
+<span class="cm"># Usage: decorate any agent</span>
+<span class="dec">@observe</span>(<span class="str">"research_agent"</span>)
+<span class="kw">async def</span> <span class="fn">research_agent</span>(query: str) -> str:
+    <span class="cm"># your agent logic here</span>
+    ...</pre>
+    </div>
+  </div>
+
+  <article class="prose">
+
+    <div class="section-label">LLM-specific Observability: Langfuse</div>
+
+    <p>
+      General observability tool-গুলো LLM-এর জন্য পুরোপুরি যথেষ্ট না।
+      কারণ LLM-এ কিছু specific জিনিস track করতে হয়: prompt কী ছিল,
+      response কী আসলো, কত token গেলো, cost কত হলো, আর কোন model call হলো।
+      <strong>Langfuse</strong> এই কাজটা করে।
+    </p>
+
+    <div class="callout warn">
+      <div class="callout-label">Production reality</div>
+      তোমার system-এ হঠাৎ cost ৩ গুণ বাড়লো। General metrics-এ দেখবে
+      "token usage বেড়েছে।" কিন্তু কোন feature, কোন agent, কোন prompt?
+      Langfuse ছাড়া বলা impossible। Langfuse দিয়ে ঠিক কোন call-টা
+      expensive সেটা second-এর মধ্যে বের করতে পারবে।
+    </div>
+
+    <div class="section-label">Alert Rules: কোনগুলো থাকা দরকার</div>
+
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="step-num">1</div>
+        <div class="step-body"><strong>Error rate > 5% for 5 minutes.</strong> যেকোনো agent বা component-এ। Immediately page করো। Users impact হচ্ছে।</div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">2</div>
+        <div class="step-body"><strong>P99 latency > 10 seconds.</strong> 99th percentile user-দের ১০ সেকেন্ডের বেশি wait করাচ্ছে। Acceptable না।</div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">3</div>
+        <div class="step-body"><strong>LLM cost > $50/hour.</strong> Budget circuit breaker। Runaway loop বা abuse detect করতে।</div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">4</div>
+        <div class="step-body"><strong>Agent timeout rate > 10%.</strong> কোনো tool বা external API ধীর হয়েছে। Fallback trigger করার signal।</div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">5</div>
+        <div class="step-body"><strong>Guardrail block rate sudden spike.</strong> হয়তো prompt injection attack। হয়তো model behavior change। দুইটাই urgent।</div>
+      </div>
+    </div>
+
+    <div class="callout error">
+      <div class="callout-label">Common mistake</div>
+      অনেকেই শুধু error alert রাখে। Latency alert রাখে না।
+      User যখন ৩০ সেকেন্ড wait করছে, error নেই কিন্তু
+      experience terrible। Latency SLO set করো, alert রাখো।
+    </div>
+
+    <div class="pullquote">
+      Observability হলো তোমার system-এর কাছে প্রশ্ন করার ক্ষমতা।
+      "কী হচ্ছে?" জানো। "কোথায়?" জানো। "কেন?" জানো।
+      এই তিনটা ছাড়া production engineering করা মানে
+      অন্ধকারে হাঁটা।
+    </div>
+
+    <p>
+      পরের post-এ দেখবো <strong>Orchestrator</strong>: কীভাবে
+      task decompose হয়, কীভাবে agent routing কাজ করে,
+      আর state machine কীভাবে complex multi-step task handle করে।
+    </p>
+
+    <p>
+      কোনো question থাকলে comment করো।
+      <code>#Observability</code> <code>#OpenTelemetry</code> <code>#AIEngineering</code>
+    </p>
+
+  </article>
+
+  <div class="post-nav">
+    <a class="nav-card" href="llm_gateway_blog.html">
+      <div class="nav-direction">Previous post</div>
+      <div class="nav-title">LLM Gateway: Production System-এর প্রথম দরজা</div>
+    </a>
+    <a class="nav-card next" href="#">
+      <div class="nav-direction">Next post</div>
+      <div class="nav-title">Orchestrator: Task Decompose করা আর Agent Route করা</div>
+    </a>
+  </div>
+
+</main>
+
+<footer>
+  <p>© 2026 Asif Bin Syed · ML Researcher · OMSCS @ Georgia Tech</p>
+  <a class="gh-link" href="https://github.com/asifbinsyed33" target="_blank">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+    </svg>
+    github/asifbinsyed33
+  </a>
+</footer>
+
+</body>
+</html>

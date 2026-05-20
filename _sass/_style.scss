@@ -492,3 +492,88 @@ p {
   margin: 0.5rem 0;
   font-size: 0.9rem;
 }
+
+/* Code blocks: black background in markdown posts */
+.page-main .highlighter-rouge > .highlight {
+  background: #0a0a0a;
+  border: 1px solid #2a2a2a;
+  border-radius: 6px;
+  margin: 1.25rem 0;
+}
+
+.page-main .highlight pre,
+.page-main pre.highlight {
+  background: #0a0a0a;
+  color: #e8e4dc;
+  padding: 1rem 1.25rem;
+  margin: 0;
+  overflow-x: auto;
+  font-family: 'Inconsolata', monospace;
+  font-size: 0.875rem;
+  line-height: 1.65;
+}
+
+.page-main .highlight pre code {
+  background: transparent;
+  color: inherit;
+  padding: 0;
+  font-size: inherit;
+}
+
+.page-main .highlight .c,
+.page-main .highlight .c1,
+.page-main .highlight .cm {
+  color: #6b7280;
+}
+
+.page-main .highlight .k,
+.page-main .highlight .kn,
+.page-main .highlight .kd {
+  color: #a896d8;
+}
+
+.page-main .highlight .s,
+.page-main .highlight .s1,
+.page-main .highlight .s2,
+.page-main .highlight .sh {
+  color: #88c878;
+}
+
+.page-main .highlight .nf,
+.page-main .highlight .nn {
+  color: #7eb8e8;
+}
+
+.page-main .highlight .nc {
+  color: #c8a96e;
+}
+
+.page-main .highlight .mi,
+.page-main .highlight .o {
+  color: #d4a574;
+}
+
+.page-main .highlight .nb {
+  color: #7eb8a4;
+}
+
+.page-main .highlight .bp,
+.page-main .highlight .p {
+  color: #c0bbb3;
+}
+
+.page-main .highlight .nd {
+  color: #d88888;
+}
+
+.page-main p code,
+.page-main li code,
+.page-main td code,
+.page-main blockquote code {
+  background: #1a1a1a;
+  color: #7eb8a4;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: 'Inconsolata', monospace;
+  font-size: 0.88em;
+}
