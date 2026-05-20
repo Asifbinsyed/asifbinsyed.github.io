@@ -19,7 +19,9 @@ Components জানলেই হয় না। কোথায় connect ক
 
 **Part 1**: [Interview story ও architecture](#part-1-interview-story-ও-architecture) ·
 **Part 2**: [Implementation ও stack](#part-2-implementation-ও-stack) ·
-**Deep dives**: [Gateway](#llm-gateway-deep-dive) · [Observability](#observability-layer-deep-dive) · [Orchestrator](#orchestrator-deep-dive) · [Memory](#memory-layer-deep-dive) · [Sub-agents](#sub-agents-deep-dive) · [Tool registry](#tool-registry-deep-dive) · [MCP](#mcp-deep-dive) · [Skills](#skills-deep-dive) · [MCP](#mcp-deep-dive) · [Skills](#skills-deep-dive)
+**Deep dives**: [Gateway](#llm-gateway-deep-dive) · [Observability](#observability-layer-deep-dive) · [Orchestrator](#orchestrator-deep-dive) · [Memory](#memory-layer-deep-dive) · [Sub-agents](#sub-agents-deep-dive) · [Tool registry](#tool-registry-deep-dive) · [MCP](#mcp-deep-dive) · [Skills](#skills-deep-dive) ·
+**Related**: [Inference optimization](/inference-optimization) ·
+[Agent evaluation](/agent-evaluation)
 
 ---
 

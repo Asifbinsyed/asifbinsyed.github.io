@@ -1,14 +1,42 @@
 ---
 layout: default
 title: "Reasoning Models"
+toc: true
+toc_min_level: 2
+toc_max_level: 3
+description: "Short intro to LLM reasoning models and link to the PRM deep dive."
 ---
 
-Reasoning models aim to tackle tasks that require step-by-step logical thinking. They often integrate planning or structured representations to enable complex problem solving.
+*ML Research · Reasoning*
 
-## Key Ideas
-- Break down a problem into intermediate steps
-- Use external tools or memory to keep track of progress
-- Chain-of-thought prompts guide large language models to reason more effectively
+# Reasoning Models (Intro)
 
-### Simple Example
-A reasoning approach might ask a language model to first outline a solution, then verify each step before returning a final answer. This approach can produce more reliable results compared to a single-shot response.
+Reasoning models tackle tasks that need **step-by-step** thinking:
+math, logic, code, and multi-hop QA. Instead of one-shot answers, they
+generate a **chain-of-thought** (or hidden scratchpad), then produce a
+final result. Examples in industry and open research include
+o1-style systems, DeepSeek-R1, Qwen-Thinking, and long-CoT RL training.
+
+## Key ideas
+
+- Decompose the problem into intermediate steps
+- Use extra **test-time compute** (longer generation, sampling, search)
+- Train with supervised CoT data and/or **RL + verifiers**
+- Score trajectories with **outcome** or **process** reward models
+
+## Process reward models (PRM)
+
+The hardest part of reasoning research is not only *getting the right
+answer* but knowing **which steps were valid**. A **Process Reward Model
+(PRM)** scores each intermediate step. An **Outcome Reward Model (ORM)**
+scores only the final answer. PRMs power search, filtering, and RL on
+math and are an active area for agents and open-domain reasoning.
+
+**Full write-up**: [Process Reward Models for LLM Reasoning](/process-reward-models)
+(basics, progress, challenges, active research).
+
+## Related on this blog
+
+- [Process reward models (deep dive)](/process-reward-models)
+- [Agent evaluation](/agent-evaluation) (trajectory and step metrics)
+- [Production agentic system design](/agentic-system-design)
