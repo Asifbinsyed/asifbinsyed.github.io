@@ -26,7 +26,8 @@ post-এর সাথে কীভাবে fit করে।
 **Part 2**: [Techniques ও stack](#part-2-techniques-ও-stack) ·
 **Deep dives**: [Metrics](#inference-metrics-deep-dive) · [Batching](#continuous-batching-deep-dive) · [KV cache](#kv-cache-deep-dive) · [Quantization](#quantization-deep-dive) · [Serving](#serving-stack-deep-dive) · [Agentic link](#agentic-system-এর-সাথে-connection)
 
-**Related**: [Production Agentic System Design](/agentic-system-design)
+**Related**: [Production Agentic System Design](/agentic-system-design) ·
+[Agent evaluation](/agent-evaluation)
 
 ---
 
@@ -380,6 +381,8 @@ Tool registry / MCP        →      (mostly separate)
 4. **Serving:** vLLM + batching + prefix cache।
 5. **Weights:** quantization for volume paths।
 6. **Advanced:** speculative decoding if still latency-bound।
+7. **Evaluate:** [agent evaluation](/agent-evaluation) before/after each change
+   (pass rate, cost per *successful* task, not just faster failure)।
 
 > System design interview-এ বলতে পারো:
 > "We attacked cost at the agent graph first, then at the
@@ -413,6 +416,8 @@ Same separation as agentic post-এর observability for science:
 
 Inference optimization agentic design replace করে না।
 **এটা completes the picture:** উপরে coordination, নিচে fast math।
+Next: [agent evaluation](/agent-evaluation) to prove the stack still works
+after each optimization.
 
 কোনো question থাকলে comment করো। `#Inference` `#LLMServing`
 `#vLLM` `#AIEngineering`

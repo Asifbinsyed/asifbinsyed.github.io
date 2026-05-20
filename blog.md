@@ -16,5 +16,6 @@ This page will host random musings and updates. Below is a sample item to start 
 ## Articles
 - [Production Agentic System Design](/agentic-system-design) (architecture, observability, orchestrator)
 - [LLM Inference Optimization](/inference-optimization) (batching, KV cache, quantization, serving)
+- [Agent Evaluation](/agent-evaluation) (offline suites, metrics, LLM judge, CI gates)
 - [Fine-Tuning LLMs](/fine-tuning-llm)
 - [Reasoning Models](/reasoning-model)
