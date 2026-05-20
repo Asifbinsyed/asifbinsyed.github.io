@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sub-agents: Specialist Workers যারা আসল কাজ করে</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Literata:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@400;500&family=Noto+Sans+Bengali:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0f0f0f;
+    --surface: #161616;
+    --surface2: #1e1e1e;
+    --border: #2a2a2a;
+    --text: #e8e4dc;
+    --muted: #7a7570;
+    --accent: #c8a96e;
+    --accent2: #7eb8a4;
+    --accent3: #c97b6e;
+    --radius: 12px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: 'Literata', 'Noto Sans Bengali', Georgia, serif;
+    font-size: 18px; line-height: 1.85; min-height: 100vh;
+  }
+
+  body::before {
+    content: ''; position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0; opacity: 0.6;
+  }
+
+  header { position: relative; z-index: 1; border-bottom: 1px solid var(--border); padding: 20px 0; }
+  .header-inner { max-width: 760px; margin: 0 auto; padding: 0 28px; display: flex; align-items: center; justify-content: space-between; }
+  .site-name { font-family: 'DM Mono', monospace; font-size: 13px; color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase; }
+  nav a { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--muted); text-decoration: none; margin-left: 24px; letter-spacing: 0.04em; transition: color 0.2s; }
+  nav a:hover { color: var(--text); }
+
+  main { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; padding: 0 28px 100px; }
+
+  .post-meta { padding: 52px 0 20px; border-bottom: 1px solid var(--border); margin-bottom: 48px; }
+
+  .breadcrumb { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); letter-spacing: 0.04em; margin-bottom: 18px; display: flex; align-items: center; gap: 8px; }
+  .breadcrumb a { color: var(--accent2); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--text); }
+  .breadcrumb span { color: #3a3a3a; }
+
+  .series-badge { display: inline-flex; align-items: center; gap: 8px; font-family: 'DM Mono', monospace; font-size: 11px; background: #1a2a20; border: 1px solid #2a4a30; color: var(--accent2); padding: 5px 12px; border-radius: 20px; margin-bottom: 20px; letter-spacing: 0.04em; }
+  .series-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent2); }
+
+  .tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+  .tag { font-family: 'DM Mono', monospace; font-size: 11px; padding: 4px 10px; border-radius: 4px; letter-spacing: 0.04em; text-transform: uppercase; }
+  .tag-ai  { background: #1a2a24; color: var(--accent2); border: 1px solid #2a4a3a; }
+  .tag-sys { background: #2a1e14; color: var(--accent);  border: 1px solid #4a3020; }
+  .tag-ag  { background: #251a05; color: #c8a96e;        border: 1px solid #503808; }
+
+  h1 { font-family: 'Literata', Georgia, serif; font-size: clamp(26px, 4vw, 38px); font-weight: 600; line-height: 1.25; color: var(--text); margin-bottom: 20px; letter-spacing: -0.01em; }
+  .subtitle { font-size: 16px; color: var(--muted); line-height: 1.6; margin-bottom: 24px; }
+  .byline { display: flex; align-items: center; gap: 14px; }
+  .avatar { width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent2)); display: flex; align-items: center; justify-content: center; font-family: 'DM Mono', monospace; font-size: 14px; font-weight: 500; color: var(--bg); flex-shrink: 0; }
+  .byline-text { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--muted); }
+  .byline-text strong { display: block; color: var(--text); font-size: 13px; margin-bottom: 2px; }
+
+  .prose p { margin-bottom: 1.6em; color: var(--text); }
+  .prose p.lead { font-size: 20px; color: #ccc8c0; line-height: 1.75; }
+  .prose strong { color: var(--accent); font-weight: 600; }
+  .prose em { font-style: italic; color: #b0aca4; }
+
+  .pullquote { margin: 40px 0; padding: 28px 32px; border-left: 3px solid var(--accent); background: var(--surface); border-radius: 0 var(--radius) var(--radius) 0; font-size: 19px; line-height: 1.7; color: #d4cfc7; font-style: italic; }
+
+  .section-label { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; margin: 52px 0 20px; display: flex; align-items: center; gap: 12px; }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  .diagram-section { margin: 48px 0; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+  .diagram-label { padding: 14px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; font-family: 'DM Mono', monospace; font-size: 12px; color: var(--muted); letter-spacing: 0.04em; }
+  .diagram-label span { display: inline-block; width: 8px; height: 8px; border-radius: 50%; }
+  .dot-r { background: #c97b6e; } .dot-y { background: #c8a96e; } .dot-g { background: #7eb8a4; }
+  .diagram-inner { padding: 8px; background: #0c0c0c; }
+
+  svg { display: block; width: 100%; }
+  .t  { font-family: 'DM Mono', monospace; font-size: 14px; fill: #e8e4dc; }
+  .ts { font-family: 'DM Mono', monospace; font-size: 11px; fill: #7a7570; }
+  .th { font-family: 'DM Mono', monospace; font-size: 14px; fill: #e8e4dc; font-weight: 500; }
+  .c-blue   rect { fill: #0d2035; stroke: #1d4870; } .c-blue   .th,.c-blue   .t { fill: #7eb8e8; } .c-blue   .ts { fill: #4a7aaa; }
+  .c-teal   rect { fill: #0d2520; stroke: #1d5040; } .c-teal   .th,.c-teal   .t { fill: #7eb8a4; } .c-teal   .ts { fill: #3a7860; }
+  .c-amber  rect { fill: #251a05; stroke: #503808; } .c-amber  .th,.c-amber  .t { fill: #c8a96e; } .c-amber  .ts { fill: #806830; }
+  .c-purple rect { fill: #1a1228; stroke: #382858; } .c-purple .th,.c-purple .t { fill: #a896d8; } .c-purple .ts { fill: #605090; }
+  .c-green  rect { fill: #0d2010; stroke: #204018; } .c-green  .th,.c-green  .t { fill: #88c878; } .c-green  .ts { fill: #407830; }
+  .c-red    rect { fill: #251010; stroke: #502020; } .c-red    .th,.c-red    .t { fill: #d88888; } .c-red    .ts { fill: #885050; }
+  .c-gray   rect { fill: #181818; stroke: #303030; } .c-gray   .th,.c-gray   .t { fill: #a0a0a0; } .c-gray   .ts { fill: #606060; }
+  .subcard  { fill: #0f0f0f; stroke: #2a2a2a; }
+
+  .compare-table { width: 100%; border-collapse: collapse; margin: 32px 0; font-size: 15px; font-family: 'DM Mono', monospace; }
+  .compare-table th { background: var(--surface2); color: var(--accent); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--border); }
+  .compare-table td { padding: 12px 16px; border-bottom: 1px solid var(--border); color: #c0bbb3; vertical-align: top; line-height: 1.6; }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .compare-table td:first-child { color: var(--text); font-weight: 500; width: 26%; }
+  .compare-table tr:nth-child(even) td { background: var(--surface); }
+
+  pre { padding: 20px; overflow-x: auto; font-family: 'DM Mono', monospace; font-size: 13px; line-height: 1.7; color: #c8c4bc; margin: 0; }
+  .kw  { color: #a896d8; } .str { color: #88c878; }
+  .cm  { color: #4a4a4a; } .fn  { color: #7eb8e8; }
+  .num { color: #c8a96e; } .dec { color: #d88888; }
+  .tp  { color: #c8a96e; }
+
+  .flow-steps { margin: 40px 0; }
+  .flow-step { display: flex; gap: 18px; margin-bottom: 18px; align-items: flex-start; }
+  .step-num { flex-shrink: 0; width: 30px; height: 30px; border-radius: 50%; background: var(--surface2); border: 1px solid var(--border); font-family: 'DM Mono', monospace; font-size: 12px; color: var(--accent); display: flex; align-items: center; justify-content: center; margin-top: 4px; }
+  .step-body { font-size: 15px; color: #c0bbb3; line-height: 1.7; padding-top: 4px; }
+  .step-body strong { color: var(--text); }
+
+  .callout { margin: 32px 0; padding: 20px 24px; border-radius: var(--radius); border: 1px solid; font-size: 15px; line-height: 1.7; }
+  .callout.warn  { background: #1f1a0a; border-color: #4a3808; color: #c8a96e; }
+  .callout.info  { background: #0d1f1a; border-color: #1d4838; color: #7eb8a4; }
+  .callout.error { background: #1f0d0d; border-color: #4a1818; color: #d88888; }
+  .callout-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px; opacity: 0.7; }
+
+  code { font-family: 'DM Mono', monospace; font-size: 14px; background: var(--surface2); border: 1px solid var(--border); padding: 2px 7px; border-radius: 4px; color: var(--accent2); }
+
+  /* agent profile cards */
+  .agent-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 32px 0; }
+  @media (max-width: 580px) { .agent-grid { grid-template-columns: 1fr; } }
+  .agent-card { padding: 22px; border-radius: var(--radius); border: 1px solid; }
+  .agent-card.research  { background: #0d2035; border-color: #1d4870; }
+  .agent-card.code      { background: #1a1228; border-color: #382858; }
+  .agent-card.analysis  { background: #0d2520; border-color: #1d5040; }
+  .agent-card.synthesis { background: #251a05; border-color: #503808; }
+  .agent-name { font-family: 'DM Mono', monospace; font-size: 13px; font-weight: 500; margin-bottom: 6px; }
+  .agent-card.research  .agent-name { color: #7eb8e8; }
+  .agent-card.code      .agent-name { color: #a896d8; }
+  .agent-card.analysis  .agent-name { color: #7eb8a4; }
+  .agent-card.synthesis .agent-name { color: #c8a96e; }
+  .agent-role { font-size: 13px; color: var(--muted); margin-bottom: 14px; font-style: italic; }
+  .agent-detail { font-family: 'DM Mono', monospace; font-size: 11px; color: #5a5a5a; margin-bottom: 4px; letter-spacing: 0.02em; }
+  .agent-detail span { color: #9a9590; }
+
+  /* prompt anatomy */
+  .prompt-anatomy { margin: 32px 0; background: #0a0a0a; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+  .prompt-section { padding: 14px 20px; border-bottom: 1px solid var(--border); }
+  .prompt-section:last-child { border-bottom: none; }
+  .prompt-tag { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px; }
+  .prompt-tag.sys     { color: #a896d8; }
+  .prompt-tag.mem     { color: #7eb8a4; }
+  .prompt-tag.task    { color: #c8a96e; }
+  .prompt-tag.format  { color: #7eb8e8; }
+  .prompt-content { font-family: 'DM Mono', monospace; font-size: 13px; color: #9a9590; line-height: 1.6; }
+  .prompt-content em { color: #c8c4bc; font-style: normal; }
+
+  .post-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 60px 0 0; }
+  .nav-card { padding: 20px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); text-decoration: none; transition: border-color 0.2s; }
+  .nav-card:hover { border-color: var(--accent); }
+  .nav-direction { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px; }
+  .nav-title { font-family: 'Literata', serif; font-size: 15px; color: var(--text); line-height: 1.4; }
+  .nav-card.next { text-align: right; }
+
+  footer { position: relative; z-index: 1; border-top: 1px solid var(--border); padding: 32px 28px; max-width: 760px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  footer p { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--muted); }
+  .gh-link { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--accent); text-decoration: none; border: 1px solid var(--border); padding: 8px 16px; border-radius: 6px; transition: all 0.2s; display: flex; align-items: center; gap: 8px; }
+  .gh-link:hover { background: var(--surface); border-color: var(--accent); }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+  .post-meta       { animation: fadeUp 0.5s ease both; }
+  .diagram-section { animation: fadeUp 0.6s 0.1s ease both; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <span class="site-name">asif.dev</span>
+    <nav><a href="#">Writing</a><a href="#">Projects</a><a href="#">GitHub</a></nav>
+  </div>
+</header>
+
+<main>
+
+  <div class="post-meta">
+    <div class="breadcrumb">
+      <a href="#">Agentic Systems Series</a>
+      <span>/</span>
+      Part 6 of 8
+    </div>
+    <div class="series-badge"><span class="dot"></span> Series: Production Agentic System</div>
+    <div class="tags">
+      <span class="tag tag-ai">AI Engineering</span>
+      <span class="tag tag-sys">System Design</span>
+      <span class="tag tag-ag">Agents</span>
+    </div>
+    <h1>Sub-agents: Specialist Workers যারা আসল কাজ করে</h1>
+    <p class="subtitle">
+      Gateway request নেয়। Orchestrator plan করে। Memory context দেয়।
+      কিন্তু আসল কাজ করে কে? Sub-agents। এরা হলো specialist।
+      প্রতিটা একটা নির্দিষ্ট কাজে expert। এই post-এ দেখবো
+      agent কীভাবে design করতে হয়, prompt কেমন হওয়া উচিত,
+      আর কীভাবে tool registry-র সাথে কথা বলে।
+    </p>
+    <div class="byline">
+      <div class="avatar">A</div>
+      <div class="byline-text">
+        <strong>Asif Bin Syed</strong>
+        ML Researcher · OMSCS @ Georgia Tech · May 2026
+      </div>
+    </div>
+  </div>
+
+  <article class="prose">
+
+    <p class="lead">
+      একটা hospital-এর কথা ভাবো। General physician আছে।
+      কিন্তু brain surgery দরকার হলে neurosurgeon লাগে।
+      Heart-এ সমস্যা হলে cardiologist। Generalist দিয়ে
+      সব কিছু হয় না। <strong>Sub-agents ঠিক এভাবে specialize করা।</strong>
+    </p>
+
+    <p>
+      একটা general-purpose agent দিয়ে সব কাজ করানো technically possible।
+      কিন্তু production-এ এটা কাজ করে না। কারণ prompt বড় হয়,
+      context confused হয়, আর output quality পড়ে যায়।
+      Specialist agent-রা smaller, faster, আর তাদের domain-এ অনেক ভালো।
+    </p>
+
+    <div class="pullquote">
+      "Do one thing and do it well."
+      Unix philosophy। Sub-agent design-এও exactly এটা।
+      Research agent শুধু research করে। Code agent শুধু code।
+      কেউ কারো কাজে interfere করে না।
+    </div>
+
+    <div class="section-label">চারটা Core Agent: কে কী করে</div>
+
+  </article>
+
+  <!-- Agent profile cards -->
+  <div class="agent-grid">
+    <div class="agent-card research">
+      <div class="agent-name">Research agent</div>
+      <div class="agent-role">খোঁজে, পড়ে, summarize করে</div>
+      <div class="agent-detail">Input: <span>query string, search scope</span></div>
+      <div class="agent-detail">Tools: <span>arXiv, Semantic Scholar, web search</span></div>
+      <div class="agent-detail">Output: <span>ranked papers with summaries</span></div>
+      <div class="agent-detail">Context window: <span>16k tokens</span></div>
+      <div class="agent-detail">Model: <span>claude-haiku (speed priority)</span></div>
+    </div>
+    <div class="agent-card code">
+      <div class="agent-name">Code agent</div>
+      <div class="agent-role">লেখে, চালায়, debug করে</div>
+      <div class="agent-detail">Input: <span>task spec, relevant codebase</span></div>
+      <div class="agent-detail">Tools: <span>code executor, file system, terminal</span></div>
+      <div class="agent-detail">Output: <span>working code + test results</span></div>
+      <div class="agent-detail">Context window: <span>32k tokens</span></div>
+      <div class="agent-detail">Model: <span>claude-sonnet (quality priority)</span></div>
+    </div>
+    <div class="agent-card analysis">
+      <div class="agent-name">Analysis agent</div>
+      <div class="agent-role">data দেখে, pattern বের করে</div>
+      <div class="agent-detail">Input: <span>structured data, analysis goal</span></div>
+      <div class="agent-detail">Tools: <span>code executor, DB query, charting</span></div>
+      <div class="agent-detail">Output: <span>insights, charts, conclusions</span></div>
+      <div class="agent-detail">Context window: <span>32k tokens</span></div>
+      <div class="agent-detail">Model: <span>claude-sonnet (reasoning priority)</span></div>
+    </div>
+    <div class="agent-card synthesis">
+      <div class="agent-name">Synthesis agent</div>
+      <div class="agent-role">সব output জোড়া দেয়</div>
+      <div class="agent-detail">Input: <span>all previous agent outputs</span></div>
+      <div class="agent-detail">Tools: <span>file writer, formatter</span></div>
+      <div class="agent-detail">Output: <span>final coherent document</span></div>
+      <div class="agent-detail">Context window: <span>100k tokens</span></div>
+      <div class="agent-detail">Model: <span>claude-sonnet (coherence priority)</span></div>
+    </div>
+  </div>
+
+  <article class="prose">
+    <div class="section-label">পুরো Flow: Agent কীভাবে কাজ করে</div>
+    <p>
+      Orchestrator একটা task dispatch করে। Agent সেটা পায়।
+      তারপর একটা loop চলে: think, act, observe। এই loop-ই
+      agent-কে agentic করে তোলে। শুধু একবার LLM call না,
+      বরং tool call করে, result দেখে, আবার decide করে।
+    </p>
+  </article>
+
+  <!-- Architecture diagram -->
+  <div class="diagram-section">
+    <div class="diagram-label">
+      <span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span>
+      sub-agent-flow.svg · ReAct loop inside each agent
+    </div>
+    <div class="diagram-inner">
+<svg viewBox="0 0 680 660" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="#4a7aaa" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+  <marker id="ara" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="#806830" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+  <marker id="arg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="#407830" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+  <marker id="ard" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="#505050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+</defs>
+
+<!-- Orchestrator dispatch -->
+<g class="c-purple">
+  <rect x="220" y="14" width="240" height="44" rx="8" stroke-width="0.5"/>
+  <text class="th" x="340" y="32" text-anchor="middle">Orchestrator</text>
+  <text class="ts" x="340" y="48" text-anchor="middle">dispatches task + context to agent</text>
+</g>
+<line x1="340" y1="58" x2="340" y2="82" stroke="#4a7aaa" stroke-width="1.2" marker-end="url(#ar)"/>
+
+<!-- AGENT OUTER BOX -->
+<g class="c-amber">
+  <rect x="14" y="82" width="652" height="380" rx="12" stroke-width="0.5"/>
+  <text class="th" x="340" y="102" text-anchor="middle" font-size="13">Sub-agent (ReAct loop)</text>
+  <text class="ts" x="340" y="118" text-anchor="middle">Think → Act → Observe, repeats until done or max steps reached</text>
+</g>
+
+<!-- STEP 1: Think -->
+<g class="c-blue">
+  <rect x="28" y="128" width="290" height="100" rx="8" stroke-width="0.5"/>
+  <text class="th" x="173" y="148" text-anchor="middle" font-size="12">1. Think</text>
+  <text class="ts" x="173" y="164" text-anchor="middle">LLM reasons about the task</text>
+</g>
+<rect class="subcard" x="38" y="172" width="124" height="46" rx="5" stroke-width="0.5"/>
+<text class="ts" x="100" y="188" text-anchor="middle" fill="#7a7570">Parse task</text>
+<text class="ts" x="48" y="202" fill="#4a4a4a">What do I need?</text>
+<text class="ts" x="48" y="214" fill="#4a4a4a">What tool to call?</text>
+<rect class="subcard" x="174" y="172" width="134" height="46" rx="5" stroke-width="0.5"/>
+<text class="ts" x="241" y="188" text-anchor="middle" fill="#7a7570">Plan action</text>
+<text class="ts" x="184" y="202" fill="#4a4a4a">Which tool, which args</text>
+<text class="ts" x="184" y="214" fill="#4a4a4a">Expected output</text>
+
+<!-- arrow Think → Act -->
+<line x1="318" y1="178" x2="362" y2="178" stroke="#c8a96e" stroke-width="1" marker-end="url(#ara)"/>
+<text class="ts" x="340" y="172" text-anchor="middle" fill="#806830">tool call</text>
+
+<!-- STEP 2: Act -->
+<g class="c-teal">
+  <rect x="362" y="128" width="290" height="100" rx="8" stroke-width="0.5"/>
+  <text class="th" x="507" y="148" text-anchor="middle" font-size="12">2. Act</text>
+  <text class="ts" x="507" y="164" text-anchor="middle">Calls tool via tool registry</text>
+</g>
+<rect class="subcard" x="372" y="172" width="124" height="46" rx="5" stroke-width="0.5"/>
+<text class="ts" x="434" y="188" text-anchor="middle" fill="#7a7570">Tool request</text>
+<text class="ts" x="382" y="202" fill="#4a4a4a">name + arguments</text>
+<text class="ts" x="382" y="214" fill="#4a4a4a">permission check</text>
+<rect class="subcard" x="508" y="172" width="134" height="46" rx="5" stroke-width="0.5"/>
+<text class="ts" x="575" y="188" text-anchor="middle" fill="#7a7570">Tool executes</text>
+<text class="ts" x="518" y="202" fill="#4a4a4a">actual work done</text>
+<text class="ts" x="518" y="214" fill="#4a4a4a">result returned</text>
+
+<!-- STEP 3: Observe -->
+<g class="c-green">
+  <rect x="28" y="248" width="624" height="90" rx="8" stroke-width="0.5"/>
+  <text class="th" x="340" y="268" text-anchor="middle" font-size="12">3. Observe</text>
+  <text class="ts" x="340" y="284" text-anchor="middle">LLM reads tool result, decides next step</text>
+</g>
+<rect class="subcard" x="38" y="292" width="180" height="36" rx="5" stroke-width="0.5"/>
+<text class="ts" x="128" y="307" text-anchor="middle" fill="#7a7570">Result sufficient?</text>
+<text class="ts" x="128" y="319" text-anchor="middle" fill="#4a4a4a">done, return output</text>
+<rect class="subcard" x="230" y="292" width="180" height="36" rx="5" stroke-width="0.5"/>
+<text class="ts" x="320" y="307" text-anchor="middle" fill="#7a7570">Need more info?</text>
+<text class="ts" x="320" y="319" text-anchor="middle" fill="#4a4a4a">loop again, new tool</text>
+<rect class="subcard" x="422" y="292" width="220" height="36" rx="5" stroke-width="0.5"/>
+<text class="ts" x="532" y="307" text-anchor="middle" fill="#7a7570">Max steps reached?</text>
+<text class="ts" x="532" y="319" text-anchor="middle" fill="#4a4a4a">return partial, flag incomplete</text>
+
+<!-- loop back arrow -->
+<path d="M652 310 L666 310 L666 178 L652 178" fill="none" stroke="#506830" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#arg)"/>
+<text class="ts" x="672" y="248" fill="#407830" transform="rotate(90 672 248)">loop</text>
+
+<!-- act → observe -->
+<line x1="507" y1="228" x2="507" y2="248" stroke="#505050" stroke-width="1" marker-end="url(#ard)"/>
+<!-- think → observe -->
+<line x1="173" y1="228" x2="173" y2="248" stroke="#505050" stroke-width="1" marker-end="url(#ard)"/>
+
+<!-- Max steps guard -->
+<g class="c-red">
+  <rect x="28" y="358" width="624" height="92" rx="8" stroke-width="0.5"/>
+  <text class="th" x="340" y="378" text-anchor="middle" font-size="12">Guard rails inside agent</text>
+  <text class="ts" x="340" y="394" text-anchor="middle">prevents runaway loops and bad outputs</text>
+</g>
+<rect class="subcard" x="38" y="402" width="180" height="38" rx="5" stroke-width="0.5"/>
+<text class="ts" x="128" y="417" text-anchor="middle" fill="#7a7570">Max steps: 10</text>
+<text class="ts" x="128" y="430" fill="#4a4a4a">hard stop on loop count</text>
+<rect class="subcard" x="230" y="402" width="180" height="38" rx="5" stroke-width="0.5"/>
+<text class="ts" x="320" y="417" text-anchor="middle" fill="#7a7570">Token budget</text>
+<text class="ts" x="320" y="430" fill="#4a4a4a">stop before context overflow</text>
+<rect class="subcard" x="422" y="402" width="220" height="38" rx="5" stroke-width="0.5"/>
+<text class="ts" x="532" y="417" text-anchor="middle" fill="#7a7570">Output validator</text>
+<text class="ts" x="532" y="430" fill="#4a4a4a">format check before returning</text>
+
+<!-- output arrow -->
+<line x1="340" y1="462" x2="340" y2="492" stroke="#4a7aaa" stroke-width="1.2" marker-end="url(#ar)"/>
+
+<!-- OUTPUT + WRITE-BACK -->
+<g class="c-gray">
+  <rect x="14" y="492" width="652" height="80" rx="8" stroke-width="0.5"/>
+  <text class="th" x="340" y="512" text-anchor="middle">Output returned to orchestrator</text>
+  <text class="ts" x="340" y="528" text-anchor="middle">structured result, status, steps taken, tokens used</text>
+</g>
+<rect class="subcard" x="24" y="540" width="190" height="24" rx="4" stroke-width="0.5"/>
+<text class="ts" x="119" y="556" text-anchor="middle" fill="#7a7570">result: the actual output</text>
+<rect class="subcard" x="224" y="540" width="190" height="24" rx="4" stroke-width="0.5"/>
+<text class="ts" x="319" y="556" text-anchor="middle" fill="#7a7570">status: done / partial / failed</text>
+<rect class="subcard" x="424" y="540" width="232" height="24" rx="4" stroke-width="0.5"/>
+<text class="ts" x="540" y="556" text-anchor="middle" fill="#7a7570">usage: steps, tokens, cost</text>
+
+<!-- tool registry reference -->
+<g class="c-teal">
+  <rect x="14" y="590" width="652" height="54" rx="8" stroke-width="0.5"/>
+  <text class="th" x="340" y="610" text-anchor="middle">Tool registry (next post)</text>
+  <text class="ts" x="340" y="626" text-anchor="middle">agents never call tools directly, always via registry permission layer</text>
+</g>
+</svg>
+    </div>
+  </div>
+
+  <article class="prose">
+
+    <div class="section-label">Prompt Anatomy: Agent-এর System Prompt কেমন হওয়া উচিত</div>
+
+    <p>
+      Agent-এর quality সবচেয়ে বেশি depend করে তার system prompt-এ।
+      চারটা section থাকা উচিত। প্রতিটার আলাদা কাজ।
+      একটা বাদ দিলে agent confused হয়।
+    </p>
+
+  </article>
+
+  <!-- Prompt anatomy -->
+  <div class="prompt-anatomy">
+    <div class="prompt-section">
+      <div class="prompt-tag sys">System identity</div>
+      <div class="prompt-content">
+        You are a <em>research agent</em> specializing in ML paper discovery and summarization.
+        Your job is to find relevant papers, extract key claims, and return structured summaries.
+        You are <em>not</em> a general assistant. Do not answer questions outside your scope.
+        If a task is not about paper research, say so and stop.
+      </div>
+    </div>
+    <div class="prompt-section">
+      <div class="prompt-tag mem">Memory context (injected per request)</div>
+      <div class="prompt-content">
+        Previous searches on this topic:<br>
+        <em>Run digest-a3f9k2 (3 days ago): "PRM generalization" returned 5 papers.
+        Top result: "Let's Reinforce Step by Step": PRM beats ORM on complex reasoning.
+        Gap noted: no cross-domain evaluation at 1B-3B scale.</em>
+      </div>
+    </div>
+    <div class="prompt-section">
+      <div class="prompt-tag task">Current task (from orchestrator)</div>
+      <div class="prompt-content">
+        Search for papers on: <em>"GRPO variants: DAPO and Dr. GRPO training stability"</em><br>
+        Max papers: 8. Focus on: training dynamics, reward shaping, small model performance.
+        Avoid: papers already seen in digest-a3f9k2.
+      </div>
+    </div>
+    <div class="prompt-section">
+      <div class="prompt-tag format">Output format</div>
+      <div class="prompt-content">
+        Return JSON with this exact shape:<br>
+        <em>{"papers": [{"title": "...", "claim": "...", "method": "...", "relevance": "..."}],
+        "gap_identified": "...", "suggested_next_query": "..."}</em><br>
+        No markdown. No preamble. Valid JSON only.
+      </div>
+    </div>
+  </div>
+
+  <article class="prose">
+
+    <p>
+      এই চারটা section কেন দরকার:
+    </p>
+
+    <table class="compare-table">
+      <thead>
+        <tr><th>Section</th><th>ছাড়া কী হয়</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>System identity</td>
+          <td>Agent scope ভুলে general assistant হয়ে যায়। Off-topic কাজ করে।</td>
+        </tr>
+        <tr>
+          <td>Memory context</td>
+          <td>Agent জানে না আগে কী হয়েছে। Same papers আবার খোঁজে। Duplicate work।</td>
+        </tr>
+        <tr>
+          <td>Current task</td>
+          <td>Agent কী করতে হবে বুঝতে পারে না। Hallucinate করে।</td>
+        </tr>
+        <tr>
+          <td>Output format</td>
+          <td>Output parse করা যায় না। Orchestrator জানে না কী returned হলো।</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="section-label">Implementation: Base Agent Class</div>
+
+    <p>
+      প্রতিটা agent আলাদা কিন্তু structure same।
+      একটা base class বানাও। Research, code, analysis agent
+      সব এটা extend করবে।
+    </p>
+
+  </article>
+
+  <div class="diagram-section">
+    <div class="diagram-label">
+      <span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span>
+      agents/base.py · Base agent with ReAct loop
+    </div>
+    <div class="diagram-inner">
+<pre><span class="cm"># agents/base.py</span>
+<span class="kw">from</span> abc <span class="kw">import</span> ABC, abstractmethod
+<span class="kw">from</span> dataclasses <span class="kw">import</span> dataclass, field
+<span class="kw">from</span> anthropic <span class="kw">import</span> Anthropic
+<span class="kw">import</span> json, logging
+
+log = logging.<span class="fn">getLogger</span>(<span class="str">"agent"</span>)
+client = <span class="fn">Anthropic</span>()
+
+<span class="dec">@dataclass</span>
+<span class="kw">class</span> <span class="tp">AgentResult</span>:
+    output:     dict
+    status:     str          <span class="cm"># "done" / "partial" / "failed"</span>
+    steps_used: int = <span class="num">0</span>
+    tokens_used: int = <span class="num">0</span>
+    error:      str = None
+
+<span class="kw">class</span> <span class="tp">BaseAgent</span>(ABC):
+    name:       str
+    model:      str = <span class="str">"claude-haiku-4-5"</span>
+    max_steps:  int = <span class="num">10</span>
+    max_tokens: int = <span class="num">4096</span>
+
+    <span class="dec">@abstractmethod</span>
+    <span class="kw">def</span> <span class="fn">system_prompt</span>(self) -> str:
+        <span class="cm">"""Define agent identity and output format."""</span>
+        ...
+
+    <span class="dec">@abstractmethod</span>
+    <span class="kw">def</span> <span class="fn">tools</span>(self) -> list[dict]:
+        <span class="cm">"""Tools this agent can use (Anthropic tool_use format)."""</span>
+        ...
+
+    <span class="kw">async def</span> <span class="fn">run</span>(self, task: str, memory_context: str = <span class="str">""</span>) -> <span class="tp">AgentResult</span>:
+        <span class="cm">"""ReAct loop: think → act → observe until done."""</span>
+
+        messages = [{
+            <span class="str">"role"</span>: <span class="str">"user"</span>,
+            <span class="str">"content"</span>: self.<span class="fn">_build_task_prompt</span>(task, memory_context)
+        }]
+
+        steps = <span class="num">0</span>
+        total_tokens = <span class="num">0</span>
+
+        <span class="kw">while</span> steps < self.max_steps:
+            steps += <span class="num">1</span>
+            log.<span class="fn">info</span>(<span class="str">f"{self.name} step {steps}/{self.max_steps}"</span>)
+
+            response = client.messages.<span class="fn">create</span>(
+                model=self.model,
+                max_tokens=self.max_tokens,
+                system=self.<span class="fn">system_prompt</span>(),
+                tools=self.<span class="fn">tools</span>(),
+                messages=messages,
+            )
+            total_tokens += response.usage.input_tokens + response.usage.output_tokens
+
+            <span class="cm"># agent is done, no tool call</span>
+            <span class="kw">if</span> response.stop_reason == <span class="str">"end_turn"</span>:
+                text = response.content[<span class="num">0</span>].text
+                <span class="kw">try</span>:
+                    output = json.<span class="fn">loads</span>(text)
+                    <span class="kw">return</span> <span class="tp">AgentResult</span>(
+                        output=output, status=<span class="str">"done"</span>,
+                        steps_used=steps, tokens_used=total_tokens
+                    )
+                <span class="kw">except</span> json.JSONDecodeError:
+                    <span class="kw">return</span> <span class="tp">AgentResult</span>(
+                        output={<span class="str">"raw"</span>: text}, status=<span class="str">"partial"</span>,
+                        steps_used=steps, tokens_used=total_tokens,
+                        error=<span class="str">"output not valid JSON"</span>
+                    )
+
+            <span class="cm"># agent wants to call a tool</span>
+            <span class="kw">if</span> response.stop_reason == <span class="str">"tool_use"</span>:
+                messages.<span class="fn">append</span>({<span class="str">"role"</span>: <span class="str">"assistant"</span>, <span class="str">"content"</span>: response.content})
+                tool_results = []
+
+                <span class="kw">for</span> block <span class="kw">in</span> response.content:
+                    <span class="kw">if</span> block.type == <span class="str">"tool_use"</span>:
+                        result = <span class="kw">await</span> self.<span class="fn">_call_tool</span>(block.name, block.input)
+                        tool_results.<span class="fn">append</span>({
+                            <span class="str">"type"</span>: <span class="str">"tool_result"</span>,
+                            <span class="str">"tool_use_id"</span>: block.id,
+                            <span class="str">"content"</span>: json.<span class="fn">dumps</span>(result),
+                        })
+
+                messages.<span class="fn">append</span>({<span class="str">"role"</span>: <span class="str">"user"</span>, <span class="str">"content"</span>: tool_results})
+
+        <span class="cm"># max steps reached</span>
+        <span class="kw">return</span> <span class="tp">AgentResult</span>(
+            output={}, status=<span class="str">"failed"</span>,
+            steps_used=steps, tokens_used=total_tokens,
+            error=<span class="str">f"max steps ({self.max_steps}) reached"</span>
+        )
+
+    <span class="kw">async def</span> <span class="fn">_call_tool</span>(self, name: str, args: dict) -> dict:
+        <span class="cm">"""Route tool call through tool registry (next post)."""</span>
+        <span class="kw">from</span> tools.registry <span class="kw">import</span> registry
+        <span class="kw">return await</span> registry.<span class="fn">call</span>(name, args, agent=self.name)
+
+    <span class="kw">def</span> <span class="fn">_build_task_prompt</span>(self, task: str, memory: str) -> str:
+        parts = [f<span class="str">"Task: {task}"</span>]
+        <span class="kw">if</span> memory:
+            parts.<span class="fn">insert</span>(<span class="num">0</span>, f<span class="str">"Relevant past context:\n{memory}\n"</span>)
+        <span class="kw">return</span> <span class="str">"\n\n"</span>.<span class="fn">join</span>(parts)</pre>
+    </div>
+  </div>
+
+  <div class="diagram-section">
+    <div class="diagram-label">
+      <span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span>
+      agents/research.py · Concrete research agent
+    </div>
+    <div class="diagram-inner">
+<pre><span class="cm"># agents/research.py</span>
+<span class="kw">from</span> agents.base <span class="kw">import</span> BaseAgent
+
+<span class="kw">class</span> <span class="tp">ResearchAgent</span>(<span class="tp">BaseAgent</span>):
+    name      = <span class="str">"research_agent"</span>
+    model     = <span class="str">"claude-haiku-4-5"</span>   <span class="cm"># fast for search tasks</span>
+    max_steps = <span class="num">8</span>
+
+    <span class="kw">def</span> <span class="fn">system_prompt</span>(self) -> str:
+        <span class="kw">return</span> <span class="str">"""
+You are a research agent specializing in ML paper discovery.
+Your job: find papers, extract claims, identify gaps.
+You are NOT a general assistant. Stay in scope.
+
+For each paper return exactly:
+- title: full paper title
+- claim: one sentence, what it argues
+- method: one sentence, how they tested it
+- relevance: one sentence, why it matters for this query
+
+When you have enough papers, return JSON:
+{
+  "papers": [...],
+  "gap_identified": "what has NOT been tested",
+  "suggested_next_query": "what to search for next"
+}
+No preamble. Valid JSON only.
+"""</span>
+
+    <span class="kw">def</span> <span class="fn">tools</span>(self) -> list[dict]:
+        <span class="kw">return</span> [
+            {
+                <span class="str">"name"</span>: <span class="str">"search_arxiv"</span>,
+                <span class="str">"description"</span>: <span class="str">"Search arXiv for papers on a topic"</span>,
+                <span class="str">"input_schema"</span>: {
+                    <span class="str">"type"</span>: <span class="str">"object"</span>,
+                    <span class="str">"properties"</span>: {
+                        <span class="str">"query"</span>: {<span class="str">"type"</span>: <span class="str">"string"</span>},
+                        <span class="str">"max_results"</span>: {<span class="str">"type"</span>: <span class="str">"integer"</span>, <span class="str">"default"</span>: <span class="num">10</span>},
+                    },
+                    <span class="str">"required"</span>: [<span class="str">"query"</span>]
+                }
+            },
+            {
+                <span class="str">"name"</span>: <span class="str">"search_semantic_scholar"</span>,
+                <span class="str">"description"</span>: <span class="str">"Search Semantic Scholar, good for citation data"</span>,
+                <span class="str">"input_schema"</span>: {
+                    <span class="str">"type"</span>: <span class="str">"object"</span>,
+                    <span class="str">"properties"</span>: {
+                        <span class="str">"query"</span>: {<span class="str">"type"</span>: <span class="str">"string"</span>},
+                        <span class="str">"year_from"</span>: {<span class="str">"type"</span>: <span class="str">"integer"</span>},
+                    },
+                    <span class="str">"required"</span>: [<span class="str">"query"</span>]
+                }
+            },
+        ]</pre>
+    </div>
+  </div>
+
+  <article class="prose">
+
+    <div class="section-label">কখন একটা Agent, কখন Multiple</div>
+
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="step-num">1</div>
+        <div class="step-body"><strong>Simple single-step task:</strong> একটা agent-ই যথেষ্ট। "arXiv-এ GRPO search করো।" Research agent একা handle করতে পারবে। Orchestrator overhead justify করে না।</div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">2</div>
+        <div class="step-body"><strong>Multi-domain task:</strong> একাধিক agent দরকার। "Paper খোঁজো, code implement করো, result analyze করো।" তিনটা আলাদা skill, তিনটা agent।</div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">3</div>
+        <div class="step-body"><strong>Parallel independent subtasks:</strong> একই agent-এর multiple instances। তিনটা আলাদা topic একসাথে search করতে হবে। তিনটা research agent parallel-এ চলবে।</div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">4</div>
+        <div class="step-body"><strong>Quality check দরকার:</strong> দুইটা agent same task করে, output compare করো। Agreement থাকলে confident। না থাকলে flag করো। High-stakes task-এ useful।</div>
+      </div>
+    </div>
+
+    <div class="callout warn">
+      <div class="callout-label">Over-engineering trap</div>
+      শুরুতে সব কিছুর জন্য আলাদা agent বানানোর দরকার নেই।
+      একটা research agent দিয়ে শুরু করো। প্রয়োজনে split করো।
+      Agent বাড়ানো সহজ, কিন্তু tangled agent system debug করা nightmare।
+    </div>
+
+    <div class="pullquote">
+      Sub-agent design-এ সবচেয়ে important সিদ্ধান্ত হলো
+      scope। কতটুকু করবে, কতটুকু করবে না।
+      Scope ছোট রাখো। Quality বাড়বে।
+      Tool list ছোট রাখো। Hallucination কমবে।
+    </div>
+
+    <p>
+      পরের post-এ দেখবো <strong>Tool Registry</strong>:
+      কেন agents directly tool call করে না,
+      permission model কীভাবে কাজ করে,
+      আর audit trail কেন production-এ critical।
+      এটাই series-এর শেষ major component।
+    </p>
+
+    <p>
+      কোনো question থাকলে comment করো।
+      <code>#AgenticAI</code> <code>#LLMAgents</code> <code>#AIEngineering</code>
+    </p>
+
+  </article>
+
+  <div class="post-nav">
+    <a class="nav-card" href="memory_blog.html">
+      <div class="nav-direction">Previous post</div>
+      <div class="nav-title">Memory + Vector Store: Agent কীভাবে মনে রাখে</div>
+    </a>
+    <a class="nav-card next" href="#">
+      <div class="nav-direction">Next post</div>
+      <div class="nav-title">Tool Registry: Controlled Access Layer</div>
+    </a>
+  </div>
+
+</main>
+
+<footer>
+  <p>© 2026 Asif Bin Syed · ML Researcher · OMSCS @ Georgia Tech</p>
+  <a class="gh-link" href="https://github.com/asifbinsyed33" target="_blank">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+    </svg>
+    github/asifbinsyed33
+  </a>
+</footer>
+
+</body>
+</html>
