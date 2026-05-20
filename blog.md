@@ -18,4 +18,5 @@ This page will host random musings and updates. Below is a sample item to start 
 - [LLM Inference Optimization](/inference-optimization) (batching, KV cache, quantization, serving)
 - [Agent Evaluation](/agent-evaluation) (offline suites, metrics, LLM judge, CI gates)
 - [Fine-Tuning LLMs](/fine-tuning-llm)
-- [Reasoning Models](/reasoning-model)
+- [Process Reward Models (PRM)](/process-reward-models) (reasoning LLMs, ORM vs PRM, research landscape)
+- [Reasoning Models](/reasoning-model) (short intro + link to PRM post)
